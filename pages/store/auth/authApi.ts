@@ -1,5 +1,11 @@
 import { baseUrl } from '@/assets/api/common.api'
-import { LoginParamsData, RegisterParamsData, ServerErrorResponse, ServerSuccessResponse } from '@/assets/types/auth/authTypes'
+import {
+  LoginParamsData,
+  RegisterParamsData,
+  ServerErrorResponse,
+  ServerMeResponse,
+  ServerSuccessResponse,
+} from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const authApi = createApi({
@@ -9,6 +15,12 @@ export const authApi = createApi({
     credentials: 'include',
   }),
   endpoints: (builder) => ({
+    me: builder.query<ServerMeResponse | ServerErrorResponse, void>({
+      query: () => ({
+        url: '/auth/me',
+        method: 'GET',
+      }), //check
+    }),
     login: builder.mutation<ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({
         url: '/auth/login',
@@ -26,6 +38,6 @@ export const authApi = createApi({
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation } = authApi
+export const { useLoginMutation, useRegisterMutation, useMeQuery } = authApi
 
 export default authApi

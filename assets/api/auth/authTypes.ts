@@ -8,6 +8,11 @@ export type RegisterParamsData = LoginParamsData & {
 }
 
 //server response
+export type ServerMeResponse = {
+  userId: number
+  userName: string
+  email: string
+}
 export type ServerSuccessResponse = {
   accessToken: string
 }

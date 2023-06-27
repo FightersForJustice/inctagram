@@ -1,5 +1,5 @@
 import { baseUrl } from '@/assets/api/common.api'
-import { LoginParamsData, ServerErrorResponse } from '@/assets/types/auth/authTypes'
+import { LoginParamsData, RegisterParamsData, ServerErrorResponse, ServerSuccessResponse } from '@/assets/types/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const authApi = createApi({
@@ -16,9 +16,16 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    register: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
+      query: (newUser) => ({
+        url: '/auth/registration',
+        method: 'POST',
+        body: newUser,
+      }),
+    }),
   }),
 })
 
-export const { useLoginMutation } = authApi
+export const { useLoginMutation, useRegisterMutation } = authApi
 
 export default authApi

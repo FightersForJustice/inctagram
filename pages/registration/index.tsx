@@ -1,3 +1,4 @@
+import { MainButton } from '@/components/Buttons/buttons'
 import style from './index.module.scss'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -42,7 +43,8 @@ export default function Registration() {
             <input type="password" {...register('password2')} placeholder="******************" />
           </div>
           <div>
-            <input className={style.button} type="submit" value="Sign Up" />
+            {/* <input className={style.button} type="submit" value="Sign Up" /> */}
+            <MainButton title={'Sign Up'} onClick={() => 'your function here'} />
           </div>
         </form>
         <p>Do you have an account?</p>

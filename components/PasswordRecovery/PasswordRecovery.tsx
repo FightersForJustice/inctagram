@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, FC } from "react"
+import { ChangeEvent, useState, FC, PropsWithChildren } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 
 interface IFormInput {
@@ -6,7 +6,7 @@ interface IFormInput {
   confirmPassword: string
 }
 
-const PasswordRecovery: FC = () => {
+const PasswordRecovery: FC<PropsWithChildren<{}>> = ({children}) => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>()
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')

@@ -1,25 +1,30 @@
-import React, { PropsWithChildren, useState } from 'react';
-import s from './LoginForm.module.css';
-import { useForm } from 'react-hook-form';
-import GithubSvg from 'public/icons/GithubSvg.svg';
-import GoogleSvg from 'public/icons/GoogleSvg.svg';
-import Link from 'next/link';
-import * as Form from '@radix-ui/react-form';
+import React, { PropsWithChildren, useState } from 'react'
+import s from './LoginForm.module.css'
+import { useForm } from 'react-hook-form'
+import GithubSvg from 'public/icons/GithubSvg.svg'
+import GoogleSvg from 'public/icons/GoogleSvg.svg'
+import Link from 'next/link'
+import * as Form from '@radix-ui/react-form'
 
 const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<any>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<any>()
 
   const onSubmit = (data: any) => {
-    console.log(data);
-  };
+    console.log(data)
+  }
 
   const handleEmailClick = () => {
-    setValue('email', '');
-  };
+    setValue('email', '')
+  }
 
   const handlePasswordClick = () => {
-    setValue('password', '');
-  };
+    setValue('password', '')
+  }
 
   return (
     <div className={s.mainContainer}>
@@ -50,7 +55,7 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 defaultValue="Email"
                 type="email"
                 id="email"
-                {...register("email", { maxLength: 80 })}
+                {...register('email', { maxLength: 80 })}
                 onClick={handleEmailClick}
               />
             </Form.Control>
@@ -71,7 +76,7 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 defaultValue="Email"
                 type="password"
                 id="password"
-                {...register("password", { minLength: 8 })}
+                {...register('password', { minLength: 8 })}
                 onClick={handlePasswordClick}
               />
             </Form.Control>
@@ -81,7 +86,7 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         </Form.Root>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

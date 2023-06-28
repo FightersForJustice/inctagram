@@ -1,10 +1,10 @@
-.headerContainer{
-    height: 60px;
-    background-color: #0D0D0D;
-    border-bottom: 1px solid #333;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
+.headerContainer {
+  height: 60px;
+  background-color: #0d0d0d;
+  border-bottom: 1px solid #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }

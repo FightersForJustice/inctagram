@@ -30,6 +30,7 @@ const PasswordRecovery: FC<PropsWithChildren<{}>> = ({ children }) => {
           required: true,
           maxLength: 20,
           minLength: 6,
+          pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
           onChange: (e) => handleChange(e, setPassword),
           validate: (v) => v === confirmPassword,
         })}
@@ -46,6 +47,7 @@ const PasswordRecovery: FC<PropsWithChildren<{}>> = ({ children }) => {
           required: true,
           maxLength: 20,
           minLength: 6,
+          pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
           onChange: (e) => handleChange(e, setConfirmPassword),
           validate: (v) => v === password,
         })}
@@ -65,6 +67,9 @@ const PasswordRecovery: FC<PropsWithChildren<{}>> = ({ children }) => {
       )}
       {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && <p>Password field is empty</p>}
       {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && <p>Passwords doesn't match</p>}
+      {errors.confirmPassword && errors.confirmPassword.type === 'pattern' && (
+        <p>Your password must contain at least one number and one character</p>
+      )}
       <input type="submit" />
     </form>
   )

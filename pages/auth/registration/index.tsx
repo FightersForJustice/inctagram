@@ -1,9 +1,9 @@
 import style from './index.module.scss'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRegisterMutation } from '../../../assets/api/auth/authApi'
 import { useState } from 'react'
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
+import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 
 type FormValues = {
   userName: string
@@ -25,7 +25,7 @@ const Registration = () => {
     formState: { errors },
     watch,
   } = useForm<FormValues>()
-  const [registers, { isLoading }] = useRegisterMutation()
+  const [registers, { isLoading }] = useRegistrationMutation()
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (data.password === data.password2) {
       try {

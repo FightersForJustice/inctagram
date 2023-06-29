@@ -118,3 +118,9 @@
 .Button:focus {
   box-shadow: 0 0 0 2px black;
 }
+
+.link{
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+}

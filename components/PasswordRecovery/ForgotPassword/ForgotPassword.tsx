@@ -23,16 +23,20 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
       <div className={style.form_wrapper}>
         <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Forgot Password</h1>
         <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
+        <div style={{ position: 'relative', marginTop: '20px' }}>
+            <label style={{ color: '#8d9094', position: 'absolute', top: '-20px', left: '0px' }}>
+              New password
+            </label>
           <StyledInput
             validation={{
               ...register('email', {
                 required: true,
-                pattern: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                pattern:  /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
               })
             }}
             id="email"
-            label={'Email'}
           />
+          </div>
           <div style={{ color: '#8d9094' }}>
 
             {errors.email && errors.email.type === 'required'

@@ -54,15 +54,14 @@ const  Registration = () =>  {
   const errorMessagePassword = arr.find(obj => obj.field === 'password')
   return (
     <PageWrapper>
-    <div className={style.content}>
 
-          
-        {isLoading && (
-            <div className="modalOverlay">
-                <div className={style.modalContent}>Идет загрузка...</div>
-            </div>
-        )}
+    <div className={style.content}>
         <div className={style.registration}>
+        {isLoading && (
+        <div className={style.modal}>
+          <img className={style.img} src="/img/Loading.svg" alt="github.com" />
+        </div>
+        )}
             <h1>Sign Up</h1>
             <div className={style.item}>
                 <a href="" className={style.link}>

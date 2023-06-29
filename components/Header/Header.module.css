@@ -1,10 +1,231 @@
-.headerContainer {
-  height: 60px;
-  background-color: #0d0d0d;
-  border-bottom: 1px solid #333;
-  color: white;
+.header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  font-size: 30px;
+  background-color: #0c0c0c;
+  border-color: #333333;
+  border-top-style: solid;
+  border-top-width: 1px;
+  height: 60px;
+  position: relative;
+  width: 1280px;
 }
+
+.header .inctagram {
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 26px;
+  font-weight: 600;
+  left: 59px;
+  letter-spacing: 0;
+  line-height: 36px;
+  position: absolute;
+  top: 10px;
+  white-space: nowrap;
+}
+
+.header .outline_bell_instance {
+
+  /*left: 980px !important;*/
+  /*position: absolute !important;*/
+  /*top: 17px !important;*/
+}
+/*Header container*/
+.outline_bell {
+  height: 24px;
+  width: 24px;
+  margin-right: 48px;
+  margin-left: 1053px;
+}
+
+.outline_bell .overlap_group {
+  height: 25px;
+  position: relative;
+  top: -1px;
+}
+
+.outline_bell .mask {
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+  width: 18px;
+}
+
+.outline_bell .ellipse {
+  background-color: #cc1439;
+  border-radius: 6.5px;
+  height: 13px;
+  left: 11px;
+  position: absolute;
+  top: -4px;
+  width: 13px;
+}
+
+.outline_bell .element {
+  color: #ffffff;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 10px;
+  font-weight: 500;
+  height: 13px;
+  left: 11px;
+  letter-spacing: 0;
+  line-height: 5px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 13px;
+}
+/*outline bell*/
+.label {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.label .div_wrapper {
+  height: 13px;
+  width: 13px;
+}
+
+.label .text_wrapper {
+  color: #ffffff;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 10px;
+  font-weight: 500;
+  height: 13px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 8px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 13px;
+}
+/*label*/
+.box {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.box .ellipse_wrapper {
+  height: 13px;
+  width: 13px;
+}
+
+.box .ellipse {
+  background-color: #cc1439;
+  border-radius: 6.5px;
+  height: 13px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 13px;
+}
+/*elipse*/
+.box .mask_wrapper {
+  height: 20px;
+  width: 18px;
+}
+
+.box .mask {
+  height: 20px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 18px;
+}
+/*mask*/
+.language {
+  margin-right: 64px;
+  height: 36px;
+  position: relative;
+  width: 163px;
+}
+
+.language .select {
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  height: 24px;
+  left: 44px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  top: 5px;
+  white-space: nowrap;
+}
+
+/*select_box*/
+/*flag*/
+.label {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.label .select_wrapper {
+  height: 24px;
+  width: 59px;
+}
+
+.label .select {
+  color: #ffffff;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  height: 24px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: fixed;
+  top: 0;
+  white-space: nowrap;
+}
+/*select wraper*/
+.box .select_wrapper {
+  height: 36px;
+  width: 163px;
+}
+
+.box .select {
+  height: 36px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 163px;
+}
+/**/
+.label {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.label .h1_wrapper {
+  height: 36px;
+  width: 128px;
+}
+
+.label .text_wrapper {
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 26px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 36px;
+  position: fixed;
+  top: 0;
+  white-space: nowrap;
+}
+/*text*/

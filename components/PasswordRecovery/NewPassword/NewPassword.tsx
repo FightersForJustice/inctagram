@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import style from '../Login/LoginForm.module.css'
+import style from '../../Login/LoginForm.module.css'
 import StyledInput, { StyledInputPassword } from './StyledInput'
 
 interface IFormInput {

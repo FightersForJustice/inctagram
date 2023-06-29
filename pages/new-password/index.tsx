@@ -1,5 +1,5 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
-import PasswordRecoveryForm from '@/components/PasswordRecovery/PasswordRecovery'
+import NewPasswordForm from '@/components/PasswordRecovery/NewPassword/NewPassword'
 import { getLayout } from '@/components/Layout/Layout'
 
 export const getStaticProps = async () => {
@@ -8,13 +8,13 @@ export const getStaticProps = async () => {
   }
 }
 
-const PasswordRecovery = () => {
+const NewPassword = () => {
   return (
     <PageWrapper>
-      <PasswordRecoveryForm></PasswordRecoveryForm>
+      <NewPasswordForm></NewPasswordForm>
     </PageWrapper>
   )
 }
 
-PasswordRecovery.getLayout = getLayout
-export default PasswordRecovery
+NewPassword.getLayout = getLayout
+export default NewPassword

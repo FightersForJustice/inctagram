@@ -8,7 +8,7 @@ interface IFormInput {
   confirmPassword: string
 }
 
-const PasswordRecovery: FC<PropsWithChildren<{}>> = ({ children }) => {
+const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
   const {
     register,
     handleSubmit,
@@ -74,4 +74,4 @@ const PasswordRecovery: FC<PropsWithChildren<{}>> = ({ children }) => {
   )
 }
 
-export default PasswordRecovery
+export default NewPassword

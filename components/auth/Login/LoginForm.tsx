@@ -1,4 +1,4 @@
-import React, { PropsWithChildren} from 'react'
+import React, { PropsWithChildren } from 'react'
 import s from './LoginForm.module.css'
 import { useForm } from 'react-hook-form'
 import GithubSvg from 'public/icons/GithubSvg.svg'
@@ -6,39 +6,41 @@ import GoogleSvg from 'public/icons/GoogleSvg.svg'
 import Link from 'next/link'
 import * as Form from '@radix-ui/react-form'
 import { useRouter } from 'next/router'
-import { useLoginMutation} from '@/assets/api/auth/authApi'
-
+import { useLoginMutation } from '@/assets/api/auth/authApi'
 
 type LoginParamsData = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
 
 const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<any>();
-  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<any>()
+  const router = useRouter()
 
   const [loginMutation, { isLoading, isError }] = useLoginMutation()
 
-  
   const onSubmit = async (data: LoginParamsData) => {
-    const { email, password } = data;
+    const { email, password } = data
     try {
       const response = await loginMutation({ email, password }).unwrap()
-      router.push('/successLogin');
+      router.push('/successLogin')
     } catch (error) {
       console.error('Failed to log in:', error)
     }
-  };
+  }
 
   const handleEmailClick = () => {
-    setValue('email', '');
-  };
+    setValue('email', '')
+  }
 
   const handlePasswordClick = () => {
-    setValue('password', '');
-  };
+    setValue('password', '')
+  }
 
   return (
     <div className={s.mainContainer}>
@@ -99,11 +101,10 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             Forgot Password
           </Link>
           <input type="submit" className={s.Button} value="Sign In" />
-          <Link href="/registration" className={s.link}>
+          <Link href="/auth/registration" className={s.link}>
             Sign Up
           </Link>
         </Form.Root>
-          
       </div>
     </div>
   )

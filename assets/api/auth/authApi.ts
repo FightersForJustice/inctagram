@@ -2,6 +2,8 @@ import { baseUrl } from '@/assets/api/common.api'
 import {
   LoginParamsData,
   RegisterParamsData,
+  ForgotPasswordParamsData,
+  NewPasswordParamsData,
   ServerErrorResponse,
   ServerMeResponse,
   ServerSuccessResponse,
@@ -49,10 +51,24 @@ export const authApi = createApi({
         body: email,
       }),
     }),
+    passwordRecover: builder.mutation<ServerErrorResponse | void, ForgotPasswordParamsData>({
+      query: (recoverQuery) => ({
+        url: '/auth/password-recovery',
+        method: 'POST',
+        body: recoverQuery,
+      }),
+    }),
+    newPasswordCreate: builder.mutation<ServerErrorResponse | void, NewPasswordParamsData>({
+      query: (createQuery) => ({
+        url: '/auth/new-password',
+        method: 'POST',
+        body: createQuery,
+      }),
+    }),
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation, useMeQuery, useRegisterConfirmMutation, useRegisterEmailResendMutation } =
+export const { useLoginMutation, useRegisterMutation, useMeQuery, useRegisterConfirmMutation, useRegisterEmailResendMutation, usePasswordRecoverMutation, useNewPasswordCreateMutation } =
   authApi
 
 export default authApi

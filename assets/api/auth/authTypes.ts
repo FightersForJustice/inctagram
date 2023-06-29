@@ -6,6 +6,15 @@ export type LoginParamsData = {
 export type RegisterParamsData = LoginParamsData & {
   userName: string
 }
+export type ForgotPasswordParamsData = {
+  email: string
+  recaptcha: string
+}
+export type NewPasswordParamsData = {
+  newPassword: string
+  recoveryCode: string
+}
+
 
 //server response
 export type ServerMeResponse = {

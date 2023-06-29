@@ -33,21 +33,21 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    register: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
+    registration: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
       query: (newUser) => ({
         url: '/auth/registration',
         method: 'POST',
         body: newUser,
       }),
     }),
-    registerConfirm: builder.mutation<ServerErrorResponse | void, string>({
+    registrationСonfirm: builder.mutation<ServerErrorResponse | void, string>({
       query: (confirmationCode) => ({
         url: '/auth/registration-confirmation',
         method: 'POST',
         body: { confirmationCode }, //an object?
       }),
     }),
-    registerEmailResend: builder.mutation<ServerErrorResponse | void, string>({
+    registrationEmailResend: builder.mutation<ServerErrorResponse | void, string>({
       query: (email) => ({
         url: '/auth/registration-email-resending',
         method: 'POST',
@@ -57,7 +57,12 @@ export const authApi = createApi({
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation, useMeQuery, useRegisterConfirmMutation, useRegisterEmailResendMutation } =
-  authApi
+export const {
+  useMeQuery,
+  useLoginMutation,
+  useRegistrationMutation,
+  useRegistrationСonfirmMutation,
+  useRegistrationEmailResendMutation,
+} = authApi
 
 export default authApi

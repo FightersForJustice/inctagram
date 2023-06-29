@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useRegisterConfirmMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
 
 const Confirm = () => {
   const router = useRouter()
   const { code } = router.query // Extract the code from URL parameters
   console.log(code)
 
-  const [registerConfirmMutation, { isSuccess, isError }] = useRegisterConfirmMutation()
+  const [registerConfirmMutation, { isSuccess, isError }] = useRegistrationСonfirmMutation()
 
   useEffect(() => {
     const confirmRegistration = async () => {

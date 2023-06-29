@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useRegisterMutation, useRegisterEmailResendMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationMutation, useRegistrationEmailResendMutation } from '@/assets/api/auth/authApi'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 
 const RegisterPage = () => {
@@ -7,8 +7,8 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [registerMutation, { isLoading, isError, isSuccess, error }] = useRegisterMutation()
-  const [registerEmailResendMutation] = useRegisterEmailResendMutation()
+  const [registerMutation, { isLoading, isError, isSuccess, error }] = useRegistrationMutation()
+  const [registerEmailResendMutation] = useRegistrationEmailResendMutation()
 
   const handleRegister = async () => {
     const registerData = { userName, email, password }

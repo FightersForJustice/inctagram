@@ -1,13 +1,13 @@
 import { NextPage } from 'next'
 import { PropsWithChildren, ReactElement } from 'react'
-import { Header } from '../Header/Header'
+// import { Header } from '../Header/Header'
 
 export const Layout: NextPage<PropsWithChildren> = (props) => {
   const { children } = props
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div>{children}</div>
     </>
   )

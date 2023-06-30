@@ -8,12 +8,12 @@
   border-top-width: 1px;
   height: 60px;
   position: relative;
-  width: 1280px;
+  width: 100%;
 }
 
 .header .inctagram {
   color: #ffffff;
-  font-family: "Inter-SemiBold", Helvetica;
+  font-family: 'Inter-SemiBold', Helvetica;
   font-size: 26px;
   font-weight: 600;
   left: 59px;
@@ -25,7 +25,6 @@
 }
 
 .header .outline_bell_instance {
-
   /*left: 980px !important;*/
   /*position: absolute !important;*/
   /*top: 17px !important;*/
@@ -64,7 +63,7 @@
 
 .outline_bell .element {
   color: #ffffff;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: 'Inter-Medium', Helvetica;
   font-size: 10px;
   font-weight: 500;
   height: 13px;
@@ -92,7 +91,7 @@
 
 .label .text_wrapper {
   color: #ffffff;
-  font-family: "Inter-Medium", Helvetica;
+  font-family: 'Inter-Medium', Helvetica;
   font-size: 10px;
   font-weight: 500;
   height: 13px;
@@ -149,7 +148,7 @@
 }
 
 .language .select {
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   height: 24px;
@@ -178,7 +177,7 @@
 
 .label .select {
   color: #ffffff;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: 'Inter-Regular', Helvetica;
   font-size: 16px;
   font-weight: 400;
   height: 24px;
@@ -218,7 +217,7 @@
 
 .label .text_wrapper {
   color: #ffffff;
-  font-family: "Inter-SemiBold", Helvetica;
+  font-family: 'Inter-SemiBold', Helvetica;
   font-size: 26px;
   font-weight: 600;
   left: 0;

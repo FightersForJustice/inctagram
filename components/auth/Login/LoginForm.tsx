@@ -16,17 +16,36 @@ type LoginParamsData = {
 
 const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
 
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<any>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue
+  } = useForm<any>();
   const router = useRouter();
 
   const [loginMutation, { isLoading, isError }] = useLoginMutation()
 
-  
+
   const onSubmit = async (data: LoginParamsData) => {
     const { email, password } = data;
+    console.log(data);
+    
     try {
-      const response = await loginMutation({ email, password }).unwrap()
-      router.push('/successLogin');
+      const response = await loginMutation({ email, password })
+        .unwrap()
+        .then(() => alert("Success login"))
+        .then(() => router.push('/successLogin'))
+        .catch((error: any) => {
+          alert(error.data.error)
+          // if (error.status == 'FETCH_ERROR') {
+          //   alert('Ошибка на сервере')
+          // }
+          // if (typeof error.data != 'undefined') {
+          //   setArr(error.data.messages)
+          // }
+        })
+
     } catch (error) {
       console.error('Failed to log in:', error)
     }
@@ -99,7 +118,7 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             Forgot Password
           </Link>
           <input type="submit" className={s.Button} value="Sign In" />
-          <Link href="/registration" className={s.link}>
+          <Link href="/auth/registration" className={s.link}>
             Sign Up
           </Link>
         </Form.Root>

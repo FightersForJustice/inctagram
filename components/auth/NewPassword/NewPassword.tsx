@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from '@/components/auth/Login/LoginForm.module.css'
-import { StyledInputPassword } from '../../common/Inputs/Inputs'
+import { PasswordInput } from '../../common/Inputs/Inputs'
 
 interface IFormInput {
   password: string
@@ -30,10 +30,7 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
         <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Create New Password</h1>
         <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
           <div style={{ position: 'relative', marginTop: '20px' }}>
-            <label style={{ color: '#8d9094', position: 'absolute', top: '-20px', left: '0px' }}>
-              New password
-            </label>
-            <StyledInputPassword
+            <PasswordInput
               validation={{
                 ...register('password', {
                   required: true,
@@ -45,11 +42,11 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
                 })
               }}
               id="password"
+              label='New password'
             />
           </div>
           <div style={{ position: 'relative', marginTop: '20px' }}>
-            <label style={{ color: '#8d9094', position: 'absolute', top: '-20px', left: '0px' }}> Password confirmation</label>
-            <StyledInputPassword
+            <PasswordInput
               validation={{
                 ...register('confirmPassword', {
                   required: true,
@@ -61,6 +58,7 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
                 })
               }}
               id="confirmPassword"
+              label='Password confirmation'
             />
           </div>
           <div style={{ color: '#8d9094' }}>

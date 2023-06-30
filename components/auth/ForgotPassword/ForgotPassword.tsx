@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from '../Login/LoginForm.module.css'
-import StyledInput from '../../common/Inputs/Inputs'
+import { MainInput } from '../../common/Inputs/Inputs'
 import Link from 'next/link'
 import passStyle from './ForgotPassword.module.scss'
 
@@ -23,19 +23,17 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
       <div className={style.form_wrapper}>
         <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Forgot Password</h1>
         <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ position: 'relative', marginTop: '20px' }}>
-            <label style={{ color: '#8d9094', position: 'absolute', top: '-20px', left: '0px' }}>
-              Email
-            </label>
-          <StyledInput
-            validation={{
-              ...register('email', {
-                required: true,
-                pattern:  /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              })
-            }}
-            id="email"
-          />
+          <div style={{ position: 'relative', marginTop: '20px' }}>
+            <MainInput
+              validation={{
+                ...register('email', {
+                  required: true,
+                  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                })
+              }}
+              id="email"
+              label='Email'
+            />
           </div>
           <div style={{ color: '#8d9094' }}>
 
@@ -45,7 +43,7 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
               && (<p>Email is invalid</p>)}
             <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
               className={style.Button} value='Send Link' />
-              <Link className={passStyle.link} href={'login'} >Back to Sign In</Link>
+            <Link className={passStyle.link} href={'login'} >Back to Sign In</Link>
           </div>
         </form>
       </div>

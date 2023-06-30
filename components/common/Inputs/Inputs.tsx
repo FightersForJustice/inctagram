@@ -1,34 +1,26 @@
-import style from '@/components/auth/Login/LoginForm.module.css'
+import style from './Inputs.module.scss'
 import { useState } from 'react'
 
-interface IStyledInputProps extends React.HTMLAttributes<HTMLInputElement> {
+interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
   validation?: object
   type?: string
+  label?: string
 }
 
-const StyledInput: React.FC<IStyledInputProps> = ({ validation, ...props }) => {
-  return <div className={style.FormField} style={{ position: 'relative' }} >
-    <input className={style.Input}  {...props} {...validation} />
-  </div>
+export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) => {
+  return <>
+    {props.label && <label htmlFor={props.id} className={style.Label}>{props.label}</label>}
+    <input className={style.Input} {...props} {...validation} />
+  </>
 }
 
-export const StyledInputPassword: React.FC<IStyledInputProps> = ({ ...props }) => {
+export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   return <div style={{ position: 'relative' }}>
-    <StyledInput {...props} type={isPasswordShown ? 'text' : 'password'} />
+    <MainInput {...props} type={isPasswordShown ? 'text' : 'password'} />
     <span
-      style={
-        {
-          position: 'absolute',
-          right: '10px',
-          marginTop: '-62px',
-          fontSize: '22px',
-          color: 'white',
-          cursor: 'pointer'
-        }}
+      className={style.EyeButton}
       onClick={() => setIsPasswordShown(prev => !prev)}
     >{isPasswordShown ? <span>&#8413;</span> : <span>&#8416;</span>}</span>
   </div>
 }
-
-export default StyledInput

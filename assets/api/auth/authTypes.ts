@@ -26,7 +26,7 @@ export type ServerSuccessResponse = {
   accessToken: string
 }
 export type ServerErrorResponse = {
-  statusCode: number
+  statusCode: 400 | 500
   messages: ResponseMessage[]
   error: string
 }

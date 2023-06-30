@@ -10,6 +10,11 @@ import {
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+//TODO
+// 1 – прописать status code
+// 2 – change name to registration
+// 3 – change folder structure to auth
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
@@ -30,25 +35,25 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    register: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
+    registration: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
       query: (newUser) => ({
         url: '/auth/registration',
         method: 'POST',
         body: newUser,
       }),
     }),
-    registerConfirm: builder.mutation<ServerErrorResponse | void, string>({
+    registrationСonfirm: builder.mutation<ServerErrorResponse | void, string>({
       query: (confirmationCode) => ({
         url: '/auth/registration-confirmation',
         method: 'POST',
-        body: confirmationCode,
+        body: { confirmationCode }, //an object?
       }),
     }),
-    registerEmailResend: builder.mutation<ServerErrorResponse | void, string>({
+    registrationEmailResend: builder.mutation<ServerErrorResponse | void, string>({
       query: (email) => ({
         url: '/auth/registration-email-resending',
         method: 'POST',
-        body: email,
+        body: { email }, //an object?
       }),
     }),
     passwordRecover: builder.mutation<ServerErrorResponse | void, ForgotPasswordParamsData>({
@@ -68,7 +73,12 @@ export const authApi = createApi({
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation, useMeQuery, useRegisterConfirmMutation, useRegisterEmailResendMutation, usePasswordRecoverMutation, useNewPasswordCreateMutation } =
-  authApi
+export const {
+  useMeQuery,
+  useLoginMutation,
+  useRegistrationMutation,
+  useRegistrationСonfirmMutation,
+  useRegistrationEmailResendMutation,
+} = authApi
 
 export default authApi

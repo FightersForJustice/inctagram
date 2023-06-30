@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import style from '../../Login/LoginForm.module.css'
-import StyledInput from '../NewPassword/StyledInput'
+import style from '../Login/LoginForm.module.css'
+import StyledInput from '../../common/Inputs/Inputs'
 import Link from 'next/link'
 import passStyle from './ForgotPassword.module.scss'
 
@@ -25,7 +25,7 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
         <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
         <div style={{ position: 'relative', marginTop: '20px' }}>
             <label style={{ color: '#8d9094', position: 'absolute', top: '-20px', left: '0px' }}>
-              New password
+              Email
             </label>
           <StyledInput
             validation={{

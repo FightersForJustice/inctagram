@@ -1,4 +1,4 @@
-import style from '@/components/Login/LoginForm.module.css'
+import style from '@/components/auth/Login/LoginForm.module.css'
 import { useState } from 'react'
 
 interface IStyledInputProps extends React.HTMLAttributes<HTMLInputElement> {

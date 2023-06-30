@@ -1,14 +1,11 @@
 'use client'
-
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
-import Login from '@/pages/auth/login'
-// import { useRouter } from 'next/navigation'
 
-type RegisterationConfirmType = {}
+type RegistrationConfirmType = {}
 
-const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
+const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
   const router = useRouter()
   const { code } = router.query // Extract the code from URL parameters
 
@@ -18,19 +15,7 @@ const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
     const confirmRegistration = async () => {
       try {
         await registerConfirmMutation(code!.toString())
-
-        if (isSuccess) {
-          alert('confirmed successfully')
-        }
-        if (isError) {
-          alert('not confirmed')
-        }
-        // Registration confirmed successfully, show appropriate message or redirect
-      } catch (error) {
-        alert('not confirmed error block') // не попадаю
-
-        // Registration confirmation failed, handle the error accordingly
-      }
+      } catch (error) {}
     }
 
     if (code) {
@@ -38,29 +23,15 @@ const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
     }
   }, [code, registerConfirmMutation])
 
-  if (isLoading) {
-    return <div>Loading... Когда-то тут будет крутилка</div>
-  }
-  if (isError) {
-    router.push('/auth/failed')
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      router.push('/auth/success')
+    } else if (isError) {
+      router.push('/auth/failed')
+    }
+  }, [isSuccess, isError, router])
 
-  return (
-    <>
-      {isSuccess && (
-        <div>
-          <p>Congratulations! Your email has been confirmed</p>
-        </div>
-      )}
-
-      {/* {isError && (
-        <div>
-          <p>Email verification link has expired</p>
-
-        </div>
-      )} */}
-    </>
-  )
+  return <>{isLoading && <div>Loading... Когда-то тут будет крутилка</div>}</>
 }
 
 export default RegistrationConfirmation

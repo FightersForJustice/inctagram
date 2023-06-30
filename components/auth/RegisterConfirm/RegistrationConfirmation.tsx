@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
+import { Loading } from '@/components/common/loaders/Loading'
 
 type RegistrationConfirmType = {}
 
@@ -31,7 +32,7 @@ const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
     }
   }, [isSuccess, isError, router])
 
-  return <>{isLoading && <div>Loading... Когда-то тут будет крутилка</div>}</>
+  return <>{isLoading && <Loading />}</>
 }
 
 export default RegistrationConfirmation

@@ -12,8 +12,9 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
-  } = useForm<IFormInput>()
+  } = useForm<IFormInput>({mode: 'onSubmit'})
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -22,6 +23,7 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
     setConfirmPassword('')
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any) => {
+    clearErrors()
     setValue(e.target.value)
   }
   return (
@@ -59,15 +61,18 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
               }}
               id="confirmPassword"
               label='Password confirmation'
+              style={errors.confirmPassword && errors.password && {border: '1px solid red'}}
             />
+            {errors.confirmPassword && errors.password && <p style={{color:'red', float:'left'}}>Error!</p>}
           </div>
-          <div style={{ color: '#8d9094' }}>
-            {errors.confirmPassword && (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
+          
+          <div style={{ color: '#8d9094', marginTop: '20px' }}>
+            {errors.confirmPassword && errors.password && (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
               <p>Your password must be between 6 and 20 characters</p>
             )}
             {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && <p>Password field is empty</p>}
             {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && <p>Passwords doesn't match</p>}
-            {errors.confirmPassword && errors.confirmPassword.type === 'pattern' && (
+            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'pattern' && (
               <p>Password is invalid</p>
             )}
             <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }} className={style.Button} value='Create New Password' />

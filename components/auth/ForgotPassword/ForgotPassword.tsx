@@ -13,8 +13,9 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
-  } = useForm<IFormInput>()
+  } = useForm<IFormInput>({mode: 'onSubmit'})
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     alert('email sent')
   }
@@ -33,7 +34,9 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
               }}
               id="email"
               label='Email'
+              style={errors.email && {border: '1px solid red'}}
             />
+            {errors.email && <p style={{color:'red', float:'left'}}>Error!</p>}
           </div>
           <div style={{ color: '#8d9094' }}>
 

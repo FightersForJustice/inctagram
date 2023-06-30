@@ -13,6 +13,9 @@ export type ServerMeResponse = {
   userName: string
   email: string
 }
+export type ServerLoginResponse = {
+  accessToken: string
+}
 export type ServerSuccessResponse = {
   accessToken: string
 }

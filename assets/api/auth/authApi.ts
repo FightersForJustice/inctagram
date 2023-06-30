@@ -3,6 +3,7 @@ import {
   LoginParamsData,
   RegisterParamsData,
   ServerErrorResponse,
+  ServerLoginResponse,
   ServerMeResponse,
   ServerSuccessResponse,
 } from '@/assets/api/auth/authTypes'
@@ -26,7 +27,7 @@ export const authApi = createApi({
         method: 'GET',
       }), //check
     }),
-    login: builder.mutation<ServerErrorResponse | void, LoginParamsData>({
+    login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({
         url: '/auth/login',
         method: 'POST',

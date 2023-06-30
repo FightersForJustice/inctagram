@@ -1,13 +1,16 @@
+'use client'
+
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
+import Login from '@/pages/auth/login'
+// import { useRouter } from 'next/navigation'
 
 type RegisterationConfirmType = {}
 
 const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
   const router = useRouter()
   const { code } = router.query // Extract the code from URL parameters
-  console.log(code)
 
   const [registerConfirmMutation, { isSuccess, isError, isLoading }] = useRegistrationСonfirmMutation()
 
@@ -38,6 +41,9 @@ const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
   if (isLoading) {
     return <div>Loading... Когда-то тут будет крутилка</div>
   }
+  if (isError) {
+    router.push('/auth/failed')
+  }
 
   return (
     <>
@@ -46,11 +52,13 @@ const RegistrationConfirmation: React.FC<RegisterationConfirmType> = () => {
           <p>Congratulations! Your email has been confirmed</p>
         </div>
       )}
-      {isError && (
+
+      {/* {isError && (
         <div>
           <p>Email verification link has expired</p>
+
         </div>
-      )}
+      )} */}
     </>
   )
 }

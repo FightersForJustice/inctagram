@@ -1,19 +1,25 @@
 import Image from 'next/image'
 import img from '../../../public/img/time-management.png'
-
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import style from './FailedAuth.module.scss'
 import commonStyle from '../../../styles/common.module.scss'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authApi'
+import { useEffect, useState } from 'react'
 
 const FailedAuth = () => {
-  // const [emailSent, setEmailSent] = useState(false)
-
+  const [userEmail, setUserEmail] = useState<string>('')
   const [resendEmail, { isLoading, isSuccess, isError }] = useRegistrationEmailResendMutation()
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedEmail = localStorage.getItem('userEmail')
+      setUserEmail(storedEmail ?? '')
+    }
+  }, [])
+
   const handleResendEmail = () => {
-    resendEmail('userEmail')
+    resendEmail(userEmail)
   }
 
   return (

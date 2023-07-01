@@ -32,17 +32,24 @@ const FailedAuth = () => {
               Looks like the verification link has expired. Not to worry, we can send the link again
             </p>
           </div>
-          <MainButton title="Resend verification link" onClick={handleResendEmail} disabled={isLoading} />
+          <div>
+            <MainButton
+              title="Resend verification link"
+              onClick={handleResendEmail}
+              disabled={isLoading}
+              style={{ width: '229px' }}
+            />
+          </div>
           <div style={{ position: 'relative', height: '291px' }}>
             <Image
               alt="failed registration"
               src={img}
               placeholder="blur"
               quality={100}
-              fill
               sizes="(max-width: 808px) 50vw, 100vw"
               style={{
                 objectFit: 'cover',
+                position: 'static',
               }}
             />
           </div>

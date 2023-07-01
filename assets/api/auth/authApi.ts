@@ -3,15 +3,10 @@ import {
   LoginParamsData,
   RegisterParamsData,
   ServerErrorResponse,
+  ServerLoginResponse,
   ServerMeResponse,
-  ServerSuccessResponse,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
-//TODO
-// 1 – прописать status code
-// 2 – change name to registration
-// 3 – change folder structure to auth
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -26,28 +21,28 @@ export const authApi = createApi({
         method: 'GET',
       }), //check
     }),
-    login: builder.mutation<ServerErrorResponse | void, LoginParamsData>({
+    login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({
         url: '/auth/login',
         method: 'POST',
         body: credentials,
       }),
     }),
-    registration: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
+    registration: builder.mutation<void | ServerErrorResponse, RegisterParamsData>({
       query: (newUser) => ({
         url: '/auth/registration',
         method: 'POST',
         body: newUser,
       }),
     }),
-    registrationСonfirm: builder.mutation<ServerErrorResponse | void, string>({
+    registrationСonfirm: builder.mutation<void | ServerErrorResponse, string>({
       query: (confirmationCode) => ({
         url: '/auth/registration-confirmation',
         method: 'POST',
         body: { confirmationCode }, //an object?
       }),
     }),
-    registrationEmailResend: builder.mutation<ServerErrorResponse | void, string>({
+    registrationEmailResend: builder.mutation<void | ServerErrorResponse, string>({
       query: (email) => ({
         url: '/auth/registration-email-resending',
         method: 'POST',

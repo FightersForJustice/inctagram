@@ -13,15 +13,26 @@ export type ServerMeResponse = {
   userName: string
   email: string
 }
-export type ServerSuccessResponse = {
+export type ServerLoginResponse = {
   accessToken: string
 }
 export type ServerErrorResponse = {
-  statusCode: 400 | 500
+  statusCode: StatusType
   messages: ResponseMessage[]
   error: string
 }
 export type ResponseMessage = {
   message: string
   field: string
+}
+
+const status: StatusType = {
+  badReqest: 400,
+  unauthorized: 401,
+  manyRequests: 429,
+}
+type StatusType = {
+  badReqest: number
+  unauthorized: number
+  manyRequests: number
 }

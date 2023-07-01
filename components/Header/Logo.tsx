@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Logo = ({ className }: Props): JSX.Element => {
-  return <div className={s.inctagram}>Instagram</div>
+  return <div className={s.inctagram}>Inctagram</div>
 }
 
 Logo.propTypes = {

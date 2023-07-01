@@ -131,7 +131,7 @@ const RegistrationForm = () => {
             </div>
           </form>
           <p>Do you have an account?</p>
-          <a href="/login" className={style.SignIn}>
+          <a href="/auth/login" className={style.SignIn}>
             Sign In
           </a>
         </div>

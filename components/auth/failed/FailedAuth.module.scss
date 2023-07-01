@@ -1,0 +1,15 @@
+.item {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 636px;
+  margin-bottom: 80px;
+}
+
+.textBlock {
+  display: flex;
+  height: 79px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}

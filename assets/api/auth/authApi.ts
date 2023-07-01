@@ -5,7 +5,6 @@ import {
   ServerErrorResponse,
   ServerLoginResponse,
   ServerMeResponse,
-  ServerSuccessResponse,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -29,21 +28,21 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-    registration: builder.mutation<ServerSuccessResponse | ServerErrorResponse, RegisterParamsData>({
+    registration: builder.mutation<void | ServerErrorResponse, RegisterParamsData>({
       query: (newUser) => ({
         url: '/auth/registration',
         method: 'POST',
         body: newUser,
       }),
     }),
-    registrationСonfirm: builder.mutation<ServerErrorResponse | void, string>({
+    registrationСonfirm: builder.mutation<void | ServerErrorResponse, string>({
       query: (confirmationCode) => ({
         url: '/auth/registration-confirmation',
         method: 'POST',
         body: { confirmationCode }, //an object?
       }),
     }),
-    registrationEmailResend: builder.mutation<ServerErrorResponse | void, string>({
+    registrationEmailResend: builder.mutation<void | ServerErrorResponse, string>({
       query: (email) => ({
         url: '/auth/registration-email-resending',
         method: 'POST',

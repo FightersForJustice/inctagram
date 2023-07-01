@@ -16,9 +16,6 @@ export type ServerMeResponse = {
 export type ServerLoginResponse = {
   accessToken: string
 }
-export type ServerSuccessResponse = {
-  accessToken: string
-}
 export type ServerErrorResponse = {
   statusCode: StatusType
   messages: ResponseMessage[]
@@ -30,13 +27,11 @@ export type ResponseMessage = {
 }
 
 const status: StatusType = {
-  success: 200 | 204,
   badReqest: 400,
   unauthorized: 401,
   manyRequests: 429,
 }
 type StatusType = {
-  success: number
   badReqest: number
   unauthorized: number
   manyRequests: number

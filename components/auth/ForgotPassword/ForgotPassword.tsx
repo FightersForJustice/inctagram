@@ -4,18 +4,14 @@ import style from '../Login/LoginForm.module.css'
 import { MainInput } from '../../common/Inputs/Inputs'
 import Link from 'next/link'
 import passStyle from './ForgotPassword.module.scss'
-
+import { ValidateEmail } from './validate'
 interface IFormInput {
   email: string
 }
 
 const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const {
-    register,
-    handleSubmit,
-    clearErrors,
-    formState: { errors },
-  } = useForm<IFormInput>({mode: 'onSubmit'})
+  const { register, handleSubmit, formState: { errors } }
+    = useForm<IFormInput>({ mode: 'onSubmit' })
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     alert('email sent')
   }
@@ -27,23 +23,18 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
           <div style={{ position: 'relative', marginTop: '20px' }}>
             <MainInput
               validation={{
-                ...register('email', {
-                  required: true,
-                  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                })
+                ...register('email', ValidateEmail)
               }}
               id="email"
               label='Email'
-              style={errors.email && {border: '1px solid red'}}
+              style={errors.email && { border: '1px solid red' }}
             />
-            {errors.email && <p style={{color:'red', float:'left'}}>Error!</p>}
+            {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
           <div style={{ color: '#8d9094' }}>
 
-            {errors.email && errors.email.type === 'required'
-              && <p>Password field is empty</p>}
-            {errors.email && errors.email.type === 'pattern'
-              && (<p>Email is invalid</p>)}
+            {errors.email && <p>{errors.email.message}</p>}
+
             <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
               className={style.Button} value='Send Link' />
             <Link className={passStyle.link} href={'login'} >Back to Sign In</Link>

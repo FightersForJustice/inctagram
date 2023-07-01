@@ -5,6 +5,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import {ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2} from './validate'
 import { Modal } from '@/components/common/Modal/modal'
+import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
 
 type FormValuesType = {
   userName: string
@@ -78,47 +79,45 @@ const RegistrationForm = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label>Username</label>
-              <input
+              <MainInput
                 onClick={ArrayErrorMessager}
                 className={errors.userName || errorMessageName ? style.error : ''}
-                {...register('userName', ValidateUsername)}
+                validation={{...register('userName', ValidateUsername)}}
                 placeholder="Epam"
+                label='Username'
               />
               {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
               {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
             </div>
             <div>
-              <label>Email</label>
-              <input
+              <MainInput
                 onClick={ArrayErrorMessager}
                 className={errors.email || errorMessageEmail ? style.error : ''}
-                {...register('email', ValidateImail)}
+                validation={{...register('email', ValidateImail)}}
                 placeholder="Epam@epam.com"
+                label='Email'
               />
               {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
               {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
             </div>
             <div>
-              <label>Password</label>
-              <input
+              <PasswordInput
                 onClick={onClickPassword}
                 className={errors.password || errorMessagePassword ? style.error : ''}
-                type="password"
-                {...register('password', ValidatePassword)}
+                validation={{...register('password', ValidatePassword)}}
                 placeholder="******************"
+                label='Password'
               />
               {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
               {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
             </div>
             <div>
-              <label>Password confirmation</label>
-              <input
+              <PasswordInput
                 onClick={onClickPassword}
                 className={errorMessagePassword ? style.error : ''}
-                type="password"
-                {...register('password2', ValidatePassword2 )}
+                validation={{...register('password2', ValidatePassword2 )}}
                 placeholder="******************"
+                label='Password confirmation'
               />
               {password != '' ? <p className={style.errorText}>{password}</p> : ''}
               {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}

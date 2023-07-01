@@ -38,9 +38,8 @@ const RegistrationForm = () => {
           .unwrap()
           .then(()=> setPrintModal( {title: "Email sent", content: 'We have sent a link to confirm your email to '+data.email}))
           .catch((error: any) => {
-            console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
-              setPrintModal( {title: "Error", content: 'error'})
+              setPrintModal( {title: "Error", content: error.error})
             }
             if (typeof error.data != 'undefined') {
                 setArrayErrorMessager(error.data.messages)
@@ -61,10 +60,14 @@ const RegistrationForm = () => {
 
   return (
         <div className={style.registration}>
-          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content}/>:"" } 
+          {printModal.title != "null"? <Modal 
+              title={printModal.title} 
+              content={printModal.content}  
+              onClick={() => {setPrintModal( {title: "null", content: 'null'})}}
+          />:"" } 
           {isLoading && (
             <div className={style.modal}>
-              <img className={style.img} src="/img/Loading.svg" alt="github.com" />
+              <img className={style.img} src="/icons/Loading.svg" alt="Loading" />
             </div>
           )}
           <h1>Sign Up</h1>

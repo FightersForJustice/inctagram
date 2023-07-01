@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
 import s from '../LoginForm.module.css'
+import { PasswordInput } from '@/components/common/Inputs/Inputs';
 
 type PasswordFormFieldProps = {
     register: any;
@@ -21,12 +22,11 @@ const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors 
                 )}
             </div>
             <Form.Control asChild>
-                <input
-                    className={s.Input}
+                <PasswordInput
                     defaultValue="Email"
-                    type="password"
                     id="password"
-                    {...register('password', { required: true, minLength: 8 })}
+                    label='Password'
+                    validation={{...register('password', { required: true, minLength: 8 })}}
                 />
             </Form.Control>
         </Form.Field>

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Form from '@radix-ui/react-form';
 import s from '../LoginForm.module.css'
+import { MainInput } from '@/components/common/Inputs/Inputs';
 
 type EmailFormFieldProps = {
     register: any;
@@ -22,19 +23,19 @@ const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors }) => 
                 )}
             </div>
             <Form.Control asChild>
-                <input
-                    className={s.Input}
+                <MainInput
                     defaultValue="Email"
                     type="email"
                     id="email"
-                    {...register('email', {
+                    label='Email'
+                    validation={{...register('email', {
                         required: true,
                         maxLength: 40,
                         pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                             message: 'Invalid email address',
                         },
-                    })}
+                    })}}
                 />
             </Form.Control>
         </Form.Field>

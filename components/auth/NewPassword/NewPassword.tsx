@@ -2,6 +2,7 @@ import { ChangeEvent, useState, FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from '@/components/auth/Login/LoginForm.module.css'
 import { PasswordInput } from '../../common/Inputs/Inputs'
+import { ValidatePassword } from './validate'
 
 interface IFormInput {
   password: string
@@ -9,12 +10,8 @@ interface IFormInput {
 }
 
 const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const {
-    register,
-    handleSubmit,
-    clearErrors,
-    formState: { errors },
-  } = useForm<IFormInput>({mode: 'onSubmit'})
+  const { register, handleSubmit, clearErrors, formState: { errors } }
+    = useForm<IFormInput>({ mode: 'onSubmit' })
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -35,14 +32,11 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
             <PasswordInput
               validation={{
                 ...register('password', {
-                  required: true,
-                  maxLength: 20,
-                  minLength: 6,
-                  pattern: /^\S+$/,
+                  ...ValidatePassword(confirmPassword),
                   onChange: (e) => handleChange(e, setPassword),
-                  validate: (v) => v === confirmPassword,
                 })
               }}
+              key='password'
               id="password"
               label='New password'
             />
@@ -51,32 +45,23 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
             <PasswordInput
               validation={{
                 ...register('confirmPassword', {
-                  required: true,
-                  maxLength: 20,
-                  minLength: 6,
-                  pattern: /^\S+$/,
+                  ...ValidatePassword(password),
                   onChange: (e) => handleChange(e, setConfirmPassword),
-                  validate: (v) => v === password,
                 })
               }}
+              key='confirmPassword'
               id="confirmPassword"
               label='Password confirmation'
-              style={errors.confirmPassword && errors.password && {border: '1px solid red'}}
+              style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
-            {errors.confirmPassword && errors.password && <p style={{color:'red', float:'left'}}>Error!</p>}
+            {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
-          
-          <div style={{ color: '#8d9094', marginTop: '20px' }}>
-            {errors.confirmPassword && errors.password && (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
-              <p>Your password must be between 6 and 20 characters</p>
-            )}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && <p>Password field is empty</p>}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && <p>Passwords doesn't match</p>}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'pattern' && (
-              <p>Password is invalid</p>
-            )}
-            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }} className={style.Button} value='Create New Password' />
 
+           <div style={{ color: '#8d9094', marginTop: '20px' }}>
+            {errors.password && errors.password.type === 'value' && <p>Passwords doesn't match</p>}
+            {errors.password && errors.confirmPassword && <p>{errors.password.message}</p>}
+
+            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }} className={style.Button} value='Create New Password' />
           </div>
         </form>
       </div>

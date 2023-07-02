@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { store } from '../store/store'
+import { useMeQuery } from '@/assets/api/auth/authApi'
 
 // из документации (для лэйаута)
 export type NextPageWithLayout<P = {}> = NextPage<P> & {

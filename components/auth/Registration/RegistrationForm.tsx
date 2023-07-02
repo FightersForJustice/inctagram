@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
-import {ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2} from './validate'
+import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
 import { Modal } from '@/components/common/Modal/modal'
 import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
 
@@ -23,7 +23,7 @@ type PrintModalType = {
 }
 const RegistrationForm = () => {
   const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
-  const [printModal, setPrintModal] = useState<PrintModalType>( {title: "null", content: 'null'})
+  const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
   const [password, setPassword] = useState('')
   const {
     register,
@@ -37,25 +37,32 @@ const RegistrationForm = () => {
       try {
         registers(data)
           .unwrap()
-          .then(()=> setPrintModal( {title: "Email sent", content: 'We have sent a link to confirm your email to '+data.email}))
+          .then(() => {
+            localStorage.setItem('userEmail', data.email)
+            setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
+          })
+
           .catch((error: any) => {
             console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
-              setPrintModal( {title: "Error", content: 'error'})
+              setPrintModal({ title: 'Error', content: 'error' })
             }
             if (typeof error.data != 'undefined') {
-                setArrayErrorMessager(error.data.messages)
+              setArrayErrorMessager(error.data.messages)
             }
           })
       } catch (error) {
         console.error('Ошибка регистрации:', error)
       }
     } else {
-        setPassword('* Passwords must match')
+      setPassword('* Passwords must match')
     }
   }
-  const ArrayErrorMessager = () => setArrayErrorMessager([]) 
-  const onClickPassword = () => {setArrayErrorMessager([]); setPassword('')}
+  const ArrayErrorMessager = () => setArrayErrorMessager([])
+  const onClickPassword = () => {
+    setArrayErrorMessager([])
+    setPassword('')
+  }
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')

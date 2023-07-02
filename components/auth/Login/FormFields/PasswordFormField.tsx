@@ -1,36 +1,39 @@
-import React from 'react';
-import * as Form from '@radix-ui/react-form';
-import s from '../LoginForm.module.css'
+import React from 'react'
+import * as Form from '@radix-ui/react-form'
+import style from '../LoginForm.module.scss'
 import { PasswordInput } from '@/components/common/Inputs/Inputs';
+import { ValidatePassword } from '../validate'
+import { Dispatch } from 'react'
+import { SetStateAction } from 'react'
 
 type PasswordFormFieldProps = {
-    register: any;
-    errors: any;
-};
+  register: any
+  errors: any
+  serverError: string
+  setServerError: Dispatch<SetStateAction<string>>
+  
+}
 
-const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors }) => {
-    return (
-        <Form.Field className={s.FormField} name="password">
-            <div className={s.form_field_container}>
-                {errors.password && errors.password.type === 'minLength' && (
-                    <Form.Message className={s.FormMessage}>
-                        Password must be at least 8 characters long
-                    </Form.Message>
-                )}
-                {errors.password && errors.password.type === 'required' && (
-                    <Form.Message className={s.FormMessage}>Please enter your password</Form.Message>
-                )}
-            </div>
-            <Form.Control asChild>
-                <PasswordInput
-                    defaultValue="Email"
-                    id="password"
-                    label='Password'
-                    validation={{...register('password', { required: true, minLength: 8 })}}
-                />
-            </Form.Control>
-        </Form.Field>
-    );
-};
 
-export default PasswordFormField;
+const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError  }) => {
+
+  const handleClick = () => {
+    setServerError("")
+  }
+
+  return (
+    <div className={style.input_container}>
+      <PasswordInput
+        className={errors.password ? style.error : ''}
+        validation={{...register('password', ValidatePassword)}}
+        placeholder="******************"
+        onClick={handleClick}
+        label='Password'
+      />
+      {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
+      {serverError && <p className={style.errorText}>{serverError}</p>}
+    </div>
+  )
+}
+
+export default PasswordFormField

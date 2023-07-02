@@ -4,6 +4,7 @@ import { useLoginMutation } from '@/assets/api/auth/authApi'
 import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 import LoginForm from './LoginForm'
 import style from './LoginForm.module.scss'
+import { useState } from 'react'
 
 type LoginParamsData = {
   email: string
@@ -11,6 +12,7 @@ type LoginParamsData = {
 }
 
 const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+  const [serverError, setServerError] = useState('')
   const [loginMutation, { isLoading }] = useLoginMutation()
   const router = useRouter()
 
@@ -22,7 +24,6 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       router.push('/mainPage')
     }
   }, [])
-
 
   // save token to the localStorage
   const saveToken = (token: string) => {
@@ -43,7 +44,11 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
           router.push('/main')
         })
         .catch((error: any) => {
-          alert(error.data.error === 'Unauthorized' ? 'Wrong email or password' : error.data.error)
+          setServerError(
+            error.data.error === 'Unauthorized'
+              ? 'The password or email you entered is incorrect. Please try again'
+              : error.data.error
+          )
           if (error.status == 'FETCH_ERROR') {
             alert('Server Error')
           }
@@ -58,7 +63,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
 
   return (
     <div className={style.content}>
-    <LoginForm onSubmit={onSubmit} isLoading={isLoading}></LoginForm>
+      <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>
     </div>
   )
 }

@@ -6,6 +6,8 @@ import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { Dispatch } from 'react'
+import { SetStateAction } from 'react'
 
 type FormValuesType = {
   email: string
@@ -15,9 +17,11 @@ type FormValuesType = {
 type LoginFormProps = {
   onSubmit: SubmitHandler<FormValuesType>
   isLoading: boolean
+  serverError: string
+  setServerError: Dispatch<SetStateAction<string>>
 }
 
-const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
+const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFormProps) => {
   const {
     register,
     handleSubmit,
@@ -36,9 +40,11 @@ const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
       <AuthLogoGroup />
       <form>
         <EmailFormField register={register} errors={errors} />
-        <PasswordFormField register={register} errors={errors} />
+        <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
-          <a className={style.forgot_password_link} href="/auth/forgot-password">Forgot Password</a>
+          <a className={style.forgot_password_link} href="/auth/forgot-password">
+            Forgot Password
+          </a>
         </div>
 
         <MainButton title="Sign In" disabled={false} onClick={handleSubmit(onSubmit)} />

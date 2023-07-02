@@ -21,14 +21,13 @@ const SuccessAuth = () => {
             <h1 className={commonStyle.title}>Congratulations!</h1>
             <p className={commonStyle.text}> Your email has been confirmed</p>
           </div>
-          <MainButton title="Sign In" onClick={handleLogin} />
+          <MainButton title="Sign In" onClick={handleLogin} disabled={false} style={{ width: '182px' }} />
           <div style={{ position: 'relative', height: '291px' }}>
             <Image
               alt="successful registration"
               src={img}
               placeholder="blur"
               quality={100}
-              fill
               sizes="(max-width: 808px) 50vw, 100vw"
               style={{
                 objectFit: 'cover',

@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useLoginMutation } from '@/assets/api/auth/authApi'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
+import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 
 type LoginParamsData = {
   email: string
@@ -16,47 +17,45 @@ type LoginParamsData = {
 }
 
 const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-
   const [loginMutation] = useLoginMutation()
-  const router = useRouter();
+  const router = useRouter()
 
-  //We are trying to find the token before 
+  //We are trying to find the token before
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken')
     if (token) {
-
-      console.log('Access token found:', token);
+      console.log('Access token found:', token)
       router.push('/mainPage')
     }
-  }, []);
+  }, [])
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
-  } = useForm<LoginParamsData>();
+    setValue,
+  } = useForm<LoginParamsData>()
 
   // save token to the localStorage
   const saveToken = (token: string) => {
-    localStorage.setItem('accessToken', token);
-  };
-
+    localStorage.setItem('accessToken', token)
+  }
 
   // submitting data
   const onSubmit = async (data: LoginParamsData) => {
-    const { email, password } = data;
+    const { email, password } = data
 
     try {
       const response = await loginMutation({ email, password })
         .unwrap()
         .then((data) => {
-          // saveToken(data.accessToken) // TS not void | server error
-          alert("Success login")
-          router.push('/mainPage')
+          const loginResponse = data as ServerLoginResponse
+          saveToken(loginResponse.accessToken)
+          alert('Success login')
+          router.push('/main')
         })
         .catch((error: any) => {
-          alert(error.data.error === "Unauthorized" ? "Wrong email or password" : error.data.error)
+          alert(error.data.error === 'Unauthorized' ? 'Wrong email or password' : error.data.error)
           if (error.status == 'FETCH_ERROR') {
             alert('Server Error')
           }
@@ -64,12 +63,10 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             console.log(error.data.messages[0].message)
           }
         })
-
     } catch (error) {
       console.error('Failed to log in:', error)
     }
   }
-
 
   return (
     <div className={s.mainContainer}>
@@ -86,7 +83,6 @@ const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         </div>
 
         <Form.Root className={s.FormRoot} autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-
           <EmailFormField register={register} errors={errors} />
           <PasswordFormField register={register} errors={errors} />
 

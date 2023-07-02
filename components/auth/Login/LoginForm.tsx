@@ -1,100 +1,52 @@
-import React, { PropsWithChildren, useEffect } from 'react'
-import s from './LoginForm.module.css'
-import { useForm } from 'react-hook-form'
-import GithubSvg from 'public/icons/GithubSvg.svg'
-import GoogleSvg from 'public/icons/GoogleSvg.svg'
-import Link from 'next/link'
-import * as Form from '@radix-ui/react-form'
-import { useRouter } from 'next/router'
-import { useLoginMutation } from '@/assets/api/auth/authApi'
+import React from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import style from './LoginForm.module.scss'
+import { Loading } from '@/components/common/loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
-import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
+import { MainButton } from '@/components/common/Buttons/buttons'
+import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 
-type LoginParamsData = {
+type FormValuesType = {
   email: string
   password: string
 }
 
-const LoginForm: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  const [loginMutation] = useLoginMutation()
-  const router = useRouter()
+type LoginFormProps = {
+  onSubmit: SubmitHandler<FormValuesType>
+  isLoading: boolean
+}
 
-  //We are trying to find the token before
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    if (token) {
-      console.log('Access token found:', token)
-      router.push('/mainPage')
-    }
-  }, [])
-
+const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-  } = useForm<LoginParamsData>()
-
-  // save token to the localStorage
-  const saveToken = (token: string) => {
-    localStorage.setItem('accessToken', token)
-  }
-
-  // submitting data
-  const onSubmit = async (data: LoginParamsData) => {
-    const { email, password } = data
-
-    try {
-      const response = await loginMutation({ email, password })
-        .unwrap()
-        .then((data) => {
-          const loginResponse = data as ServerLoginResponse
-          saveToken(loginResponse.accessToken)
-          alert('Success login')
-          router.push('/main')
-        })
-        .catch((error: any) => {
-          alert(error.data.error === 'Unauthorized' ? 'Wrong email or password' : error.data.error)
-          if (error.status == 'FETCH_ERROR') {
-            alert('Server Error')
-          }
-          if (typeof error.data != 'undefined') {
-            console.log(error.data.messages[0].message)
-          }
-        })
-    } catch (error) {
-      console.error('Failed to log in:', error)
-    }
-  }
+  } = useForm<FormValuesType>()
 
   return (
-    <div className={s.mainContainer}>
-      <div className={s.form_wrapper}>
-        <h2 className={s.loginForm_title}>Sign In</h2>
-        {/*icons_group Should be Component */}
-        <div className={s.icons_group}>
-          <Link href="#">
-            <GoogleSvg />
-          </Link>
-          <Link href="#">
-            <GithubSvg />
-          </Link>
+    <div className={style.registration}>
+      {isLoading && (
+        <div className={style.modal}>
+          <Loading />
+        </div>
+      )}
+
+      <h1>Sign Up</h1>
+      <AuthLogoGroup />
+      <form>
+        <EmailFormField register={register} errors={errors} />
+        <PasswordFormField register={register} errors={errors} />
+        <div className={style.forgot_password_container}>
+          <a className={style.forgot_password_link} href="/auth/forgot-password">Forgot Password</a>
         </div>
 
-        <Form.Root className={s.FormRoot} autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-          <EmailFormField register={register} errors={errors} />
-          <PasswordFormField register={register} errors={errors} />
-
-          <Link href="/PasswordRecovery" className={s.link}>
-            Forgot Password
-          </Link>
-          <input type="submit" className={s.Button} value="Sign In" />
-          <Link href="/auth/registration" className={s.link}>
-            Sign Up
-          </Link>
-        </Form.Root>
-      </div>
+        <MainButton title="Sign In" disabled={false} onClick={handleSubmit(onSubmit)} />
+      </form>
+      <p>Don’t have an account?</p>
+      <a href="/auth/registration" className={style.SignUp}>
+        Sign Up
+      </a>
     </div>
   )
 }

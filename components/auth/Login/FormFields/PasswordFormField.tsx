@@ -1,36 +1,26 @@
-import React from 'react';
-import * as Form from '@radix-ui/react-form';
-import s from '../LoginForm.module.css'
+import React from 'react'
+import * as Form from '@radix-ui/react-form'
+import style from '../LoginForm.module.scss'
+import { ValidatePassword } from '../validate'
 
 type PasswordFormFieldProps = {
-    register: any;
-    errors: any;
-};
+  register: any
+  errors: any
+}
 
 const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors }) => {
-    return (
-        <Form.Field className={s.FormField} name="password">
-            <div className={s.form_field_container}>
-                {errors.password && errors.password.type === 'minLength' && (
-                    <Form.Message className={s.FormMessage}>
-                        Password must be at least 8 characters long
-                    </Form.Message>
-                )}
-                {errors.password && errors.password.type === 'required' && (
-                    <Form.Message className={s.FormMessage}>Please enter your password</Form.Message>
-                )}
-            </div>
-            <Form.Control asChild>
-                <input
-                    className={s.Input}
-                    defaultValue="Email"
-                    type="password"
-                    id="password"
-                    {...register('password', { required: true, minLength: 8 })}
-                />
-            </Form.Control>
-        </Form.Field>
-    );
-};
+  return (
+    <div className={style.input_container}>
+      <label>Password</label>
+      <input
+        className={errors.password ? style.error : ''}
+        type="password"
+        {...register('password', ValidatePassword)}
+        placeholder="******************"
+      />
+      {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
+    </div>
+  )
+}
 
-export default PasswordFormField;
+export default PasswordFormField

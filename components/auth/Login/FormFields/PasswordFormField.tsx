@@ -10,16 +10,9 @@ type PasswordFormFieldProps = {
   errors: any
   serverError: string
   setServerError: Dispatch<SetStateAction<string>>
-  
 }
 
-
-const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError  }) => {
-
-  const handleClick = () => {
-    setServerError("")
-  }
-
+const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError }) => {
   return (
     <div className={style.input_container}>
       <label>Password</label>
@@ -28,7 +21,7 @@ const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors,
         type="password"
         {...register('password', ValidatePassword)}
         placeholder="******************"
-        onClick={handleClick}
+        onClick={() => setServerError('')}
       />
       {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
       {serverError && <p className={style.errorText}>{serverError}</p>}

@@ -14,7 +14,9 @@ export type NewPasswordParamsData = {
   newPassword: string
   recoveryCode: string
 }
-
+export type recoveryCodeCheckParamsData = {
+  recoveryCode: string
+}
 
 //server response
 export type ServerMeResponse = {
@@ -33,6 +35,9 @@ export type ServerErrorResponse = {
 export type ResponseMessage = {
   message: string
   field: string
+}
+export type recoveryResponse = {
+  email: string
 }
 
 const status: StatusType = {

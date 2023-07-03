@@ -74,6 +74,8 @@ export const {
   useRegistrationMutation,
   useRegistrationСonfirmMutation,
   useRegistrationEmailResendMutation,
+  usePasswordRecoverMutation,
+  useNewPasswordCreateMutation,
 } = authApi
 
 export default authApi

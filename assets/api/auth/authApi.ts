@@ -21,6 +21,9 @@ export const authApi = createApi({
       query: () => ({
         url: '/auth/me',
         method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        }
       }), //check
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({

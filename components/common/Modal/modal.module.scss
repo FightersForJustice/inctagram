@@ -1,3 +1,4 @@
+@use "/styles/library" as s;
 .modal{
     position: fixed;
     top: 0;
@@ -44,13 +45,10 @@
                 text-align: right;
                 padding-top: 24px;
                 .button{
-                    border-radius: 2px;
-                    background: #397DF6;
+                    @include s.btn-c-bgc-bdrs;
                     border: 0;
-                    color: #FFF;
                     font-weight: 600;
                     padding: 10px 24px;
-                    cursor: pointer;
                 }
             }
         }

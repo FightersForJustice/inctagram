@@ -1,8 +1,9 @@
 import { ChangeEvent, useState, FC, PropsWithChildren } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import style from '@/components/auth/Login/LoginForm.module.css'
+import style from './NewPassword.module.scss'
 import { PasswordInput } from '../../common/Inputs/Inputs'
 import { ValidatePassword } from './validate'
+import { MainButton } from '@/components/common/Buttons/buttons'
 
 interface IFormInput {
   password: string
@@ -24,11 +25,11 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
     setValue(e.target.value)
   }
   return (
-    <div className={style.mainContainer} style={{ fontFamily: 'inter, sans-serif' }}>
+    <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Create New Password</h1>
-        <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ position: 'relative', marginTop: '20px' }}>
+        <h1 className={style.header}>Create New Password</h1>
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
+          <div className={style.input_wrapper}>
             <PasswordInput
               validation={{
                 ...register('password', {
@@ -39,9 +40,10 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
               key='password'
               id="password"
               label='New password'
+              placeholder='****************'
             />
           </div>
-          <div style={{ position: 'relative', marginTop: '20px' }}>
+          <div className={style.input_wrapper}>
             <PasswordInput
               validation={{
                 ...register('confirmPassword', {
@@ -52,17 +54,17 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
               key='confirmPassword'
               id="confirmPassword"
               label='Password confirmation'
+              placeholder='***************'
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
             {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
 
-           <div style={{ color: '#8d9094', marginTop: '20px' }}>
+          <div className={style.error_message}>
             {errors.password && errors.password.type === 'value' && <p>Passwords doesn't match</p>}
             {errors.password && errors.confirmPassword && <p>{errors.password.message}</p>}
-
-            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }} className={style.Button} value='Create New Password' />
           </div>
+            <MainButton onClick={() => onSubmit} title='Create New Password' disabled={false} style={{width:'100%', marginTop: '30px'}}/>
         </form>
       </div>
     </div>

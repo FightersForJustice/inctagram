@@ -7,23 +7,43 @@ import { ValidateEmail } from './validate'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
 import { Loading } from '@/components/common/loaders/Loading'
+import ReCAPTCHA from 'react-google-recaptcha'
+import { useRouter } from 'next/router'
 interface IFormInput {
   email: string
+  recaptcha: string
 }
 
 const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
+  const { push } = useRouter();
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY!
   const [serverError, setServerError] = useState('')
-  const { register, handleSubmit, formState: { errors } }
+  const [recaptchaCode, setRecaptchaCode] = useState('')
+  const { register, handleSubmit, setError, clearErrors, formState: { errors } }
     = useForm<IFormInput>({ mode: 'onSubmit' })
   const [PasswordRecoveryMutation, { isLoading }] = usePasswordRecoverMutation()
+  const onChange = (value: any) => {
+    console.log("Captcha value:", value);
+    setRecaptchaCode(value)
+    clearErrors()
+  }
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    if (!recaptchaCode) {
+      setError("recaptcha", {
+        type: "manual",
+        message: "captcha is empty",
+      })
+  
+      return };
     const { email } = data
-    const recaptcha = '123456'
+    const recaptcha = recaptchaCode
     try {
       const response = await PasswordRecoveryMutation({ email, recaptcha })
         .unwrap()
         .then((data) => {
           alert('Success')
+          console.log(data)
+          push('/MainPage');  
         })
         .catch((error: any) => {
           setServerError(
@@ -37,7 +57,7 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
           if (typeof error.data != 'undefined') {
             console.log(error.data.messages[0].message)
           }
-        })
+        })  
     } catch (error) {
       console.error('Failed recover:', error)
     }
@@ -64,10 +84,18 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
           <div className={style.error_message}>
             {errors.email && <p>{errors.email.message}</p>}
             {serverError}
+            {errors.recaptcha && <p>{errors.recaptcha.message}</p>}
           </div>
 
           <MainButton onClick={() => onSubmit} title='Create New Password' disabled={false} style={{ width: '100%', marginTop: '30px' }} />
           <Link className={style.link} href={'login'} >Back to Sign In</Link>
+          <div className={style.recaptcha_wrapper}>
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onChange}
+            className={style.recaptcha}
+          />
+          </div>
         </form>
       </div>
     </div>

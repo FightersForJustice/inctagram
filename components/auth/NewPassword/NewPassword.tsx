@@ -4,6 +4,7 @@ import style from './NewPassword.module.scss'
 import { PasswordInput } from '../../common/Inputs/Inputs'
 import { ValidatePassword } from './validate'
 import { MainButton } from '@/components/common/Buttons/buttons'
+import { useRouter } from 'next/router'
 
 interface IFormInput {
   password: string
@@ -13,8 +14,10 @@ interface IFormInput {
 const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
   const { register, handleSubmit, clearErrors, formState: { errors } }
     = useForm<IFormInput>({ mode: 'onSubmit' })
+  const router = useRouter();
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const code = router.query["code"];
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     alert('new password set')
     setPassword('')

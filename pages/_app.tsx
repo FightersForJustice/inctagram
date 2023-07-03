@@ -4,7 +4,6 @@ import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { store } from '../store/store'
-import { useMeQuery } from '@/assets/api/auth/authApi'
 
 // из документации (для лэйаута)
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
@@ -21,6 +20,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     //тут мы будем оборачивать приложение в провайдер и передавать в контекст клиента(стор) + Hydrate
+    
     <Provider store={store}>
       <Component {...pageProps} />
     </Provider>

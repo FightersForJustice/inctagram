@@ -8,6 +8,7 @@ import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } 
 import { Modal } from '@/components/common/Modal/modal'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { Loading } from '@/components/common/loaders/Loading'
+import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 
 type FormValuesType = {
   userName: string
@@ -77,15 +78,9 @@ const RegistrationForm = () => {
         </div>
       )}
       <h1>Sign Up</h1>
-      <div className={style.item}>
-        <Link href="" className={style.link}>
-          <img src="/img/google-svg.svg" alt="google.com" />
-        </Link>
-        <Link href="" className={style.link}>
-          <img src="/img/github-svg.svg" alt="github.com" />
-        </Link>
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <AuthLogoGroup />
+
+      <form>
         <div>
           <label>Username</label>
           <input

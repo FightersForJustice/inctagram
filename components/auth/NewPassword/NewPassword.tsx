@@ -14,7 +14,7 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
     handleSubmit,
     clearErrors,
     formState: { errors },
-  } = useForm<IFormInput>({mode: 'onSubmit'})
+  } = useForm<IFormInput>({ mode: 'onSubmit' })
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -41,10 +41,10 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
                   pattern: /^\S+$/,
                   onChange: (e) => handleChange(e, setPassword),
                   validate: (v) => v === confirmPassword,
-                })
+                }),
               }}
               id="password"
-              label='New password'
+              label="New password"
             />
           </div>
           <div style={{ position: 'relative', marginTop: '20px' }}>
@@ -57,26 +57,34 @@ const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
                   pattern: /^\S+$/,
                   onChange: (e) => handleChange(e, setConfirmPassword),
                   validate: (v) => v === password,
-                })
+                }),
               }}
               id="confirmPassword"
-              label='Password confirmation'
-              style={errors.confirmPassword && errors.password && {border: '1px solid red'}}
+              label="Password confirmation"
+              style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
-            {errors.confirmPassword && errors.password && <p style={{color:'red', float:'left'}}>Error!</p>}
+            {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
-          
-          <div style={{ color: '#8d9094', marginTop: '20px' }}>
-            {errors.confirmPassword && errors.password && (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
-              <p>Your password must be between 6 and 20 characters</p>
-            )}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && <p>Password field is empty</p>}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && <p>Passwords doesn't match</p>}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'pattern' && (
-              <p>Password is invalid</p>
-            )}
-            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }} className={style.Button} value='Create New Password' />
 
+          <div style={{ color: '#8d9094', marginTop: '20px' }}>
+            {errors.confirmPassword &&
+              errors.password &&
+              (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
+                <p>Your password must be between 6 and 20 characters</p>
+              )}
+            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && (
+              <p>Password field is empty</p>
+            )}
+            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && (
+              <p>Passwords doesn't match</p>
+            )}
+            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'pattern' && <p>Password is invalid</p>}
+            <input
+              type="submit"
+              style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
+              className={style.Button}
+              value="Create New Password"
+            />
           </div>
         </form>
       </div>

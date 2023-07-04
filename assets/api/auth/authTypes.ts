@@ -15,7 +15,6 @@ export type NewPasswordParamsData = {
   recoveryCode: string
 }
 
-
 //server response
 export type ServerMeResponse = {
   userId: number

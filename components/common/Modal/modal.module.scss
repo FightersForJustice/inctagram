@@ -1,61 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'); /*  ?  */
-.modal{
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00000040;
+  .modalBody {
+    font-family: Inter;
+    color: #fff;
     position: fixed;
+    background-color: #333;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #00000040;
-    .modalBody{
-        font-family: Inter;
-        color: #fff;
-        position: fixed;
+    display: block;
+    margin: auto;
+    height: fit-content;
+    max-width: 400px;
+    border-radius: 2px;
+    border: 1px solid #4c4c4c;
+    .item {
+      border: 1px solid #4c4c4c;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 24px;
+      .title {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      .buttonClose {
+        border: 0;
         background-color: #333;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: block;
-        margin: auto;
-        height: fit-content;
-        max-width: 400px;
-        border-radius: 2px;
-        border: 1px solid #4C4C4C;
-        .item{
-            border: 1px solid #4C4C4C;
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 24px;
-            .title{
-                font-size: 20px;
-                font-weight: 400;
-            }
-            .buttonClose{
-                border: 0;
-                background-color: #333;
-                cursor: pointer;
-            }
-        }
-        .content{
-            padding: 24px;
-            .text{
-                font-weight: 300;
-                line-height: 24px;
-            }
-            .buttonBloc{
-                text-align: right;
-                padding-top: 24px;
-                .button{
-                    border-radius: 2px;
-                    background: #397DF6;
-                    border: 0;
-                    color: #FFF;
-                    font-family: Inter;
-                    font-weight: 600;
-                    padding: 10px 24px;
-                    cursor: pointer;
-                }
-            }
-        }
+        cursor: pointer;
+      }
     }
+    .content {
+      padding: 24px;
+      .text {
+        font-weight: 300;
+        line-height: 24px;
+      }
+      .buttonBloc {
+        text-align: right;
+        padding-top: 24px;
+        .button {
+          border-radius: 2px;
+          background: #397df6;
+          border: 0;
+          color: #fff;
+          font-family: Inter;
+          font-weight: 600;
+          padding: 10px 24px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

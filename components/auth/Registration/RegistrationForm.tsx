@@ -67,7 +67,7 @@ const RegistrationForm = () => {
 
   return (
         <div className={style.registration}>
-          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content}/>:"" } 
+          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content} onClick={() => setPrintModal({ title: 'null', content: 'null' })}/>:"" } 
           {isLoading && (
             <div className={style.modal}>
               <img className={style.img} src="/img/Loading.svg" alt="github.com" />

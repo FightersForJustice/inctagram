@@ -45,9 +45,8 @@
                 text-align: right;
                 padding-top: 24px;
                 .button{
-                    @include s.btn-c-bgc-bdrs;
+                    @include s.btn;
                     border: 0;
-                    font-weight: 600;
                     padding: 10px 24px;
                 }
             }

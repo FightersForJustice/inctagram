@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
 import { Loading } from '@/components/common/loaders/Loading'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 type RegistrationConfirmType = {}
 
@@ -25,9 +26,9 @@ const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      router.push('/auth/success')
+      router.push(authRouts.success)
     } else if (isError) {
-      router.push('/auth/failed')
+      router.push(authRouts.failed)
     }
   }, [isSuccess, isError, router])
 

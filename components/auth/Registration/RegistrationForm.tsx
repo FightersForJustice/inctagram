@@ -9,6 +9,7 @@ import { Modal } from '@/components/common/Modal/modal'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { Loading } from '@/components/common/loaders/Loading'
 import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 type FormValuesType = {
   userName: string
@@ -133,7 +134,7 @@ const RegistrationForm = () => {
         </div>
       </form>
       <p>Do you have an account?</p>
-      <Link href="/auth/login" className={style.SignIn}>
+      <Link href={authRouts.login} className={style.SignIn}>
         Sign In
       </Link>
     </div>

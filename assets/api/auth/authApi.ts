@@ -7,6 +7,7 @@ import {
   ServerErrorResponse,
   ServerLoginResponse,
   ServerMeResponse,
+  recoveryCodeCheckParamsData,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -68,6 +69,13 @@ export const authApi = createApi({
         body: createQuery,
       }),
     }),
+    recoveryCodeCheck: builder.mutation<ServerErrorResponse | void, recoveryCodeCheckParamsData>({
+      query: (recoveryCode) => ({
+        url: '/auth/check-recovery-code',
+        method: 'POST',
+        body: recoveryCode,
+      }),
+    }),
   }),
 })
 
@@ -77,6 +85,9 @@ export const {
   useRegistrationMutation,
   useRegistrationСonfirmMutation,
   useRegistrationEmailResendMutation,
+  usePasswordRecoverMutation,
+  useNewPasswordCreateMutation,
+  useRecoveryCodeCheckMutation,
 } = authApi
 
 export default authApi

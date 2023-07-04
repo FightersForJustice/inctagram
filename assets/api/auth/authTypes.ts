@@ -15,6 +15,10 @@ export type NewPasswordParamsData = {
   recoveryCode: string
 }
 
+export type recoveryCodeCheckParamsData = {
+  recoveryCode: string
+}
+
 //server response
 export type ServerMeResponse = {
   userId: number
@@ -32,6 +36,9 @@ export type ServerErrorResponse = {
 export type ResponseMessage = {
   message: string
   field: string
+}
+export type recoveryResponse = {
+  email: string
 }
 
 const status: StatusType = {

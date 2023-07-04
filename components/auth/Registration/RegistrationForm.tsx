@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import style from './RegistrationForm.module.scss'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
@@ -6,9 +5,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
 import { Modal } from '@/components/common/Modal/modal'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import { Loading } from '@/components/common/loaders/Loading'
-import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
 
 type FormValuesType = {
   userName: string
@@ -46,6 +43,7 @@ const RegistrationForm = () => {
           })
 
           .catch((error: any) => {
+            console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
               setPrintModal({ title: 'Error', content: 'error' })
             }
@@ -80,62 +78,59 @@ const RegistrationForm = () => {
       <h1>Sign Up</h1>
       <AuthLogoGroup />
 
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label>Username</label>
-          <input
+          <MainInput
             onClick={ArrayErrorMessager}
             className={errors.userName || errorMessageName ? style.error : ''}
-            {...register('userName', ValidateUsername)}
+            validation={{ ...register('userName', ValidateUsername) }}
             placeholder="Epam"
+            label="Username"
           />
           {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
           {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
         </div>
         <div>
-          <label>Email</label>
-          <input
+          <MainInput
             onClick={ArrayErrorMessager}
             className={errors.email || errorMessageEmail ? style.error : ''}
-            {...register('email', ValidateImail)}
+            validation={{ ...register('email', ValidateImail) }}
             placeholder="Epam@epam.com"
+            label="Email"
           />
           {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
         <div>
-          <label>Password</label>
-          <input
+          <PasswordInput
             onClick={onClickPassword}
             className={errors.password || errorMessagePassword ? style.error : ''}
-            type="password"
-            {...register('password', ValidatePassword)}
+            validation={{ ...register('password', ValidatePassword) }}
             placeholder="******************"
+            label="Password"
           />
           {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
-          <label>Password confirmation</label>
-          <input
+          <PasswordInput
             onClick={onClickPassword}
             className={errorMessagePassword ? style.error : ''}
-            type="password"
-            {...register('password2', ValidatePassword2)}
+            validation={{ ...register('password2', ValidatePassword2) }}
             placeholder="******************"
+            label="Password confirmation"
           />
           {password != '' ? <p className={style.errorText}>{password}</p> : ''}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
-
         <div>
-          <MainButton title="Sign Un" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+          <input className={style.button} type="submit" value="Sign Up" />
         </div>
       </form>
       <p>Do you have an account?</p>
-      <Link href="/auth/login" className={style.SignIn}>
+      <a href="/login" className={style.SignIn}>
         Sign In
-      </Link>
+      </a>
     </div>
   )
 }

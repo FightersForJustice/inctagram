@@ -23,7 +23,7 @@ export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) =
 export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', width: '100%' }}>
       <MainInput {...props} type={isPasswordShown ? 'text' : 'password'} />
       <span className={style.EyeButton} onClick={() => setIsPasswordShown((prev) => !prev)}>
         {isPasswordShown ? <span>&#8413;</span> : <span>&#8416;</span>}

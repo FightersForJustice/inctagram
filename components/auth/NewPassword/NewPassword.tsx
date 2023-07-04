@@ -1,91 +1,77 @@
-import { ChangeEvent, useState, FC, PropsWithChildren } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import style from '@/components/auth/Login/LoginForm.module.css'
+import style from './NewPassword.module.scss'
 import { PasswordInput } from '../../common/Inputs/Inputs'
+import { ValidatePassword } from './validate'
+import { MainButton } from '@/components/common/Buttons/buttons'
+import { INewPasswordProps } from './NewPasswordTypes'
+import { Loading } from '@/components/common/loaders/Loading'
 
-interface IFormInput {
-  password: string
-  confirmPassword: string
-}
-
-const NewPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
+const NewPassword = (props: INewPasswordProps) => {
   const {
+    isRecoveryCodeValid,
+    errors,
+    isRecoverLoading,
+    isCreatePasswordLoading,
+    password,
+    confirmPassword,
     register,
+    handleChange,
+    setPassword,
+    setConfirmPassword,
     handleSubmit,
-    clearErrors,
-    formState: { errors },
-  } = useForm<IFormInput>({ mode: 'onSubmit' })
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    alert('new password set')
-    setPassword('')
-    setConfirmPassword('')
-  }
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any) => {
-    clearErrors()
-    setValue(e.target.value)
-  }
+    onSubmit,
+  } = props
+
   return (
-    <div className={style.mainContainer} style={{ fontFamily: 'inter, sans-serif' }}>
+    <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Create New Password</h1>
-        <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ position: 'relative', marginTop: '20px' }}>
+        {(isRecoverLoading || isCreatePasswordLoading) && !isRecoveryCodeValid && (
+          <div className={style.modal}>
+            <Loading />
+          </div>
+        )}
+        <h1 className={style.header}>Create New Password</h1>
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
+          <div className={style.input_wrapper}>
             <PasswordInput
               validation={{
                 ...register('password', {
-                  required: true,
-                  maxLength: 20,
-                  minLength: 6,
-                  pattern: /^\S+$/,
+                  ...ValidatePassword(confirmPassword),
                   onChange: (e) => handleChange(e, setPassword),
-                  validate: (v) => v === confirmPassword,
                 }),
               }}
+              key="password"
               id="password"
               label="New password"
+              placeholder="****************"
             />
           </div>
-          <div style={{ position: 'relative', marginTop: '20px' }}>
+          <div className={style.input_wrapper}>
             <PasswordInput
               validation={{
                 ...register('confirmPassword', {
-                  required: true,
-                  maxLength: 20,
-                  minLength: 6,
-                  pattern: /^\S+$/,
+                  ...ValidatePassword(password),
                   onChange: (e) => handleChange(e, setConfirmPassword),
-                  validate: (v) => v === password,
                 }),
               }}
+              key="confirmPassword"
               id="confirmPassword"
               label="Password confirmation"
+              placeholder="***************"
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
             {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
 
-          <div style={{ color: '#8d9094', marginTop: '20px' }}>
-            {errors.confirmPassword &&
-              errors.password &&
-              (errors.confirmPassword.type === 'minLength' || errors.confirmPassword.type === 'maxLength') && (
-                <p>Your password must be between 6 and 20 characters</p>
-              )}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'required' && (
-              <p>Password field is empty</p>
-            )}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'validate' && (
-              <p>Passwords doesn't match</p>
-            )}
-            {errors.confirmPassword && errors.password && errors.confirmPassword.type === 'pattern' && <p>Password is invalid</p>}
-            <input
-              type="submit"
-              style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
-              className={style.Button}
-              value="Create New Password"
-            />
+          <div className={style.error_message}>
+            {errors.password && errors.password.type === 'value' && <p>Passwords doesn't match</p>}
+            {errors.password && errors.confirmPassword && <p>{errors.password.message}</p>}
           </div>
+          <MainButton
+            onClick={() => onSubmit}
+            title="Create New Password"
+            disabled={false}
+            style={{ width: '100%', marginTop: '30px' }}
+          />
         </form>
       </div>
     </div>

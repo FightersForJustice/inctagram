@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Form from '@radix-ui/react-form'
 import style from '../LoginForm.module.scss'
+import { PasswordInput } from '@/components/common/Inputs/Inputs'
 import { ValidatePassword } from '../validate'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
@@ -15,11 +16,9 @@ type PasswordFormFieldProps = {
 const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError }) => {
   return (
     <div className={style.input_container}>
-      <label>Password</label>
-      <input
+      <PasswordInput
         className={errors.password ? style.error : ''}
-        type="password"
-        {...register('password', ValidatePassword)}
+        validation={{ ...register('password', ValidatePassword) }}
         placeholder="******************"
         onClick={() => setServerError('')}
       />

@@ -128,11 +128,11 @@ const RegistrationForm = () => {
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
-          <MainButton title="Sign Un" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+          <MainButton title="Sign Up" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
         </div>
       </form>
       <p>Do you have an account?</p>
-      <Link href="/login" className={style.SignIn}>
+      <Link href="/auth/login" className={style.SignIn}>
         Sign In
       </Link>
     </div>

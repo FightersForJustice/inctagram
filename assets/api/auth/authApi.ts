@@ -25,7 +25,7 @@ export const authApi = createApi({
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
-      }), //check
+      }),
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({

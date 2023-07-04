@@ -1,4 +1,4 @@
-import React from 'react'
+import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from './LoginForm.module.scss'
 import { Loading } from '@/components/common/loaders/Loading'
@@ -39,20 +39,20 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
       <h1>Sign Up</h1>
       <AuthLogoGroup />
       <form>
-        <EmailFormField register={register} errors={errors} setServerError={setServerError}/>
+        <EmailFormField register={register} errors={errors} setServerError={setServerError} />
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
-          <a className={style.forgot_password_link} href="/auth/forgot-password">
+          <Link className={style.forgot_password_link} href="/auth/forgot-password">
             Forgot Password
-          </a>
+          </Link>
         </div>
 
         <MainButton title="Sign In" disabled={false} onClick={handleSubmit(onSubmit)} />
       </form>
       <p>Don’t have an account?</p>
-      <a href="/auth/registration" className={style.SignUp}>
+      <Link href="/auth/registration" className={style.SignUp}>
         Sign Up
-      </a>
+      </Link>
     </div>
   )
 }

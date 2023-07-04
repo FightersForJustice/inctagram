@@ -9,6 +9,7 @@ import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
 import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 import { Loading } from '@/components/common/loaders/Loading'
 import { MainButton } from '@/components/common/Buttons/buttons'
+import Link from 'next/link'
 
 type FormValuesType = {
   userName: string
@@ -127,14 +128,13 @@ const RegistrationForm = () => {
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
-          {/* <input className={style.button} type="submit" value="Sign Up" /> */}
           <MainButton title="Sign Un" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
         </div>
       </form>
       <p>Do you have an account?</p>
-      <a href="/login" className={style.SignIn}>
+      <Link href="/login" className={style.SignIn}>
         Sign In
-      </a>
+      </Link>
     </div>
   )
 }

@@ -6,6 +6,8 @@ import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
 import { Modal } from '@/components/common/Modal/modal'
 import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
+import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { Loading } from '@/components/common/loaders/Loading'
 
 type FormValuesType = {
   userName: string
@@ -72,7 +74,7 @@ const RegistrationForm = () => {
       {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} /> : ''}
       {isLoading && (
         <div className={style.modal}>
-          <Loading />{' '}
+          <Loading />
         </div>
       )}
       <h1>Sign Up</h1>

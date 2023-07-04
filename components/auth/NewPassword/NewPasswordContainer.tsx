@@ -6,21 +6,25 @@ import NewPassword from './NewPassword'
 import { IFormInput } from './NewPasswordTypes'
 
 const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const { register, handleSubmit, clearErrors, formState: { errors } }
-    = useForm<IFormInput>({ mode: 'onSubmit' })
-  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm<IFormInput>({ mode: 'onSubmit' })
+  const router = useRouter()
   const [password, setPassword] = useState('')
   const [serverError, setServerError] = useState('')
   const [isRecoveryCodeValid, setIsRecoveryCodeValid] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState('')
   const [recoveryMutation, { isLoading: isRecoverLoading }] = useRecoveryCodeCheckMutation()
   const [passwordCreateMutation, { isLoading: isCreatePasswordLoading }] = useNewPasswordCreateMutation()
-  const recoveryCode = router.query["code"];
+  const recoveryCode = router.query['code']
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { password } = data
 
     try {
-      if(typeof recoveryCode !== 'string') throw 'some error'
+      if (typeof recoveryCode !== 'string') throw 'some error'
       const response = await passwordCreateMutation({ recoveryCode, newPassword: password })
         .unwrap()
         .then((data) => {
@@ -52,30 +56,25 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   useEffect(() => {
     const CheckRecoveryCode = async () => {
       try {
-        console.log(recoveryCode)
-        if (typeof recoveryCode !== 'string') throw 'Recovery code is invalid or expired';
+        if (typeof recoveryCode !== 'string') throw 'Recovery code is invalid or expired'
         const response = await recoveryMutation({ recoveryCode })
           .unwrap()
           .then((data) => {
             setIsRecoveryCodeValid(true)
           })
           .catch((error: any) => {
-            setServerError(
-              error.data.error === 'Bad request'
-                ? 'Bad request'
-                : error.data.error
-            )
+            setServerError(error.data.error === 'Bad request' ? 'Bad request' : error.data.error)
             if (error.status == 'FETCH_ERROR') {
               alert('Server Error')
             }
             if (typeof error.data != 'undefined') {
               console.log(error.data.messages[0].message)
             }
-            router.push('/auth/failed')
+            // router.push('/auth/failed')
           })
       } catch (error) {
         console.error('Failed', error)
-        router.push('/auth/failed')
+        // router.push('/auth/failed')
       }
     }
     CheckRecoveryCode()

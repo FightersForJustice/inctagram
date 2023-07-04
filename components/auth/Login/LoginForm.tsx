@@ -8,6 +8,7 @@ import { MainButton } from '@/components/common/Buttons/buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 type FormValuesType = {
   email: string
@@ -50,7 +51,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
         <MainButton title="Sign In" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
       </form>
       <p>Don’t have an account?</p>
-      <Link href="/auth/registration" className={style.SignUp}>
+      <Link href={authRouts.registration} className={style.SignUp}>
         Sign Up
       </Link>
     </div>

@@ -10,6 +10,7 @@ import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 import { Loading } from '@/components/common/loaders/Loading'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import Link from 'next/link'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 type FormValuesType = {
   userName: string
@@ -132,7 +133,7 @@ const RegistrationForm = () => {
         </div>
       </form>
       <p>Do you have an account?</p>
-      <Link href="/auth/login" className={style.SignIn}>
+      <Link href={authRouts.login} className={style.SignIn}>
         Sign In
       </Link>
     </div>

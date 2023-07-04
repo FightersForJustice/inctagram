@@ -6,6 +6,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
 import { Modal } from '@/components/common/Modal/modal'
+import { MainButton } from '@/components/common/Buttons/buttons'
 
 type FormValuesType = {
   userName: string
@@ -130,8 +131,9 @@ const RegistrationForm = () => {
           {password != '' ? <p className={style.errorText}>{password}</p> : ''}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
+
         <div>
-          <input className={style.button} type="submit" value="Sign Up" />
+          <MainButton title="Sign Un" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
         </div>
       </form>
       <p>Do you have an account?</p>

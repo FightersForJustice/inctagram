@@ -4,6 +4,7 @@ import style from '../Login/LoginForm.module.css'
 import { MainInput } from '../../common/Inputs/Inputs'
 import Link from 'next/link'
 import passStyle from './ForgotPassword.module.scss'
+import { MainButton } from '@/components/common/Buttons/buttons'
 
 interface IFormInput {
   email: string
@@ -15,7 +16,7 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
     handleSubmit,
     clearErrors,
     formState: { errors },
-  } = useForm<IFormInput>({mode: 'onSubmit'})
+  } = useForm<IFormInput>({ mode: 'onSubmit' })
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     alert('email sent')
   }
@@ -30,23 +31,21 @@ const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
                 ...register('email', {
                   required: true,
                   pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                })
+                }),
               }}
               id="email"
-              label='Email'
-              style={errors.email && {border: '1px solid red'}}
+              label="Email"
+              style={errors.email && { border: '1px solid red' }}
             />
-            {errors.email && <p style={{color:'red', float:'left'}}>Error!</p>}
+            {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
           <div style={{ color: '#8d9094' }}>
-
-            {errors.email && errors.email.type === 'required'
-              && <p>Password field is empty</p>}
-            {errors.email && errors.email.type === 'pattern'
-              && (<p>Email is invalid</p>)}
-            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
-              className={style.Button} value='Send Link' />
-            <Link className={passStyle.link} href={'login'} >Back to Sign In</Link>
+            {errors.email && errors.email.type === 'required' && <p>Password field is empty</p>}
+            {errors.email && errors.email.type === 'pattern' && <p>Email is invalid</p>}
+            <MainButton title="Send Link" onClick={handleSubmit(onSubmit)} disabled={false} style={{ width: '376px' }} />
+            <Link className={passStyle.link} href={'login'}>
+              Back to Sign In
+            </Link>
           </div>
         </form>
       </div>

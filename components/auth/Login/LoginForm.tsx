@@ -47,7 +47,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
           </Link>
         </div>
 
-        <MainButton title="Sign In" disabled={false} onClick={handleSubmit(onSubmit)} />
+        <MainButton title="Sign In" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
       </form>
       <p>Don’t have an account?</p>
       <Link href="/auth/registration" className={style.SignUp}>

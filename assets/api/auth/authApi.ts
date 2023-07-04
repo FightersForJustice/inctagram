@@ -7,6 +7,7 @@ import {
   ServerErrorResponse,
   ServerLoginResponse,
   ServerMeResponse,
+
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -65,6 +66,12 @@ export const authApi = createApi({
         body: createQuery,
       }),
     }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/auth/logout',
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -74,6 +81,7 @@ export const {
   useRegistrationMutation,
   useRegistrationСonfirmMutation,
   useRegistrationEmailResendMutation,
+  useLogoutMutation,
 } = authApi
 
 export default authApi

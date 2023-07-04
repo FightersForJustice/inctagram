@@ -30,6 +30,11 @@
                 font-size: 20px;
                 font-weight: 400;
             }
+            .buttonClose{
+                border: 0;
+                background-color: #333;
+                cursor: pointer;
+            }
         }
         .content{
             padding: 24px;
@@ -48,6 +53,7 @@
                     font-family: Inter;
                     font-weight: 600;
                     padding: 10px 24px;
+                    cursor: pointer;
                 }
             }
         }

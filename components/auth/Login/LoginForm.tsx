@@ -39,7 +39,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
       <h1>Sign Up</h1>
       <AuthLogoGroup />
       <form>
-        <EmailFormField register={register} errors={errors} />
+        <EmailFormField register={register} errors={errors} setServerError={setServerError}/>
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
           <a className={style.forgot_password_link} href="/auth/forgot-password">

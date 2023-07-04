@@ -43,9 +43,8 @@ const RegistrationForm = () => {
           })
 
           .catch((error: any) => {
-            console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
-              setPrintModal({ title: 'Error', content: 'error' })
+              setPrintModal( {title: "Error", content: 'error'})
             }
             if (typeof error.data != 'undefined') {
               setArrayErrorMessager(error.data.messages)

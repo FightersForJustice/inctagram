@@ -1,5 +1,7 @@
 import style from './Inputs.module.scss'
 import { useState } from 'react'
+import LightEyeOpen from '../../../public/icons/lightEyeOpen.svg';
+import LightEyeClosed from '../../../public/icons/lightEyeClosed.svg';
 
 interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
   validation?: object
@@ -21,6 +23,9 @@ export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
     <span
       className={style.EyeButton}
       onClick={() => setIsPasswordShown(prev => !prev)}
-    >{isPasswordShown ? <span>&#8413;</span> : <span>&#8416;</span>}</span>
+    >{isPasswordShown
+      ? <LightEyeOpen />
+      : <LightEyeClosed />}
+    </span>
   </div>
 }

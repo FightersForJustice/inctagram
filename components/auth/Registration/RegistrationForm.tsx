@@ -5,27 +5,11 @@ import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import { ValidateUsername, ValidateEmail, ValidatePassword} from '../Login/validate'
 import { Modal } from '@/components/common/Modal/modal'
-import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
-import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
 import { Loading } from '@/components/common/loaders/Loading'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import Link from 'next/link'
-import { authRouts } from '@/components/common/Auth/authRouts'
+import { MainInput } from './imputPassword'
+import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
 
-type FormValuesType = {
-  userName: string
-  email: string
-  password: string
-  password2: string
-}
-type ErrorMessagerType = {
-  field: string
-  message: string
-}
-type PrintModalType = {
-  title: string
-  content: string
-}
+
 const RegistrationForm = () => {
   const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
   const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
@@ -54,7 +38,7 @@ const RegistrationForm = () => {
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
-
+  const disabled = Object.keys(errors).length === 0 ? false: true
   return (
         <div className={style.registration}>
           {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content} onClick={() => {setPrintModal({ title: 'null', content: 'null' })}}/>:"" } 
@@ -72,7 +56,7 @@ const RegistrationForm = () => {
             </a>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            <div className={style.block}>
               <label>Username</label>
               <input
                 onClick={ArrayErrorMessager}
@@ -83,7 +67,7 @@ const RegistrationForm = () => {
               {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
               {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
             </div>
-            <div>
+            <div className={style.block}>
               <label>Email</label>
               <input
                 onClick={ArrayErrorMessager}
@@ -94,32 +78,30 @@ const RegistrationForm = () => {
               {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
               {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
             </div>
-            <div>
+            <div className={style.block}>
               <label>Password</label>
-              <input
+              <MainInput
                 onClick={ArrayErrorMessager}
                 className={errors.password || errorMessagePassword ? style.error : ''}
-                type="password"
-                {...register('password', ValidatePassword)}
+                validation={{...register('password', ValidatePassword)}}
                 placeholder="******************"
               />
               {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
               {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
             </div>
-            <div>
+            <div className={style.block}>
               <label>Password confirmation</label>
-              <input
+              <MainInput 
                 onClick={ArrayErrorMessager}
-                className={errors.password || errorMessagePassword ? style.error : ''}
-                type="password"
-                {...register('password2', ValidatePassword )}
+                className={errors.password2 || errorMessagePassword ? style.error : ''}
+                validation={{...register('password2', ValidatePassword )}}
                 placeholder="******************"
               />
               {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
               {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
             </div>
             <div>
-              <input className={style.button} type="submit" value="Sign Up" />
+              <input className={style.button} type="submit" value="Sign Up" disabled={disabled}/>
             </div>
           </form>
           <p>Do you have an account?</p>
@@ -127,7 +109,6 @@ const RegistrationForm = () => {
             Sign In
           </a>
         </div>
-
   )
 }
 RegistrationForm.getLayout = getLayout

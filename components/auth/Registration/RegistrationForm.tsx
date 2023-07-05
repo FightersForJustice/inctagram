@@ -74,12 +74,11 @@ const RegistrationForm = () => {
 
   return (
         <div className={style.registration}>
-          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content}/>:"" } 
-          {isLoading && (
-            <div className={style.modal}>
-              <img className={style.img} src="/img/Loading.svg" alt="github.com" />
-            </div>
-          )}
+          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content} onClick={() => {setPrintModal({ title: 'null', content: 'null' })}}/>:"" } 
+          {isLoading &&         
+          <div className={style.modal}>
+            <Loading />
+          </div>}
           <h1>Sign Up</h1>
           <div className={style.item}>
             <a href="" className={style.link}>
@@ -141,7 +140,7 @@ const RegistrationForm = () => {
             </div>
           </form>
           <p>Do you have an account?</p>
-          <a href="/login" className={style.SignIn}>
+          <a href="/auth/login" className={style.SignIn}>
             Sign In
           </a>
         </div>

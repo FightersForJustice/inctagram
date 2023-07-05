@@ -9,11 +9,12 @@ import { Loading } from '@/components/common/loaders/Loading'
 
 const Home: NextPageWithLayout = () => {
   const router = useRouter()
-  const { data, isError } = useMeQuery()
+  const { isError, data } = useMeQuery()
 
   useEffect(() => {
     if (data) {
-      router.push('/mainPage')
+      //add data to store here
+      router.push('/main')
     }
   }, [data])
 

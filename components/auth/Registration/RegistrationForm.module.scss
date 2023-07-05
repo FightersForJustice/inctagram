@@ -87,7 +87,9 @@
         font-size: 13px;
       }
       .button {
-        @include s.btn;
+        border-radius: 2px;
+        background-color: #397df6;
+        color: #fff;
         margin-top: 14px;
       }
     }

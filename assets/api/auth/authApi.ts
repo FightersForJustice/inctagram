@@ -7,9 +7,9 @@ import {
   ServerErrorResponse,
   ServerLoginResponse,
   ServerMeResponse,
-
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -20,56 +20,53 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     me: builder.query<ServerMeResponse | ServerErrorResponse, void>({
       query: () => ({
-        url: '/auth/me',
+        url: authRouts.me,
         method: 'GET',
-      }), //check
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }),
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({
-        url: '/auth/login',
+        url: authRouts.login,
         method: 'POST',
         body: credentials,
       }),
     }),
     registration: builder.mutation<void | ServerErrorResponse, RegisterParamsData>({
       query: (newUser) => ({
-        url: '/auth/registration',
+        url: authRouts.registration,
         method: 'POST',
         body: newUser,
       }),
     }),
     registrationСonfirm: builder.mutation<void | ServerErrorResponse, string>({
       query: (confirmationCode) => ({
-        url: '/auth/registration-confirmation',
+        url: authRouts.registrationСonfirm,
         method: 'POST',
-        body: { confirmationCode }, //an object?
+        body: { confirmationCode },
       }),
     }),
     registrationEmailResend: builder.mutation<void | ServerErrorResponse, string>({
       query: (email) => ({
-        url: '/auth/registration-email-resending',
+        url: authRouts.registrationEmailResend,
         method: 'POST',
-        body: { email }, //an object?
+        body: { email },
       }),
     }),
     passwordRecover: builder.mutation<ServerErrorResponse | void, ForgotPasswordParamsData>({
       query: (recoverQuery) => ({
-        url: '/auth/password-recovery',
+        url: authRouts.passwordRecover,
         method: 'POST',
         body: recoverQuery,
       }),
     }),
     newPasswordCreate: builder.mutation<ServerErrorResponse | void, NewPasswordParamsData>({
       query: (createQuery) => ({
-        url: '/auth/new-password',
+        url: authRouts.newPasswordCreate,
         method: 'POST',
         body: createQuery,
-      }),
-    }),
-    logout: builder.mutation({
-      query: () => ({
-        url: '/auth/logout',
-        method: 'POST',
       }),
     }),
   }),
@@ -81,7 +78,6 @@ export const {
   useRegistrationMutation,
   useRegistrationСonfirmMutation,
   useRegistrationEmailResendMutation,
-  useLogoutMutation,
 } = authApi
 
 export default authApi

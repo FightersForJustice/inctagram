@@ -13,7 +13,7 @@ export const getStaticProps = async () => {
 const Login = () => {
   return (
     <PageWrapper>
-      <LoginFormContainer/>
+      <LoginFormContainer />
     </PageWrapper>
   )
 }

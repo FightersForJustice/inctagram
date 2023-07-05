@@ -5,6 +5,12 @@ import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
 import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
 import { Modal } from '@/components/common/Modal/modal'
+import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
+import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { Loading } from '@/components/common/loaders/Loading'
+import { MainButton } from '@/components/common/Buttons/buttons'
+import Link from 'next/link'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 type FormValuesType = {
   userName: string
@@ -42,8 +48,9 @@ const RegistrationForm = () => {
           })
 
           .catch((error: any) => {
+            console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
-              setPrintModal( {title: "Error", content: 'error'})
+              setPrintModal({ title: 'Error', content: 'error' })
             }
             if (typeof error.data != 'undefined') {
               setArrayErrorMessager(error.data.messages)
@@ -67,7 +74,7 @@ const RegistrationForm = () => {
 
   return (
         <div className={style.registration}>
-          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content} onClick={() => setPrintModal({ title: 'null', content: 'null' })}/>:"" } 
+          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content}/>:"" } 
           {isLoading && (
             <div className={style.modal}>
               <img className={style.img} src="/img/Loading.svg" alt="github.com" />

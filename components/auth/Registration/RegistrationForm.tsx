@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 import { getLayout } from '@/components/Layout/Layout'
 import { useRegistrationMutation } from '@/assets/api/auth/authApi'
-import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
+import { ValidateUsername, ValidateEmail, ValidatePassword} from '../Login/validate'
 import { Modal } from '@/components/common/Modal/modal'
 import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
 import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
@@ -29,26 +29,16 @@ type PrintModalType = {
 const RegistrationForm = () => {
   const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
   const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
-  const [password, setPassword] = useState('')
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<FormValuesType>()
+  const {register, handleSubmit, formState: { errors } } = useForm<FormValuesType>()
   const [registers, { isLoading }] = useRegistrationMutation()
   const onSubmit: SubmitHandler<FormValuesType> = async (data) => {
     if (data.password === data.password2) {
-      try {
         registers(data)
           .unwrap()
           .then(() => {
-            localStorage.setItem('userEmail', data.email)
             setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
           })
-
           .catch((error: any) => {
-            console.log(error.status)
             if (error.status == 'FETCH_ERROR') {
               setPrintModal({ title: 'Error', content: 'error' })
             }
@@ -56,18 +46,11 @@ const RegistrationForm = () => {
               setArrayErrorMessager(error.data.messages)
             }
           })
-      } catch (error) {
-        console.error('Ошибка регистрации:', error)
-      }
     } else {
-      setPassword('* Passwords must match')
+      setArrayErrorMessager([{field: "password", message: "* Passwords must match"}])
     }
   }
   const ArrayErrorMessager = () => setArrayErrorMessager([])
-  const onClickPassword = () => {
-    setArrayErrorMessager([])
-    setPassword('')
-  }
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
@@ -105,7 +88,7 @@ const RegistrationForm = () => {
               <input
                 onClick={ArrayErrorMessager}
                 className={errors.email || errorMessageEmail ? style.error : ''}
-                {...register('email', ValidateImail)}
+                {...register('email', ValidateEmail)}
                 placeholder="Epam@epam.com"
               />
               {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
@@ -114,7 +97,7 @@ const RegistrationForm = () => {
             <div>
               <label>Password</label>
               <input
-                onClick={onClickPassword}
+                onClick={ArrayErrorMessager}
                 className={errors.password || errorMessagePassword ? style.error : ''}
                 type="password"
                 {...register('password', ValidatePassword)}
@@ -126,13 +109,13 @@ const RegistrationForm = () => {
             <div>
               <label>Password confirmation</label>
               <input
-                onClick={onClickPassword}
-                className={errorMessagePassword ? style.error : ''}
+                onClick={ArrayErrorMessager}
+                className={errors.password || errorMessagePassword ? style.error : ''}
                 type="password"
-                {...register('password2', ValidatePassword2 )}
+                {...register('password2', ValidatePassword )}
                 placeholder="******************"
               />
-              {password != '' ? <p className={style.errorText}>{password}</p> : ''}
+              {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
               {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
             </div>
             <div>

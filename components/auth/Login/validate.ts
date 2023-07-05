@@ -1,3 +1,17 @@
+export const ValidateUsername = {
+  required: {
+    value: true,
+    message: '* Required field to fill in',
+  },
+  maxLength: {
+    value: 30,
+    message: '* Username must be shorter than or equal to 30 characters',
+  },
+  minLength: {
+    value: 6,
+    message: '* Username must be longer than or equal to 6 characters',
+  },
+}
 export const ValidateEmail = {
   required: {
     value: true,

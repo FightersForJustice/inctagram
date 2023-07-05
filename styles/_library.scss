@@ -15,3 +15,12 @@ $text: #fff;
     line-height: 24px;
     cursor: pointer;
   }
+  .text {
+    color: library.$text;
+    text-align: center;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }

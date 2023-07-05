@@ -1,3 +1,4 @@
+import { SubmitHandler } from 'react-hook-form'
 export type FormValuesType = {
     userName: string
     email: string
@@ -12,3 +13,11 @@ export type PrintModalType = {
     title: string
     content: string
 }
+export type RegistrationPropsType = {
+    onSubmit: SubmitHandler<FormValuesType>
+    isLoading: boolean
+    errorMessageEmail:  any
+    errorMessageName: any
+    errorMessagePassword: any
+    ArrayErrorMessager: any
+  }

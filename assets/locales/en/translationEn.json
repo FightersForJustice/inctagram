@@ -1,0 +1,68 @@
+{
+  "registration_form": {
+    "sign_up": "Sign Up",
+    "username": "Username",
+    "password": "Password",
+    "password_confirmation": "password confirmation",
+    "sign_in": "Sign In",
+    "do_you_have_an_account?": "Do you have an account?"
+  },
+
+  "login_form": {
+    "sign_up": "Sign Up",
+    "sign_in": "Sign In",
+    "Forgot_Password": "Forgot Password",
+    "Dont_have_an_account?": "Don’t have an account?",
+    "password": "Password",
+    "incorrect_password_or_email": "The password or email you entered is incorrect. Please try again "
+  },
+  "forgot_password": {
+    "Forgot_Password": "Forgot Password",
+    "email_for_new_password": "Enter your email address and we will send you further instructions ",
+    "Create_New_Password": "Create New Password",
+    "Back_to_Sign_In": "Back to Sign In",
+    "Im not a robot": "I’m not a robot ",
+    "captcha_is_empty": "captcha is empty"
+  },
+  "merge_accounts": {
+    "merger_of_accounts": "Merger of Accounts",
+    "the_user_with_email_Epam@epam.com_is_already_in_the_system_could_we_merge_this_accounts": "The user with email Epam@epam.com is already in the system. Could we merge this accounts?",
+    "yes_merge": "Yes merge",
+    "no": "No",
+    "Email_sent": "Email sent",
+    "confirm_message": "We have sent a link to confirm your email to epam@epam.com"
+  },
+  "success": {
+    "Congratulations": "Congratulations!",
+    "Your_email_has_been_confirmed": "Your email has been confirmed",
+    "sign_in": "Sign In"
+  },
+
+  "Email_verification_link_expired": "Email verification link expired",
+  "expired_link": "Looks like the verification link has expired. Not to worry, we can send the link again",
+  "Resend_verification_link": "Resend verification link",
+
+  "link_has_been_sent": "The link has been sent by email. \n If you don’t receive an email send link again ",
+  "Send_Link_Again": "Send Link Again",
+  "error": {
+    "Password_field_is_empty": "Password field is empty",
+    "Passwords_doesnt_match": "Passwords doesn't match",
+    "Email_is_invalid": "Email is invalid",
+
+    "New_password": "New password",
+    "Password_pathern": "Your password must be between 6 and 20 characters",
+    "Error": "Error!",
+
+    "Required_field_to_fill_in": "* Required field to fill in",
+    "Username_must_be_shorter_than_or_equal_to_30 characters": "* Username must be shorter than or equal to 30 characters",
+    "Username_must_be_longer_than_or_equal_to_6_characters": "* Username must be longer than or equal to 6 characters",
+    "Password_must_be_shorter_than_or_equal_to_20_characters": "* Password must be shorter than or equal to 20 characters",
+    "Password_must_be_longer_than_or_equal_to_6_characters": "* Username must be longer than or equal to 6 characters",
+
+    "Please_enter_your_email": "Please enter your email",
+    "Email_is_too_long": "Email is too long",
+
+    "Password_must_be_at_least_8_characters_long": "Password must be at least 8 characters long",
+    "Please_enter_your_password": "Please enter your password"
+  }
+}

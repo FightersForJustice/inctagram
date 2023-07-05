@@ -5,6 +5,7 @@ import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 import LoginForm from './LoginForm'
 import style from './LoginForm.module.scss'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type LoginParamsData = {
   email: string
@@ -12,6 +13,8 @@ type LoginParamsData = {
 }
 
 const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`registration_form.${key}`)
   const [serverError, setServerError] = useState('')
   const [loginMutation, { isLoading }] = useLoginMutation()
   const router = useRouter()
@@ -44,11 +47,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
           router.push('/main')
         })
         .catch((error: any) => {
-          setServerError(
-            error.data.error === 'Unauthorized'
-              ? 'The password or email you entered is incorrect. Please try again'
-              : error.data.error
-          )
+          setServerError(error.data.error === 'Unauthorized' ? translate('incorrect_password_or_email') : error.data.error)
           if (error.status == 'FETCH_ERROR') {
             alert('Server Error')
           }

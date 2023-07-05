@@ -6,8 +6,11 @@ import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { authRouts } from '@/components/common/Auth/authRouts'
+import { useTranslation } from 'react-i18next'
 
 const SuccessAuth = () => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`success.${key}`)
   const router = useRouter()
 
   const handleLogin = () => {
@@ -19,10 +22,10 @@ const SuccessAuth = () => {
       <div className={commonStyle.container}>
         <div className={style.item}>
           <div className={style.textBlock}>
-            <h1 className={commonStyle.title}>Congratulations!</h1>
-            <p className={commonStyle.text}> Your email has been confirmed</p>
+            <h1 className={commonStyle.title}>{translate('Congratulations')}</h1>
+            <p className={commonStyle.text}> {translate('Your_email_has_been_confirmed')}</p>
           </div>
-          <MainButton title="Sign In" onClick={handleLogin} disabled={false} style={{ width: '182px' }} />
+          <MainButton title={translate('sign_in')} onClick={handleLogin} disabled={false} style={{ width: '182px' }} />
           <div style={{ position: 'relative', height: '291px' }}>
             <Image
               alt="successful registration"

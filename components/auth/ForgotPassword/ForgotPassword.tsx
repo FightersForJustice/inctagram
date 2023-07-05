@@ -6,8 +6,11 @@ import { MainButton } from '@/components/common/Buttons/buttons'
 import { Loading } from '@/components/common/loaders/Loading'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { IForgotPasswordProps } from './ForgotPasswordTypes'
+import { useTranslation } from 'next-i18next'
 
 const ForgotPassword = (props: IForgotPasswordProps) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`forgot_password.${key}`)
   const { siteKey, isLoading, errors, serverError, handleSubmit, register, onSubmit, onChange } = props
 
   return (
@@ -18,7 +21,7 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
             <Loading />
           </div>
         )}
-        <h1 className={style.header}>Forgot Password</h1>
+        <h1 className={style.header}>{translate('Forgot_Password')}</h1>
         <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.input_wrapper}>
             <MainInput
@@ -37,13 +40,13 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
 
           <MainButton
             onClick={() => 1 - 1}
-            title="Create New Password"
+            title={translate('Create_New_Password')}
             disabled={false}
             style={{ width: '100%', marginTop: '30px' }}
           />
 
           <Link className={style.link} href={'login'}>
-            Back to Sign In
+            {translate('Back_to_Sign_In')}
           </Link>
 
           <div className={style.recaptcha_wrapper}>

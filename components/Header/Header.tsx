@@ -4,6 +4,7 @@ import s from './Header.module.css'
 import { Language } from './Select_box'
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
+import LanguageFlags from './Flag'
 
 interface Props {
   className: any
@@ -17,7 +18,8 @@ export const Header = (): JSX.Element => {
     <div className={s.header}>
       <Logo className={s.inctagram} />
       <OutlineBell className={s.outline_bell_instance} mask={'image.svg'} />
-      <Language className={s.languageLanguage} />
+      <LanguageFlags />
+      {/* <Language className={s.languageLanguage} /> */}
     </div>
   )
 }

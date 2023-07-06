@@ -6,25 +6,13 @@ import { INewPasswordProps } from './NewPasswordTypes'
 import { Loading } from '@/components/common/loaders/Loading'
 
 const NewPassword = (props: INewPasswordProps) => {
-  const {
-    isRecoveryCodeValid,
-    errors,
-    isRecoverLoading,
-    isCreatePasswordLoading,
-    password,
-    confirmPassword,
-    register,
-    handleChange,
-    setPassword,
-    setConfirmPassword,
-    handleSubmit,
-    onSubmit,
-  } = props
+  const { errors, serverError, isRecoverLoading, isCreatePasswordLoading, password, confirmPassword,
+    register, handleChange, setPassword, setConfirmPassword, handleSubmit, onSubmit, } = props
 
   return (
     <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        {(isRecoverLoading || isCreatePasswordLoading) && !isRecoveryCodeValid && (
+        {(isRecoverLoading || isCreatePasswordLoading) && (
           <div className={style.modal}>
             <Loading />
           </div>
@@ -43,7 +31,9 @@ const NewPassword = (props: INewPasswordProps) => {
               id="password"
               label="New password"
               placeholder="****************"
+              style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
+            {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
           <div className={style.input_wrapper}>
             <PasswordInput
@@ -65,6 +55,7 @@ const NewPassword = (props: INewPasswordProps) => {
           <div className={style.error_message}>
             {errors.password && errors.password.type === 'value' && <p>Passwords doesn't match</p>}
             {errors.password && errors.confirmPassword && <p>{errors.password.message}</p>}
+            {serverError}
           </div>
           <MainButton
             onClick={() => onSubmit}

@@ -6,6 +6,7 @@ export const authRouts = {
   registrationEmailResend: '/auth/registration-email-resending',
   passwordRecover: '/auth/password-recovery',
   newPasswordCreate: '/auth/new-password',
+  recoveryCodeCheck: '/auth/check-recovery-code',
   success: '/auth/success',
   failed: '/auth/failed',
 }

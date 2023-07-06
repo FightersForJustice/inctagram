@@ -1,144 +1,86 @@
 import style from './RegistrationForm.module.scss'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import { useState } from 'react'
+import { useForm} from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { useRegistrationMutation } from '@/assets/api/auth/authApi'
-import { ValidateUsername, ValidateImail, ValidatePassword, ValidatePassword2 } from './validate'
-import { Modal } from '@/components/common/Modal/modal'
-import { MainInput, PasswordInput } from '@/components/common/Inputs/Inputs'
+import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
+import { Loading } from '@/components/common/loaders/Loading'
+import { FormValuesType, RegistrationPropsType } from './type'
+import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 
-type FormValuesType = {
-  userName: string
-  email: string
-  password: string
-  password2: string
-}
-type ErrorMessagerType = {
-  field: string
-  message: string
-}
-type PrintModalType = {
-  title: string
-  content: string
-}
-const RegistrationForm = () => {
-  const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
-  const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
-  const [password, setPassword] = useState('')
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<FormValuesType>()
-  const [registers, { isLoading }] = useRegistrationMutation()
-  const onSubmit: SubmitHandler<FormValuesType> = async (data) => {
-    if (data.password === data.password2) {
-      try {
-        registers(data)
-          .unwrap()
-          .then(() => {
-            localStorage.setItem('userEmail', data.email)
-            setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
-          })
-
-          .catch((error: any) => {
-            if (error.status == 'FETCH_ERROR') {
-              setPrintModal( {title: "Error", content: 'error'})
-            }
-            if (typeof error.data != 'undefined') {
-              setArrayErrorMessager(error.data.messages)
-            }
-          })
-      } catch (error) {
-        console.error('Ошибка регистрации:', error)
+const RegistrationForm = (props:RegistrationPropsType) => {
+  const { onSubmit, isLoading, errorMessageEmail, errorMessageName, errorMessagePassword, ArrayErrorMessager} = props
+  const {register, handleSubmit, formState: {errors} } = useForm<FormValuesType>()
+  const disabled = Object.keys(errors).length === 0 ? false: true
+    return (
+    <div className={style.registration}>
+      {isLoading &&
+        <div className={style.modal}>
+          <Loading />
+        </div>
       }
-    } else {
-      setPassword('* Passwords must match')
-    }
-  }
-  const ArrayErrorMessager = () => setArrayErrorMessager([])
-  const onClickPassword = () => {
-    setArrayErrorMessager([])
-    setPassword('')
-  }
-  const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
-  const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
-  const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
-
-  return (
-        <div className={style.registration}>
-          {printModal.title != "null"? <Modal title={printModal.title} content={printModal.content}/>:"" } 
-          {isLoading && (
-            <div className={style.modal}>
-              <img className={style.img} src="/img/Loading.svg" alt="github.com" />
-            </div>
-          )}
-          <h1>Sign Up</h1>
-          <div className={style.item}>
-            <a href="" className={style.link}>
-              <img src="/img/google-svg.svg" alt="google.com" />
-            </a>
-            <a href="" className={style.link}>
-              <img src="/img/github-svg.svg" alt="github.com" />
-            </a>
-          </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <MainInput
+      <h1>Sign Up</h1>
+      <div className={style.item}>
+        <a href="" className={style.link}>
+          <img src="/img/google-svg.svg" alt="google.com" />
+        </a>
+        <a href="" className={style.link}>
+          <img src="/img/github-svg.svg" alt="github.com" />
+        </a>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={style.block}>
+        <MainInput
                 onClick={ArrayErrorMessager}
                 className={errors.userName || errorMessageName ? style.error : ''}
                 validation={{...register('userName', ValidateUsername)}}
                 placeholder="Epam"
                 label='Username'
               />
-              {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
-              {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
-            </div>
-            <div>
-              <MainInput
+          {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
+          {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
+        </div>
+        <div className={style.block}>
+        <MainInput
                 onClick={ArrayErrorMessager}
                 className={errors.email || errorMessageEmail ? style.error : ''}
-                validation={{...register('email', ValidateImail)}}
+                validation={{...register('email', ValidateEmail)}}
                 placeholder="Epam@epam.com"
                 label='Email'
               />
-              {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
-              {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
-            </div>
-            <div>
-              <PasswordInput
-                onClick={onClickPassword}
-                className={errors.password || errorMessagePassword ? style.error : ''}
-                validation={{...register('password', ValidatePassword)}}
-                placeholder="******************"
-                label='Password'
-              />
-              {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
-              {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
-            </div>
-            <div>
-              <PasswordInput
-                onClick={onClickPassword}
-                className={errorMessagePassword ? style.error : ''}
-                validation={{...register('password2', ValidatePassword2 )}}
-                placeholder="******************"
-                label='Password confirmation'
-              />
-              {password != '' ? <p className={style.errorText}>{password}</p> : ''}
-              {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
-            </div>
-            <div>
-              <input className={style.button} type="submit" value="Sign Up" />
-            </div>
-          </form>
-          <p>Do you have an account?</p>
-          <a href="/login" className={style.SignIn}>
-            Sign In
-          </a>
+          {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
+          {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
-
-  )
+        <div className={style.block}>
+          <PasswordInput
+            onClick={ArrayErrorMessager}
+            className={errors.password || errorMessagePassword ? style.error : ''}
+            validation={{ ...register('password', ValidatePassword) }}
+            placeholder="******************"
+            label='Password'
+          />
+          {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
+          {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
+        </div>
+        <div className={style.block}>
+          <PasswordInput
+            onClick={ArrayErrorMessager}
+            className={errors.password2 || errorMessagePassword ? style.error : ''}
+            validation={{ ...register('password2', ValidatePassword) }}
+            placeholder="******************"
+            label='Password confirmation'
+          />
+          {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
+          {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
+        </div>
+        <div>
+          <button className={style.button} onClick={handleSubmit(onSubmit)}  disabled={disabled} >Sign Up</button>
+        </div>
+      </form>
+      <p>Do you have an account?</p>
+      <a href="/auth/login" className={style.SignIn}>
+        Sign In
+      </a>
+    </div>
+    )
 }
 RegistrationForm.getLayout = getLayout
 export default RegistrationForm

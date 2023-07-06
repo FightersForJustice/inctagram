@@ -10,10 +10,16 @@ interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 
 export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) => {
-  return <>
-    {props.label && <label htmlFor={props.id} className={style.Label}>{props.label}</label>}
-    <input className={style.Input} {...props} {...validation} />
-  </>
+  return (
+    <>
+      {props.label && (
+        <label htmlFor={props.id} className={style.Label}>
+          {props.label}
+        </label>
+      )}
+      <input className={style.Input} {...props} {...validation} />
+    </>
+  )
 }
 
 export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {

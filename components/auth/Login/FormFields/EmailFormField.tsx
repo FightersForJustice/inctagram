@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import style from '../LoginForm.module.scss'
-import { MainInput } from '@/components/common/Inputs/Inputs';
+import { MainInput } from '@/components/common/Inputs/Inputs'
 import { ValidateEmail } from '../validate'
 
 type EmailFormFieldProps = {
@@ -14,13 +14,13 @@ const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors, setSe
     <div className={style.input_container}>
       <MainInput 
         className={errors.email ? style.error : ''}
-        validation={{...register('email', ValidateEmail)}}
+        validation={{ ...register('email', ValidateEmail) }}
         placeholder="Epam@epam.com"
-        label='Email'
-        onClick={() => setServerError('')}/>
+        label="Email"
+      />
       {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
     </div>
   )
 }
-    
+
 export default EmailFormField

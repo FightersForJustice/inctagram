@@ -25,7 +25,6 @@ const Home: NextPageWithLayout = () => {
       </PageWrapper>
     )
   }
-  
 
   return (
     <PageWrapper>

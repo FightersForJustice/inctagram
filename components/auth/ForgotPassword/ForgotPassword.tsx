@@ -1,43 +1,47 @@
-import { FC, PropsWithChildren } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import style from '../Login/LoginForm.module.css'
-import { MainInput } from '../../common/Inputs/Inputs'
 import Link from 'next/link'
-import passStyle from './ForgotPassword.module.scss'
-import { ValidateEmail } from './validate'
-interface IFormInput {
-  email: string
-}
+import style from './ForgotPassword.module.scss'
+import { MainButton } from '@/components/common/Buttons/buttons'
+import { Loading } from '@/components/common/loaders/Loading'
+import ReCAPTCHA from 'react-google-recaptcha'
+import { IForgotPasswordProps } from './ForgotPasswordTypes'
+import ForgotPasswordInput from './ForgotPasswordInput'
 
-const ForgotPassword: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const { register, handleSubmit, formState: { errors } }
-    = useForm<IFormInput>({ mode: 'onSubmit' })
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    alert('email sent')
-  }
+const ForgotPassword = (props: IForgotPasswordProps) => {
+  const { siteKey, isLoading, errors, serverError, recaptchaRef,
+    handleSubmit, register, onSubmit, onChange } = props
+
   return (
-    <div className={style.mainContainer} style={{ fontFamily: 'inter, sans-serif' }}>
+    <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        <h1 style={{ color: 'white', fontWeight: '700', fontSize: '20px' }}>Forgot Password</h1>
-        <form className={style.FormRoot} style={{ marginTop: '40px' }} onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ position: 'relative', marginTop: '20px' }}>
-            <MainInput
-              validation={{
-                ...register('email', ValidateEmail)
-              }}
-              id="email"
-              label='Email'
-              style={errors.email && { border: '1px solid red' }}
-            />
-            {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
+        {isLoading && (
+          <div className={style.modal}>
+            <Loading />
           </div>
-          <div style={{ color: '#8d9094' }}>
+        )}
+        <h1 className={style.header}>Forgot Password</h1>
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
+          <ForgotPasswordInput
+            register={register}
+            serverError={serverError}
+            errors={errors}
+          />
 
-            {errors.email && <p>{errors.email.message}</p>}
+          <MainButton
+            onClick={() => 1 - 1}
+            title="Create New Password"
+            disabled={false}
+            style={{ width: '100%', marginTop: '30px' }} />
 
-            <input type="submit" style={{ fontSize: '16px', fontWeight: '600', marginTop: '20px' }}
-              className={style.Button} value='Send Link' />
-            <Link className={passStyle.link} href={'login'} >Back to Sign In</Link>
+          <Link className={style.link} href={'login'}>
+            Back to Sign In
+          </Link>
+
+          <div className={style.recaptcha_wrapper}>
+            <ReCAPTCHA
+              sitekey={siteKey}
+              onChange={onChange}
+              className={style.recaptcha}
+              ref={recaptchaRef} />
           </div>
         </form>
       </div>

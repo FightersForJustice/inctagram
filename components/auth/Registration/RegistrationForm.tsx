@@ -3,10 +3,8 @@ import { useForm} from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
 import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
 import { Loading } from '@/components/common/loaders/Loading'
-import { MainInput } from './imputPassword'
 import { FormValuesType, RegistrationPropsType } from './type'
-
-
+import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 
 const RegistrationForm = (props:RegistrationPropsType) => {
   const { onSubmit, isLoading, errorMessageEmail, errorMessageName, errorMessagePassword, ArrayErrorMessager} = props
@@ -30,45 +28,45 @@ const RegistrationForm = (props:RegistrationPropsType) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.block}>
-          <label>Username</label>
-          <input
-            onClick={ArrayErrorMessager}
-            className={errors.userName || errorMessageName ? style.error : ''}
-            {...register('userName', ValidateUsername)}
-            placeholder="Epam"
-          />
+        <MainInput
+                onClick={ArrayErrorMessager}
+                className={errors.userName || errorMessageName ? style.error : ''}
+                validation={{...register('userName', ValidateUsername)}}
+                placeholder="Epam"
+                label='Username'
+              />
           {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
           {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Email</label>
-          <input
-            onClick={ArrayErrorMessager}
-            className={errors.email || errorMessageEmail ? style.error : ''}
-            {...register('email', ValidateEmail)}
-            placeholder="Epam@epam.com"
-          />
+        <MainInput
+                onClick={ArrayErrorMessager}
+                className={errors.email || errorMessageEmail ? style.error : ''}
+                validation={{...register('email', ValidateEmail)}}
+                placeholder="Epam@epam.com"
+                label='Email'
+              />
           {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Password</label>
-          <MainInput
+          <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password', ValidatePassword) }}
             placeholder="******************"
+            label='Password'
           />
           {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Password confirmation</label>
-          <MainInput
+          <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password2', ValidatePassword) }}
             placeholder="******************"
+            label='Password confirmation'
           />
           {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}

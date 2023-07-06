@@ -20,6 +20,7 @@ const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors,
         className={errors.password ? style.error : ''}
         validation={{ ...register('password', ValidatePassword) }}
         placeholder="******************"
+        label='Password'
         onClick={() => setServerError('')}
       />
       {errors.password && <p className={style.errorText}>{errors.password.message}</p>}

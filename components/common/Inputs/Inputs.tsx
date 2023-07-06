@@ -8,19 +8,26 @@ interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 
 export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) => {
-  return <>
-    {props.label && <label htmlFor={props.id} className={style.Label}>{props.label}</label>}
-    <input className={style.Input} {...props} {...validation} />
-  </>
+  return (
+    <>
+      {props.label && (
+        <label htmlFor={props.id} className={style.Label}>
+          {props.label}
+        </label>
+      )}
+      <input className={style.Input} {...props} {...validation} />
+    </>
+  )
 }
 
 export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
-  return <div style={{ position: 'relative' }}>
-    <MainInput {...props} type={isPasswordShown ? 'text' : 'password'} />
-    <span
-      className={style.EyeButton}
-      onClick={() => setIsPasswordShown(prev => !prev)}
-    >{isPasswordShown ? <span>&#8413;</span> : <span>&#8416;</span>}</span>
-  </div>
+  return (
+    <div style={{ position: 'relative', width: '100%' }}>
+      <MainInput {...props} type={isPasswordShown ? 'text' : 'password'} />
+      <span className={style.EyeButton} onClick={() => setIsPasswordShown((prev) => !prev)}>
+        {isPasswordShown ? <span>&#8413;</span> : <span>&#8416;</span>}
+      </span>
+    </div>
+  )
 }

@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     //тут мы будем оборачивать приложение в провайдер и передавать в контекст клиента(стор) + Hydrate
-    
+
     <Provider store={store}>
       <Component {...pageProps} />
     </Provider>

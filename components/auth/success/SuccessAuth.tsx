@@ -5,12 +5,13 @@ import commonStyle from '../../../styles/common.module.scss'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
 import { MainButton } from '@/components/common/Buttons/buttons'
+import { authRouts } from '@/components/common/Auth/authRouts'
 
 const SuccessAuth = () => {
   const router = useRouter()
 
   const handleLogin = () => {
-    return router.push('/auth/login')
+    return router.push(authRouts.login)
   }
 
   return (

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 const NewPassword = (props: INewPasswordProps) => {
   const { t } = useTranslation()
-  const translate = (key: string): string => t(`"forgot_password".${key}`)
+  const translate = (key: string): string => t(`forgot_password.${key}`)
   const {
     errors,
     serverError,
@@ -32,7 +32,7 @@ const NewPassword = (props: INewPasswordProps) => {
             <Loading />
           </div>
         )}
-        <h1 className={style.header}>Create New Password</h1>
+        <h1 className={style.header}>{translate('Create_New_Password')}</h1>
         <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.input_wrapper}>
             <PasswordInput
@@ -44,7 +44,7 @@ const NewPassword = (props: INewPasswordProps) => {
               }}
               key="password"
               id="password"
-              label={translate('"New_password"')}
+              label={translate('New_password')}
               placeholder="****************"
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
@@ -60,7 +60,7 @@ const NewPassword = (props: INewPasswordProps) => {
               }}
               key="confirmPassword"
               id="confirmPassword"
-              label={translate('Password_сonfirmation')}
+              label={translate('Password_confirmation')}
               placeholder="***************"
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />

@@ -7,7 +7,7 @@ import { useMeQuery } from '@/assets/api/Auth/AuthApi'
 import { useEffect } from 'react'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { useDispatch } from 'react-redux'
-import { User, setUser } from '@/assets/api/auth/authSlice'
+import { User, setUser } from '@/assets/api/Auth/AuthSlice'
 
 const Home: NextPageWithLayout = () => {
   const router = useRouter()

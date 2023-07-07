@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
+import { usePasswordRecoverMutation } from '@/assets/api/Auth/AuthApi'
 import { useRouter } from 'next/router'
 import ForgotPassword from './ForgotPassword'
 import { IFormInput } from './ForgotPasswordTypes'

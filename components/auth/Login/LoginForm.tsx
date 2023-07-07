@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from './LoginForm.module.scss'
-import { Loading } from '@/components/common/loaders/Loading'
+import { Loading } from '@/components/common/Loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import { AuthLogoGroup } from '@/components/common/Auth/logo-group'
+import { MainButton } from '@/components/common/Buttons/Buttons'
+import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
-import { authRouts } from '@/components/common/Auth/authRouts'
+import { authRouts } from '@/components/common/Auth/AuthRoutes'
 
 type FormValuesType = {
   email: string

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import s from './Header.module.css'
-import { Language } from './Select_box'
+import { Language } from './SelectBox'
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
 

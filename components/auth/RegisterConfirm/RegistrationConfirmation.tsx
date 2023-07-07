@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
-import { Loading } from '@/components/common/loaders/Loading'
-import { authRouts } from '@/components/common/Auth/authRouts'
+import { useRegistrationСonfirmMutation } from '@/assets/api/Auth/AuthApi'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { authRouts } from '@/components/common/Auth/AuthRoutes'
 
 type RegistrationConfirmType = {}
 

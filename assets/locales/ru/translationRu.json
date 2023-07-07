@@ -22,7 +22,10 @@
     "Create_New_Password": "Создать новый пароль",
     "Back_to_Sign_In": "Вернуться к входу",
     "Im_not_a_robot": "Я не робот ",
-    "captcha_is_empty": "Капча пустая"
+    "captcha_is_empty": "Капча пустая",
+
+    "New_password": "Новый пароль",
+    "Password_confirmation": "подтверждение пароля"
   },
   "merge_accounts": {
     "merger_of_accounts": "Объеденить учетные записи",
@@ -49,7 +52,6 @@
     "Email_is_invalid": "Неправильный email",
     "Passwords_doesnt_match": "Пароли не совпадают",
 
-    "New_password": "Новый пароль",
     "Password_pathern": "Ваш пароль должен содержать от 6 до 20 символов",
     "Error": "Что-то пошло не так!",
 

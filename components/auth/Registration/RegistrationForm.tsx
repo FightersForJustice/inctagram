@@ -3,10 +3,13 @@ import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
 import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
 import { Loading } from '@/components/common/loaders/Loading'
-import { MainInput } from './imputPassword'
 import { FormValuesType, RegistrationPropsType } from './type'
+import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
+import { useTranslation } from 'react-i18next'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`registration_form.${key}`)
   const { onSubmit, isLoading, errorMessageEmail, errorMessageName, errorMessagePassword, ArrayErrorMessager } = props
   const {
     register,
@@ -21,7 +24,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <Loading />
         </div>
       )}
-      <h1>Sign Up</h1>
+      <h1>{translate('sign_up')}</h1>
       <div className={style.item}>
         <a href="" className={style.link}>
           <img src="/img/google-svg.svg" alt="google.com" />
@@ -32,58 +35,58 @@ const RegistrationForm = (props: RegistrationPropsType) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.block}>
-          <label>Username</label>
-          <input
+          <MainInput
             onClick={ArrayErrorMessager}
             className={errors.userName || errorMessageName ? style.error : ''}
-            {...register('userName', ValidateUsername)}
+            validation={{ ...register('userName', ValidateUsername) }}
             placeholder="Epam"
+            label={translate('username')}
           />
           {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
           {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Email</label>
-          <input
+          <MainInput
             onClick={ArrayErrorMessager}
             className={errors.email || errorMessageEmail ? style.error : ''}
-            {...register('email', ValidateEmail)}
+            validation={{ ...register('email', ValidateEmail) }}
             placeholder="Epam@epam.com"
+            label="Email"
           />
           {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Password</label>
-          <MainInput
+          <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password', ValidatePassword) }}
             placeholder="******************"
+            label={translate('password')}
           />
           {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>Password confirmation</label>
-          <MainInput
+          <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password2', ValidatePassword) }}
             placeholder="******************"
+            label={translate('password_confirmation')}
           />
           {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
           <button className={style.button} onClick={handleSubmit(onSubmit)} disabled={disabled}>
-            Sign Up
+            {translate('sign_up')}
           </button>
         </div>
       </form>
-      <p>Do you have an account?</p>
+      <p>{translate('do_you_have_an_account?')}</p>
       <a href="/auth/login" className={style.SignIn}>
-        Sign In
+        {translate('sign_in')}
       </a>
     </div>
   )

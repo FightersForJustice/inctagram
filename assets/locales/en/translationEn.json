@@ -22,7 +22,9 @@
     "Create_New_Password": "Create New Password",
     "Back_to_Sign_In": "Back to Sign In",
     "Im not a robot": "I’m not a robot ",
-    "captcha_is_empty": "captcha is empty"
+    "captcha_is_empty": "captcha is empty",
+    "New_password": "New password",
+    "Password_confirmation": "Password confirmation"
   },
   "merge_accounts": {
     "merger_of_accounts": "Merger of Accounts",
@@ -49,7 +51,6 @@
     "Passwords_doesnt_match": "Passwords doesn't match",
     "Email_is_invalid": "Email is invalid",
 
-    "New_password": "New password",
     "Password_pathern": "Your password must be between 6 and 20 characters",
     "Error": "Error!",
 

@@ -10,24 +10,29 @@ import { useTranslation } from 'react-i18next'
 const ForgotPassword = (props: IForgotPasswordProps) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`forgot_password.${key}`)
-  const { siteKey, isLoading, errors, serverError, recaptchaRef, handleSubmit, register, onSubmit, onChange } = props
-
+  const { siteKey, errors, isLoading, isSucceed, serverError, recaptchaRef, handleSubmit, register, onSubmit, onChange } = props
   return (
     <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        {isLoading && (
+        {(isSucceed || isLoading) && (
           <div className={style.modal}>
             <Loading />
           </div>
         )}
-        <h1 className={style.header}>{translate('Forgot_Password')}</h1>
-        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
-          <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
+        
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}
+        
+        style={{visibility: (isSucceed || isLoading) ? 'hidden' : 'visible'}}>
+          <h1 className={style.header}>{translate('Forgot_Password')}</h1>
+          <ForgotPasswordInput
+            register={register}
+            serverError={serverError}
+            errors={errors} />
 
           <MainButton
             onClick={() => 1 - 1}
             title={translate('Create_New_Password')}
-            disabled={false}
+            disabled={isLoading}
             style={{ width: '100%', marginTop: '30px' }}
           />
 

@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { FlagRussia } from './FlagRussia'
 import s from './Header.module.css'
 
 interface Props {
   className: any
+  code: string
+  onClick: () => void
 }
 
-export const Language = ({ className }: Props): JSX.Element => {
+const Language: FC<LanguageProps> = ({ code, onClick }) => {
   return (
     <div className={s.language}>
-      <FlagRussia className={s.flagRussiaFlagRussiaClassName} />
+      <FlagRussia />
     </div>
   )
 }

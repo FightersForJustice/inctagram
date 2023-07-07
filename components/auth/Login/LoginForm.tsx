@@ -9,6 +9,7 @@ import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
 import { authRouts } from '@/components/common/Auth/AuthRoutes'
+import { useTranslation } from 'react-i18next'
 
 type FormValuesType = {
   email: string
@@ -23,6 +24,8 @@ type LoginFormProps = {
 }
 
 const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFormProps) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`login_form.${key}`)
   const {
     register,
     handleSubmit,
@@ -37,22 +40,22 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
         </div>
       )}
 
-      <h1>Sign In</h1>
+      <h1>{translate('sign_in')}</h1>
       <AuthLogoGroup />
       <form>
         <EmailFormField register={register} errors={errors} setServerError={setServerError} />
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
           <Link className={style.forgot_password_link} href="/auth/forgot-password">
-            Forgot Password
+            {translate('Forgot_Password')}
           </Link>
         </div>
 
-        <MainButton title="Sign In" disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+        <MainButton title={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} />
       </form>
-      <p>Don’t have an account?</p>
+      <p>{translate('Dont_have_an_account?')}</p>
       <Link href={authRouts.registration} className={style.SignUp}>
-        Sign Up
+        {translate('sign_up')}
       </Link>
     </div>
   )

@@ -6,8 +6,11 @@ import commonStyle from '../../../styles/Common.module.scss'
 import { MainButton } from '@/components/common/Buttons/Buttons'
 import { useRegistrationEmailResendMutation } from '@/assets/api/Auth/AuthApi'
 import { useEffect, useState } from 'react'
+import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 const FailedAuth = () => {
+  const { t } = useTranslation()
   const [userEmail, setUserEmail] = useState<string>('')
   const [resendEmail, { isLoading, isSuccess, isError }] = useRegistrationEmailResendMutation()
 
@@ -27,14 +30,12 @@ const FailedAuth = () => {
       <div className={commonStyle.container}>
         <div className={style.item}>
           <div className={style.textBlock}>
-            <h1 className={commonStyle.title}>Email verification link expired!</h1>
-            <p className={commonStyle.text}>
-              Looks like the verification link has expired. Not to worry, we can send the link again
-            </p>
+            <h1 className={commonStyle.title}>{t('Email_verification_link_expired')}</h1>
+            <p className={commonStyle.text}>{t('expired_link')}</p>
           </div>
           <div>
             <MainButton
-              title="Resend verification link"
+              title={t('Resend_verification_link')}
               onClick={handleResendEmail}
               disabled={isLoading}
               style={{ width: '229px' }}

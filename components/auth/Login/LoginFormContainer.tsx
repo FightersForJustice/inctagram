@@ -52,7 +52,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             alert('Server Error')
           }
           if (typeof error.data != 'undefined') {
-            console.log(error.data.messages[0].message)
+            setServerError('The password or email you entered is incorrect. Please try again')
           }
         })
     } catch (error) {

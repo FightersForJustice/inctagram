@@ -1,0 +1,68 @@
+{
+  "registration_form": {
+    "sign_up": "Регистрация",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "password_confirmation": "Подтвердите пароль",
+    "sign_in": "Войти",
+    "do_you_have_an_account?": "Уже есть аккаунт?"
+  },
+
+  "login_form": {
+    "sign_up": "Регистрация",
+    "sign_in": "Войти",
+    "Forgot_Password": "Забыли пароль",
+    "Dont_have_an_account?": "Еще не зарегистрированны?",
+    "password": "Пароль",
+    "incorrect_password_or_email": "Вы ввели неверный пароль или адрес электронной почты. Пожалуйста, попробуйте еще раз"
+  },
+  "forgot_password": {
+    "Forgot_Password": "Забыли пароль",
+    "email_for_new_password": "Введите адрес электронной почты, и мы вышлем вам дальнейшие инструкции",
+    "Create_New_Password": "Создать новый пароль",
+    "Back_to_Sign_In": "Вернуться к входу",
+    "Im_not_a_robot": "Я не робот ",
+    "captcha_is_empty": "Капча пустая",
+    "New_password": "Новый пароль",
+    "Password_confirmation": "Подтверждение пароля"
+  },
+  "merge_accounts": {
+    "merger_of_accounts": "Объеденить учетные записи",
+    "the_user_with_email_Epam@epam.com_is_already_in_the_system_could_we_merge_this_accounts": "Пользователь с электронной почтой Epam@epam.com уже находится в системе. Можем ли мы объединить эти аккаунты?",
+    "yes_merge": "Да, объединить",
+    "no": "Нет",
+    "Email_sent": "Письмо отправлено",
+    "confirm_message": "Мы отправили ссылку для подтверждения вашего адреса электронной почты на адрес epam@epam.com"
+  },
+  "success": {
+    "Congratulations": "Поздравляем!",
+    "Your_email_has_been_confirmed": "Ваше сообщение было подтверждено",
+    "sign_in": "Войти"
+  },
+
+  "Email_verification_link_expired": "Срок действия ссылки для подтверждения электронной почты истек",
+  "expired_link": "Похоже, срок действия ссылки для подтверждения истек. Не волнуйтесь, мы можем отправить ссылку еще раз",
+  "Resend_verification_link": "Повторно отправить ссылку для подтверждения",
+
+  "link_has_been_sent": "Ссылка отправлена ​​по электронной почте. Если вы снова не получили ссылку для отправки по электронной почте",
+  "Send_Link_Again": "Отправить ссылку еще раз",
+  "error": {
+    "Password_field_is_empty": "Поле пароля пусто",
+    "Email_is_invalid": "Неправильный email",
+    "Passwords_doesnt_match": "Пароли не совпадают",
+
+    "Password_pathern": "Ваш пароль должен содержать от 6 до 20 символов",
+    "Error": "Что-то пошло не так!",
+
+    "Required_field_to_fill_in": "* Обязательное поле для заполнения",
+    "Username_must_be_shorter_than_or_equal_to_30 characters": "* Имя пользователя должно быть короче или равно 30 символам.",
+    "Username_must_be_longer_than_or_equal_to_6_characters": "* Имя пользователя должно быть длиннее или равно 6 символам.",
+    "Password_must_be_shorter_than_or_equal_to_20_characters": "* Пароль должен быть короче или равен 20 символам",
+    "Password_must_be_longer_than_or_equal_to_6_characters": "* Пароль должен быть длиннее или равно 6 символам",
+    "Please_enter_your_email": "Пожалуйста введите ваш email",
+    "Email_is_too_long": "Email слишком длинный",
+
+    "Password_must_be_at_least_8_characters_long": "Пароль должен быть не менее 8 символов",
+    "Please_enter_your_password": "Пожалуйста введите ваш пароль"
+  }
+}

@@ -4,10 +4,25 @@ import { ValidatePassword } from './validate'
 import { MainButton } from '@/components/common/Buttons/buttons'
 import { INewPasswordProps } from './NewPasswordTypes'
 import { Loading } from '@/components/common/loaders/Loading'
+import { useTranslation } from 'react-i18next'
 
 const NewPassword = (props: INewPasswordProps) => {
-  const { errors, serverError, isRecoverLoading, isCreatePasswordLoading, password, confirmPassword,
-    register, handleChange, setPassword, setConfirmPassword, handleSubmit, onSubmit, } = props
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`forgot_password.${key}`)
+  const {
+    errors,
+    serverError,
+    isRecoverLoading,
+    isCreatePasswordLoading,
+    password,
+    confirmPassword,
+    register,
+    handleChange,
+    setPassword,
+    setConfirmPassword,
+    handleSubmit,
+    onSubmit,
+  } = props
 
   return (
     <div className={style.mainContainer}>
@@ -17,7 +32,7 @@ const NewPassword = (props: INewPasswordProps) => {
             <Loading />
           </div>
         )}
-        <h1 className={style.header}>Create New Password</h1>
+        <h1 className={style.header}>{translate('Create_New_Password')}</h1>
         <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.input_wrapper}>
             <PasswordInput
@@ -29,7 +44,7 @@ const NewPassword = (props: INewPasswordProps) => {
               }}
               key="password"
               id="password"
-              label="New password"
+              label={translate('New_password')}
               placeholder="****************"
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
@@ -45,7 +60,7 @@ const NewPassword = (props: INewPasswordProps) => {
               }}
               key="confirmPassword"
               id="confirmPassword"
-              label="Password confirmation"
+              label={translate('Password_confirmation')}
               placeholder="***************"
               style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
             />
@@ -59,7 +74,7 @@ const NewPassword = (props: INewPasswordProps) => {
           </div>
           <MainButton
             onClick={() => onSubmit}
-            title="Create New Password"
+            title={translate('Create_New_Password')}
             disabled={false}
             style={{ width: '100%', marginTop: '30px' }}
           />

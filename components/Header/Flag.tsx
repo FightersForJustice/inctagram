@@ -1,12 +1,54 @@
-import React from 'react'
-import s from './Header.module.css'
+import React, { useState } from 'react'
+import i18next from 'i18next'
 
-// import './style.css'
-
-interface Props {
-  className: any
+interface Language {
+  code: string
+  country_code: string
+  name: string
 }
 
-export const FlagRussia = ({ className }: Props): JSX.Element => {
-  return <div className={s.flag_russia} />
+const LanguageFlags: React.FC = () => {
+  const languages: Language[] = [
+    {
+      code: 'en',
+      country_code: 'gb',
+      name: 'English',
+    },
+    {
+      code: 'ru',
+      country_code: 'ru',
+      name: 'Russian',
+    },
+  ]
+
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(languages[0].code)
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
+
+  const changeLanguage = (code: string): void => {
+    i18next.changeLanguage(code)
+    localStorage.setItem('i18next', code)
+    setSelectedLanguage(code)
+    setIsDropdownOpen(false)
+  }
+
+  const toggleDropdown = (): void => {
+    setIsDropdownOpen((prevState) => !prevState)
+  }
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <button onClick={toggleDropdown}>{languages.find((language) => language.code === selectedLanguage)?.name}</button>
+      {isDropdownOpen && (
+        <div style={{ position: 'absolute', top: '100%', left: 0 }}>
+          {languages.map((language) => (
+            <div key={language.code}>
+              <button onClick={() => changeLanguage(language.code)}>{language.name}</button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
+
+export default LanguageFlags

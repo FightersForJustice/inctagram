@@ -24,7 +24,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     const token = localStorage.getItem('accessToken')
     if (token) {
       console.log('Access token found:', token)
-      router.push('/mainPage')
+      router.push('/main')
     }
   }, [])
 

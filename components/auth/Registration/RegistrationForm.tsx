@@ -1,65 +1,27 @@
 import style from './RegistrationForm.module.scss'
-import { useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
 import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
 import { Loading } from '@/components/common/loaders/Loading'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import Link from 'next/link'
-import { authRouts } from '@/components/common/Auth/authRouts'
-import { useTranslation } from 'react-i18next'
 import { MainInput } from './imputPassword'
 import { FormValuesType, RegistrationPropsType } from './type'
 
-type FormValuesType = {
-  userName: string
-  email: string
-  password: string
-  password2: string
-}
-type ErrorMessagerType = {
-  field: string
-  message: string
-}
-type PrintModalType = {
-  title: string
-  content: string
-}
-const RegistrationForm = () => {
-  const { t } = useTranslation()
-  const value = (key: string): string => t(`registration_form.${key}`)
-  const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
-  const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
-  const [password, setPassword] = useState('')
+const RegistrationForm = (props: RegistrationPropsType) => {
+  const { onSubmit, isLoading, errorMessageEmail, errorMessageName, errorMessagePassword, ArrayErrorMessager } = props
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
   } = useForm<FormValuesType>()
-  const [registers, { isLoading }] = useRegistrationMutation()
-  const onSubmit: SubmitHandler<FormValuesType> = async (data) => {
-    if (data.password === data.password2) {
-      try {
-        registers(data)
-          .unwrap()
-          .then(() => {
-            localStorage.setItem('userEmail', data.email)
-            setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
-          })
-
-
-const RegistrationForm = (props:RegistrationPropsType) => {
-  const { onSubmit, isLoading, errorMessageEmail, errorMessageName, errorMessagePassword, ArrayErrorMessager} = props
-  const {register, handleSubmit, formState: {errors} } = useForm<FormValuesType>()
-  const disabled = Object.keys(errors).length === 0 ? false: true
-    return (
+  const disabled = Object.keys(errors).length === 0 ? false : true
+  return (
     <div className={style.registration}>
-      {isLoading &&
+      {isLoading && (
         <div className={style.modal}>
           <Loading />
         </div>
-      }
-      <h1>{value('sign_up')}</h1>
+      )}
+      <h1>Sign Up</h1>
       <div className={style.item}>
         <a href="" className={style.link}>
           <img src="/img/google-svg.svg" alt="google.com" />
@@ -70,7 +32,7 @@ const RegistrationForm = (props:RegistrationPropsType) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.block}>
-          <label>{value('username')}</label>
+          <label>Username</label>
           <input
             onClick={ArrayErrorMessager}
             className={errors.userName || errorMessageName ? style.error : ''}
@@ -92,7 +54,7 @@ const RegistrationForm = (props:RegistrationPropsType) => {
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>{value('password')}</label>
+          <label>Password</label>
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.password || errorMessagePassword ? style.error : ''}
@@ -103,7 +65,7 @@ const RegistrationForm = (props:RegistrationPropsType) => {
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div className={style.block}>
-          <label>{value('password_confirmation')}</label>
+          <label>Password confirmation</label>
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
@@ -114,15 +76,17 @@ const RegistrationForm = (props:RegistrationPropsType) => {
           {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
-          <button className={style.button} onClick={handleSubmit(onSubmit)}  disabled={disabled} >{value('sign_up')}</button>
+          <button className={style.button} onClick={handleSubmit(onSubmit)} disabled={disabled}>
+            Sign Up
+          </button>
         </div>
       </form>
-      <p>{value('do_you_have_an_account?')}</p>
+      <p>Do you have an account?</p>
       <a href="/auth/login" className={style.SignIn}>
-      {value('sign_in')}
+        Sign In
       </a>
     </div>
-    )
+  )
 }
 RegistrationForm.getLayout = getLayout
 export default RegistrationForm

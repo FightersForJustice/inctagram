@@ -6,17 +6,14 @@ import { useRouter } from 'next/router'
 import { useMeQuery } from '@/assets/api/auth/authApi'
 import { useEffect } from 'react'
 import { Loading } from '@/components/common/loaders/Loading'
-import { useDispatch } from 'react-redux'
-import { User, setUser } from '@/assets/api/auth/authSlice'
 
 const Home: NextPageWithLayout = () => {
   const router = useRouter()
   const { isError, data } = useMeQuery()
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data) {
-      dispatch(setUser(data as User))
+      //add data to store here
       router.push('/main')
     }
   }, [data])

@@ -39,10 +39,6 @@ export const ValidatePassword = {
     value: true,
     message: '* Required field to fill in',
   },
-  pattern: {
-    value:  /^(?!.*\s)/,
-    message: ' Don`t use spaces in password',
-  },
   maxLength: {
     value: 20,
     message: '* Password must be shorter than or equal to 20 characters',

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
+
 import React from 'react'
 import s from './Header.module.css'
-import { Language } from './Select_box'
+
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
 import LanguageFlags from './Flag'
@@ -24,6 +24,3 @@ export const Header = (): JSX.Element => {
   )
 }
 
-Header.propTypes = {
-  outlineBellMask: PropTypes.string,
-}

@@ -9,4 +9,5 @@ export const authRouts = {
   recoveryCodeCheck: '/auth/check-recovery-code',
   success: '/auth/success',
   failed: '/auth/failed',
+  logOut: '/auth/logout'
 }

@@ -1,4 +1,4 @@
-import { ICreateNewPassword } from "./NewPasswordTypes"
+import { ICreateNewPassword } from "./newPasswordTypes"
 
 export const CreateNewPassword = async (props: ICreateNewPassword) => {
   const { recoveryCode, router, password, passwordCreateMutation, setServerError, setIsSucceed } = props

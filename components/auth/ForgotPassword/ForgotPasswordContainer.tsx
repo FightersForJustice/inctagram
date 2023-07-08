@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { usePasswordRecoverMutation } from '@/assets/api/Auth/AuthApi'
+import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
 import { useRouter } from 'next/router'
 import ForgotPassword from './ForgotPassword'
-import { IFormInput } from './ForgotPasswordTypes'
+import { IFormInput } from './forgotPasswordTypes'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {

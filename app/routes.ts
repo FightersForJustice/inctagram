@@ -1,4 +1,4 @@
-import { authRouts } from '@/components/common/Auth/AuthRoutes'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 
 const routes = {
   auth: authRouts,

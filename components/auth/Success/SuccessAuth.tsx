@@ -5,7 +5,7 @@ import commonStyle from '../../../styles/Common.module.scss'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
 import { MainButton } from '@/components/common/Buttons/Buttons'
-import { authRouts } from '@/components/common/Auth/AuthRoutes'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
 
 const SuccessAuth = () => {

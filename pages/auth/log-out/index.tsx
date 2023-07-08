@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getLayout } from '@/components/Layout/Layout'
-import { useLogoutMutation } from '@/assets/api/Auth/AuthApi'
+import { useLogoutMutation } from '@/assets/api/auth/authApi'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { Loading } from '@/components/common/Loaders/Loading'
 

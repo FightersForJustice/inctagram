@@ -46,15 +46,6 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
           alert('Success login')
           router.push('/main')
         })
-        .catch((error: any) => {
-          setServerError(error.data.error === 'Unauthorized' ? translate('incorrect_password_or_email') : error.data.error)
-          if (error.status == 'FETCH_ERROR') {
-            alert('Server Error')
-          }
-          if (typeof error.data != 'undefined') {
-            setServerError('The password or email you entered is incorrect. Please try again')
-          }
-        })
     } catch (error) {
       console.error('Failed to log in:', error)
     }

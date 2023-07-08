@@ -12,8 +12,7 @@ const NewPassword = (props: INewPasswordProps) => {
   const {
     errors,
     serverError,
-    isRecoverLoading,
-    isCreatePasswordLoading,
+    isLoaderShown,
     password,
     confirmPassword,
     register,
@@ -27,13 +26,14 @@ const NewPassword = (props: INewPasswordProps) => {
   return (
     <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        {(isRecoverLoading || isCreatePasswordLoading) && (
+        {isLoaderShown && (
           <div className={style.modal}>
             <Loading />
           </div>
         )}
-        <h1 className={style.header}>{translate('Create_New_Password')}</h1>
-        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}
+          style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}>
+          <h1 className={style.header}>{translate('Create_New_Password')}</h1>
           <div className={style.input_wrapper}>
             <PasswordInput
               validation={{

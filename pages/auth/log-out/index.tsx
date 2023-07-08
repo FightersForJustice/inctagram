@@ -1,16 +1,34 @@
-import { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getLayout } from '@/components/Layout/Layout'
 import { useLogoutMutation } from '@/assets/api/auth/authApi'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { Loading } from '@/components/common/loaders/Loading'
+
+
 
 const LogOut = () => {
+
+
+    const [logout] = useLogoutMutation();
     const router = useRouter()
     useEffect(() => {
-        localStorage.removeItem('accessToken');
-        router.push('/')
-      }, [])
+      const performLogout = async () => {
+        try {
+          await logout({})
+          .unwrap()
+          .then(() => {
+            router.push('/auth/login')
+            localStorage.removeItem('accessToken');
+          })
+          
+        } catch (error) {
+          console.error('Error occurred while logging out:', error);
+        }
+      };
+  
+      performLogout();
+    }, [ logout]);
+
+
 }
 
 LogOut.getLayout = getLayout

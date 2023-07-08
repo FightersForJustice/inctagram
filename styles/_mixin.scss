@@ -5,8 +5,6 @@
     background: #397DF6;
     color: #FFF;
     font-size: 16px;
-    font-family: Inter;
-    font-style: normal;
     font-weight: 600;
     line-height: 24px;
     cursor: pointer;
@@ -20,21 +18,18 @@
 @mixin Large {
   color:  #000;
   font-size: 26px;
-  font-style: normal;
   font-weight: 600;
   line-height: 36px;
 }
 @mixin H1 {
   color:  #000;
   font-size: 20px;
-  font-style: normal;
   font-weight: 700;
   line-height: 36px;
 }
 @mixin H2 {
   color:  #000;
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
   line-height: 24px;
 }
@@ -42,63 +37,54 @@
   color: #000;
   font-family: Inter;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;  
 }
 @mixin regular_text_16 {
   color: $dark-900;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
 }
 @mixin Bold_text_16 {
   color: $dark-900;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 24px;
 }
 @mixin regular_text_14 {
   color: $dark-900;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
 }
 @mixin Medium_text_14 {
   color: $dark-900;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 24px;
 }
 @mixin bold_text_14 {
   color: $dark-900;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
   line-height: 24px;
 }
 @mixin small_text {
   color: $dark-900;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 16px;
 }
 @mixin Semi-bold_small-text {
   color: $dark-900;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
   line-height: 16px;
 }
 @mixin regular_link {
   color: $primary-500;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
   text-decoration-line: underline;
@@ -106,7 +92,6 @@
 @mixin small_link {
   color: $primary-500;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 16px;
   text-decoration-line: underline;

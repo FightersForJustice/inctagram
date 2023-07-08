@@ -24,7 +24,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     const token = localStorage.getItem('accessToken')
     if (token) {
       console.log('Access token found:', token)
-      router.push('/mainPage')
+      router.push('/main')
     }
   }, [])
 
@@ -52,7 +52,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             alert('Server Error')
           }
           if (typeof error.data != 'undefined') {
-            console.log(error.data.messages[0].message)
+            setServerError('The password or email you entered is incorrect. Please try again')
           }
         })
     } catch (error) {

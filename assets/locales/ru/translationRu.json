@@ -23,9 +23,8 @@
     "Back_to_Sign_In": "Вернуться к входу",
     "Im_not_a_robot": "Я не робот ",
     "captcha_is_empty": "Капча пустая",
-
     "New_password": "Новый пароль",
-    "Password_confirmation": "подтверждение пароля"
+    "Password_confirmation": "Подтверждение пароля"
   },
   "merge_accounts": {
     "merger_of_accounts": "Объеденить учетные записи",

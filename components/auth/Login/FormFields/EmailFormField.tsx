@@ -12,7 +12,7 @@ type EmailFormFieldProps = {
 const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors, setServerError }) => {
   return (
     <div className={style.input_container}>
-      <MainInput 
+      <MainInput
         className={errors.email ? style.error : ''}
         validation={{ ...register('email', ValidateEmail) }}
         placeholder="Epam@epam.com"

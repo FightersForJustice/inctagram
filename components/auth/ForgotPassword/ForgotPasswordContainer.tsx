@@ -11,6 +11,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const { push } = useRouter()
   const [serverError, setServerError] = useState('')
   const [recaptchaCode, setRecaptchaCode] = useState('')
+  const [isSucceed, setIsSucceed] = useState(false)
   const recaptchaRef = useRef<ReCAPTCHA>(null)
   const [PasswordRecoveryMutation, { isLoading }] = usePasswordRecoverMutation()
   const {
@@ -37,13 +38,14 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     const { email } = data
     const recaptcha = recaptchaCode
     try {
+      setIsSucceed(true)
       const response = await PasswordRecoveryMutation({ email, recaptcha })
         .unwrap()
         .then((data) => {
           push('/auth/success')
         })
         .catch((error: any) => {
-          console.log(error)
+          setIsSucceed(false)
           recaptchaRef.current?.reset()
           switch (error.status) {
             case 400:
@@ -58,6 +60,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
           }
         })
     } catch (error) {
+      setIsSucceed(false)
       setServerError('A server error has occurred. Please try again')
       console.error('Failed recover:', error)
     }
@@ -66,6 +69,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     <ForgotPassword
       siteKey={siteKey}
       isLoading={isLoading}
+      isSucceed={isSucceed}
       errors={errors}
       serverError={serverError}
       recaptchaRef={recaptchaRef}

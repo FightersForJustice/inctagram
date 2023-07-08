@@ -1,4 +1,4 @@
-import { baseUrl } from '@/assets/api/common.api'
+import { baseUrl } from '@/assets/api/Common.api'
 import {
   LoginParamsData,
   RegisterParamsData,
@@ -8,9 +8,9 @@ import {
   ServerLoginResponse,
   ServerMeResponse,
   recoveryCodeCheckParamsData,
-} from '@/assets/api/auth/authTypes'
+} from '@/assets/api/Auth/AuthTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { authRouts } from '@/components/common/Auth/authRouts'
+import { authRouts } from '@/components/common/Auth/AuthRoutes'
 
 export const authApi = createApi({
   reducerPath: 'authApi',

@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import style from '../LoginForm.module.scss'
 import { MainInput } from '@/components/common/Inputs/Inputs'
-import { ValidateEmail } from '../validate'
+import { ValidateEmail } from '../Validate'
 
 type EmailFormFieldProps = {
   register: any

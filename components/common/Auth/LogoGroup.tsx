@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 
-import style from './logo-group.module.scss'
+import style from './LogoGroup.module.scss'
 
 export const AuthLogoGroup: FC = () => {
   return (

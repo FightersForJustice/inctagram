@@ -27,10 +27,8 @@
       }
     }
     h1 {
-      color: #fff;
+      @include s.h1;
       text-align: center;
-      font-family: Inter;
-      font-size: 20px;
       margin-top: 28px;
     }
     .item {

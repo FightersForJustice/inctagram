@@ -1,7 +1,7 @@
 import style from './RegistrationForm.module.scss'
 import { useForm} from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
+import { ValidateUsername, ValidateEmail, ValidatePassword } from '../../common/validate/validate'
 import { Loading } from '@/components/common/loaders/Loading'
 import { MainInput } from './imputPassword'
 import { FormValuesType, RegistrationPropsType } from './type'

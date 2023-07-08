@@ -2,7 +2,7 @@ import React from 'react'
 import * as Form from '@radix-ui/react-form'
 import style from '../LoginForm.module.scss'
 import { PasswordInput } from '@/components/common/Inputs/Inputs'
-import { ValidatePassword } from '../validate'
+import { ValidatePassword } from '../../../common/validate/validate'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
 

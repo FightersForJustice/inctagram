@@ -1,5 +1,5 @@
 import RegistrationForm from "./RegistrationForm"
-import { ErrorMessagerType, FormValuesType, PrintModalType } from "./Type"
+import { ErrorMessagerType, FormValuesType, PrintModalType } from "./type"
 import { useRegistrationMutation } from "@/assets/api/auth/authApi"
 import { useState } from "react"
 import { Modal } from "@/components/common/Modal/Modal"

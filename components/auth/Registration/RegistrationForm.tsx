@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
 import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { FormValuesType, RegistrationPropsType } from './Type'
+import { FormValuesType, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 

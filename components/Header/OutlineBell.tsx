@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import s from './Header.module.css'
 import Mask from './mask.svg'
@@ -20,6 +19,4 @@ export const OutlineBell = ({ className, mask = 'mask.svg' }: Props): JSX.Elemen
   )
 }
 
-OutlineBell.propTypes = {
-  mask: PropTypes.string,
-}
+

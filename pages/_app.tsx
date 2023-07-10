@@ -7,7 +7,7 @@ import { I18nextProvider, initReactI18next } from 'react-i18next'
 import translationEN from '../assets/locales/en/translationEn.json'
 import translationRU from '../assets/locales/ru/translationRu.json'
 import i18n from 'i18next'
-import { store } from '@/store/Store'
+import { store } from '@/store/store'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 

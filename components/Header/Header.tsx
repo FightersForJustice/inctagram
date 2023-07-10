@@ -5,6 +5,7 @@ import { Language } from './Select_box'
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
 import LanguageFlags from './Flag'
+import Link from 'next/link'
 
 interface Props {
   className: any
@@ -16,7 +17,9 @@ interface Props {
 export const Header = (): JSX.Element => {
   return (
     <div className={s.header}>
-      <Logo className={s.inctagram} />
+      <Link href="/auth/login">
+        <Logo className={s.inctagram} />
+      </Link>
       <OutlineBell className={s.outline_bell_instance} mask={'image.svg'} />
       <LanguageFlags />
       {/* <Language className={s.languageLanguage} /> */}

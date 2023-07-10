@@ -1,6 +1,6 @@
 
 
-@mixin Primary-button {
+@mixin primary-button {
     border-radius:2px;
     background: #397DF6;
     color: #FFF;
@@ -9,31 +9,31 @@
     line-height: 24px;
     cursor: pointer;
   }
-@mixin Secondary-button {
+@mixin secondary-button {
     cursor: pointer;
   }
-@mixin Outline-button {
+@mixin outline-button {
   cursor: pointer;
 }
-@mixin Large {
+@mixin large {
   color:  #000;
   font-size: 26px;
   font-weight: 600;
   line-height: 36px;
 }
-@mixin H1 {
+@mixin h1 {
   color:  #000;
   font-size: 20px;
   font-weight: 700;
   line-height: 36px;
 }
-@mixin H2 {
+@mixin h2 {
   color:  #000;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
 }
-@mixin H3 {
+@mixin h3 {
   color: #000;
   font-family: Inter;
   font-size: 16px;
@@ -46,7 +46,7 @@
   font-weight: 400;
   line-height: 24px;
 }
-@mixin Bold_text_16 {
+@mixin bold_text_16 {
   color: $dark-900;
   font-size: 16px;
   font-weight: 700;
@@ -58,7 +58,7 @@
   font-weight: 400;
   line-height: 24px;
 }
-@mixin Medium_text_14 {
+@mixin medium_text_14 {
   color: $dark-900;
   font-size: 14px;
   font-weight: 500;
@@ -76,7 +76,7 @@
   font-weight: 400;
   line-height: 16px;
 }
-@mixin Semi-bold_small-text {
+@mixin semi-bold_small-text {
   color: $dark-900;
   font-size: 12px;
   font-weight: 600;

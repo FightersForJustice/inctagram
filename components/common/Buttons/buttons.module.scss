@@ -1,6 +1,6 @@
 @use "/styles/mixin" as s;
 .mainButton {
-  @include s.Primary-btn;
+  @include s.Primary-button;
   display: flex;
   justify-content: center;
   border: 1px solid #4c4c4c;

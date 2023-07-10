@@ -1,6 +1,6 @@
 
 
-@mixin Primary-btn {
+@mixin Primary-button {
     border-radius:2px;
     background: #397DF6;
     color: #FFF;
@@ -9,10 +9,10 @@
     line-height: 24px;
     cursor: pointer;
   }
-@mixin Secondary-btn {
+@mixin Secondary-button {
     cursor: pointer;
   }
-@mixin Outline-btn {
+@mixin Outline-button {
   cursor: pointer;
 }
 @mixin Large {

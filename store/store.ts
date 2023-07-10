@@ -1,16 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import authApi from '../assets/api/auth/authApi'
+import { handleGlobalError } from '@/hooks/handleGlobalError'
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
   },
-  // Добавляем middleware для использования дополнительных функций rtk-query, таких как кэширование, инвалидация и pooling.
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware, handleGlobalError),
 })
 
-// Метод setupListeners, подключает слушатели событий фокуса (refetchOnFocus) и повторного подключения (refetchOnReconnect ), чтобы автоматически перезагружать данные при возвращении на страницу или восстановлении подключения
 setupListeners(store.dispatch)
 
 export type AppDispatch = typeof store.dispatch

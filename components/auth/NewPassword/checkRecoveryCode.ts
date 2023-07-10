@@ -1,4 +1,4 @@
-import { ICheckRecoveryCode } from "./NewPasswordTypes"
+import { ICheckRecoveryCode } from "./newPasswordTypes"
 
 export const CheckRecoveryCode = async (props: ICheckRecoveryCode) => {
   const { recoveryCode, router, setServerError, recoveryMutation } = props

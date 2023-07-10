@@ -1,8 +1,8 @@
 import style from './NewPassword.module.scss'
 import { PasswordInput } from '../../common/Inputs/Inputs'
-import { ValidatePassword } from './Validate'
+import { ValidatePassword } from './validate'
 import { MainButton } from '@/components/common/Buttons/Buttons'
-import { INewPasswordProps } from './NewPasswordTypes'
+import { INewPasswordProps } from './newPasswordTypes'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { useTranslation } from 'react-i18next'
 

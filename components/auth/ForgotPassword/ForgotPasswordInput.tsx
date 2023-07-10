@@ -1,7 +1,7 @@
 import { MainInput } from '../../common/Inputs/Inputs'
 import style from './ForgotPassword.module.scss'
-import { ValidateEmail } from './Validate'
-import { IForgotPasswordInputProps } from './ForgotPasswordTypes'
+import { ValidateEmail } from './validate'
+import { IForgotPasswordInputProps } from './forgotPasswordTypes'
 
 const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
   const { errors, serverError, register } = props

@@ -3,7 +3,7 @@ import style from './ForgotPassword.module.scss'
 import { MainButton } from '@/components/common/Buttons/Buttons'
 import { Loading } from '@/components/common/Loaders/Loading'
 import ReCAPTCHA from 'react-google-recaptcha'
-import { IForgotPasswordProps } from './ForgotPasswordTypes'
+import { IForgotPasswordProps } from './forgotPasswordTypes'
 import ForgotPasswordInput from './ForgotPasswordInput'
 import { useTranslation } from 'react-i18next'
 

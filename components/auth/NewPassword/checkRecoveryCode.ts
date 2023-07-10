@@ -12,6 +12,6 @@ export const CheckRecoveryCode = async (props: ICheckRecoveryCode) => {
         case 'FETCH_ERROR': setServerError(error.error);
         default: setServerError('A server error has occurred. Please try again');
       }
-      router.push('/auth/failed')
+      router.push('/auth/failed-recovery')
     })
 }

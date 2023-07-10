@@ -8,7 +8,7 @@ export const CreateNewPassword = async (props: ICreateNewPassword) => {
   const response = await passwordCreateMutation({ recoveryCode, newPassword: password })
     .unwrap()
     .then(() => {
-      router.push('/auth/success')
+      router.push('/auth/success-recovery')
     })
     .catch((error: any) => {
       setIsSucceed(false)

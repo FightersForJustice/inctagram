@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useLoginMutation } from '@/assets/api/auth/authApi'
-import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
+import { useLoginMutation } from '@/assets/api/Auth/AuthApi'
+import { ServerLoginResponse } from '@/assets/api/Auth/AuthTypes'
 import LoginForm from './LoginForm'
 import style from './LoginForm.module.scss'
 import { useState } from 'react'
@@ -23,7 +23,6 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (token) {
-      console.log('Access token found:', token)
       router.push('/main')
     }
   }, [])
@@ -36,30 +35,13 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   // submitting data
   const onSubmit = async (data: LoginParamsData) => {
     const { email, password } = data
-
-    try {
-      const response = await loginMutation({ email, password })
-        .unwrap()
-        .then((data) => {
-          const loginResponse = data as ServerLoginResponse
-          saveToken(loginResponse.accessToken)
-          alert('Success login')
-          router.push('/main')
-        })
-        .catch((error: any) => {
-          setServerError(error.data.error === 'Unauthorized' ? translate('incorrect_password_or_email') : error.data.error)
-          if (error.status == 'FETCH_ERROR') {
-            alert('Server Error')
-          }
-          if (typeof error.data != 'undefined') {
-            if (error.data.messages === 'invalid password or email') {
-              setServerError('The password or email you entered is incorrect. Please try again!')
-            } else setServerError(error.data.messages)
-          }
-        })
-    } catch (error) {
-      console.error('Failed to log in:', error)
-    }
+    const response = await loginMutation({ email, password })
+      .unwrap()
+      .then((data) => {
+        const loginResponse = data as ServerLoginResponse
+        saveToken(loginResponse.accessToken)
+        router.push('/main')
+      })
   }
 
   return (

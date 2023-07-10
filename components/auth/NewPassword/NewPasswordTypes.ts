@@ -1,4 +1,4 @@
-import { NewPasswordParamsData, ServerErrorResponse, recoveryCodeCheckParamsData } from "@/assets/api/auth/authTypes"
+import { NewPasswordParamsData, ServerErrorResponse, recoveryCodeCheckParamsData } from "@/assets/api/Auth/AuthTypes"
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, MutationDefinition } from "@reduxjs/toolkit/dist/query"
 import { MutationActionCreatorResult } from "@reduxjs/toolkit/dist/query/core/buildInitiate"
 import { MutationTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks"

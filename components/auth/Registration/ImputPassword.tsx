@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import s from './imputPassword.module.scss' 
+import s from './ImputPassword.module.scss' 
 
 interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
   validation?: object

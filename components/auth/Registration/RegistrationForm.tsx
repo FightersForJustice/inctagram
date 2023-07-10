@@ -1,11 +1,12 @@
 import style from './RegistrationForm.module.scss'
 import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
-import { Loading } from '@/components/common/loaders/Loading'
-import { FormValuesType, RegistrationPropsType } from './type'
+import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/Validate'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { FormValuesType, RegistrationPropsType } from './Type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -26,12 +27,12 @@ const RegistrationForm = (props: RegistrationPropsType) => {
       )}
       <h1>{translate('sign_up')}</h1>
       <div className={style.item}>
-        <a href="" className={style.link}>
+        <Link href="" className={style.link}>
           <img src="/img/google-svg.svg" alt="google.com" />
-        </a>
-        <a href="" className={style.link}>
+        </Link>
+        <Link href="" className={style.link}>
           <img src="/img/github-svg.svg" alt="github.com" />
-        </a>
+        </Link>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.block}>
@@ -85,9 +86,9 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
       </form>
       <p>{translate('do_you_have_an_account?')}</p>
-      <a href="/auth/login" className={style.SignIn}>
+      <Link href="/auth/login" className={style.SignIn}>
         {translate('sign_in')}
-      </a>
+      </Link>
     </div>
   )
 }

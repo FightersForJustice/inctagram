@@ -1,4 +1,4 @@
-import s from './modal.module.scss'
+import s from './Modal.module.scss'
 
 interface ModalType extends React.HTMLAttributes<HTMLButtonElement> {
   title?: string

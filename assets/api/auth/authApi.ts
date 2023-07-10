@@ -30,7 +30,7 @@ export const authApi = createApi({
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
       query: (credentials) => ({
-        url: 'authRouts.login',
+        url: authRouts.login,
         method: 'POST',
         body: credentials,
       }),

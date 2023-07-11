@@ -31,8 +31,11 @@ const NewPassword = (props: INewPasswordProps) => {
             <Loading />
           </div>
         )}
-        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}
-          style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}>
+        <form
+          className={style.FormRoot}
+          onSubmit={handleSubmit(onSubmit)}
+          style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}
+        >
           <h1 className={style.header}>{translate('Create_New_Password')}</h1>
           <div className={style.input_wrapper}>
             <PasswordInput

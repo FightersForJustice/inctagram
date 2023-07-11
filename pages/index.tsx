@@ -12,7 +12,7 @@ import { User, setUser } from '@/assets/api/auth/authSlice'
 const Home: NextPageWithLayout = () => {
   const router = useRouter()
   const { isError, data } = useMeQuery()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (data) {

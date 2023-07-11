@@ -10,6 +10,7 @@ export interface IFormInput {
 export interface IForgotPasswordProps {
   siteKey: string
   isLoading: boolean
+  isSucceed: boolean
   errors: FieldErrors<IFormInput>
   serverError: string
   recaptchaRef: RefObject<ReCAPTCHA>

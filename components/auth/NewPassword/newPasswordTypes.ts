@@ -12,8 +12,7 @@ export interface IFormInput {
 }
 
 export interface INewPasswordProps {
-  isRecoverLoading: boolean
-  isCreatePasswordLoading: boolean
+  isLoaderShown: boolean
   password: string
   confirmPassword: string
   errors: FieldErrors<IFormInput>
@@ -35,6 +34,7 @@ export interface ICheckRecoveryCode {
 
 export interface ICreateNewPassword {
   setServerError: Dispatch<SetStateAction<string>>
+  setIsSucceed: Dispatch<SetStateAction<boolean>>
   recoveryCode: string | string[] | undefined
   passwordCreateMutation: (arg: NewPasswordParamsData) => MutationActionCreatorResult<MutationDefinition<NewPasswordParamsData, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, never, void | ServerErrorResponse, "authApi">>
   router: NextRouter

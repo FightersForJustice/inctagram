@@ -1,4 +1,4 @@
-import styles from './buttons.module.scss'
+import styles from './Buttons.module.scss'
 
 type MainButtonType = {
   title: string

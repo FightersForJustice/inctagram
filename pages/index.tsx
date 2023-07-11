@@ -5,7 +5,7 @@ import Login from './auth/login'
 import { useRouter } from 'next/router'
 import { useMeQuery } from '@/assets/api/auth/authApi'
 import { useEffect } from 'react'
-import { Loading } from '@/components/common/loaders/Loading'
+import { Loading } from '@/components/common/Loaders/Loading'
 import { useDispatch } from 'react-redux'
 import { User, setUser } from '@/assets/api/auth/authSlice'
 

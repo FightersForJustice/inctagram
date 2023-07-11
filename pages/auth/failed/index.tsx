@@ -1,6 +1,6 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
-import FailedAuth from '@/components/auth/failed/FailedAuth'
+import FailedAuth from '@/components/auth/Failed/FailedAuth'
 
 export const getStaticProps = async () => {
   return {

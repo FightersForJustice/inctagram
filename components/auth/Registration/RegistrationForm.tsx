@@ -6,6 +6,7 @@ import { Loading } from '@/components/common/loaders/Loading'
 import { FormValuesType, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -26,12 +27,12 @@ const RegistrationForm = (props: RegistrationPropsType) => {
       )}
       <h1>{translate('sign_up')}</h1>
       <div className={style.item}>
-        <a href="" className={style.link}>
+        <Link href="" className={style.link}>
           <img src="/img/google-svg.svg" alt="google.com" />
-        </a>
-        <a href="" className={style.link}>
+        </Link>
+        <Link href="" className={style.link}>
           <img src="/img/github-svg.svg" alt="github.com" />
-        </a>
+        </Link>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.block}>
@@ -51,7 +52,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             className={errors.email || errorMessageEmail ? style.error : ''}
             validation={{ ...register('email', ValidateEmail) }}
             placeholder="Epam@epam.com"
-            label="Email"
+            label={translate('email')}
           />
           {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
@@ -85,9 +86,9 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
       </form>
       <p>{translate('do_you_have_an_account?')}</p>
-      <a href="/auth/login" className={style.SignIn}>
+      <Link href="/auth/login" className={style.SignIn}>
         {translate('sign_in')}
-      </a>
+      </Link>
     </div>
   )
 }

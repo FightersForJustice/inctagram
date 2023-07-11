@@ -1,5 +1,6 @@
 {
   "registration_form": {
+    "email": "Электронная почта",
     "sign_up": "Регистрация",
     "username": "Имя пользователя",
     "password": "Пароль",
@@ -9,6 +10,7 @@
   },
 
   "login_form": {
+    "email": "Электронная почта",
     "sign_up": "Регистрация",
     "sign_in": "Войти",
     "Forgot_Password": "Забыли пароль",
@@ -17,6 +19,7 @@
     "incorrect_password_or_email": "Вы ввели неверный пароль или адрес электронной почты. Пожалуйста, попробуйте еще раз"
   },
   "forgot_password": {
+    "email": "Электронная почта",
     "Forgot_Password": "Забыли пароль",
     "email_for_new_password": "Введите адрес электронной почты, и мы вышлем вам дальнейшие инструкции",
     "Create_New_Password": "Создать новый пароль",
@@ -38,6 +41,19 @@
     "Congratulations": "Поздравляем!",
     "Your_email_has_been_confirmed": "Ваше сообщение было подтверждено",
     "sign_in": "Войти"
+  },
+
+  "Validate_login": {
+    "required": "Поле обязательно для заполнения",
+    "usernameMaxLength": "Имя пользователя должно быть не более {{maxLength}} символов",
+    "usernameMinLength": "Имя пользователя должно быть не менее {{minLength}} символов",
+    "invalidUsernameFormat": "Неверный формат имени пользователя",
+    "emailMaxLength": "Email должен быть не более {{maxLength}} символов",
+    "invalidEmailFormat": "Неверный формат email",
+    "emailMinLength": "Email должен быть не менее {{minLength}} символов",
+    "passwordMaxLength": "Пароль должен быть не более {{maxLength}} символов",
+    "passwordMinLength": "Пароль должен быть не менее {{minLength}} символов",
+    "passwordNoSpaces": "Не используйте пробелы в пароле"
   },
 
   "Email_verification_link_expired": "Срок действия ссылки для подтверждения электронной почты истек",

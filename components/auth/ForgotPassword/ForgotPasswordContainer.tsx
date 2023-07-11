@@ -1,16 +1,24 @@
-import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { FC, PropsWithChildren, useRef, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
 import { useRouter } from 'next/router'
 import ForgotPassword from './ForgotPassword'
-import { IFormInput } from './ForgotPasswordTypes'
+import { IFormInput } from './forgotPasswordTypes'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { PrintModalType } from '../Registration/type'
+import { Modal } from '@/components/common/Modal/Modal'
 
 const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY!
-  const { push } = useRouter()
   const [serverError, setServerError] = useState('')
   const [recaptchaCode, setRecaptchaCode] = useState('')
+  const [isSucceed, setIsSucceed] = useState(false)
+  const ModalNull = () => {
+    setPrintModal({ title: 'null', content: 'null' })
+  }
+
+  const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
+
   const recaptchaRef = useRef<ReCAPTCHA>(null)
   const [PasswordRecoveryMutation, { isLoading }] = usePasswordRecoverMutation()
   const {
@@ -37,13 +45,14 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     const { email } = data
     const recaptcha = recaptchaCode
     try {
+      setIsSucceed(true)
       const response = await PasswordRecoveryMutation({ email, recaptcha })
         .unwrap()
         .then((data) => {
-          push('/auth/success')
+          setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + email })
         })
         .catch((error: any) => {
-          console.log(error)
+          setIsSucceed(false)
           recaptchaRef.current?.reset()
           switch (error.status) {
             case 400:
@@ -58,22 +67,26 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
           }
         })
     } catch (error) {
+      setIsSucceed(false)
       setServerError('A server error has occurred. Please try again')
-      console.error('Failed recover:', error)
     }
   }
   return (
-    <ForgotPassword
-      siteKey={siteKey}
-      isLoading={isLoading}
-      errors={errors}
-      serverError={serverError}
-      recaptchaRef={recaptchaRef}
-      handleSubmit={handleSubmit}
-      register={register}
-      onSubmit={onSubmit}
-      onChange={onChange}
-    />
+    <>
+      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
+      <ForgotPassword
+        siteKey={siteKey}
+        isLoading={isLoading}
+        isSucceed={isSucceed}
+        errors={errors}
+        serverError={serverError}
+        recaptchaRef={recaptchaRef}
+        handleSubmit={handleSubmit}
+        register={register}
+        onSubmit={onSubmit}
+        onChange={onChange}
+      />
+    </>
   )
 }
 

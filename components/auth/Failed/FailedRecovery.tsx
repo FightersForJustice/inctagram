@@ -2,27 +2,18 @@ import Image from 'next/image'
 import img from '../../../public/img/time-management.png'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import style from './FailedAuth.module.scss'
-import commonStyle from '../../../styles/common.module.scss'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authApi'
-import { useEffect, useState } from 'react'
+import commonStyle from '../../../styles/Common.module.scss'
+import { MainButton } from '@/components/common/Buttons/Buttons'
 import { t } from 'i18next'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 
-const FailedAuth = () => {
+const FailedRecovery = () => {
   const { t } = useTranslation()
-  const [userEmail, setUserEmail] = useState<string>('')
-  const [resendEmail, { isLoading, isSuccess, isError }] = useRegistrationEmailResendMutation()
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedEmail = localStorage.getItem('userEmail')
-      setUserEmail(storedEmail ?? '')
-    }
-  }, [])
+  const router = useRouter()
 
   const handleResendEmail = () => {
-    resendEmail(userEmail)
+    router.push('/auth/forgot-password')
   }
 
   return (
@@ -30,14 +21,14 @@ const FailedAuth = () => {
       <div className={commonStyle.container}>
         <div className={style.item}>
           <div className={style.textBlock}>
-            <h1 className={commonStyle.title}>{t('Email_verification_link_expired')}</h1>
-            <p className={commonStyle.text}>{t('expired_link')}</p>
+            <h1 className={commonStyle.title}>{'Password recovery link expired'}</h1>
+            <p className={commonStyle.text}>{'Looks like the recovery link has expired. Not to worry, we can send the link again'}</p>
           </div>
           <div>
             <MainButton
-              title={t('Resend_verification_link')}
+              title={'Resend recovery link'}
               onClick={handleResendEmail}
-              disabled={isLoading}
+              disabled={false}
               style={{ width: '229px' }}
             />
           </div>
@@ -60,4 +51,4 @@ const FailedAuth = () => {
   )
 }
 
-export default FailedAuth
+export default FailedRecovery

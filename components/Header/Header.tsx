@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import s from './Header.module.css'
-import { Language } from './Select_box'
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
-import LanguageFlags from './Flag'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 interface Props {
   className: any
@@ -12,18 +11,19 @@ interface Props {
   languageFlagRussiaFlagRussiaClassName: any
   outlineBellMask: string
 }
+const DynamicLanguageFlags = dynamic(() => import('./SelectBox'), { ssr: false })
 
 export const Header = (): JSX.Element => {
   return (
     <div className={s.header}>
-      <Logo className={s.inctagram} />
+      <Link href="/auth/login">
+        <Logo className={s.inctagram} />
+      </Link>
+      <Link href="/auth/login">
+        <Logo className={s.inctagram} />
+      </Link>
       <OutlineBell className={s.outline_bell_instance} mask={'image.svg'} />
-      <LanguageFlags />
-      {/* <Language className={s.languageLanguage} /> */}
+      <DynamicLanguageFlags />
     </div>
   )
-}
-
-Header.propTypes = {
-  outlineBellMask: PropTypes.string,
 }

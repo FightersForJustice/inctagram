@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import s from './Header.module.css'
-import Mask from './mask.svg'
 
 interface Props {
   className: any
@@ -9,8 +7,4 @@ interface Props {
 
 export const Logo = ({ className }: Props): JSX.Element => {
   return <div className={s.inctagram}>Inctagram</div>
-}
-
-Logo.propTypes = {
-  mask: PropTypes.string,
 }

@@ -3,9 +3,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useNewPasswordCreateMutation, useRecoveryCodeCheckMutation } from '@/assets/api/auth/authApi'
 import NewPassword from './NewPassword'
-import { IFormInput } from './NewPasswordTypes'
-import { CheckRecoveryCode } from './CheckRecoveryCode'
-import { CreateNewPassword } from './CreateNewPassword'
+import { IFormInput } from './newPasswordTypes'
+import { CheckRecoveryCode } from './checkRecoveryCode'
+import { CreateNewPassword } from './createNewPassword'
 
 const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const { register, handleSubmit, clearErrors, formState: { errors }, }

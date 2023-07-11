@@ -1,6 +1,6 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
-import SuccessAuth from '@/components/auth/Success/SuccessAuth'
+import SuccessRecovery from '@/components/auth/Success/SuccessRecovery'
 
 export const getStaticProps = async () => {
   return {
@@ -8,13 +8,13 @@ export const getStaticProps = async () => {
   }
 }
 
-const Success = () => {
+const SuccessRecoveryPage = () => {
   return (
     <PageWrapper>
-      <SuccessAuth></SuccessAuth>
+      <SuccessRecovery></SuccessRecovery>
     </PageWrapper>
   )
 }
 
-Success.getLayout = getLayout
-export default Success
+SuccessRecoveryPage.getLayout = getLayout
+export default SuccessRecoveryPage

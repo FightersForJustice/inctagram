@@ -1,4 +1,4 @@
-import { ICreateNewPassword } from "./NewPasswordTypes"
+import { ICreateNewPassword } from "./newPasswordTypes"
 
 export const CreateNewPassword = async (props: ICreateNewPassword) => {
   const { recoveryCode, router, password, passwordCreateMutation, setServerError, setIsSucceed } = props
@@ -8,7 +8,7 @@ export const CreateNewPassword = async (props: ICreateNewPassword) => {
   const response = await passwordCreateMutation({ recoveryCode, newPassword: password })
     .unwrap()
     .then(() => {
-      router.push('/auth/success')
+      router.push('/auth/success-recovery')
     })
     .catch((error: any) => {
       setIsSucceed(false)

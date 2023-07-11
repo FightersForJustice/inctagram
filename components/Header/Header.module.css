@@ -23,13 +23,6 @@
   top: 10px;
   white-space: nowrap;
 }
-
-.header .outline_bell_instance {
-  /*left: 980px !important;*/
-  /*position: absolute !important;*/
-  /*top: 17px !important;*/
-}
-
 /*Header container*/
 .outline_bell {
   height: 24px;
@@ -143,91 +136,34 @@
 }
 
 /*mask*/
-.language {
-  margin-right: 64px;
-  height: 36px;
+.wraper {
   position: relative;
-  width: 163px;
 }
-
-.language .select {
-  font-size: 16px;
-  font-weight: 400;
-  height: 24px;
-  left: 44px;
-  letter-spacing: 0;
-  line-height: 24px;
+.select_container {
   position: absolute;
-  top: 5px;
-  white-space: nowrap;
+  top: 100%; /* Place the dropdown below the button */
+  left: 0;
+  z-index: 1;
+}
+.language {
+  border: 1px solid grey;
+  background-color: black;
+  background-size: 100% 100%;
+  height: 36px;
+  margin-right: 64px;
+  display: flex;
+  width: 163px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.text {
+  color: #ffffff;
+}
+.text_select {
+  color: #ffffff;
+  padding-right: 40px;
 }
 
 /*select_box*/
 /*flag*/
-.label {
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
-
-.label .select_wrapper {
-  height: 24px;
-  width: 59px;
-}
-
-.label .select {
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 400;
-  height: 24px;
-  left: 0;
-  letter-spacing: 0;
-  line-height: 24px;
-  position: fixed;
-  top: 0;
-  white-space: nowrap;
-}
-
-/*select wraper*/
-.box .select_wrapper {
-  height: 36px;
-  width: 163px;
-}
-
-.box .select {
-  height: 36px;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 163px;
-}
-
-/**/
-.label {
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
-
-.label .h1_wrapper {
-  height: 36px;
-  width: 128px;
-}
-
-.label .text_wrapper {
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: 600;
-  left: 0;
-  letter-spacing: 0;
-  line-height: 36px;
-  position: fixed;
-  top: 0;
-  white-space: nowrap;
-}
-
-/*text*/

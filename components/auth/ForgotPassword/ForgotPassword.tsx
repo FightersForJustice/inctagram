@@ -1,33 +1,34 @@
 import Link from 'next/link'
 import style from './ForgotPassword.module.scss'
-import { MainButton } from '@/components/common/Buttons/buttons'
-import { Loading } from '@/components/common/loaders/Loading'
+import { MainButton } from '@/components/common/Buttons/Buttons'
+
 import ReCAPTCHA from 'react-google-recaptcha'
-import { IForgotPasswordProps } from './ForgotPasswordTypes'
+import { IForgotPasswordProps } from './forgotPasswordTypes'
 import ForgotPasswordInput from './ForgotPasswordInput'
 import { useTranslation } from 'react-i18next'
+import { Loading } from '@/components/common/Loaders/Loading'
 
 const ForgotPassword = (props: IForgotPasswordProps) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`forgot_password.${key}`)
   const { siteKey, errors, isLoading, isSucceed, serverError, recaptchaRef, handleSubmit, register, onSubmit, onChange } = props
+
   return (
     <div className={style.mainContainer}>
       <div className={style.form_wrapper}>
-        {(isSucceed || isLoading) && (
+        {isLoading && (
           <div className={style.modal}>
             <Loading />
           </div>
         )}
-        
-        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}
-        
-        style={{visibility: (isSucceed || isLoading) ? 'hidden' : 'visible'}}>
+
+        <form
+          className={style.FormRoot}
+          onSubmit={handleSubmit(onSubmit)}
+          style={{ visibility: isSucceed || isLoading ? 'hidden' : 'visible' }}
+        >
           <h1 className={style.header}>{translate('Forgot_Password')}</h1>
-          <ForgotPasswordInput
-            register={register}
-            serverError={serverError}
-            errors={errors} />
+          <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
 
           <MainButton
             onClick={() => 1 - 1}

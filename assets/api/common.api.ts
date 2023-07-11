@@ -1,1 +1,1 @@
-export const baseUrl = 'https://inctagram-api.vercel.app/api/'
+export const baseUrl = 'https://inctagram-git-staging-fightersforjustice.vercel.app/'

@@ -7,13 +7,14 @@ import { MainButton } from '@/components/common/Buttons/Buttons'
 import { t } from 'i18next'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 
 const FailedRecovery = () => {
   const { t } = useTranslation()
   const router = useRouter()
 
   const handleResendEmail = () => {
-    router.push('/auth/forgot-password')
+    router.push(authRouts.forgotPassword)
   }
 
   return (
@@ -22,15 +23,12 @@ const FailedRecovery = () => {
         <div className={style.item}>
           <div className={style.textBlock}>
             <h1 className={commonStyle.title}>{'Password recovery link expired'}</h1>
-            <p className={commonStyle.text}>{'Looks like the recovery link has expired. Not to worry, we can send the link again'}</p>
+            <p className={commonStyle.text}>
+              {'Looks like the recovery link has expired. Not to worry, we can send the link again'}
+            </p>
           </div>
           <div>
-            <MainButton
-              title={'Resend recovery link'}
-              onClick={handleResendEmail}
-              disabled={false}
-              style={{ width: '229px' }}
-            />
+            <MainButton title={'Resend recovery link'} onClick={handleResendEmail} disabled={false} style={{ width: '229px' }} />
           </div>
           <div style={{ position: 'relative', height: '291px' }}>
             <Image

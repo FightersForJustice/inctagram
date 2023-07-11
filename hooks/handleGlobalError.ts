@@ -8,8 +8,17 @@ export const handleGlobalError = (api: MiddlewareAPI) => (next: Dispatch) => (ac
     if (status === 500) {
       toast.error('Oops! Try again later') //fix
     } else {
-      const error: any = action.payload.data.messages
-      toast.error(error)
+      try {
+        let error: any = action.payload.data?.messages[0]?.message
+        if(error) toast.error(error)
+        else {
+          error = action.payload.data.messages
+          toast.error(error)
+        }
+      }
+      catch {
+        toast.error('Sorry, something went wrong')
+      }
     }
   }
   return next(action)
@@ -30,3 +39,4 @@ type ErrorMessageType = {
   field: string
   message: string
 }
+

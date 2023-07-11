@@ -52,7 +52,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             className={errors.email || errorMessageEmail ? style.error : ''}
             validation={{ ...register('email', ValidateEmail) }}
             placeholder="Epam@epam.com"
-            label="Email"
+            label={translate('email')}
           />
           {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
           {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}

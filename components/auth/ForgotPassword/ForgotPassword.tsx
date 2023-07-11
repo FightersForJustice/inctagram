@@ -1,16 +1,18 @@
 import Link from 'next/link'
 import style from './ForgotPassword.module.scss'
 import { MainButton } from '@/components/common/Buttons/Buttons'
-import { Loading } from '@/components/common/Loaders/Loading'
+
 import ReCAPTCHA from 'react-google-recaptcha'
 import { IForgotPasswordProps } from './forgotPasswordTypes'
 import ForgotPasswordInput from './ForgotPasswordInput'
 import { useTranslation } from 'react-i18next'
+import { Loading } from '@/components/common/Loaders/Loading'
 
 const ForgotPassword = (props: IForgotPasswordProps) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`forgot_password.${key}`)
   const { siteKey, errors, isLoading, isSucceed, serverError, recaptchaRef, handleSubmit, register, onSubmit, onChange } = props
+
   return (
     <div className={style.mainContainer}>
       <div className={style.form_wrapper}>

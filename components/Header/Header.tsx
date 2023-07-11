@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import s from './Header.module.css'
 import { OutlineBell } from './OutlineBell'
@@ -20,12 +19,11 @@ export const Header = (): JSX.Element => {
       <Link href="/auth/login">
         <Logo className={s.inctagram} />
       </Link>
+      <Link href="/auth/login">
+        <Logo className={s.inctagram} />
+      </Link>
       <OutlineBell className={s.outline_bell_instance} mask={'image.svg'} />
       <DynamicLanguageFlags />
     </div>
   )
-}
-
-Header.propTypes = {
-  outlineBellMask: PropTypes.string,
 }

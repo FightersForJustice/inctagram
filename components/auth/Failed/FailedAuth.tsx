@@ -6,7 +6,6 @@ import commonStyle from '../../../styles/Common.module.scss'
 import { MainButton } from '@/components/common/Buttons/Buttons'
 import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authApi'
 import { useEffect, useState } from 'react'
-import { t } from 'i18next'
 import { useTranslation } from 'react-i18next'
 
 const FailedAuth = () => {

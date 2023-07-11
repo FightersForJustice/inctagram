@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import style from './LoginForm.module.scss'
-import { Loading } from '@/components/common/loaders/Loading'
+import { Loading } from '@/components/common/Loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
 import { MainButton } from '@/components/common/Buttons/Buttons'

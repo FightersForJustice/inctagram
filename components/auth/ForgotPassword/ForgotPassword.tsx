@@ -25,7 +25,6 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
         <form
           className={style.FormRoot}
           onSubmit={handleSubmit(onSubmit)}
-          style={{ visibility: isSucceed || isLoading ? 'hidden' : 'visible' }}
         >
           <h1 className={style.header}>{translate('Forgot_Password')}</h1>
           <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />

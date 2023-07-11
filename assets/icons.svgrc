@@ -1,0 +1,14 @@
+
+{
+  "icon": true,
+  "svgProps": {
+    "role": "img"
+  },
+  "replaceAttrValues": {
+    "currentColor": "{props.fill}"
+  },
+  "plugins": [
+    "@svgr/plugin-svgo",
+    "@svgr/plugin-jsx"
+  ]
+}

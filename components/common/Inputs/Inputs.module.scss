@@ -18,6 +18,9 @@
   color: white;
   background-color: var(--black-a5);
   box-shadow: 0 0 0 1px var(--black-a9);
+  padding: 8px 11px;
+  line-height: 24px;
+  margin-top: 4px;
 }
 
 .Input:hover {
@@ -33,12 +36,6 @@
   color: white;
 }
 
-.Input {
-  padding: 0 10px;
-  height: 35px;
-  line-height: 1;
-}
-
 .Label {
   float: left;
   color: #8d9094;
@@ -49,9 +46,9 @@
 .EyeButton {
   position: absolute;
   right: 10px;
+  bottom:5px;
   color: white;
   cursor: pointer;
-  filter: invert(100);
-  margin-top: 6px;
+  filter: invert(0.9);
   transform: scale(1.2);
 }

@@ -40,7 +40,7 @@ export const ValidatePassword = {
     message: '* Required field to fill in',
   },
   pattern: {
-    value:  /^(?!.*\s)/,
+    value: /^(?!.*\s)/,
     message: ' Don`t use spaces in password',
   },
   maxLength: {

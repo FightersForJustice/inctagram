@@ -1,7 +1,6 @@
-
 import React from 'react'
 import s from './Header.module.css'
-import Mask from './mask.svg'
+import Mask from '@/public/img/mask.svg'
 
 interface Props {
   className: any
@@ -19,4 +18,3 @@ export const OutlineBell = ({ className, mask = 'mask.svg' }: Props): JSX.Elemen
     </div>
   )
 }
-

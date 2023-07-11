@@ -10,7 +10,7 @@ import {
   recoveryCodeCheckParamsData,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { authRouts } from '@/components/common/Auth/authRouts'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -77,6 +77,12 @@ export const authApi = createApi({
         body: recoveryCode,
       }),
     }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/auth/logout',
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
@@ -88,7 +94,8 @@ export const {
   useRegistrationEmailResendMutation,
   useNewPasswordCreateMutation,
   useRecoveryCodeCheckMutation,
-  usePasswordRecoverMutation
+  usePasswordRecoverMutation,
+  useLogoutMutation,
 } = authApi
 
 export default authApi

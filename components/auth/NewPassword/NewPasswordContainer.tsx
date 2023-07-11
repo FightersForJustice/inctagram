@@ -3,14 +3,15 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useNewPasswordCreateMutation, useRecoveryCodeCheckMutation } from '@/assets/api/auth/authApi'
 import NewPassword from './NewPassword'
-import { IFormInput } from './NewPasswordTypes'
-import { CheckRecoveryCode } from './CheckRecoveryCode'
-import { CreateNewPassword } from './CreateNewPassword'
+import { IFormInput } from './newPasswordTypes'
+import { CheckRecoveryCode } from './checkRecoveryCode'
+import { CreateNewPassword } from './createNewPassword'
 
 const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const { register, handleSubmit, clearErrors, formState: { errors }, }
     = useForm<IFormInput>({ mode: 'onSubmit' })
   const router = useRouter()
+  const [isSucceed, setIsSucceed] = useState(false)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [serverError, setServerError] = useState('')
@@ -24,7 +25,7 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const { password } = data
-    CreateNewPassword({ recoveryCode, router, password, passwordCreateMutation, setServerError })
+    CreateNewPassword({ recoveryCode, router, password, passwordCreateMutation, setServerError, setIsSucceed })
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any) => {
     clearErrors()
@@ -37,8 +38,7 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
       handleChange={handleChange}
       errors={errors}
       serverError={serverError}
-      isRecoverLoading={isRecoverLoading}
-      isCreatePasswordLoading={isCreatePasswordLoading}
+      isLoaderShown={isSucceed || isRecoverLoading || isCreatePasswordLoading}
       password={password}
       confirmPassword={confirmPassword}
       setConfirmPassword={setConfirmPassword}

@@ -19,7 +19,6 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [loginMutation, { isLoading }] = useLoginMutation()
   const router = useRouter()
 
-  //We are trying to find the token before
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (token) {
@@ -27,12 +26,10 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     }
   }, [])
 
-  // save token to the localStorage
   const saveToken = (token: string) => {
     localStorage.setItem('accessToken', token)
   }
 
-  // submitting data
   const onSubmit = async (data: LoginParamsData) => {
     const { email, password } = data
     const response = await loginMutation({ email, password })

@@ -24,7 +24,7 @@
     "email_for_new_password": "Enter your email address and we will send you further instructions ",
     "Create_New_Password": "Create New Password",
     "Back_to_Sign_In": "Back to Sign In",
-    "Im not a robot": "I’m not a robot ",
+    "Im_not_a_robot": "I’m not a robot ",
     "captcha_is_empty": "captcha is empty",
     "New_password": "New password",
     "Password_confirmation": "Password confirmation"

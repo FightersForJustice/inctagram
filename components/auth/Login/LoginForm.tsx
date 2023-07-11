@@ -8,7 +8,6 @@ import { MainButton } from '@/components/common/Buttons/Buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
-// import { authRouts } from '@/components/common/Auth/authRoutes'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
 

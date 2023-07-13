@@ -27,27 +27,25 @@ i18n.use(initReactI18next).init({
   },
 })
 
-// из документации (для лэйаута)
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
-// из документации (для лэйаута)
+
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  // из документации (для лэйаута)
+
   const getLayout = Component.getLayout || ((page) => page)
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('i18next') // Используем localStorage.getItem для получения значения 'i18next'
+    const storedLanguage = localStorage.getItem('i18next') 
 
     if (storedLanguage && storedLanguage !== i18n.language) {
-      i18n.changeLanguage(storedLanguage) // Изменяем язык, если он отличается от текущего
+      i18n.changeLanguage(storedLanguage) 
     }
   }, [])
   return getLayout(
-    //тут мы будем оборачивать приложение в провайдер и передавать в контекст клиента(стор) + Hydrate
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
         <Component {...pageProps} />

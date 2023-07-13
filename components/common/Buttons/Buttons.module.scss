@@ -1,0 +1,14 @@
+@use '/styles/mixin' as s;
+.mainButton {
+  @include s.primary-button;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #4c4c4c;
+  width: 100%;
+  padding: 8px 11px;
+
+  &:disabled {
+    background: #4070c2;
+    cursor: default;
+  }
+}

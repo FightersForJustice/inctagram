@@ -46,7 +46,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
         <EmailFormField register={register} errors={errors} setServerError={setServerError} />
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
-          <Link className={style.forgot_password_link} href="/auth/forgot-password">
+          <Link className={style.forgot_password_link} href={authRouts.forgotPassword}>
             {translate('Forgot_Password')}
           </Link>
         </div>

@@ -1,3 +1,4 @@
+import { authRouts } from '@/components/common/Auth/authRoutes'
 import { ICreateNewPassword } from './newPasswordTypes'
 
 export const CreateNewPassword = async (props: ICreateNewPassword) => {
@@ -8,7 +9,7 @@ export const CreateNewPassword = async (props: ICreateNewPassword) => {
   const response = await passwordCreateMutation({ recoveryCode, newPassword: password })
     .unwrap()
     .then(() => {
-      router.push('/auth/success-recovery')
+      router.push(authRouts.successPasswordRecovery)
     })
     .catch((error: any) => {
       setIsSucceed(false)

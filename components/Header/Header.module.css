@@ -23,6 +23,7 @@
   top: 10px;
   white-space: nowrap;
 }
+
 /*Header container*/
 .outline_bell {
   height: 24px;
@@ -139,12 +140,15 @@
 .wraper {
   position: relative;
 }
+
 .select_container {
   position: absolute;
-  top: 100%; /* Place the dropdown below the button */
+  top: 100%;
+  /* Place the dropdown below the button */
   left: 0;
   z-index: 1;
 }
+
 .language {
   border: 1px solid grey;
   background-color: black;
@@ -156,10 +160,13 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
+
 .text {
   color: #ffffff;
 }
+
 .text_select {
   color: #ffffff;
   padding-right: 40px;

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getLayout } from '@/components/Layout/Layout'
 import { useLogoutMutation } from '@/assets/api/auth/authApi'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 
 const Logout = () => {
   const [logout] = useLogoutMutation()
@@ -12,7 +13,7 @@ const Logout = () => {
         await logout({})
           .unwrap()
           .then(() => {
-            router.push('/auth/login')
+            router.push(authRouts.login)
             localStorage.removeItem('accessToken')
           })
       } catch (error) {

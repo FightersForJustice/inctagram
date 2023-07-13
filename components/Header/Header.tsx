@@ -4,6 +4,7 @@ import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { authRouts } from '../common/Auth/authRoutes'
 
 interface Props {
   className: any
@@ -16,10 +17,10 @@ const DynamicLanguageFlags = dynamic(() => import('./SelectBox'), { ssr: false }
 export const Header = (): JSX.Element => {
   return (
     <div className={s.header}>
-      <Link href="/auth/login">
+      <Link href={authRouts.login}>
         <Logo className={s.inctagram} />
       </Link>
-      <Link href="/auth/login">
+      <Link href={authRouts.login}>
         <Logo className={s.inctagram} />
       </Link>
       <OutlineBell className={s.outline_bell_instance} mask={'image.svg'} />

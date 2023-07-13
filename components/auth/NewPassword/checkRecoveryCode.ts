@@ -1,3 +1,4 @@
+import { authRouts } from '@/components/common/Auth/authRoutes'
 import { ICheckRecoveryCode } from './newPasswordTypes'
 
 export const CheckRecoveryCode = async (props: ICheckRecoveryCode) => {
@@ -16,6 +17,6 @@ export const CheckRecoveryCode = async (props: ICheckRecoveryCode) => {
         default:
           setServerError('A server error has occurred. Please try again')
       }
-      router.push('/auth/failed-recovery')
+      router.push(authRouts.failedPasswordRecovery)
     })
 }

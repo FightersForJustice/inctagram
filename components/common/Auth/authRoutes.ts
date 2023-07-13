@@ -12,4 +12,5 @@ export const authRouts = {
   failed: '/auth/failed',
   failedPasswordRecovery: '/auth/failed-recovery',
   successPasswordRecovery: '/auth/success-recovery',
+  logout: '/auth/logout',
 }

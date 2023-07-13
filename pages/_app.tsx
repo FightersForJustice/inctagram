@@ -36,13 +36,12 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-
   const getLayout = Component.getLayout || ((page) => page)
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('i18next') 
+    const storedLanguage = localStorage.getItem('i18next')
 
     if (storedLanguage && storedLanguage !== i18n.language) {
-      i18n.changeLanguage(storedLanguage) 
+      i18n.changeLanguage(storedLanguage)
     }
   }, [])
   return getLayout(

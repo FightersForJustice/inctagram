@@ -22,10 +22,7 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
           </div>
         )}
 
-        <form
-          className={style.FormRoot}
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
           <h1 className={style.header}>{translate('Forgot_Password')}</h1>
           <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
 

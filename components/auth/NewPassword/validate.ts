@@ -1,4 +1,4 @@
-import { Message, Validate, ValidationRule } from "react-hook-form"
+import { Message, Validate, ValidationRule } from 'react-hook-form'
 
 export type RegisterOptions = Partial<{
   required: Message | ValidationRule<boolean>
@@ -26,10 +26,10 @@ export const ValidatePassword: Function = (password: string): RegisterOptions =>
     },
     pattern: {
       value: /^\S+$/,
-      message: 'Password must not contain space symbols'
+      message: 'Password must not contain space symbols',
     },
     validate: {
-      value: ((value:string, formValue:boolean) => value === password),
+      value: (value: string, formValue: boolean) => value === password,
     },
   }
 }

@@ -35,7 +35,7 @@ const Home: NextPageWithLayout = () => {
     </PageWrapper>
   )
 }
-// это как HOC, который дает нам Layout(туда закидываем повторяющиеся компоненты)
+
 Home.getLayout = getLayout
 
 export default Home

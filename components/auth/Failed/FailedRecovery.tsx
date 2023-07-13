@@ -12,7 +12,7 @@ import { authRouts } from '@/components/common/Auth/authRoutes'
 const FailedRecovery = () => {
   const { t } = useTranslation()
   const router = useRouter()
-
+  const translate = (key: string): string => t(`forgot_password.${key}`)
   const handleResendEmail = () => {
     router.push(authRouts.forgotPassword)
   }
@@ -26,13 +26,21 @@ const FailedRecovery = () => {
             <p className={commonStyle.text}>
               {'Looks like the recovery link has expired. Not to worry, we can send the link again'}
             </p>
+            <h1 className={commonStyle.title}>{translate('Recovery_link_expired')}</h1>
+            <p className={commonStyle.text}>{translate('Recovery_link_expired_description')}</p>
           </div>
           <div>
             <MainButton title={'Resend recovery link'} onClick={handleResendEmail} disabled={false} style={{ width: '229px' }} />
+            <MainButton
+              title={translate('Resend_recovery_link')}
+              onClick={handleResendEmail}
+              disabled={false}
+              style={{ width: '229px' }}
+            />
           </div>
           <div style={{ position: 'relative', height: '291px' }}>
             <Image
-              alt="failed registration"
+              alt="failed recovery"
               src={img}
               placeholder="blur"
               quality={100}

@@ -1,6 +1,6 @@
-import { RefObject } from "react"
-import ReCAPTCHA from "react-google-recaptcha"
-import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from "react-hook-form"
+import { RefObject } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
+import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
 
 export interface IFormInput {
   email: string

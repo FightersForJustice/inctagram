@@ -10,13 +10,12 @@ export const handleGlobalError = (api: MiddlewareAPI) => (next: Dispatch) => (ac
     } else {
       try {
         let error: any = action.payload.data?.messages[0]?.message
-        if(error) toast.error(error)
+        if (error) toast.error(error)
         else {
           error = action.payload.data.messages
           toast.error(error)
         }
-      }
-      catch {
+      } catch {
         toast.error('Sorry, something went wrong')
       }
     }
@@ -39,4 +38,3 @@ type ErrorMessageType = {
   field: string
   message: string
 }
-

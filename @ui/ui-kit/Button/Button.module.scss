@@ -1,4 +1,4 @@
-@import '../../design/settings/colors.scss';
+@use '../../design/settings/colors.scss' as colors ;
 
 .button {
   position: relative;
@@ -13,9 +13,9 @@
   font-size: 16px;
   text-align: center;
   line-height: 24px;
-  color: $light-100;
+  color: colors.$light-100;
 
-  background-color: $primary-500;
+  background-color: colors.$primary-500;
   border: none;
   border-radius: 2px;
 
@@ -24,99 +24,99 @@
   transition: box-shadow 0.2s ease-out;
 
   &Primary {
-    background-color: $primary-500;
+    background-color: colors.$primary-500;
 
       &:hover {
-        background-color: $primary-100;
+        background-color: colors.$primary-100;
       }
 
       &:active {
-        background-color: $primary-700;
+        background-color: colors.$primary-700;
       }
 
       &:focus {
-        background-color: $primary-500;
-        outline: 2px solid $primary-700;
+        background-color: colors.$primary-500;
+        outline: 2px solid colors.$primary-700;
       }
 
       &:disabled {
         cursor: default;
-        background-color: $primary-900;
-        color: $light-900;
+        background-color: colors.$primary-900;
+        color: colors.$light-900;
       }
   }
 
   &Basic {
-    background-color: $dark-300;
+    background-color: colors.$dark-300;
 
       &:hover {
-        background-color: $dark-100;
+        background-color: colors.$dark-100;
       }
 
       &:active {
-        background-color: $dark-400;
+        background-color: colors.$dark-400;
       }
 
       &:focus {
-        background-color: $dark-300;
-        outline: 1px solid $primary-300;
+        background-color: colors.$dark-300;
+        outline: 1px solid colors.$primary-300;
       }
 
       &:disabled {
         cursor: default;
-        background-color: $dark-500;
-        color: $light-900;
+        background-color: colors.$dark-500;
+        color: colors.$light-900;
       }
   }
 
   &Outlined {
     background-color: transparent;
-    outline: 1px solid $primary-500;
-    color: $primary-500;
+    outline: 1px solid colors.$primary-500;
+    color: colors.$primary-500;
 
       &:hover {
-        outline-color: $primary-100;
-        color: $primary-100;
+        outline-color: colors.$primary-100;
+        color: colors.$primary-100;
       }
 
       &:active {
-        outline-color: $primary-700;
-        color: $primary-700;
+        outline-color: colors.$primary-700;
+        color: colors.$primary-700;
       }
 
       &:focus {
-        outline: 2px solid $primary-700;
-        color: $primary-700;
+        outline: 2px solid colors.$primary-700;
+        color: colors.$primary-700;
       }
 
       &:disabled {
         cursor: default;
-        outline-color: $primary-900;
-        color: $primary-900;
+        outline-color: colors.$primary-900;
+        color: colors.$primary-900;
       }
   }
 
   &Ghost {
     background-color: transparent;
     min-width: 100px;
-    color: $primary-500;
+    color: colors.$primary-500;
 
       &:hover {
-        color: $primary-100;
+        color: colors.$primary-100;
       }
 
       &:active {
-        color: $primary-700;
+        color: colors.$primary-700;
       }
 
       &:focus {
-        outline: 2px solid $primary-700;
-        color: $primary-500;
+        outline: 2px solid colors.$primary-700;
+        color: colors.$primary-500;
       }
 
       &:disabled {
         cursor: default;
-        color: $primary-900;
+        color: colors.$primary-900;
       }
   }
 }

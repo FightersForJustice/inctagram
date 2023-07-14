@@ -1,0 +1,76 @@
+@use '../../../styles/library';
+
+.IconWrapper {
+
+  display: flex;
+  transition: .2s;
+  width: fit-content;
+  color: library.$light-100;
+  box-sizing: content-box;
+  text-decoration: none;
+
+  .Icon {
+    filter: invert(1);
+  }
+
+  &:hover {
+    color: library.$primary-100;
+    cursor: pointer;
+
+    .Icon {
+      filter: invert(61%) sepia(8%) saturate(3135%) hue-rotate(183deg) brightness(102%) contrast(101%);
+    }
+  }
+
+  &:active,
+  &Active,
+  &Active:hover {
+    color: library.$primary-500;
+
+    .Icon {
+      filter: invert(36%) sepia(80%) saturate(1143%) hue-rotate(197deg) brightness(102%) contrast(93%);
+    }
+  }
+
+  &:focus {
+    outline: 2px solid library.$primary-100;
+    border-radius: 4px;
+  }
+
+  &Disabled,
+  &Disabled:hover {
+    color: library.$dark-100;
+    outline: 0px solid black;
+    cursor: not-allowed;
+
+    .Icon {
+      filter: invert(30%) sepia(0%) saturate(1160%) hue-rotate(134deg) brightness(99%) contrast(98%);
+    }
+  }
+
+  .Text {
+    margin-top: 0px;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
+
+.SideBar__Item {
+  width: 220px;
+  padding: 20px 0;
+
+  .Icon {
+    margin-left: 60px;
+  }
+
+  .Text {
+    color: library.$light-100;
+    margin-top: 0px;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}

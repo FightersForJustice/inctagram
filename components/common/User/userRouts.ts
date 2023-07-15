@@ -1,8 +1,11 @@
 export const userRouts = {
+  profile: '/users/profile',
+  avatar: '/users/profile/avatar',
+
   home: '/home',
-  profileSettings: '/home/settings',
-  generalInfo: '/home/settings/general',
-  devices: '/home/settings/devices',
-  account: '/home/settings/account',
-  payments: '/home/settings/payments',
+  profileSettings: '/home/profile-settings',
+  generalInfo: '/home/profile-settings/general',
+  devices: '/home/profile-settings/devices',
+  account: '/home/profile-settings/account',
+  payments: '/home/profile-settings/payments',
 }

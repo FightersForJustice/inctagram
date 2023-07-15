@@ -1,7 +1,6 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
-import { getLayout } from '@/components/Layout/Layout'
-import { Icons } from '@/ui/ui-kit/Icon/IconsComponent'
-import style from '@/ui/ui-kit/Icon/IconsComponent.module.scss'
+import style from '@/@ui/ui-kit/Icon/IconsComponent.module.scss'
+import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 
 export const getStaticProps = async () => {
   return {
@@ -9,10 +8,12 @@ export const getStaticProps = async () => {
   }
 }
 
-const Failed = () => {
+const IconsDev = () => {
   return (
     <PageWrapper>
-      <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
+      <div className={style.kitContainer}>
+
+        <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
         <div>
           <h2>Default</h2>
           <Icons.Home className={style.SideBar__Item} />
@@ -44,9 +45,10 @@ const Failed = () => {
           <Icons.Logout className={style.SideBar__Item} />
         </div>
       </div>
+
+      </div>
     </PageWrapper>
   )
 }
 
-Failed.getLayout = getLayout
-export default Failed
+export default IconsDev

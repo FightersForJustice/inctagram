@@ -7,7 +7,7 @@ export const MakeIcon: FC<MakeIconPropsType> = (props) => {
   const { OutlineIcon, Icon, className, text, isActive, isDisabled, Url } = props
   return (
     <Link
-      href={(Url && !isDisabled) ? Url : 'dwd'}
+      href={(Url && !isDisabled) ? Url : ''}
       className={`${style.IconWrapper} ${className} ${isActive && style.IconWrapperActive}
         ${isDisabled && style.IconWrapperDisabled}`}
     >

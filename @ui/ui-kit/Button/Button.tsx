@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import styles from './Button.module.scss'
 import { BUTTON_COLORS } from './constants'
 
-type ButtonType = {
+export type ButtonType = {
   text: string
   color?: typeof BUTTON_COLORS[keyof typeof BUTTON_COLORS]
   disabled?: boolean

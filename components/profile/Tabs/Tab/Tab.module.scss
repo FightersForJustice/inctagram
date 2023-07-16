@@ -1,0 +1,40 @@
+@use '/styles/library' as s;
+@use 'styles/mixin' as m;
+
+.tab {
+  @include m.h3;
+  color: s.$dark-100;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 6 15px;
+  width: 182px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+
+  &:first-child {
+    border-top-left-radius: 6px;
+  }
+  &:last-child {
+    border-top-right-radius: 6px;
+  }
+  &:hover {
+    color: s.$dark-100;
+  }
+  &:focus {
+    position: relative;
+    box-shadow: 0 0 0 2px black;
+  }
+
+  &[data-state='active'] {
+    color: s.$primary-500;
+    box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
+  }
+}

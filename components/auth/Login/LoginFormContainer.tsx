@@ -22,7 +22,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (token) {
-      router.push('/main')
+      router.push('/home')
     }
   }, [])
 
@@ -37,7 +37,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       .then((data) => {
         const loginResponse = data as ServerLoginResponse
         saveToken(loginResponse.accessToken)
-        router.push('/main')
+        router.push('/home')
       })
   }
 

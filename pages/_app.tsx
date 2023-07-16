@@ -7,9 +7,10 @@ import { I18nextProvider, initReactI18next } from 'react-i18next'
 import translationEN from '../assets/locales/en/translationEn.json'
 import translationRU from '../assets/locales/ru/translationRu.json'
 import i18n from 'i18next'
-import { store } from '@/store/store'
+import { store, persistor } from '@/store/store'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { PersistGate } from 'redux-persist/integration/react'
 
 i18n.use(initReactI18next).init({
   detection: {
@@ -47,7 +48,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
         <ToastContainer />
       </Provider>
     </I18nextProvider>

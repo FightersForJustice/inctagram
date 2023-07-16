@@ -9,7 +9,6 @@ import Account from './Account'
 import Payments from './Payments'
 import { Tab } from './Tab/Tab'
 import style from './ProfileTabs.module.scss'
-import common from '../../../styles/Common.module.scss'
 
 const ProfileTabs = () => {
   const router = useRouter()

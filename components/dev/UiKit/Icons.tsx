@@ -11,41 +11,37 @@ export const getStaticProps = async () => {
 const IconsDev = () => {
   return (
     <PageWrapper>
-      <div className={style.kitContainer}>
-
-        <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
-        <div>
+      <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
+        <div className={style.SideBar}>
           <h2>Default</h2>
-          <Icons.Home className={style.SideBar__Item} />
-          <Icons.Create className={style.SideBar__Item} />
-          <Icons.Profile className={style.SideBar__Item} />
-          <Icons.Messenger className={style.SideBar__Item} />
-          <Icons.Search className={style.SideBar__Item} />
-          <Icons.Statistics className={style.SideBar__Item} />
-          <Icons.Logout className={style.SideBar__Item} />
+          <Icons.Home />
+          <Icons.Create />
+          <Icons.Profile />
+          <Icons.Messenger />
+          <Icons.Search />
+          <Icons.Statistics />
+          <Icons.Logout />
         </div>
-        <div>
+        <div className={style.SideBar}>
           <h2>Active</h2>
-          <Icons.Home className={style.SideBar__Item} isActive />
-          <Icons.Create className={style.SideBar__Item} />
-          <Icons.Profile className={style.SideBar__Item} />
-          <Icons.Messenger className={style.SideBar__Item} />
-          <Icons.Search className={style.SideBar__Item} />
-          <Icons.Statistics className={style.SideBar__Item} />
-          <Icons.Logout className={style.SideBar__Item} />
+          <Icons.Home isActive />
+          <Icons.Create />
+          <Icons.Profile />
+          <Icons.Messenger />
+          <Icons.Search />
+          <Icons.Statistics />
+          <Icons.Logout />
         </div>
-        <div>
+        <div className={style.SideBar}>
           <h2>Disabled</h2>
-          <Icons.Home className={style.SideBar__Item} isDisabled />
-          <Icons.Create className={style.SideBar__Item} />
-          <Icons.Profile className={style.SideBar__Item} />
-          <Icons.Messenger className={style.SideBar__Item} />
-          <Icons.Search className={style.SideBar__Item} />
-          <Icons.Statistics className={style.SideBar__Item} />
-          <Icons.Logout className={style.SideBar__Item} />
+          <Icons.Home isDisabled />
+          <Icons.Create />
+          <Icons.Profile />
+          <Icons.Messenger />
+          <Icons.Search />
+          <Icons.Statistics />
+          <Icons.Logout />
         </div>
-      </div>
-
       </div>
     </PageWrapper>
   )

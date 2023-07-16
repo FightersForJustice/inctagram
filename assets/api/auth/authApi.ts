@@ -6,20 +6,20 @@ import {
   NewPasswordParamsData,
   ServerErrorResponse,
   ServerLoginResponse,
-  ServerMeResponse,
   recoveryCodeCheckParamsData,
+  UserData,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 
-export const authApi = createApi({
+const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
   }),
   endpoints: (builder) => ({
-    me: builder.query<ServerMeResponse | ServerErrorResponse, void>({
+    me: builder.query<UserData | ServerErrorResponse, void>({
       query: () => ({
         url: authRouts.me,
         method: 'GET',

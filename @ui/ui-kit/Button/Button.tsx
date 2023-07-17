@@ -16,7 +16,7 @@ export const Button: React.FC<ButtonType> = ({ text, color = BUTTON_COLORS.PRIMA
   })
 
   return (
-    <button className={buttonClasses} disabled={disabled} onClick={onClick}>
+    <button className={buttonClasses} disabled={disabled} onClick={onClick} type="button">
       {text}
     </button>
   )

@@ -3,6 +3,19 @@
   border-right: 1px solid #333333;
 }
 
+.sidebar_container a {
+  width: 220px;
+  padding: 10px 0;
+  margin-left: 60px;
+
+  .Text {
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
+
 .main_container {
   padding-top: 62px;
 }

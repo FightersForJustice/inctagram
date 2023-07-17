@@ -12,18 +12,18 @@ const SideBar = () => {
   return (
     <div className={style.sidebar_container}>
       <div className={style.main_container}>
-        <Icons.Home className={IconStyle.SideBar__Item} Url='/home' />
-        <Icons.Create className={IconStyle.SideBar__Item} Url='/create' />
-        <Icons.Profile className={IconStyle.SideBar__Item} Url='/Profile' />
-        <Icons.Messenger className={IconStyle.SideBar__Item} Url='/messenger' />
-        <Icons.Search className={IconStyle.SideBar__Item} Url='/search' />
+        <Icons.Home url='/home' />
+        <Icons.Create url='/create' />
+        <Icons.Profile url='/Profile' />
+        <Icons.Messenger url='/messenger' />
+        <Icons.Search url='/search' />
       </div>
       <div className={style.secondary_container}>
-        <Icons.Statistics className={IconStyle.SideBar__Item} Url='/statistics' />
-        <Icons.Favorites className={IconStyle.SideBar__Item} Url='/favorites' />
+        <Icons.Statistics url='/statistics' />
+        <Icons.Favorites url='/favorites' />
       </div>
       <div className={style.logout_container}>
-        <Icons.Logout className={IconStyle.SideBar__Item} Url='/auth/logout' />
+        <Icons.Logout url='/auth/logout' />
       </div>
     </div>
   )

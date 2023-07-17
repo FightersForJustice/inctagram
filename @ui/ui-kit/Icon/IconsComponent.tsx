@@ -1,6 +1,6 @@
 import { MakeIcon } from './MakeIcon'
 import { IconsPropsType } from './iconsType'
-import { icons } from '@/public/icons/icons'
+import { icons } from '@/public/sidebar-icons/icons'
 
 export const Icons = {
   Home: (props: IconsPropsType) => (

@@ -5,7 +5,7 @@ export type MakeIconPropsType = {
   className?: string
   isActive?: boolean
   isDisabled?: boolean
-  Url?: string
+  url?: string
 }
 
 export type IconsPropsType = {
@@ -13,5 +13,5 @@ export type IconsPropsType = {
   className?: string
   isActive?: boolean
   isDisabled?: boolean
-  Url?: string
+  url?: string
 }

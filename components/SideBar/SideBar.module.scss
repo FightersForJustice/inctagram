@@ -4,9 +4,12 @@
 }
 
 .sidebar_container a {
-  width: 220px;
+  width: 180px;
   padding: 10px 0;
-  margin-left: 60px;
+  margin:0 20px;
+  div {
+  margin-left: 40px;
+  }
 
   .Text {
     margin-left: 12px;

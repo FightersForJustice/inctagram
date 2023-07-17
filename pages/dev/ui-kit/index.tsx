@@ -42,8 +42,10 @@ const Login = () => {
           </div>
         </div>
         <div className={style.kitBlock}>
-          <h2 className={style.componentHeader}>Buttons</h2>
-          <IconsDev />
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div className={style.components}>
+            <IconsDev />
+          </div>
         </div>
       </div>
     </PageWrapper>

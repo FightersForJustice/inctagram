@@ -1,7 +1,7 @@
-@use 'library';
+@use './colors.scss' as colors;
 
 .container {
-  background-color: library.$bgColor;
+  background-color: colors.$dark-700;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,9 +10,9 @@
 }
 
 .title {
-  color: library.$text;
+  color: colors.$light-100;
   text-align: center;
-  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px 0px colors.$text-shadow;
   font-size: 20px;
   font-family: Inter;
   font-style: normal;
@@ -21,7 +21,7 @@
 }
 
 .text {
-  color: library.$text;
+  color: colors.$light-100;
   text-align: center;
   font-size: 16px;
   font-family: Inter;

@@ -1,10 +1,10 @@
-import { NewPasswordParamsData, ServerErrorResponse, recoveryCodeCheckParamsData } from "@/assets/api/auth/authTypes"
-import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, MutationDefinition } from "@reduxjs/toolkit/dist/query"
-import { MutationActionCreatorResult } from "@reduxjs/toolkit/dist/query/core/buildInitiate"
-import { MutationTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks"
-import { NextRouter } from "next/router"
-import { ChangeEvent, Dispatch, SetStateAction } from "react"
-import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from "react-hook-form"
+import { NewPasswordParamsData, ServerErrorResponse, recoveryCodeCheckParamsData } from '@/assets/api/auth/authTypes'
+import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, MutationDefinition } from '@reduxjs/toolkit/dist/query'
+import { MutationActionCreatorResult } from '@reduxjs/toolkit/dist/query/core/buildInitiate'
+import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks'
+import { NextRouter } from 'next/router'
+import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { FieldErrors, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
 
 export interface IFormInput {
   password: string
@@ -28,7 +28,15 @@ export interface INewPasswordProps {
 export interface ICheckRecoveryCode {
   setServerError: Dispatch<SetStateAction<string>>
   recoveryCode: string | string[] | undefined
-  recoveryMutation: MutationTrigger<MutationDefinition<recoveryCodeCheckParamsData, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, never, void | ServerErrorResponse, "authApi">>
+  recoveryMutation: MutationTrigger<
+    MutationDefinition<
+      recoveryCodeCheckParamsData,
+      BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
+      never,
+      void | ServerErrorResponse,
+      'authApi'
+    >
+  >
   router: NextRouter
 }
 
@@ -36,7 +44,17 @@ export interface ICreateNewPassword {
   setServerError: Dispatch<SetStateAction<string>>
   setIsSucceed: Dispatch<SetStateAction<boolean>>
   recoveryCode: string | string[] | undefined
-  passwordCreateMutation: (arg: NewPasswordParamsData) => MutationActionCreatorResult<MutationDefinition<NewPasswordParamsData, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, never, void | ServerErrorResponse, "authApi">>
+  passwordCreateMutation: (
+    arg: NewPasswordParamsData
+  ) => MutationActionCreatorResult<
+    MutationDefinition<
+      NewPasswordParamsData,
+      BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
+      never,
+      void | ServerErrorResponse,
+      'authApi'
+    >
+  >
   router: NextRouter
   password: string
 }

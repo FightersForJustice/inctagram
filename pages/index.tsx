@@ -12,7 +12,7 @@ import { User, setUser } from '@/assets/api/auth/authSlice'
 const Home: NextPageWithLayout = () => {
   const router = useRouter()
   const { isError, data } = useMeQuery()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (data) {
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout = () => {
     </PageWrapper>
   )
 }
-// это как HOC, который дает нам Layout(туда закидываем повторяющиеся компоненты)
+
 Home.getLayout = getLayout
 
 export default Home

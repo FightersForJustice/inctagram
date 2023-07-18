@@ -9,7 +9,6 @@ export const HeadMeta = (props: PropsType) => {
 
   const description = title ? `inctagram ${title.toLowerCase()}` : 'inctagram'
 
-  //есть возможность поменять хэд на разных страничек (подрубить скрипты и т.д)
   return (
     <Head>
       <title>{title ?? 'inctagram'}</title>

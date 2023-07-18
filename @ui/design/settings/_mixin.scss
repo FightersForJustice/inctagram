@@ -1,34 +1,32 @@
-
-
 @mixin primary-button {
-    border-radius:2px;
-    background: #397DF6;
-    color: #FFF;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    cursor: pointer;
-  }
+  border-radius: 2px;
+  background: #397df6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  cursor: pointer;
+}
 @mixin secondary-button {
-    cursor: pointer;
-  }
+  cursor: pointer;
+}
 @mixin outline-button {
   cursor: pointer;
 }
 @mixin large {
-  color:  #000;
+  color: #000;
   font-size: 26px;
   font-weight: 600;
   line-height: 36px;
 }
 @mixin h1 {
-  color:  #000;
+  color: #000;
   font-size: 20px;
   font-weight: 700;
   line-height: 36px;
 }
 @mixin h2 {
-  color:  #000;
+  color: #000;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -38,7 +36,7 @@
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
-  line-height: 24px;  
+  line-height: 24px;
 }
 @mixin regular_text_16 {
   color: $dark-900;

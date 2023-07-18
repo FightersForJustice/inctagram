@@ -24,10 +24,14 @@
     "email_for_new_password": "Enter your email address and we will send you further instructions ",
     "Create_New_Password": "Create New Password",
     "Back_to_Sign_In": "Back to Sign In",
-    "Im not a robot": "I’m not a robot ",
+    "Im_not_a_robot": "I’m not a robot ",
     "captcha_is_empty": "captcha is empty",
     "New_password": "New password",
-    "Password_confirmation": "Password confirmation"
+    "Password_confirmation": "Password confirmation",
+    "Recovery_link_expired": "Password recovery link expired",
+    "Recovery_link_expired_description": "Looks like the recovery link has expired. Not to worry, we can send the link again",
+    "Resend_recovery_link": "Resend recovery link",
+    "Password_has_been_changed": "Your password has been successfully changed"
   },
   "merge_accounts": {
     "merger_of_accounts": "Merger of Accounts",

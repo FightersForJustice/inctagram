@@ -7,6 +7,7 @@ import { FormValuesType, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -86,7 +87,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
       </form>
       <p>{translate('do_you_have_an_account?')}</p>
-      <Link href="/auth/login" className={style.SignIn}>
+      <Link href={authRouts.login} className={style.SignIn}>
         {translate('sign_in')}
       </Link>
     </div>

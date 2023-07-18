@@ -8,8 +8,12 @@ import { CheckRecoveryCode } from './checkRecoveryCode'
 import { CreateNewPassword } from './createNewPassword'
 
 const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const { register, handleSubmit, clearErrors, formState: { errors }, }
-    = useForm<IFormInput>({ mode: 'onSubmit' })
+  const {
+    register,
+    handleSubmit,
+    clearErrors,
+    formState: { errors },
+  } = useForm<IFormInput>({ mode: 'onSubmit' })
   const router = useRouter()
   const [isSucceed, setIsSucceed] = useState(false)
   const [password, setPassword] = useState('')

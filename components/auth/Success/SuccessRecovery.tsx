@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import img from '../../../public/img/wall-success.png'
 import style from './SuccessAuth.module.scss'
-import commonStyle from '../../../styles/Common.module.scss'
+import commonStyle from '@/@ui/design/settings/Common.module.scss'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
 import { MainButton } from '@/components/common/Buttons/Buttons'
@@ -23,12 +23,12 @@ const SuccessRecovery = () => {
         <div className={style.item}>
           <div className={style.textBlock}>
             <h1 className={commonStyle.title}>{translate('Congratulations')}</h1>
-            <p className={commonStyle.text}> {'Your password has been changed'}</p>
+            <p className={commonStyle.text}> {t('forgot_password.Password_has_been_changed')}</p>
           </div>
           <MainButton title={translate('sign_in')} onClick={handleLogin} disabled={false} style={{ width: '182px' }} />
           <div style={{ position: 'relative', height: '291px' }}>
             <Image
-              alt="successful registration"
+              alt="successful recovery"
               src={img}
               placeholder="blur"
               quality={100}

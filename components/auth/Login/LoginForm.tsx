@@ -8,7 +8,6 @@ import { MainButton } from '@/components/common/Buttons/Buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
-// import { authRouts } from '@/components/common/Auth/authRoutes'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
 
@@ -47,7 +46,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
         <EmailFormField register={register} errors={errors} setServerError={setServerError} />
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
-          <Link className={style.forgot_password_link} href="/auth/forgot-password">
+          <Link className={style.forgot_password_link} href={authRouts.forgotPassword}>
             {translate('Forgot_Password')}
           </Link>
         </div>

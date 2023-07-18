@@ -5,7 +5,7 @@ import { BUTTON_COLORS } from './constants'
 
 type ButtonType = {
   text: string
-  color?: typeof BUTTON_COLORS[keyof typeof BUTTON_COLORS]
+  color?: (typeof BUTTON_COLORS)[keyof typeof BUTTON_COLORS]
   disabled?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }

@@ -20,6 +20,7 @@ const IconsDev = () => {
           <Icons.Messenger />
           <Icons.Search />
           <Icons.Statistics />
+          <Icons.Favorites />
           <Icons.Logout />
         </div>
         <div className={style.SideBar}>
@@ -30,6 +31,7 @@ const IconsDev = () => {
           <Icons.Messenger />
           <Icons.Search />
           <Icons.Statistics />
+          <Icons.Favorites />
           <Icons.Logout />
         </div>
         <div className={style.SideBar}>
@@ -40,6 +42,7 @@ const IconsDev = () => {
           <Icons.Messenger />
           <Icons.Search />
           <Icons.Statistics />
+          <Icons.Favorites />
           <Icons.Logout />
         </div>
       </div>

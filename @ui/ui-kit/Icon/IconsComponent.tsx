@@ -18,7 +18,7 @@ export const Icons = {
     <MakeIcon
       Icon={icons.Profile}
       OutlineIcon={icons.ProfileOutline}
-      text={props.customText ? props.customText : 'My Profile'}
+      text={props.customText ? props.customText : 'Profile'}
       {...props}
     />
   ),
@@ -58,7 +58,7 @@ export const Icons = {
     <MakeIcon
       Icon={icons.Logout}
       OutlineIcon={icons.LogoutOutline}
-      text={props.customText ? props.customText : 'Log Out'}
+      text={props.customText ? props.customText : 'Logout'}
       {...props}
     />
   ),

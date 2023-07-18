@@ -3,17 +3,20 @@ import { MakeIconPropsType } from './iconsType'
 import style from './IconsComponent.module.scss'
 import Link from 'next/link'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 export const MakeIcon: FC<MakeIconPropsType> = (props) => {
   const { OutlineIcon, Icon, customClass, text, isActive, isDisabled, url } = props
-  const className = classNames(style.IconWrapper, customClass, {[style.IconWrapperActive]: isActive, [style.IconWrapperDisabled]: isDisabled })
+  const className = classNames(style.IconWrapper, customClass, {
+    [style.IconWrapperActive]: isActive,
+    [style.IconWrapperDisabled]: isDisabled,
+  })
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`Sidebar.${key}`)
   return (
-    <Link
-      href={(url && !isDisabled) ? url : ''}
-      className={className}
-    >
+    <Link href={url && !isDisabled ? url : ''} className={className}>
       <div className={style.Icon}>{isActive ? <Icon /> : <OutlineIcon />}</div>
-      <span className={style.Text}>{text}</span>
+      <span className={style.Text}>{text && translate(text)}</span>
     </Link>
   )
 }

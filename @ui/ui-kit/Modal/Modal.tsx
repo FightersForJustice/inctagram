@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import s from "./modal.module.scss"
 
 type ModalType = {
@@ -8,8 +9,7 @@ type ModalType = {
   }
 
 const Modal: React.FC<ModalType> = ({active, setActive, title, children}) => {
-    const classs = `${s.modal} ${s.effect}`
-    const open = active ? `${s.modal} ${s.effect} ${s.show}` : classs  
+    const open = active ? classNames(s.modal, s.effect, s.show) : classNames(s.modal, s.effect)  
     return (
     <>
         <div className={open} >

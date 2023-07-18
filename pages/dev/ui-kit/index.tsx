@@ -3,7 +3,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import Modal from '@/ui/ui-kit/Modal/Modal'
+import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
 
 export const getStaticProps = async () => {

@@ -2,7 +2,7 @@ export type MakeIconPropsType = {
   OutlineIcon: any
   Icon: any
   text?: string
-  className?: string
+  customClass?: string
   isActive?: boolean
   isDisabled?: boolean
   url?: string
@@ -10,7 +10,7 @@ export type MakeIconPropsType = {
 
 export type IconsPropsType = {
   customText?: string
-  className?: string
+  customClass?: string
   isActive?: boolean
   isDisabled?: boolean
   url?: string

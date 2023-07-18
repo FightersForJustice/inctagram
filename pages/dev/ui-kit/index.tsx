@@ -3,6 +3,8 @@ import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import Modal from '@/ui/ui-kit/Modal/Modal'
+import { useState } from 'react'
 
 export const getStaticProps = async () => {
   return {
@@ -11,6 +13,7 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
+  const [ModalActive, setModalActive] = useState(false);
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -42,7 +45,20 @@ const Login = () => {
 
             </div>
         </div>
-
+        <div className={style.kitBlock}>
+            <h2 className={style.componentHeader}>Modal</h2>
+            <div className={style.modal}>
+            <button className={style.open} onClick={() => {setModalActive(true)}}>Modal open</button>
+              <Modal active={ModalActive} setActive={setModalActive} title="Email sent">
+                <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
+                <div className={style.buttonBloc}>
+                  <button className={style.button} onClick={() => {setModalActive(false)}}>
+                    OK
+                  </button>
+                </div>
+              </Modal>
+            </div>
+        </div>
       </div>
     </PageWrapper>
   )

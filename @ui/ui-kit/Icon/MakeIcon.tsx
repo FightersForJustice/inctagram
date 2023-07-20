@@ -21,10 +21,10 @@ export const MakeIcon: FC<MakeIconPropsType> = (props) => {
           <span className={style.Text}>{text && translate(text)}</span>
         </Link>
       ) : (
-        <p className={className}>
+        <div className={className}>
           <div className={style.Icon}><OutlineIcon /></div>
           <span className={style.Text}>{text && translate(text)}</span>
-        </p>
+        </div>
       )}
     </>
   )

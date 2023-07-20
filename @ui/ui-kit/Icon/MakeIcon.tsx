@@ -14,9 +14,18 @@ export const MakeIcon: FC<MakeIconPropsType> = (props) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`Sidebar.${key}`)
   return (
-    <Link href={url && !isDisabled ? url : ''} className={className}>
-      <div className={style.Icon}>{isActive ? <Icon /> : <OutlineIcon />}</div>
-      <span className={style.Text}>{text && translate(text)}</span>
-    </Link>
+    <>
+      {!isDisabled ? (
+        <Link href={url ? url : ''} className={className}>
+          <div className={style.Icon}>{isActive ? <Icon /> : <OutlineIcon />}</div>
+          <span className={style.Text}>{text && translate(text)}</span>
+        </Link>
+      ) : (
+        <p className={className}>
+          <div className={style.Icon}><OutlineIcon /></div>
+          <span className={style.Text}>{text && translate(text)}</span>
+        </p>
+      )}
+    </>
   )
 }

@@ -4,8 +4,8 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import IconStyle from '@/@ui/ui-kit/Icon/IconsComponent.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import IconsDev from '@/components/dev/UiKit/Icons'
 import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
+import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 
 export const getStaticProps = async () => {
   return {
@@ -41,6 +41,14 @@ const Login = () => {
               <Button color={BUTTON_COLORS.GHOST} text="Button"></Button>
               <Button color={BUTTON_COLORS.GHOST} text="Button" disabled></Button>
             </div>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Button Links</h2>
+          <div className={style.components}>
+            <ButtonLink text="Internal Button link" url="/auth/login"></ButtonLink>
+            <ButtonLink text="External Button link" url="https://www.awwwards.com/"></ButtonLink>
           </div>
         </div>
         <div className={style.kitBlock}>
@@ -90,3 +98,4 @@ const Login = () => {
 
 Login.getLayout = getLayout
 export default Login
+

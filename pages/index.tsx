@@ -17,7 +17,7 @@ const Home: NextPageWithLayout = () => {
   useEffect(() => {
     if (data) {
       dispatch(setUser(data as User))
-      router.push('/main')
+      router.push('/home')
     }
   }, [data])
 

@@ -1,5 +1,5 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
-import { getLayout } from '@/components/Layout/Layout'
+import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 
 export const getStaticProps = async () => {
   return {
@@ -7,7 +7,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Main = () => {
+const HomePage = () => {
   return (
     <PageWrapper>
       <div style={{ color: 'white', height: '100vh', textAlign: 'center', fontSize: '50px', paddingTop: '300px' }}>
@@ -17,5 +17,5 @@ const Main = () => {
   )
 }
 
-Main.getLayout = getLayout
-export default Main
+HomePage.getLayout = getSideBarLayout
+export default HomePage

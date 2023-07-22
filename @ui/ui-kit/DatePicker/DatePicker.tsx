@@ -7,7 +7,7 @@ export const MainDatePicker = () => {
   return (
     <div className="UIKitDatePicker">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker />
+        <DatePicker open showDaysOutsideCurrentMonth dayOfWeekFormatter={(day) => day} />
       </LocalizationProvider>
     </div>
   )

@@ -3,7 +3,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { DatePicker } from '@/@ui/ui-kit/DatePicker/DatePicker'
+import { MainDatePicker } from '@/@ui/ui-kit/DatePicker/DatePicker'
 
 export const getStaticProps = async () => {
   return {
@@ -43,7 +43,7 @@ const Login = () => {
 
             </div>
         </div>
-        <DatePicker />
+        <MainDatePicker />
       </div>
     </PageWrapper>
   )

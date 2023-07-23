@@ -1,0 +1,129 @@
+@use '../../design/settings/colors.scss' as colors;
+.title {
+  color: colors.$light-900;
+  /* regular_text 14 */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+}
+.textarea {
+  resize: none;
+  height: 84px;
+  width: 284px;
+  border-radius: 2px;
+  border: 1px solid colors.$dark-100;
+  background: colors.$dark-500;
+  overflow: hidden;
+  &::selection {
+    color: colors.$light-100;
+  }
+  &::placeholder {
+    margin: 16px 24px;
+  }
+
+  &Default {
+    border-radius: 2px;
+    border: 1px solid colors.$dark-100;
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-900;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+      margin: 16px 24px;
+    }
+  }
+  &Active {
+    border-radius: 2px;
+    border: 1px solid colors.$light-100;
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-100;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+      margin: 16px 24px;
+    }
+  }
+  &Haserror {
+    border-radius: 2px;
+    border: 1px solid var(--danger-500, #cc1439);
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-100;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+  &Hover {
+    border-radius: 2px;
+    border: 1px solid colors.$dark-100;
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-900;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+  &Focus {
+    border-radius: 2px;
+    border: 2px solid colors.$primary-700;
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-100;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+  &Disable {
+    border-radius: 2px;
+    border: 1px solid colors.$dark-100;
+    background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$dark-100;
+
+      /* regular_text 16 */
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+}
+
+.error_message {
+  color: colors.$danger-300;
+
+  /* regular_text 14 */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+}

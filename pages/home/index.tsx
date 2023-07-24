@@ -1,7 +1,7 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   return {
     props: {},
   }

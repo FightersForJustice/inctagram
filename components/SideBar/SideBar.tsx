@@ -2,12 +2,6 @@ import style from './SideBar.module.scss'
 import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 import { useRouter } from 'next/router'
 
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  }
-}
-
 const SideBar = () => {
   const router = useRouter()
   const pathName = router.pathname

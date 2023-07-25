@@ -7,8 +7,16 @@ import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
 import { GetServerSideProps } from 'next'
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const { data: profileData } = await useGetProfileQuery()
+// export const getServerSideProps = async () => {
+//   debugger
+
+//   const profileData = await useGetProfileQuery()
+
+//   if (!profileData) {
+//     return {
+//       notFound: true,
+//     }
+//   }
 
 //   return {
 //     props: {
@@ -16,6 +24,13 @@ import { GetServerSideProps } from 'next'
 //     },
 //   }
 // }
+
+// type GeneralType = {
+//   profileData: User
+// }
+
+// const General = (props: GeneralType) => {
+//   const { profileData } = props
 
 const General = ({ profileData }: { profileData: User }) => {
   console.log('render')

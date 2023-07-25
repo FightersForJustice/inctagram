@@ -5,24 +5,29 @@ import { User, setUser } from '@/assets/api/auth/userSlice'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
+import { GetServerSideProps } from 'next'
 
-const General = () => {
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { data: profileData } = await useGetProfileQuery()
+
+//   return {
+//     props: {
+//       profileData,
+//     },
+//   }
+// }
+
+const General = ({ profileData }: { profileData: User }) => {
   console.log('render')
 
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
 
-  const { data: profileData } = useGetProfileQuery()
+  // const { data: profileData } = useGetProfileQuery()
   const refetchProfileData = useGetProfileQuery().refetch
   const [updateProfile] = useUpdateProfileMutation()
 
   const [updatedUserData, setUpdatedUserData] = useState<User>(userData)
-
-  useEffect(() => {
-    if (profileData) {
-      dispatch(setUser(profileData as any))
-    }
-  }, [dispatch, profileData])
 
   const handleSave = async () => {
     const changedData: Partial<User> = {}

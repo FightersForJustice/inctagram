@@ -36,3 +36,13 @@ export const profileApi = createApi({
 export const { useGetProfileQuery, useUpdateProfileMutation } = profileApi
 
 export default profileApi
+
+// // Implement the server-side rendering for profile data
+// export async function getServerSideProps() {
+//   const { data: profileData } = await useGetProfileQuery()
+//   return {
+//     props: {
+//       profileData,
+//     },
+//   }
+// }

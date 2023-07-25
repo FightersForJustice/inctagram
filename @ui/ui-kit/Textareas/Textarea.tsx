@@ -1,39 +1,31 @@
 import React, { ChangeEvent, FocusEvent } from 'react'
 import classNames from 'classnames'
-import styles from './TextArea.module.scss'
+import styles from './Textarea.module.scss'
 import { TEXTAEREA_COLORS } from './constants'
 
-type TextAreaProps = {
-  defaultValue?: string
-  isActive?: boolean
+export type TextAreaProps = {
   hasError?: boolean
-  isHovered?: boolean
-  isFocused?: boolean
-  isDisabled?: boolean
+  disabled?: boolean
+  hovered?: boolean
   errorMessage?: string
-  placeholderText?: string
+  placeholder?: string
   color?: (typeof TEXTAEREA_COLORS)[keyof typeof TEXTAEREA_COLORS]
-  onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void
-  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
-  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void
-}
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement> // Inherit all textarea HTML attributes
 
-const TextArea: React.FC<TextAreaProps> = ({
+export const TextArea: React.FC<TextAreaProps> = ({
   defaultValue,
-  isActive = false,
   hasError = false,
-  isHovered = false,
-  isFocused = false,
-  isDisabled = false,
+  disabled = false,
+  hovered = false,
   errorMessage = 'Error text',
-  placeholderText = 'Textarea',
+  placeholder = 'Textarea',
   color = TEXTAEREA_COLORS.DEFAULT,
-  onChange,
-  onFocus,
-  onBlur,
+  ...restProps // Spread the remaining HTML attributes
 }) => {
   const textareaClasses = classNames(styles.textarea, {
-    [styles[`textarea${color}`]]: Boolean(color),
+    [styles.Default]: color === TEXTAEREA_COLORS.DEFAULT,
+    [styles.Active]: color === TEXTAEREA_COLORS.ACTIVE,
+    [styles.Error]: color === TEXTAEREA_COLORS.ERROR,
   })
 
   return (
@@ -42,15 +34,11 @@ const TextArea: React.FC<TextAreaProps> = ({
       <textarea
         className={textareaClasses}
         defaultValue={defaultValue}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        disabled={isDisabled}
-        placeholder={placeholderText}
+        disabled={disabled}
+        placeholder={placeholder}
+        {...restProps} // Spread the remaining HTML attributes
       />
-      {hasError && <span className={styles.error_message}>{errorMessage}</span>}
+      {hasError && <p className={styles.error_message}>{errorMessage}</p>}
     </div>
   )
 }
-
-export default TextArea

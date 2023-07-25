@@ -7,7 +7,7 @@ import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
 import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
-import TextArea from '@/@ui/ui-kit/Textareas/Textarea'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
 import { useForm, Control } from 'react-hook-form'
 
@@ -59,22 +59,13 @@ const Login = () => {
           <h2 className={style.componentHeader}>Textarea</h2>
           <div className={style.components}>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.DEFAULT} />
+              <TextArea />
             </form>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.ACTIVE} isActive={true} />
+              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
             </form>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError={true} />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.HOVER} isHovered={true} />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.FOCUS} isFocused={true} />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.DISABLE} isDisabled={true} />
+              <TextArea disabled />
             </form>
           </div>
         </div>

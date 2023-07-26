@@ -1,15 +1,26 @@
-import { profileApi } from '@/assets/api/user/profileApi'
-import { ProfileData } from '@/assets/api/user/userTypes'
+import { serverAPI } from '@/assets/api/api'
+import { UserProfile } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import ProfileTabs from '@/components/profile/Tabs/ProfileTabs'
 
 export const getServerSideProps = async () => {
-  const userProfile = await profileApi.getProfile()
+  const userProfile = await serverAPI.profile.getProfile()
+
+  const isAuth = false //hardcode | get meQuery value here
 
   if (!userProfile) {
     return {
       notFound: true,
+    }
+  }
+
+  if (!isAuth) {
+    return {
+      redirect: {
+        destination: 'not-authorized',
+        permanent: false,
+      },
     }
   }
 
@@ -21,13 +32,11 @@ export const getServerSideProps = async () => {
 }
 
 type ProfileType = {
-  userProfile: ProfileData
+  userProfile: UserProfile
 }
 
 const ProfileSettings = (props: ProfileType) => {
   const { userProfile } = props
-
-  const aboutMe = userProfile.aboutMe || 'no data'
 
   return (
     <>

@@ -45,7 +45,7 @@
     }
   }
 
-  &:active :not(:disabled) {
+  &:active:not(:disabled) {
     border-radius: 2px;
     border: 1px solid colors.$light-100;
     background: colors.$dark-500;

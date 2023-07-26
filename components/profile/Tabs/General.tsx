@@ -3,16 +3,19 @@ import { User } from '@/assets/api/auth/userSlice'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
-import { ProfileData } from '@/assets/api/user/userTypes'
+import { userProfile } from '@/assets/api/user/userTypes'
+import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 
 type GeneralType = {
-  userProfile: ProfileData
+  userProfile: userProfile
 }
 
 const General = (props: GeneralType) => {
   const { userProfile } = props
+  userProfile.aboutMe
 
-  const [updatedUserData, setUpdatedUserData] = useState<ProfileData>(userProfile)
+  const [updatedUserData, setUpdatedUserData] = useState<userProfile>(userProfile)
+  const [updateProfile] = useUpdateProfileMutation()
 
   const handleSave = async () => {
     const changedData: Partial<User> = {}
@@ -39,8 +42,8 @@ const General = (props: GeneralType) => {
 
     if (Object.keys(changedData).length > 0) {
       try {
-        // await updateProfile(changedData).unwrap()
-        // await refetchProfileData()
+        await updateProfile(changedData).unwrap()
+        // await refetchuserProfile()
       } catch (error) {
         alert(error)
       }

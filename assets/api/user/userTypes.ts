@@ -1,4 +1,4 @@
-export type ProfileData = {
+export type UserProfile = {
   id: number
   userName: string
   firstName: string
@@ -9,8 +9,8 @@ export type ProfileData = {
   avatars: userAvatar[]
 }
 
-//create generic for UpdateProfileData
-export type UpdateProfileData = {
+//create generic for UpdateuserProfile
+export type UpdateUserProfile = {
   userName?: string
   firstName?: string
   lastName?: string

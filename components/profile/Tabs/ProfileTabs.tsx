@@ -9,10 +9,10 @@ import Account from './Account'
 import Payments from './Payments'
 import { Tab } from './Tab/Tab'
 import style from './ProfileTabs.module.scss'
-import { ProfileData } from '@/assets/api/user/userTypes'
+import { userProfile } from '@/assets/api/user/userTypes'
 
 type ProfileTabs = {
-  userProfile: ProfileData
+  userProfile: userProfile
 }
 
 const ProfileTabs = (props: ProfileTabs) => {

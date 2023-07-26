@@ -16,9 +16,17 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<FormValuesType>()
   const disabled = Object.keys(errors).length === 0 ? false : true
+  const confirmPassword = {
+    validate: (val: string) => {
+      if (watch('password') != val) {
+        return "Your passwords do no match";
+      }
+    }
+  }
   return (
     <div className={style.registration}>
       {isLoading && (
@@ -73,7 +81,9 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password2', ValidatePassword) }}
+            validation={{
+              ...register('password2', confirmPassword)
+            }}
             placeholder="******************"
             label={translate('password_confirmation')}
           />

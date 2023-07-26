@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import authApi from '../assets/api/auth/authApi'
 import { handleGlobalError } from '@/hooks/handleGlobalError'
 import { userReducer } from '@/assets/api/auth/userSlice'
-import profileApi from '@/assets/api/user/profileApi_'
+import profileApi from '@/assets/api/user/profileQueryApi'
 
 export const store = configureStore({
   reducer: {

@@ -52,3 +52,11 @@ export const ValidatePassword = {
     message: '* Password must be longer than or equal to 6 characters',
   },
 }
+
+export const validatePassword = (val: any, watch: any) => {
+  if (watch('password') !== val) {
+    return "Your passwords do not match";
+  }
+};
+
+

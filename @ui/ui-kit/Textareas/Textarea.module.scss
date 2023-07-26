@@ -40,18 +40,33 @@
 
   &:focus {
     outline: 2px solid colors.$primary-700;
+    &::placeholder {
+      color: colors.$light-100;
+    }
   }
 
-  &:active {
+  &:active :not(:disabled) {
     border-radius: 2px;
     border: 1px solid colors.$light-100;
     background: colors.$dark-500;
+    &::placeholder {
+      color: colors.$light-100;
+    }
   }
 
   &.Error {
     border: 1px solid colors.$danger-300;
     &::placeholder {
       color: colors.$light-100;
+    }
+    &:focus {
+      outline: 2px solid colors.$danger-300;
+    }
+
+    &:active {
+      border-radius: 2px;
+      border: 1px solid colors.$light-100;
+      background: colors.$dark-500;
     }
   }
 }

@@ -3,7 +3,7 @@ import s from "./save.module.scss"
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 interface ComponentProps {
   croppedImageUrl: string | null;
-  setStatesСomponent: any
+  setStatesСomponent: (modalStates: string) => void
   setCroppedImageUrl: any
 }
 const ImgSave: React.FC<ComponentProps> = ({ croppedImageUrl, setStatesСomponent, setCroppedImageUrl }) => {

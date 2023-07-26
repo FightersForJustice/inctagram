@@ -4,7 +4,7 @@ import { ChangeEvent, useRef } from "react";
 
 interface ComponentProps {
   setUploadedImage: any;
-  setStatesСomponent: any
+  setStatesСomponent: (modalStates: string) => void
 }
 
 const StartImg: React.FC<ComponentProps> = ({ setUploadedImage, setStatesСomponent }) => {

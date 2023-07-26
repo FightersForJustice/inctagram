@@ -1,17 +1,17 @@
 import { baseUrl } from '@/assets/api/common.api'
 import { userRouts } from '@/components/common/User/userRouts'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ProfileData, UpdateProfileData } from './userTypes'
+import { userProfile, UpdateuserProfile } from './userTypes'
 import { ServerErrorResponse } from '../auth/authTypes'
 
-export const profileApi_ = createApi({
+export const profileQueryApi = createApi({
   reducerPath: 'profileApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query<ProfileData, void>({
+    getProfile: builder.query<userProfile, void>({
       query: () => ({
         url: userRouts.profile,
         method: 'GET',
@@ -20,7 +20,7 @@ export const profileApi_ = createApi({
         },
       }),
     }),
-    updateProfile: builder.mutation<void | ServerErrorResponse, UpdateProfileData>({
+    updateProfile: builder.mutation<void | ServerErrorResponse, UpdateuserProfile>({
       query: (userData) => ({
         url: userRouts.profile,
         method: 'PUT',
@@ -33,16 +33,6 @@ export const profileApi_ = createApi({
   }),
 })
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = profileApi_
+export const { useGetProfileQuery, useUpdateProfileMutation } = profileQueryApi
 
-export default profileApi_
-
-// // Implement the server-side rendering for profile data
-// export async function getServerSideProps() {
-//   const { data: profileData } = await useGetProfileQuery()
-//   return {
-//     props: {
-//       profileData,
-//     },
-//   }
-// }
+export default profileQueryApi

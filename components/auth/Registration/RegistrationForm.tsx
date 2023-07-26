@@ -1,7 +1,7 @@
 import style from './RegistrationForm.module.scss'
 import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
+import { ValidateUsername, ValidateEmail, ValidatePassword, validatePassword } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { FormValuesType, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
@@ -20,13 +20,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     formState: { errors },
   } = useForm<FormValuesType>()
   const disabled = Object.keys(errors).length === 0 ? false : true
-  const confirmPassword = {
-    validate: (val: string) => {
-      if (watch('password') != val) {
-        return "Your passwords do no match";
-      }
-    }
-  }
+
   return (
     <div className={style.registration}>
       {isLoading && (
@@ -82,8 +76,9 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{
-              ...register('password2', confirmPassword)
+              ...register('password2', { validate: (val) => validatePassword(val, watch) })
             }}
+
             placeholder="******************"
             label={translate('password_confirmation')}
           />

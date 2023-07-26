@@ -1,3 +1,5 @@
+import { profileApi } from '@/assets/api/user/profileApi'
+import { ProfileData } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { userRouts } from '@/components/common/User/userRouts'

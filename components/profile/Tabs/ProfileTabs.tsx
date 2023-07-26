@@ -9,8 +9,14 @@ import Account from './Account'
 import Payments from './Payments'
 import { Tab } from './Tab/Tab'
 import style from './ProfileTabs.module.scss'
+import { ProfileData } from '@/assets/api/user/userTypes'
 
-const ProfileTabs = () => {
+type ProfileTabs = {
+  userProfile: ProfileData
+}
+
+const ProfileTabs = (props: ProfileTabs) => {
+  const { userProfile } = props
   const router = useRouter()
   const [activeTab, setActiveTab] = useState('general')
 
@@ -19,6 +25,8 @@ const ProfileTabs = () => {
 
     router.replace(`${userRouts.profileSettings}?tab=${value}`)
   }
+
+  const aboutMe = userProfile.aboutMe || 'no data'
 
   return (
     <>
@@ -31,7 +39,7 @@ const ProfileTabs = () => {
               <Tab title="Account Management" value="account" />
               <Tab title="My Payments" value="payments" />
             </Tabs.List>
-            <Tabs.Content value="general">{activeTab === 'general' && <General />}</Tabs.Content>
+            <Tabs.Content value="general">{activeTab === 'general' && <General userProfile={userProfile} />}</Tabs.Content>
             <Tabs.Content value="devices">{activeTab === 'devices' && <Devices />}</Tabs.Content>
             <Tabs.Content value="account">{activeTab === 'account' && <Account />}</Tabs.Content>
             <Tabs.Content value="payments">{activeTab === 'payments' && <Payments />}</Tabs.Content>

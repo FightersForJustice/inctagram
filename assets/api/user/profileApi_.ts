@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ProfileData, UpdateProfileData } from './userTypes'
 import { ServerErrorResponse } from '../auth/authTypes'
 
-export const profileApi = createApi({
+export const profileApi_ = createApi({
   reducerPath: 'profileApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
@@ -33,9 +33,9 @@ export const profileApi = createApi({
   }),
 })
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = profileApi
+export const { useGetProfileQuery, useUpdateProfileMutation } = profileApi_
 
-export default profileApi
+export default profileApi_
 
 // // Implement the server-side rendering for profile data
 // export async function getServerSideProps() {

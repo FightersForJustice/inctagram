@@ -1,32 +1,38 @@
-import { useGetProfileQuery } from '@/assets/api/user/profileApi_'
+import { profileApi } from '@/assets/api/user/profileApi'
+import { ProfileData } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import ProfileTabs from '@/components/profile/Tabs/ProfileTabs'
-import { GetServerSideProps } from 'next'
 
-// Fetch data on the server-side using getServerSideProps
-// export async function getServerSideProps() {
-//   try {
-//     const { data } = await profileApi.endpoints.getProfile.initiate() // Fetch the profile data using RTKQ
-//     return {
-//       props: {
-//         userProfile: data, // Pass the fetched data as props
-//       },
-//     }
-//   } catch (error) {
-//     // Handle any errors that may occur during the data fetching
-//     return {
-//       props: {},
-//     }
-//   }
-// }
+export const getServerSideProps = async () => {
+  const userProfile = await profileApi.getProfile()
 
-const ProfileSettings = () => {
+  if (!userProfile) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      userProfile,
+    },
+  }
+}
+
+type ProfileType = {
+  userProfile: ProfileData
+}
+
+const ProfileSettings = (props: ProfileType) => {
+  const { userProfile } = props
+
+  const aboutMe = userProfile.aboutMe || 'no data'
+
   return (
     <>
       <PageWrapper>
-        <ProfileTabs />
-        {/* <ProfileTabs userProfile={userProfile} /> */}
+        <ProfileTabs userProfile={userProfile} />
       </PageWrapper>
     </>
   )

@@ -9,10 +9,10 @@ import Account from './Account'
 import Payments from './Payments'
 import { Tab } from './Tab/Tab'
 import style from './ProfileTabs.module.scss'
-import { userProfile } from '@/assets/api/user/userTypes'
+import { UserProfile } from '@/assets/api/user/userTypes'
 
 type ProfileTabs = {
-  userProfile: userProfile
+  userProfile: UserProfile
 }
 
 const ProfileTabs = (props: ProfileTabs) => {
@@ -25,8 +25,6 @@ const ProfileTabs = (props: ProfileTabs) => {
 
     router.replace(`${userRouts.profileSettings}?tab=${value}`)
   }
-
-  const aboutMe = userProfile.aboutMe || 'no data'
 
   return (
     <>

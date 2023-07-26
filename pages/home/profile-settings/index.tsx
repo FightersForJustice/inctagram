@@ -1,4 +1,4 @@
-import { useGetProfileQuery } from '@/assets/api/user/profileApi'
+import { useGetProfileQuery } from '@/assets/api/user/profileApi_'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import ProfileTabs from '@/components/profile/Tabs/ProfileTabs'

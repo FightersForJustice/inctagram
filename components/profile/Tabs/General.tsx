@@ -1,47 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '@/hooks'
-import { useGetProfileQuery, useUpdateProfileMutation } from '@/assets/api/user/profileApi'
-import { User, setUser } from '@/assets/api/auth/userSlice'
+import React, { useState } from 'react'
+import { User } from '@/assets/api/auth/userSlice'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
-import { GetServerSideProps } from 'next'
-
-// export const getServerSideProps = async () => {
-//   debugger
-
-//   const profileData = await useGetProfileQuery()
-
-//   if (!profileData) {
-//     return {
-//       notFound: true,
-//     }
-//   }
-
-//   return {
-//     props: {
-//       profileData,
-//     },
-//   }
-// }
-
-// type GeneralType = {
-//   profileData: User
-// }
-
-// const General = (props: GeneralType) => {
-//   const { profileData } = props
 
 const General = ({ profileData }: { profileData: User }) => {
-  console.log('render')
-
-  const dispatch = useAppDispatch()
-  const userData = useAppSelector((state) => state.user.userData)
-
-  // const { data: profileData } = useGetProfileQuery()
-  const refetchProfileData = useGetProfileQuery().refetch
-  const [updateProfile] = useUpdateProfileMutation()
-
   const [updatedUserData, setUpdatedUserData] = useState<User>(userData)
 
   const handleSave = async () => {
@@ -69,8 +32,8 @@ const General = ({ profileData }: { profileData: User }) => {
 
     if (Object.keys(changedData).length > 0) {
       try {
-        await updateProfile(changedData).unwrap()
-        await refetchProfileData()
+        // await updateProfile(changedData).unwrap()
+        // await refetchProfileData()
       } catch (error) {
         alert(error)
       }

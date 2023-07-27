@@ -3,50 +3,44 @@ import { User } from '@/assets/api/auth/userSlice'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
-import { userProfile } from '@/assets/api/user/userTypes'
+import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { serverAPI } from '@/assets/api/api'
 
 type GeneralType = {
-  userProfile: userProfile
+  userProfile: UserProfile
 }
 
-const General = (props: GeneralType) => {
-  const { userProfile } = props
-  userProfile.aboutMe
-
-  const [updatedUserData, setUpdatedUserData] = useState<userProfile>(userProfile)
+const General: React.FC<GeneralType> = ({ userProfile }) => {
+  const [updatedUserData, setUpdatedUserData] = useState<UserProfile>(userProfile)
   const [updateProfile] = useUpdateProfileMutation()
+  const [changedFields, setChangedFields] = useState<any>({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSave = async () => {
-    const changedData: Partial<User> = {}
+    try {
+      setIsLoading(true)
+      // Send separate requests for each changed field
+      const promises = Object.keys(changedFields).map(async (field) => {
+        const data: any = { [field]: changedFields[field] }
+        return updateProfile(data).unwrap()
+      })
 
-    if (updatedUserData.userName !== userProfile.userName) {
-      changedData.userName = updatedUserData.userName
-    }
+      await Promise.allSettled(promises)
+      await serverAPI.profile.getProfile()
+      setIsLoading(false)
 
-    if (updatedUserData.firstName !== userProfile.firstName) {
-      changedData.firstName = updatedUserData.firstName
-    }
+      // Update the local state with the new profile data
+      // (assuming serverAPI.profile.getProfile() returns the updated user profile data)
+      const updatedProfileData: any = await serverAPI.profile.getProfile()
+      setUpdatedUserData(updatedProfileData)
 
-    if (updatedUserData.lastName !== userProfile.lastName) {
-      changedData.lastName = updatedUserData.lastName
-    }
-
-    if (updatedUserData.city !== userProfile.city) {
-      changedData.city = updatedUserData.city
-    }
-
-    if (updatedUserData.aboutMe !== userProfile.aboutMe) {
-      changedData.aboutMe = updatedUserData.aboutMe
-    }
-
-    if (Object.keys(changedData).length > 0) {
-      try {
-        await updateProfile(changedData).unwrap()
-        // await refetchuserProfile()
-      } catch (error) {
-        alert(error)
-      }
+      // Optionally, you can also reset the changedFields state here
+      setChangedFields({})
+    } catch (error) {
+      setIsLoading(false)
+      alert('Sorry! Your data was not changed. Please reload the page')
     }
   }
 
@@ -56,14 +50,18 @@ const General = (props: GeneralType) => {
       ...prevData,
       [name]: value,
     }))
-  }
 
-  const aboutMe = userProfile.userName
-  const text = 'text'
+    // Add the changed data to the corresponding field in changedFields
+    setChangedFields((prevFields: any) => ({
+      ...prevFields,
+      [name]: value,
+    }))
+  }
 
   return (
     <>
-      <div>{aboutMe}</div>
+      {isLoading && <Loading />}
+
       <form className={style.form}>
         <FormInput label="Username" id="username" name="userName" value={updatedUserData.userName} onChange={handleInputChange} />
         <FormInput

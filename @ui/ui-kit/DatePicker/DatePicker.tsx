@@ -5,48 +5,42 @@ import './DatePicker.scss'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import { useTranslation } from 'react-i18next'
-import { Dispatch, useEffect, useState } from 'react'
-import dayjs from 'dayjs'
-// import { User } from '@/assets/api/auth/userSlice'
+import { Dispatch } from 'react'
 
 type DatePickerTypes = {
   value?: Date
-  // setValue: Dispatch<React.SetStateAction<User>>
   setValue: Dispatch<React.SetStateAction<any>>
-  isSavingToArray?: boolean
 }
 
-export const MainDatePicker = ({ value, setValue, isSavingToArray = false }: DatePickerTypes) => {
-  const { t } = useTranslation()
-  const [date, setDate] = useState(value ? value : null)
-
-  const handleChange = (value: Date) => {
+const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
+  return (value: Date) => {
     setValue((prevData: any) => ({
       ...prevData,
-      dateOfBirth: value,
+      [name]: value,
     }))
   }
+}
 
-  useEffect(() => {
-    if (!date) return
-    if (isSavingToArray) {
-      handleChange(date)
-    } else {
-      console.log(date)
-      setValue(date)
-    }
-  }, [date])
-
+export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
+  const { t } = useTranslation()
   return (
     <div className="UIKitDatePicker">
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
           showDaysOutsideCurrentMonth
           dayOfWeekFormatter={(day) => day}
-          onChange={(e: any) => setDate(e.$d)}
-          value={dayjs(date)}
+          onChange={(e: any) => setValue(e.$d)}
+          value={value ? value : null}       
         />
       </LocalizationProvider>
     </div>
   )
 }
+
+// export const TestComp = () => {
+//   const [test, setTest] = useState<{date?: Date}>({})
+//   return <div>
+//     <MainDatePicker value={test.date} setValue={saveToArray(setTest, 'dateOfBirth')} />
+//     <button onClick={() => console.log(test)}>test</button>
+//   </div>
+// }

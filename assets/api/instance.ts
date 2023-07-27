@@ -1,7 +1,8 @@
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 import axios from 'axios'
 
-const token = getAccessTokenFromCookie()
+// const token = getAccessTokenFromCookie() // берёт токен из кук
+const token = 'скопировать из application – cookie – accessToken'
 
 const instance = axios.create({
   baseURL: 'https://inctagram-api.vercel.app/api',

@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await serverAPI.profile.getProfile() //data приходит
+      await serverAPI.profile.getProfile() //данные приходят. можно проверить в network
     }
 
     fetchData()

@@ -1,12 +1,14 @@
 import axios from 'axios'
+import { getAccessTokenFromCookie } from '../../utils/cookies'
 
-const accessToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1NCwiaWF0IjoxNjkwMzYxMzIxLCJleHAiOjE2OTAzNjQ5MjF9.2fJg9w5nAw7MfQlqAA58OMZvtagicO-WwEnS1cJvLfk'
+const token = getAccessTokenFromCookie()
 
-export const instance = axios.create({
+const axiosInstance = axios.create({
   baseURL: 'https://inctagram-api.vercel.app/api',
   withCredentials: true,
   headers: {
-    Authorization: `Bearer ${accessToken}`,
+    Authorization: `Bearer ${token}`,
   },
 })
+
+export default axiosInstance

@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
-import { instance } from '../instance'
 import { userRouts } from '@/components/common/User/userRouts'
 import { UserProfile, UpdateUserProfile } from './userTypes'
+import instance from '../instance'
 
 export const profileAxiosApi = {
   getProfile() {

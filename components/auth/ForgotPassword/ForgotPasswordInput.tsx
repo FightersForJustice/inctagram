@@ -21,7 +21,7 @@ const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
         {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
       </div>
       <div className={style.error_message}>
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message && translate(errors.email.message)}</p>}
         {errors.recaptcha && <p>{errors.recaptcha.message}</p>}
         {serverError}
       </div>

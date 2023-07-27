@@ -31,7 +31,9 @@
     "Recovery_link_expired": "Password recovery link expired",
     "Recovery_link_expired_description": "Looks like the recovery link has expired. Not to worry, we can send the link again",
     "Resend_recovery_link": "Resend recovery link",
-    "Password_has_been_changed": "Your password has been successfully changed"
+    "Password_has_been_changed": "Your password has been successfully changed",
+    "Email_field_empty": "Email field is empty",
+    "Email_invalid": "Incorrect email format"
   },
   "merge_accounts": {
     "merger_of_accounts": "Merger of Accounts",

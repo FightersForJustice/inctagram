@@ -12,7 +12,7 @@ type DatePickerTypes = {
   setValue: Dispatch<React.SetStateAction<any>>
 }
 
-const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
+export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
   return (value: Date) => {
     setValue((prevData: any) => ({
       ...prevData,

@@ -11,21 +11,27 @@ import {
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
+import { getAccessTokenFromCookie } from '@/utils/cookies'
+
+const token = getAccessTokenFromCookie()
 
 const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
+    prepareHeaders: (headers, { getState }) => {
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
+      }
+      return headers
+    },
   }),
   endpoints: (builder) => ({
     me: builder.query<UserData | ServerErrorResponse, void>({
       query: () => ({
         url: authRouts.me,
         method: 'GET',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
       }),
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({

@@ -1,4 +1,4 @@
-import authApi from './auth/authApi'
+import authQueryApi from './auth/authQueryApi'
 import { authAxiosApi } from './user/authAxiosApi'
 import { profileAxiosApi } from './user/profileAxiosApi'
 import profileQueryApi from './user/profileQueryApi'
@@ -9,6 +9,6 @@ export const serverAPI = {
 }
 
 export const clientAPI = {
-  auth: authApi,
+  auth: authQueryApi,
   profile: profileQueryApi,
 }

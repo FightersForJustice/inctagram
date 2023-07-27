@@ -15,8 +15,8 @@ import { getAccessTokenFromCookie } from '@/utils/cookies'
 
 const token = getAccessTokenFromCookie()
 
-const authApi = createApi({
-  reducerPath: 'authApi',
+const authQueryApi = createApi({
+  reducerPath: 'authQueryApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
@@ -102,6 +102,6 @@ export const {
   useRecoveryCodeCheckMutation,
   usePasswordRecoverMutation,
   useLogoutMutation,
-} = authApi
+} = authQueryApi
 
-export default authApi
+export default authQueryApi

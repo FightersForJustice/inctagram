@@ -3,7 +3,7 @@ import { getAccessTokenFromCookie } from '../../utils/cookies'
 
 const token = getAccessTokenFromCookie()
 
-const axiosInstance = axios.create({
+const instance = axios.create({
   baseURL: 'https://inctagram-api.vercel.app/api',
   withCredentials: true,
   headers: {
@@ -11,4 +11,4 @@ const axiosInstance = axios.create({
   },
 })
 
-export default axiosInstance
+export default instance

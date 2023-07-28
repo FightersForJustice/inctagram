@@ -6,6 +6,7 @@ import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import { useTranslation } from 'react-i18next'
 import { Dispatch, useEffect, useState } from 'react'
+import classNames from 'classnames'
 
 type DatePickerTypes = {
   value?: Date
@@ -24,19 +25,21 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
 export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
-
+  const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
   useEffect(() => {
-    if(!setValue) return
+    if (!setValue) return
     setValue = setDate
   }, [])
   return (
-    <div className="UIKitDatePicker">
+    <div className={classNames('UIKitDatePicker', pickerState)}>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
+          onOpen={() => setPickerState('UIKitDatePicker--open')}
+          onClose={() => setPickerState('UIKitDatePicker--close')}
           showDaysOutsideCurrentMonth
           dayOfWeekFormatter={(day) => day}
           onChange={(e: any) => setValue && setValue(e.$d)}
-          value={value ? value : null}       
+          value={value ? value : null}
         />
       </LocalizationProvider>
     </div>

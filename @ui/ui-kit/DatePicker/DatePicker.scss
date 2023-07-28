@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .UIKitDatePicker {
+
   & .MuiInputBase-input {
     color: white;
     padding: 6px 12px;
@@ -9,6 +10,16 @@
     font-size: 16px;
     font-family: 'Inter';
     width: 110px;
+    z-index: 10;
+  }
+  &--open {
+    & .MuiInputBase-input {
+      width: 285px;
+    }
+    & fieldset{
+      padding-right: 320px;
+      
+    }
   }
 
   & .MuiOutlinedInput-notchedOutline {
@@ -17,15 +28,44 @@
     width: 158px;
   }
 
+  & .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: colors.$dark-100;
+      background-color: colors.$dark-500;
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: colors.$primary-700;
+    }
+
+    &.Mui-disabled .MuiOutlinedInput-notchedOutline {
+      border-color: colors.$dark-300;
+      background-color: colors.$dark-500;
+    }
+
+    &.Mui-error .MuiOutlinedInput-notchedOutline {
+      border-color: colors.$danger-500;
+    }
+
+    &.Mui-error {
+      -webkit-text-fill-color: colors.$danger-500;
+    }
+  }
+
+  & .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
+    -webkit-text-fill-color: colors.$light-900;
+  }
+
   & .MuiButtonBase-root {
     position: absolute;
     right: 22px;
     padding: 0;
     filter: invert(1);
+    z-index: 10;
   }
 
   & .MuiPickersLayout-root {
-    padding: 20px
+    padding: 20px;
   }
 }
 
@@ -60,13 +100,10 @@
   .MuiPickersDay-today {
     color: colors.$primary-500;
     font-weight: 400;
-  }
-
-  .css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
     border: none;
   }
 
-  .MuiPickersDay-today {
+  .css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
     border: none;
   }
 
@@ -90,19 +127,19 @@
     color: colors.$dark-300;
   }
 
-  .MuiPickersArrowSwitcher-button:hover {
-    background-color: colors.$dark-300;
-  }
-
+  .MuiPickersArrowSwitcher-button:hover,
   .MuiPickersCalendarHeader-switchViewButton:hover {
     background-color: colors.$dark-300;
   }
 
-  .MuiDayCalendar-monthContainer {
-    margin-top: 5px;
+  .MuiDayCalendar {
+    &-monthContainer {
+      margin-top: 5px;
+    }
+  
+    &-header {
+      margin-top: 10px;
+    }
   }
 
-  .MuiDayCalendar-header {
-    margin-top: 10px;
-  }
 }

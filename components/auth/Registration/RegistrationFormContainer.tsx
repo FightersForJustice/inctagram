@@ -22,7 +22,7 @@ const RegistrationFormContainer = () => {
       .then(() => {
         setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
       })
-      .catch((error: any) => {
+      .catch((error) => {
         if (error.status == 'FETCH_ERROR') {
           setPrintModal({ title: 'Error', content: 'error' })
         }

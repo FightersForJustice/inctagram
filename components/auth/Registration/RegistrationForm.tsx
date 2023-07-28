@@ -76,7 +76,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{
-              ...register('password2', { validate: (val) => confirmPassword(val, watch) })
+              ...register('password2', { validate: (value) => confirmPassword(value, watch) })
             }}
 
             placeholder="******************"

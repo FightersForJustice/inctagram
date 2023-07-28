@@ -53,8 +53,8 @@ export const ValidatePassword = {
   },
 }
 
-export const confirmPassword = (val: any, watch: any) => {
-  if (watch('password') !== val) {
+export const confirmPassword = (value: string, watch: (val: string) => string) => {
+  if (watch('password') !== value) {
     return "Your passwords do not match";
   }
 };

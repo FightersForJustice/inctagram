@@ -1,12 +1,13 @@
 @use '/@ui/design/settings/colors.scss' as s;
+@use '../../../@ui/design/settings/colors.scss' as colors;
 
 .modalContent {
   color: white;
 }
 .registration {
   max-width: 378px;
-  background-color: #171717;
-  border: 1px solid #333;
+  background-color: colors.$dark-500;
+  border: 1px solid colors.$dark-300;
   margin: 0 auto;
   .modal {
     position: fixed;
@@ -28,7 +29,7 @@
     }
   }
   h1 {
-    color: #fff;
+    color: colors.$light-100;
     text-align: center;
     font-family: Inter;
     font-size: 20px;
@@ -43,13 +44,13 @@
     padding: 0px 25px;
   }
   p {
-    color: #fff;
+    color: colors.$light-100;
     text-align: center;
     font-family: Inter;
     margin-top: 20px;
   }
   .SignIn {
-    color: #397df6;
+    color: colors.$primary-500;
     text-align: center;
     font-family: Inter;
     font-weight: 600;
@@ -62,7 +63,7 @@
       margin-top: 22px;
     }
     label {
-      color: #8d9094;
+      color: colors.$light-900;
       font-size: 14px;
       font-family: Inter;
       line-height: 24px;
@@ -70,10 +71,10 @@
     input {
       box-sizing: border-box; /*  ?  */
       border-radius: 2px;
-      border: 1px solid #4c4c4c;
-      background-color: #171717;
+      border: 1px solid colors.$dark-100;
+      background-color: colors.$dark-500;
       width: 100%;
-      color: #8d9094;
+      color: colors.$light-100;
       font-size: 16px;
       font-family: Inter;
       font-style: normal;
@@ -81,22 +82,22 @@
       line-height: 24px;
       padding: 8px 11px;
       &:active {
-        border: 1px solid #fff;
-        background: #171717;
-        color: #fff;
+        border: 1px solid colors.$light-100;
+        background: colors.$dark-500;
+        color: colors.$light-100;
       }
       &:hover {
-        border: 1px solid #8d9094;
+        border: 1px solid colors.$light-900;
       }
       &:disabled {
-        color: #4c4c4c;
+        color: colors.$dark-100;
       }
     }
     .error {
-      border: 1px solid red;
+      border: 1px solid colors.$danger-500;
     }
     .errorText {
-      color: red;
+      color: colors.$danger-500;
       margin: 4px 0px 0px 5px;
       text-align: left;
       font-size: 13px;
@@ -108,27 +109,27 @@
       font-weight: 600;
       line-height: 24px;
       border-radius: 2px;
-      background-color: #397df6;
-      color: #fff;
+      background-color: colors.$primary-500;
+      color: colors.$light-100;
       margin-top: 34px;
       cursor: pointer;
       border: 0;
       padding: 6px 0px;
       width: 100%;
       &:active {
-        background: #2f68cc;
-        color: #edf3fa;
+        background: colors.$primary-700;
+        color: colors.$light-500;
       }
       &:hover {
-        background: #73a5ff;
+        background: colors.$primary-100;
       }
       &:focus {
-        border: 2px solid #2f68cc;
-        background: #397df6;
+        border: 2px solid colors.$primary-700;
+        background: colors.$primary-500;
       }
       &:disabled {
-        color: #8d9094;
-        background: #234e99;
+        color: colors.$light-900;
+        background: colors.$primary-900;
       }
     }
   }

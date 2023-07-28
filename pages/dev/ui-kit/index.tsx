@@ -4,7 +4,6 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { MainDatePicker } from '@/@ui/ui-kit/DatePicker/DatePicker'
-import { useState } from 'react'
 
 export const getStaticProps = async () => {
   return {
@@ -13,7 +12,6 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
-  const [datePickerValue, setDatePickerValue] = useState(undefined)
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -45,7 +43,7 @@ const Login = () => {
 
             </div>
         </div>
-        <MainDatePicker value={datePickerValue} setValue={setDatePickerValue} />
+        <MainDatePicker />
       </div>
     </PageWrapper>
   )

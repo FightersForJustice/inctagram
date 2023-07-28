@@ -5,11 +5,11 @@ import './DatePicker.scss'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import { useTranslation } from 'react-i18next'
-import { Dispatch } from 'react'
+import { Dispatch, useEffect, useState } from 'react'
 
 type DatePickerTypes = {
   value?: Date
-  setValue: Dispatch<React.SetStateAction<any>>
+  setValue?: Dispatch<React.SetStateAction<any>>
 }
 
 export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
@@ -23,13 +23,19 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
 
 export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
   const { t } = useTranslation()
+  const [date, setDate] = useState(null)
+
+  useEffect(() => {
+    if(!setValue) return
+    setValue = setDate
+  }, [])
   return (
     <div className="UIKitDatePicker">
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
           showDaysOutsideCurrentMonth
           dayOfWeekFormatter={(day) => day}
-          onChange={(e: any) => setValue(e.$d)}
+          onChange={(e: any) => setValue && setValue(e.$d)}
           value={value ? value : null}       
         />
       </LocalizationProvider>

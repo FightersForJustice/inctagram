@@ -84,5 +84,15 @@
 
     "Password_must_be_at_least_8_characters_long": "Пароль должен быть не менее 8 символов",
     "Please_enter_your_password": "Пожалуйста введите ваш пароль"
+  },
+  "Sidebar": {
+    "Home": "Домой",
+    "Create": "Создать",
+    "Profile": "Мой Профиль",
+    "Messenger": "Мессенджер",
+    "Search": "Поиск",
+    "Statistics": "Статистика",
+    "Favorites": "Избранное",
+    "Logout": "Выйти"
   }
 }

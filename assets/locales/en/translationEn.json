@@ -83,5 +83,15 @@
 
     "Password_must_be_at_least_8_characters_long": "Password must be at least 8 characters long",
     "Please_enter_your_password": "Please enter your password"
+  },
+  "Sidebar": {
+    "Home": "Home",
+    "Create": "Create",
+    "Profile": "My Profile",
+    "Messenger": "Messenger",
+    "Search": "Search",
+    "Statistics": "Statistics",
+    "Favorites": "Favorites",
+    "Logout": "Log Out"
   }
 }

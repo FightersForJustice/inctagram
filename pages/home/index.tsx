@@ -1,4 +1,5 @@
 import { serverAPI } from '@/assets/api/api'
+import { UserData } from '@/assets/api/auth/authTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { authRouts } from '@/components/common/Auth/authRoutes'
@@ -25,7 +26,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 }
 
-const Home = () => {
+type HomeType = {
+  isAuth: UserData
+}
+
+const Home = (props: HomeType) => {
+  const {isAuth} = props
   const router = useRouter()
 
   const handleClick = () => {

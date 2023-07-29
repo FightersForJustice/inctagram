@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { serverAPI } from '@/assets/api/api'
 import { setAccessTokenCookie } from '@/utils/cookies'
+import { useLoginMutation } from '@/assets/api/auth/authQueryApi'
 
 type LoginParamsData = {
   email: string
@@ -17,25 +18,21 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`registration_form.${key}`)
   const [serverError, setServerError] = useState('')
+  const [loginMutation, { isLoading }] = useLoginMutation()
   const router = useRouter()
 
   const onSubmit = async (data: LoginParamsData) => {
     const { email, password } = data
-    try {
-      const response = await serverAPI.auth.login({ email, password })
-      const loginResponse = response as unknown as ServerLoginResponse
-      const accessToken = loginResponse.accessToken
 
-      setAccessTokenCookie(accessToken)
-
-      router.push('/home')
-    } catch (error) {
-      console.error(error)
-      setServerError('Login failed. Please try again.')
-    }
+    const response = await loginMutation({ email, password })
+      .unwrap()
+      .then((data) => {
+        const loginResponse = data as ServerLoginResponse
+        setAccessTokenCookie(loginResponse.accessToken)
+        router.push('/home')
+      })
   }
 
-  const isLoading = false
   return (
     <div className={style.content}>
       <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>

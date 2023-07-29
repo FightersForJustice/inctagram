@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import { parse } from 'cookie'
 import { NextApiRequest } from 'next'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
@@ -15,7 +15,7 @@ export const instance = axios.create({
 })
 
 //to get data inside getServerSideProps
-export const createAxiosServerInstance = (req: NextApiRequest) => {
+export const createAxiosServerInstance = (req: NextApiRequest): AxiosInstance => {
   const cookies = parse(req.headers.cookie || '')
   const accessToken = cookies.accessToken || ''
 

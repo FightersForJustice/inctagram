@@ -1,11 +1,10 @@
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { useRouter } from 'next/router'
 import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 import LoginForm from './LoginForm'
 import style from './LoginForm.module.scss'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { serverAPI } from '@/assets/api/api'
 import { setAccessTokenCookie } from '@/utils/cookies'
 import { useLoginMutation } from '@/assets/api/auth/authQueryApi'
 

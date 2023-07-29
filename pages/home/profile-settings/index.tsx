@@ -2,50 +2,28 @@ import { serverAPI } from '@/assets/api/api'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { authRouts } from '@/components/common/Auth/authRoutes'
 import ProfileTabs from '@/components/profile/Tabs/ProfileTabs'
+import { withAuth } from '@/utils/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  try {
-    const isAuth = await serverAPI.auth.meServer(req as NextApiRequest)
+export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
+  const userProfile = await serverAPI.profile.getProfileFromServer(req as NextApiRequest)
 
-    if (!isAuth) {
-      return {
-        redirect: {
-          destination: authRouts.notAuthorized,
-          permanent: false,
-        },
-      }
-    }
-
-    const userProfile = await serverAPI.profile.getProfileFromServer(req as NextApiRequest)
-
-    if (!userProfile) {
-      return {
-        notFound: true,
-      }
-    }
-
+  if (!userProfile) {
     return {
-      props: {
-        isAuth,
-        userProfile,
-      },
-    }
-  } catch (error) {
-    return {
-      redirect: {
-        destination: authRouts.notAuthorized,
-        permanent: false,
-      },
+      notFound: true,
     }
   }
-}
+
+  return {
+    props: {
+      userProfile,
+    },
+  }
+})
 
 type ProfileType = {
   userProfile: UserProfile
-  // isAuth: UserData // if needed
 }
 
 const ProfileSettings = (props: ProfileType) => {
@@ -61,4 +39,5 @@ const ProfileSettings = (props: ProfileType) => {
 }
 
 ProfileSettings.getLayout = getLayout
+
 export default ProfileSettings

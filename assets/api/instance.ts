@@ -1,20 +1,31 @@
-import { getAccessTokenFromCookie } from '@/utils/cookies'
 import axios from 'axios'
+import { parse } from 'cookie'
+import { NextApiRequest } from 'next'
+import { getAccessTokenFromCookie } from '@/utils/cookies'
 
-// const token = getAccessTokenFromCookie() // берёт токен из кук
-const token = 'скопировать из application – cookie – accessToken'
+const token = getAccessTokenFromCookie()
 
-const instance = axios.create({
+//to get client-side requests
+export const instance = axios.create({
   baseURL: 'https://inctagram-api.vercel.app/api',
   withCredentials: true,
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 })
 
-instance.interceptors.request.use((config) => {
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`
-  }
+//to get data inside getServerSideProps
+export const createAxiosServerInstance = (req: NextApiRequest) => {
+  const cookies = parse(req.headers.cookie || '')
+  const accessToken = cookies.accessToken || ''
 
-  return config
-})
+  const serverInstance = axios.create({
+    baseURL: 'https://inctagram-api.vercel.app/api',
+    withCredentials: true,
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
 
-export default instance
+  return serverInstance
+}

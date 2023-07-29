@@ -1,0 +1,9 @@
+{
+  "RegError": ".RegistrationForm_errorText__lvPSg",
+  "ButtonSignUp": ".RegistrationForm_button__tSfPn",
+  "Text": ".RegistrationForm_registration__GwDLx",
+  "Name": "[name = userName]",
+  "Mail":"[name = email]",
+  "Password":"[name = password]",
+  "Password2":"[name = password2]"
+}

@@ -2,32 +2,22 @@ import { serverAPI } from '@/assets/api/api'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
+import { authRouts } from '@/components/common/Auth/authRoutes'
 import ProfileTabs from '@/components/profile/Tabs/ProfileTabs'
-import { isAuth } from '@/utils/auth'
-import { GetServerSideProps } from 'next'
-import { parse } from 'cookie'
+import { checkAuth } from '@/utils/checkAuth'
+import { GetServerSideProps, NextApiRequest } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context
-
-  // console.log(' LOG cookies', req.cookies)
-  // console.log(' LOG headers', req.headers)
-  console.log('LOG REQEST', req)
-  console.log('LOG RESPONSE', res)
-
-  const cookies = parse(req.headers.cookie || '')
-  const token = cookies.accessToken
-
-  if (!token) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  if (!checkAuth()) {
     return {
       redirect: {
-        destination: '/not-authorized',
-        permanent: false,
+        destination: authRouts.notAuthorized,
+        permanent: true,
       },
     }
   }
 
-  const userProfile = await serverAPI.profile.getProfile()
+  const userProfile = await serverAPI.profile.getProfileFromServer(req as NextApiRequest)
 
   if (!userProfile) {
     return {

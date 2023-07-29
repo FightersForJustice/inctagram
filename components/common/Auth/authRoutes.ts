@@ -13,4 +13,6 @@ export const authRouts = {
   failedPasswordRecovery: '/auth/failed-recovery',
   successPasswordRecovery: '/auth/success-recovery',
   logout: '/auth/logout',
+
+  notAuthorized: '/not-authorized',
 }

@@ -1,5 +1,5 @@
 import authQueryApi from './auth/authQueryApi'
-import { authAxiosApi } from './user/authAxiosApi'
+import { authAxiosApi } from './auth/authAxiosApi'
 import { profileAxiosApi } from './user/profileAxiosApi'
 import profileQueryApi from './user/profileQueryApi'
 

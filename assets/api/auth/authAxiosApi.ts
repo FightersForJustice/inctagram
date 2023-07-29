@@ -1,6 +1,6 @@
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { AxiosResponse } from 'axios'
-import { UserData, ServerErrorResponse, LoginParamsData, ServerLoginResponse } from '../auth/authTypes'
+import { UserData, ServerErrorResponse, LoginParamsData, ServerLoginResponse } from './authTypes'
 import { createAxiosServerInstance, instance } from '../instance'
 import { NextApiRequest } from 'next'
 

@@ -1,22 +1,27 @@
+import { serverAPI } from '@/assets/api/api'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { userRouts } from '@/components/common/User/userRouts'
-import { checkAuth } from '@/utils/checkAuth'
+import { GetServerSideProps, NextApiRequest } from 'next'
 import { useRouter } from 'next/router'
 
-export const getServerSideProps = async () => {
-  if (!checkAuth()) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  try {
+    const isAuth = await serverAPI.auth.meServer(req as NextApiRequest)
+
+    return {
+      props: {
+        isAuth,
+      },
+    }
+  } catch (error) {
     return {
       redirect: {
         destination: authRouts.notAuthorized,
         permanent: false,
       },
     }
-  }
-
-  return {
-    props: {},
   }
 }
 

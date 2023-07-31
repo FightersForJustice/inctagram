@@ -4,7 +4,7 @@ import { getLayout } from '@/components/Layout/Layout'
 import { Validate } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { FormValuesType, RegistrationPropsType } from './type'
-import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
+import { PasswordInput, MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { authRouts } from '@/components/common/Auth/authRoutes'
@@ -39,46 +39,38 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
-            className={errors.userName || errorMessageName ? style.error : ''}
             validation={{ ...register('userName', Validate('username')) }}
             placeholder="Epam"
             label={translate('username')}
+            errormessages={[errors.userName?.message, errorMessageName?.message]}
           />
-          {errors.userName && <p className={style.errorText}>{errors.userName.message}</p>}
-          {errorMessageName ? <p className={style.errorText}>{errorMessageName.message}</p> : ''}
         </div>
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
-            className={errors.email || errorMessageEmail ? style.error : ''}
             validation={{ ...register('email', Validate('email')) }}
             placeholder="Epam@epam.com"
             label={translate('email')}
+            errormessages={[errors.email?.message, errorMessageEmail?.message]}
           />
-          {errors.email && <p className={style.errorText}>{errors.email.message}</p>}
-          {errorMessageEmail ? <p className={style.errorText}>{errorMessageEmail.message}</p> : ''}
         </div>
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
-            className={errors.password || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password', Validate('password')) }}
             placeholder="******************"
             label={translate('password')}
+            errormessages={[errors.password?.message, errorMessagePassword?.message]}
           />
-          {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
-          {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
-            className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password2', Validate('password')) }}
             placeholder="******************"
             label={translate('password_confirmation')}
+            errormessages={[errors.password2?.message, errorMessagePassword?.message]}
           />
-          {errors.password2 && <p className={style.errorText}>{errors.password2.message}</p>}
-          {errorMessagePassword ? <p className={style.errorText}>{errorMessagePassword.message}</p> : ''}
         </div>
         <div>
           <button className={style.button} onClick={handleSubmit(onSubmit)} disabled={disabled}>

@@ -1,5 +1,5 @@
 import style from './NewPassword.module.scss'
-import { PasswordInput } from '../../common/Inputs/Inputs'
+import { PasswordInput } from '../../../@ui/ui-kit/Inputs/Inputs'
 import { ValidatePassword } from './validate'
 import { MainButton } from '@/components/common/Buttons/Buttons'
 import { INewPasswordProps } from './newPasswordTypes'
@@ -49,9 +49,8 @@ const NewPassword = (props: INewPasswordProps) => {
               id="password"
               label={translate('New_password')}
               placeholder="****************"
-              style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
+              errormessages={[errors.confirmPassword && errors.password && 'Error!']}
             />
-            {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
           <div className={style.input_wrapper}>
             <PasswordInput
@@ -65,9 +64,8 @@ const NewPassword = (props: INewPasswordProps) => {
               id="confirmPassword"
               label={translate('Password_confirmation')}
               placeholder="***************"
-              style={errors.confirmPassword && errors.password && { border: '1px solid red' }}
+              errormessages={[errors.confirmPassword && errors.password && 'Error!']}
             />
-            {errors.confirmPassword && errors.password && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
           </div>
 
           <div className={style.error_message}>

@@ -8,6 +8,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  .close {
+    border-radius: 50%;
+    background-color: red;
+    width: 29px;
+    height: 29px;
+    border: 6px solid #0D0D0D;
+    position: absolute;
+    top: 9px;
+    right: 18px;
+    z-index: 2;
+    cursor: pointer;
+
+    .img {
+      width: 17px;
+    }
+  }
 
   .avatar {
     width: 192px;
@@ -15,6 +33,8 @@
     background-color: #171717;
     border-radius: 50%;
     position: relative;
+
+
 
     .img {
       width: 100%;

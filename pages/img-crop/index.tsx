@@ -44,6 +44,9 @@ const ImgCrop = () => {
           /> : ""}
         </Modal>
         <div className={s.avatarBloc}>
+          <div className={s.close}>
+            <img className={s.img} src="icons/close.svg" alt="Close" />
+          </div>
           {img == "" ?
             <div className={s.avatar}>
               <img className={s.icon} src="icons/image-outline.svg" alt="img" />

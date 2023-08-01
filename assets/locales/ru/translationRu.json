@@ -33,12 +33,14 @@
     "Password_has_been_changed": "Ваш пароль был успешно изменен"
   },
   "merge_accounts": {
+    "error_title": "Ошибка",
+    "error_message": "Ошибка повторите запрос",
     "merger_of_accounts": "Объеденить учетные записи",
     "the_user_with_email_Epam@epam.com_is_already_in_the_system_could_we_merge_this_accounts": "Пользователь с электронной почтой Epam@epam.com уже находится в системе. Можем ли мы объединить эти аккаунты?",
     "yes_merge": "Да, объединить",
     "no": "Нет",
     "Email_sent": "Письмо отправлено",
-    "confirm_message": "Мы отправили ссылку для подтверждения вашего адреса электронной почты на адрес epam@epam.com"
+    "confirm_message": "Мы отправили ссылку для подтверждения вашего адреса электронной почты на адрес {email}"
   },
   "success": {
     "Congratulations": "Поздравляем!",

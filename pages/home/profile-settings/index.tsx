@@ -1,4 +1,4 @@
-import { serverAPI } from '@/assets/api/api'
+import { axiosAPI } from '@/assets/api/api'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
@@ -7,7 +7,7 @@ import { withAuth } from '@/utils/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
-  const userProfile = await serverAPI.profile.getProfileFromServer(req as NextApiRequest)
+  const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest)
 
   if (!userProfile) {
     return {

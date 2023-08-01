@@ -1,4 +1,4 @@
-import { serverAPI } from '@/assets/api/api'
+import { axiosAPI } from '@/assets/api/api'
 import { GetServerSideProps, NextApiRequest } from 'next'
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 export const hideWhenAuth: GetServerSideProps<Props> = async ({ req }) => {
   try {
-    const isAuth = await serverAPI.auth.meServer(req as NextApiRequest)
+    const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
 
     if (isAuth) {
       return {

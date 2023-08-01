@@ -1,4 +1,4 @@
-import { serverAPI } from '@/assets/api/api'
+import { axiosAPI } from '@/assets/api/api'
 import { UserData } from '@/assets/api/auth/authTypes'
 import { getLayout } from '@/components/Layout/Layout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'

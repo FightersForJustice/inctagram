@@ -6,7 +6,7 @@ import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { serverAPI } from '@/assets/api/api'
+import { axiosAPI } from '@/assets/api/api'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -28,12 +28,12 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       })
 
       await Promise.allSettled(promises)
-      await serverAPI.profile.getProfile()
+      await axiosAPI.profile.getProfile()
       setIsLoading(false)
 
       // Update the local state with the new profile data
-      // (assuming serverAPI.profile.getProfile() returns the updated user profile data)
-      const updatedProfileData: any = await serverAPI.profile.getProfile()
+      // (assuming axiosAPI.profile.getProfile() returns the updated user profile data)
+      const updatedProfileData: any = await axiosAPI.profile.getProfile()
       setUpdatedUserData(updatedProfileData)
 
       // Optionally, you can also reset the changedFields state here

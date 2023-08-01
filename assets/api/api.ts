@@ -3,7 +3,7 @@ import { authAxiosApi } from './auth/authAxiosApi'
 import { profileAxiosApi } from './user/profileAxiosApi'
 import profileQueryApi from './user/profileQueryApi'
 
-export const serverAPI = {
+export const axiosAPI = {
   auth: authAxiosApi,
   profile: profileAxiosApi,
 }

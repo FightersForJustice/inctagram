@@ -1,12 +1,12 @@
 import { NextPageWithLayout } from './_app'
 import { getLayout } from '@/components/Layout/Layout'
 import { GetServerSideProps, NextApiRequest } from 'next'
-import { serverAPI } from '@/assets/api/api'
+import { axiosAPI } from '@/assets/api/api'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   try {
-    const isAuth = await serverAPI.auth.meServer(req as NextApiRequest)
+    const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
 
     if (!isAuth) {
       return {

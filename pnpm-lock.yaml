@@ -21,7 +21,7 @@ dependencies:
     specifier: 18.2.6
     version: 18.2.6
   caniuse-lite:
-    specifier: ^1.0.30001518
+    specifier: ^1.0.30001517
     version: 1.0.30001518
   classnames:
     specifier: ^2.3.2

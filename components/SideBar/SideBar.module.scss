@@ -1,0 +1,32 @@
+.sidebar_container {
+  height: 660px;
+  border-right: 1px solid #333333;
+}
+
+.sidebar_container a {
+  width: 180px;
+  padding: 10px 0;
+  margin:0 20px;
+  div {
+  margin-left: 40px;
+  }
+
+  .Text {
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
+
+.main_container {
+  padding-top: 62px;
+}
+
+.secondary_container {
+  margin-top: 36px;
+}
+
+.logout_container {
+  margin-top: 156px;
+}

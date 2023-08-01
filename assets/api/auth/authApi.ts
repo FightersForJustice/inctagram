@@ -83,6 +83,16 @@ export const authApi = createApi({
         method: 'POST',
       }),
     }),
+    avatarAdd: builder.mutation({
+      query: (file) => ({
+        url: authRouts.avatarAdd,
+        method: 'POST',
+        body: file,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }),
+    }),
   }),
 })
 
@@ -96,6 +106,7 @@ export const {
   useRecoveryCodeCheckMutation,
   usePasswordRecoverMutation,
   useLogoutMutation,
+  useAvatarAddMutation,
 } = authApi
 
 export default authApi

@@ -65,7 +65,7 @@ const CropImg: React.FC<ComponentProps> = ({ crop, uploadedImage, setCrop, setCr
           <img src={uploadedImage} />
         </ReactCrop>
         <div className={s.buttons}>
-          <Button color={BUTTON_COLORS.BASIC} text="Назад" onClick={back}></Button>
+          <Button color={BUTTON_COLORS.OUTLINED} text="Назад" onClick={back}></Button>
           <Button text="Обрезать" onClick={Crop}></Button>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { axiosAPI } from '@/assets/api/api'
+import { Button } from '@/@ui/ui-kit/Button/Button'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -95,11 +96,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
           onChange={handleInputChange}
         />
 
-        <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
-          <button type="button" onClick={handleSave} className="Button green">
-            Save changes
-          </button>
-        </div>
+        <Button text="Save changes" onClick={handleSave} disabled={isLoading} />
       </form>
     </>
   )

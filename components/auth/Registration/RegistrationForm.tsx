@@ -1,7 +1,7 @@
 import style from './RegistrationForm.module.scss'
 import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { ValidateUsername, ValidateEmail, ValidatePassword } from '../Login/validate'
+import { Validate } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { FormValuesType, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
@@ -40,7 +40,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.userName || errorMessageName ? style.error : ''}
-            validation={{ ...register('userName', ValidateUsername) }}
+            validation={{ ...register('userName', Validate('username')) }}
             placeholder="Epam"
             label={translate('username')}
           />
@@ -51,7 +51,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.email || errorMessageEmail ? style.error : ''}
-            validation={{ ...register('email', ValidateEmail) }}
+            validation={{ ...register('email', Validate('email')) }}
             placeholder="Epam@epam.com"
             label={translate('email')}
           />
@@ -62,7 +62,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password', ValidatePassword) }}
+            validation={{ ...register('password', Validate('password')) }}
             placeholder="******************"
             label={translate('password')}
           />
@@ -73,7 +73,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password2', ValidatePassword) }}
+            validation={{ ...register('password2', Validate('password')) }}
             placeholder="******************"
             label={translate('password_confirmation')}
           />

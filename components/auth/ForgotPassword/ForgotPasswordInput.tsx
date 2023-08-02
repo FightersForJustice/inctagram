@@ -16,9 +16,7 @@ const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
           validation={{ ...register('email', ValidateEmail) }}
           id="email"
           label={translate('email')}
-          style={errors.email && { border: '1px solid red' }}
         />
-        {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
       </div>
       <div className={style.error_message}>
         {errors.email && <p>{errors.email.message}</p>}

@@ -13,10 +13,14 @@ type GeneralType = {
   userProfile: UserProfile
 }
 
+type ChangedFields = {
+  [field: string]: string
+}
+
 const General: React.FC<GeneralType> = ({ userProfile }) => {
   const [updatedUserData, setUpdatedUserData] = useState<UserProfile>(userProfile)
   const [updateProfile] = useUpdateProfileMutation()
-  const [changedFields, setChangedFields] = useState<any>({})
+  const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -25,7 +29,9 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       setIsLoading(true)
       // Send separate requests for each changed field
       const promises = Object.keys(changedFields).map(async (field) => {
-        const data: any = { [field]: changedFields[field] }
+        const data = { [field]: changedFields[field] }
+        console.log(data)
+
         return updateProfile(data).unwrap()
       })
 
@@ -34,11 +40,9 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       setIsLoading(false)
 
       // Update the local state with the new profile data
-      // (assuming axiosAPI.profile.getProfile() returns the updated user profile data)
-      const updatedProfileData: any = await axiosAPI.profile.getProfile()
+      const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
       setUpdatedUserData(updatedProfileData)
 
-      // Optionally, you can also reset the changedFields state here
       setChangedFields({})
     } catch (error) {
       setIsLoading(false)
@@ -54,7 +58,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
     }))
 
     // Add the changed data to the corresponding field in changedFields
-    setChangedFields((prevFields: any) => ({
+    setChangedFields((prevFields: ChangedFields) => ({
       ...prevFields,
       [name]: value,
     }))

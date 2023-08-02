@@ -1,5 +1,5 @@
-@use '/styles/library' as s;
-@use 'styles/mixin' as m;
+@use '@ui/design/settings/colors.scss' as s;
+@use '@ui/design/settings/mixin' as m;
 
 .tab {
   @include m.h3;

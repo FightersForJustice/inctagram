@@ -1,4 +1,4 @@
-@use '/styles/library' as s;
+@use '@ui/design/settings/colors.scss' as s;
 
 .container {
   display: flex;
@@ -16,7 +16,7 @@
 .TabsList {
   flex-shrink: 0;
   display: flex;
-  border-bottom: 1px solid s.$primary-500;
+  // border-bottom: 1px solid c.$primary-500;
   width: 726px;
   height: 36px;
 }

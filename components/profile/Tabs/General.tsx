@@ -8,6 +8,7 @@ import { Loading } from '@/components/common/Loaders/Loading'
 import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
+import { useTranslation } from 'react-i18next'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -23,6 +24,9 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`profile_settings__general.${key}`)
 
   const handleSave = async () => {
     try {
@@ -68,21 +72,21 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
 
       <form className={style.form}>
         <FormInput
-          label="Username"
+          label={translate('username')}
           id="username"
-          name="userName"
+          name={'userName'}
           value={updatedUserProfile.userName}
           onChange={handleInputChange}
         />
         <FormInput
-          label="First Name"
+          label={translate('firstName')}
           id="first-name"
           name="firstName"
           value={updatedUserProfile.firstName}
           onChange={handleInputChange}
         />
         <FormInput
-          label="Last Name"
+          label={translate('lastName')}
           id="last-name"
           name="lastName"
           value={updatedUserProfile.lastName}
@@ -91,27 +95,27 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
 
         <fieldset className={style.Fieldset}>
           <label className={commonStyle.Label} htmlFor="date">
-            Date of Birth
+            {translate('dateOfBirth')}
           </label>
           <input className={commonStyle.Input} id="date" type="date" />
         </fieldset>
 
-        <FormInput label="City" id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
+        <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
         <FormTextarea
-          label="About Me"
+          label={translate('aboutMe')}
           id="aboutMe"
           name="aboutMe"
           value={updatedUserProfile.aboutMe}
           onChange={handleInputChange}
         />
 
-        <Button text="Save changes" onClick={handleSave} disabled={isLoading} />
+        <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
       </form>
 
       {isModalOpen && (
         <Modal
-          title="Sorry!"
-          content="Your data was not changed. Please reload the page."
+          title={translate('modal_error_title')}
+          content={translate('modal_error_content')}
           onClose={() => setIsModalOpen(false)}
         />
       )}

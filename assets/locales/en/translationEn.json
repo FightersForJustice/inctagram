@@ -87,5 +87,13 @@
     "Statistics": "Statistics",
     "Favorites": "Favorites",
     "Logout": "Log Out"
+  },
+  "profile_settings": {
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "dateOfBirth": "Date of Birth",
+    "city": "City",
+    "aboutMe": "About me"
   }
 }

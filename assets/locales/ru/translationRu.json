@@ -87,5 +87,13 @@
     "Statistics": "Статистика",
     "Favorites": "Избранное",
     "Logout": "Выйти"
+  },
+  "profile_settings": {
+    "username": "Ник",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "dateOfBirth": "Дата рождения",
+    "city": "Город",
+    "aboutMe": "Обо мне"
   }
 }

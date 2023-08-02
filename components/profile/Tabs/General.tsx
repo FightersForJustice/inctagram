@@ -18,8 +18,8 @@ type ChangedFields = {
 }
 
 const General: React.FC<GeneralType> = ({ userProfile }) => {
-  const [updatedUserData, setUpdatedUserData] = useState<UserProfile>(userProfile)
   const [updateProfile] = useUpdateProfileMutation()
+  const [updatedUserProfile, setUpdatedUserProfile] = useState<UserProfile>(userProfile)
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -27,23 +27,21 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const handleSave = async () => {
     try {
       setIsLoading(true)
+
       // Send separate requests for each changed field
       const promises = Object.keys(changedFields).map(async (field) => {
         const data = { [field]: changedFields[field] }
-        console.log(data)
-
         return updateProfile(data).unwrap()
       })
 
       await Promise.allSettled(promises)
       await axiosAPI.profile.getProfile()
-      setIsLoading(false)
 
-      // Update the local state with the new profile data
       const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
-      setUpdatedUserData(updatedProfileData)
+      setUpdatedUserProfile(updatedProfileData)
 
       setChangedFields({})
+      setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
       setIsModalOpen(true)
@@ -52,7 +50,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target
-    setUpdatedUserData((prevData) => ({
+    setUpdatedUserProfile((prevData) => ({
       ...prevData,
       [name]: value,
     }))
@@ -69,19 +67,25 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       {isLoading && <Loading />}
 
       <form className={style.form}>
-        <FormInput label="Username" id="username" name="userName" value={updatedUserData.userName} onChange={handleInputChange} />
+        <FormInput
+          label="Username"
+          id="username"
+          name="userName"
+          value={updatedUserProfile.userName}
+          onChange={handleInputChange}
+        />
         <FormInput
           label="First Name"
           id="first-name"
           name="firstName"
-          value={updatedUserData.firstName}
+          value={updatedUserProfile.firstName}
           onChange={handleInputChange}
         />
         <FormInput
           label="Last Name"
           id="last-name"
           name="lastName"
-          value={updatedUserData.lastName}
+          value={updatedUserProfile.lastName}
           onChange={handleInputChange}
         />
 
@@ -92,8 +96,14 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
           <input className={commonStyle.Input} id="date" type="date" />
         </fieldset>
 
-        <FormInput label="City" id="city" name="city" value={updatedUserData.city} onChange={handleInputChange} />
-        <FormTextarea label="About Me" id="aboutMe" name="aboutMe" value={updatedUserData.aboutMe} onChange={handleInputChange} />
+        <FormInput label="City" id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
+        <FormTextarea
+          label="About Me"
+          id="aboutMe"
+          name="aboutMe"
+          value={updatedUserProfile.aboutMe}
+          onChange={handleInputChange}
+        />
 
         <Button text="Save changes" onClick={handleSave} disabled={isLoading} />
       </form>

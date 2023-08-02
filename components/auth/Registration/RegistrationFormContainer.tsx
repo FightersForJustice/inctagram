@@ -1,6 +1,6 @@
 import RegistrationForm from './RegistrationForm'
 import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
-import { useRegistrationMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
 

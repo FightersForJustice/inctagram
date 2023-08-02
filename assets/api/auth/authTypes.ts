@@ -20,7 +20,7 @@ export type recoveryCodeCheckParamsData = {
 }
 
 //server response
-export type ServerMeResponse = {
+export type UserData = {
   userId: number
   userName: string
   email: string

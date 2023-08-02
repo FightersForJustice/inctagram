@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:production": "pnpm run build",
+    "build:production": "yarn run build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|scss|md)\""

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { User } from '@/assets/api/auth/userSlice'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '../../common/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
@@ -8,6 +7,7 @@ import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
+import { Modal } from '@/components/common/Modal/Modal'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -18,6 +18,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const [updateProfile] = useUpdateProfileMutation()
   const [changedFields, setChangedFields] = useState<any>({})
   const [isLoading, setIsLoading] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSave = async () => {
     try {
@@ -41,7 +42,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       setChangedFields({})
     } catch (error) {
       setIsLoading(false)
-      alert('Sorry! Your data was not changed. Please reload the page')
+      setIsModalOpen(true)
     }
   }
 
@@ -88,16 +89,18 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
         </fieldset>
 
         <FormInput label="City" id="city" name="city" value={updatedUserData.city} onChange={handleInputChange} />
-        <FormTextarea
-          label=" About Me"
-          id="aboutMe"
-          name="aboutMe"
-          value={updatedUserData.aboutMe}
-          onChange={handleInputChange}
-        />
+        <FormTextarea label="About Me" id="aboutMe" name="aboutMe" value={updatedUserData.aboutMe} onChange={handleInputChange} />
 
         <Button text="Save changes" onClick={handleSave} disabled={isLoading} />
       </form>
+
+      {isModalOpen && (
+        <Modal
+          title="Sorry!"
+          content="Your data was not changed. Please reload the page."
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </>
   )
 }

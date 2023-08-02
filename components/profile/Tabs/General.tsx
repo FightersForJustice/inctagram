@@ -24,6 +24,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
 

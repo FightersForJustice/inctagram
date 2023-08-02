@@ -13,7 +13,7 @@ export const withAuth = <P extends {}>(getServerSidePropsFunc: GetServerSideProp
       if (!isAuth) {
         return {
           redirect: {
-            destination: authRouts.notAuthorized,
+            destination: authRouts.login,
             permanent: false,
           },
         }
@@ -23,7 +23,7 @@ export const withAuth = <P extends {}>(getServerSidePropsFunc: GetServerSideProp
     } catch (error) {
       return {
         redirect: {
-          destination: authRouts.notAuthorized,
+          destination: authRouts.login,
           permanent: false,
         },
       }

@@ -7,7 +7,7 @@ const token = getAccessTokenFromCookie()
 
 //to get client-side requests
 export const instance = axios.create({
-  baseURL: 'https://inctagram-api.vercel.app/api',
+  baseURL: 'https://inctagram.work/api/',
   withCredentials: true,
   headers: {
     Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ export const createAxiosServerInstance = (req: NextApiRequest): AxiosInstance =>
   const accessToken = cookies.accessToken || ''
 
   const serverInstance = axios.create({
-    baseURL: 'https://inctagram-api.vercel.app/api',
+    baseURL: 'https://inctagram.work/api/',
     withCredentials: true,
     headers: {
       Authorization: `Bearer ${accessToken}`,

@@ -5,14 +5,14 @@ import { ServerErrorResponse } from '../auth/authTypes'
 import { UpdateUserProfile, UserProfile } from './userTypes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 
-const token = getAccessTokenFromCookie()
-
 export const profileQueryApi = createApi({
   reducerPath: 'profileApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
+      const token = getAccessTokenFromCookie()
+
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

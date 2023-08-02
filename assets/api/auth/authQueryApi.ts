@@ -13,14 +13,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 
-const token = getAccessTokenFromCookie()
-
 const authQueryApi = createApi({
   reducerPath: 'authQueryApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
+      const token = getAccessTokenFromCookie()
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

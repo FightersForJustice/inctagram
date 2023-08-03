@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { useLoginMutation } from '@/assets/api/auth/authApi'
 import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 import LoginForm from './LoginForm'
-import style from './LoginForm.module.scss'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -42,9 +41,7 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   }
 
   return (
-    <div className={style.content}>
-      <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>
-    </div>
+    <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>
   )
 }
 

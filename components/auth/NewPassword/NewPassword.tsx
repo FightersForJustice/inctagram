@@ -1,10 +1,12 @@
 import style from './NewPassword.module.scss'
 import { PasswordInput } from '../../../@ui/ui-kit/Inputs/Inputs'
 import { ValidatePassword } from './validate'
-import { MainButton } from '@/components/common/Buttons/Buttons'
 import { INewPasswordProps } from './newPasswordTypes'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { useTranslation } from 'react-i18next'
+import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
+import classNames from 'classnames'
+import { Button } from '@/@ui/ui-kit/Button/Button'
 
 const NewPassword = (props: INewPasswordProps) => {
   const { t } = useTranslation()
@@ -24,19 +26,18 @@ const NewPassword = (props: INewPasswordProps) => {
   } = props
 
   return (
-    <div className={style.mainContainer}>
-      <div className={style.form_wrapper}>
+    <div className={authStyle.authContainer}>
         {isLoaderShown && (
-          <div className={style.modal}>
+          <div className={authStyle.loading}>
             <Loading />
           </div>
         )}
         <form
-          className={style.FormRoot}
+          className={classNames(authStyle.authForm, style.authForm)}
           onSubmit={handleSubmit(onSubmit)}
           style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}
         >
-          <h1 className={style.header}>{translate('Create_New_Password')}</h1>
+          <h1 className={authStyle.header}>{translate('Create_new_password')}</h1>
           <div className={style.input_wrapper}>
             <PasswordInput
               validation={{
@@ -48,7 +49,7 @@ const NewPassword = (props: INewPasswordProps) => {
               key="password"
               id="password"
               label={translate('New_password')}
-              placeholder="****************"
+              placeholder="******************"
               errormessages={[errors.confirmPassword && errors.password && 'Error!']}
             />
           </div>
@@ -63,25 +64,27 @@ const NewPassword = (props: INewPasswordProps) => {
               key="confirmPassword"
               id="confirmPassword"
               label={translate('Password_confirmation')}
-              placeholder="***************"
+              placeholder="******************"
               errormessages={[errors.confirmPassword && errors.password && 'Error!']}
             />
           </div>
 
-          <div className={style.error_message}>
-            {errors.password && errors.password.type === 'value' && <p>Passwords doesn't match</p>}
-            {errors.password && errors.confirmPassword && <p>{errors.password.message}</p>}
-            {serverError}
+          <div>
+            {errors.password && errors.password.type === 'value' && <p className={style.error_message}>{translate('Passwords_doesnt_match')}</p>}
+            {errors.password?.message && errors.confirmPassword
+            ? <p className={style.error_message}>{translate(errors.password.message)}</p>
+            : <p className={style.hint_message}>{translate('password_hint')}</p>}
           </div>
-          <MainButton
-            onClick={() => onSubmit}
-            title={translate('Create_New_Password')}
-            disabled={false}
-            style={{ width: '100%', marginTop: '30px' }}
+          <div className={style.button_wrapper}>
+          <Button
+            onClick={handleSubmit(onSubmit)}
+            text={translate('Create_new_password')}
+            disabled={isLoaderShown}
+            color='Primary'
           />
+          </div>
         </form>
       </div>
-    </div>
   )
 }
 

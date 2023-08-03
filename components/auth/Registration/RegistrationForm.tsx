@@ -8,6 +8,10 @@ import { PasswordInput, MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { authRouts } from '@/components/common/Auth/authRoutes'
+import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
+import { Button } from '@/@ui/ui-kit/Button/Button'
+import classNames from 'classnames'
+import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -20,23 +24,18 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   } = useForm<FormValuesType>()
   const disabled = Object.keys(errors).length === 0 ? false : true
   return (
-    <div className={style.registration}>
+    <div className={authStyle.authContainer}>
       {isLoading && (
-        <div className={style.modal}>
+        <div className={authStyle.loading}>
           <Loading />
         </div>
       )}
-      <h1>{translate('sign_up')}</h1>
-      <div className={style.item}>
-        <Link href="" className={style.link}>
-          <img src="/img/google-svg.svg" alt="google.com" />
-        </Link>
-        <Link href="" className={style.link}>
-          <img src="/img/github-svg.svg" alt="github.com" />
-        </Link>
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={style.block}>
+      <form onSubmit={handleSubmit(onSubmit)} className={authStyle.authForm}>
+        <h1 className={classNames(authStyle.header, style.header)}>{translate('sign_up')}</h1>
+        <div className={style.logoWrapper}>
+          <AuthLogoGroup />
+        </div>
+        <div className={style.inputWrapper}>
           <MainInput
             onClick={ArrayErrorMessager}
             validation={{ ...register('userName', Validate('username')) }}
@@ -45,7 +44,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.userName?.message, errorMessageName?.message]}
           />
         </div>
-        <div className={style.block}>
+        <div className={style.inputWrapper}>
           <MainInput
             onClick={ArrayErrorMessager}
             validation={{ ...register('email', Validate('email')) }}
@@ -54,7 +53,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.email?.message, errorMessageEmail?.message]}
           />
         </div>
-        <div className={style.block}>
+        <div className={style.inputWrapper}>
           <PasswordInput
             onClick={ArrayErrorMessager}
             validation={{ ...register('password', Validate('password')) }}
@@ -63,7 +62,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.password?.message, errorMessagePassword?.message]}
           />
         </div>
-        <div className={style.block}>
+        <div className={style.inputWrapper}>
           <PasswordInput
             onClick={ArrayErrorMessager}
             validation={{ ...register('password2', Validate('password')) }}
@@ -72,16 +71,14 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.password2?.message, errorMessagePassword?.message]}
           />
         </div>
-        <div>
-          <button className={style.button} onClick={handleSubmit(onSubmit)} disabled={disabled}>
-            {translate('sign_up')}
-          </button>
+        <div className={style.buttonWrapper}>
+          <Button onClick={handleSubmit(onSubmit)} disabled={disabled} text={translate('sign_up')} />
         </div>
+        <p className={style.text}>{translate('do_you_have_an_account?')}</p>
+        <Link href={authRouts.login} className={style.SignIn}>
+          {translate('sign_in')}
+        </Link>
       </form>
-      <p>{translate('do_you_have_an_account?')}</p>
-      <Link href={authRouts.login} className={style.SignIn}>
-        {translate('sign_in')}
-      </Link>
     </div>
   )
 }

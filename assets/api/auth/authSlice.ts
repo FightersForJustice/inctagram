@@ -1,25 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+// const initialState = {}
 
-export interface User {
-  userId: number
-  userName: string
-  email: string
-}
+// const slice = createSlice({
+//   name: 'auth',
+//   initialState,
+//   reducers: {
+//     // setUser: (state, action: PayloadAction) => {
+//     // },
+//   },
+// })
 
-const initialState = {
-  user: null as User | null,
-}
+// export const authReducer = slice.reducer
+// // export const {  } = slice.actions //refactor userActions
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState,
-  reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload
-    },
-  },
-})
-
-export const { setUser } = authSlice.actions
-
-export default authSlice.reducer
+// // Thunk action creator for logging in

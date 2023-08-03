@@ -6,26 +6,31 @@ import {
   NewPasswordParamsData,
   ServerErrorResponse,
   ServerLoginResponse,
-  ServerMeResponse,
   recoveryCodeCheckParamsData,
+  UserData,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
+import { getAccessTokenFromCookie } from '@/utils/cookies'
 
-export const authApi = createApi({
-  reducerPath: 'authApi',
+const authQueryApi = createApi({
+  reducerPath: 'authQueryApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getAccessTokenFromCookie()
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
+      }
+      return headers
+    },
   }),
   endpoints: (builder) => ({
-    me: builder.query<ServerMeResponse | ServerErrorResponse, void>({
+    me: builder.query<UserData | ServerErrorResponse, void>({
       query: () => ({
         url: authRouts.me,
         method: 'GET',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
       }),
     }),
     login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
@@ -96,6 +101,6 @@ export const {
   useRecoveryCodeCheckMutation,
   usePasswordRecoverMutation,
   useLogoutMutation,
-} = authApi
+} = authQueryApi
 
-export default authApi
+export default authQueryApi

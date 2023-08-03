@@ -90,10 +90,16 @@
 
 .eyeButton {
   position: absolute;
-  right: 10px;
-  top: 31px;
+  right: 12px;
+  top: 27px;
   color: white;
   cursor: pointer;
-  filter: invert(0.9);
-  transform: scale(1.2);
+  transition: .1s;
+  filter: invert(1);
+  &:hover {
+    filter: invert(0.6);
+  }
+  &:active {
+    filter: invert(0.4);
+  }
 }

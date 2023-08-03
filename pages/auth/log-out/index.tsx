@@ -5,7 +5,7 @@ import { getLayout } from '@/components/Layout/Layout'
 const LogOut = () => {
   const router = useRouter()
   useEffect(() => {
-    localStorage.removeItem('accessToken')
+    // localStorage.removeItem('accessToken') //remove from cookie
     router.push('/')
   }, [])
 }

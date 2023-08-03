@@ -98,5 +98,16 @@
     "Statistics": "Statistics",
     "Favorites": "Favorites",
     "Logout": "Log Out"
+  },
+  "profile_settings__general": {
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "dateOfBirth": "Date of Birth",
+    "city": "City",
+    "aboutMe": "About me",
+    "save_changes": "Save changes",
+    "modal_error_title": "Sorry!",
+    "modal_error_content": "Your data was not changed. Please reload the page."
   }
 }

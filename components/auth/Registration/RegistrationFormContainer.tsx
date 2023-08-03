@@ -1,6 +1,6 @@
 import RegistrationForm from './RegistrationForm'
 import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
-import { useRegistrationMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
 
@@ -11,7 +11,9 @@ const RegistrationFormContainer = () => {
   const [printModal, setPrintModal] = useState<PrintModalType>({ title: 'null', content: 'null' })
   const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
   const [registers, { isLoading }] = useRegistrationMutation()
-  const ArrayErrorMessager = () => setArrayErrorMessager([])
+  const ArrayErrorMessager = () => {
+    arrayErrorMessager.length == 0 ? "" : setArrayErrorMessager([])
+  }
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')

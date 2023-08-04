@@ -8,7 +8,6 @@
     "sign_in": "Войти",
     "do_you_have_an_account?": "Уже есть аккаунт?"
   },
-
   "login_form": {
     "email": "Электронная почта",
     "sign_up": "Регистрация",
@@ -46,8 +45,7 @@
     "Your_email_has_been_confirmed": "Ваше сообщение было подтверждено",
     "sign_in": "Войти"
   },
-
-  "Validate_login": {
+  "Validate": {
     "required": "Поле обязательно для заполнения",
     "usernameMaxLength": "Имя пользователя должно быть не более {{maxLength}} символов",
     "usernameMinLength": "Имя пользователя должно быть не менее {{minLength}} символов",
@@ -59,21 +57,17 @@
     "passwordMinLength": "Пароль должен быть не менее {{minLength}} символов",
     "passwordNoSpaces": "Не используйте пробелы в пароле"
   },
-
   "Email_verification_link_expired": "Срок действия ссылки для подтверждения электронной почты истек",
   "expired_link": "Похоже, срок действия ссылки для подтверждения истек. Не волнуйтесь, мы можем отправить ссылку еще раз",
   "Resend_verification_link": "Повторно отправить ссылку для подтверждения",
-
   "link_has_been_sent": "Ссылка отправлена ​​по электронной почте. Если вы снова не получили ссылку для отправки по электронной почте",
   "Send_Link_Again": "Отправить ссылку еще раз",
   "error": {
     "Password_field_is_empty": "Поле пароля пусто",
     "Email_is_invalid": "Неправильный email",
     "Passwords_doesnt_match": "Пароли не совпадают",
-
     "Password_pathern": "Ваш пароль должен содержать от 6 до 20 символов",
     "Error": "Что-то пошло не так!",
-
     "Required_field_to_fill_in": "* Обязательное поле для заполнения",
     "Username_must_be_shorter_than_or_equal_to_30 characters": "* Имя пользователя должно быть короче или равно 30 символам.",
     "Username_must_be_longer_than_or_equal_to_6_characters": "* Имя пользователя должно быть длиннее или равно 6 символам.",
@@ -81,8 +75,28 @@
     "Password_must_be_longer_than_or_equal_to_6_characters": "* Пароль должен быть длиннее или равно 6 символам",
     "Please_enter_your_email": "Пожалуйста введите ваш email",
     "Email_is_too_long": "Email слишком длинный",
-
     "Password_must_be_at_least_8_characters_long": "Пароль должен быть не менее 8 символов",
     "Please_enter_your_password": "Пожалуйста введите ваш пароль"
+  },
+  "Sidebar": {
+    "Home": "Домой",
+    "Create": "Создать",
+    "Profile": "Мой Профиль",
+    "Messenger": "Мессенджер",
+    "Search": "Поиск",
+    "Statistics": "Статистика",
+    "Favorites": "Избранное",
+    "Logout": "Выйти"
+  },
+  "profile_settings__general": {
+    "username": "Ник",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "dateOfBirth": "Дата рождения",
+    "city": "Город",
+    "aboutMe": "Обо мне",
+    "save_changes": "Сохранить изменения",
+    "modal_error_title": "Извините!",
+    "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу."
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "cy:reg": "npx cypress run --spec 'cypress/e2e/Registration.cy.js'",
+    "cy:log": "npx cypress run --spec 'cypress/e2e/LogIn.cy.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.17.2",
+    "faker": "^6.6.6"
+  }
+}

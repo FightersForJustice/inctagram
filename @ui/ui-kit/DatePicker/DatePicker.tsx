@@ -13,6 +13,7 @@ import { DateValidationError } from '@mui/x-date-pickers'
 type DatePickerTypes = {
   value?: Date
   setValue?: Dispatch<React.SetStateAction<any>>
+  disabled?: boolean
 }
 
 export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
@@ -24,7 +25,7 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
   }
 }
 
-export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
+export const MainDatePicker = ({ value, setValue, disabled }: DatePickerTypes) => {
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
   const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
@@ -37,6 +38,7 @@ export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
     <div className={classNames('UIKitDatePicker', pickerState)}>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
+          disabled={disabled}
           onOpen={() => setPickerState('UIKitDatePicker--open')}
           onClose={() => setPickerState('UIKitDatePicker--close')}
           showDaysOutsideCurrentMonth

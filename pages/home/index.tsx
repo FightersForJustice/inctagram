@@ -1,21 +1,42 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { axiosAPI } from '@/assets/api/api'
+import { UserData } from '@/assets/api/auth/authTypes'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
+import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
+import { userRouts } from '@/components/common/User/userRouts'
+import { withAuth } from '@/utils/withAuth'
+import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 
-export const getServerSideProps = async () => {
-  return {
-    props: {},
-  }
+export const getServerSideProps: GetServerSideProps = withAuth(async () => {
+  return { props: {} }
+})
+
+type HomeType = {
+  isAuth: UserData
 }
 
-const HomePage = () => {
+const Home = (props: HomeType) => {
+  const { isAuth } = props
+  const router = useRouter()
+
+  const handleClick = () => {
+    router.push(userRouts.profileSettings)
+  }
+
   return (
     <PageWrapper>
-      <div style={{ color: 'white', height: '100vh', textAlign: 'center', fontSize: '50px', paddingTop: '300px' }}>
-        Unleashing creativity with elegant code and stunning visuals
-      </div>
+      <button
+        onClick={handleClick}
+        style={{
+          width: '200px',
+          height: '50px',
+        }}
+      >
+        Profile Settings
+      </button>
     </PageWrapper>
   )
 }
 
-HomePage.getLayout = getSideBarLayout
-export default HomePage
+Home.getLayout = getSideBarLayout
+export default Home

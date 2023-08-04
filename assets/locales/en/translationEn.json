@@ -8,7 +8,6 @@
     "sign_in": "Sign In",
     "do_you_have_an_account?": "Do you have an account?"
   },
-
   "login_form": {
     "sign_up": "Sign Up",
     "sign_in": "Sign In",
@@ -46,7 +45,7 @@
     "Your_email_has_been_confirmed": "Your email has been confirmed",
     "sign_in": "Sign In"
   },
-  "Validate_login": {
+  "Validate": {
     "required": "Required field to fill in",
     "usernameMaxLength": "Username must be shorter than or equal to {{maxLength}} characters",
     "usernameMinLength": "Username must be longer than or equal to {{minLength}} characters",
@@ -61,26 +60,21 @@
   "Email_verification_link_expired": "Email verification link expired",
   "expired_link": "Looks like the verification link has expired. Not to worry, we can send the link again",
   "Resend_verification_link": "Resend verification link",
-
   "link_has_been_sent": "The link has been sent by email. \n If you don’t receive an email send link again ",
   "Send_Link_Again": "Send Link Again",
   "error": {
     "Password_field_is_empty": "Password field is empty",
     "Passwords_doesnt_match": "Passwords doesn't match",
     "Email_is_invalid": "Email is invalid",
-
     "Password_pathern": "Your password must be between 6 and 20 characters",
     "Error": "Error!",
-
     "Required_field_to_fill_in": "* Required field to fill in",
     "Username_must_be_shorter_than_or_equal_to_30 characters": "* Username must be shorter than or equal to 30 characters",
     "Username_must_be_longer_than_or_equal_to_6_characters": "* Username must be longer than or equal to 6 characters",
     "Password_must_be_shorter_than_or_equal_to_20_characters": "* Password must be shorter than or equal to 20 characters",
     "Password_must_be_longer_than_or_equal_to_6_characters": "* Username must be longer than or equal to 6 characters",
-
     "Please_enter_your_email": "Please enter your email",
     "Email_is_too_long": "Email is too long",
-
     "Password_must_be_at_least_8_characters_long": "Password must be at least 8 characters long",
     "Please_enter_your_password": "Please enter your password"
   },
@@ -93,5 +87,16 @@
     "Statistics": "Statistics",
     "Favorites": "Favorites",
     "Logout": "Log Out"
+  },
+  "profile_settings__general": {
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "dateOfBirth": "Date of Birth",
+    "city": "City",
+    "aboutMe": "About me",
+    "save_changes": "Save changes",
+    "modal_error_title": "Sorry!",
+    "modal_error_content": "Your data was not changed. Please reload the page."
   }
 }

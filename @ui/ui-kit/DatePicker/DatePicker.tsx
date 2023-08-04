@@ -7,6 +7,8 @@ import 'dayjs/locale/en'
 import { useTranslation } from 'react-i18next'
 import { Dispatch, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { Controller } from 'react-hook-form'
+import { DateValidationError } from '@mui/x-date-pickers'
 
 type DatePickerTypes = {
   value?: Date
@@ -26,6 +28,7 @@ export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
   const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
+  const [error, setError] = useState<DateValidationError>()
   useEffect(() => {
     if (!setValue) return
     setValue = setDate
@@ -38,8 +41,16 @@ export const MainDatePicker = ({ value, setValue }: DatePickerTypes) => {
           onClose={() => setPickerState('UIKitDatePicker--close')}
           showDaysOutsideCurrentMonth
           dayOfWeekFormatter={(day) => day}
-          onChange={(e: any) => setValue && setValue(e.$d)}
+          onChange={(e: any) => {
+            setValue && setValue(e.$d)
+          }}
           value={value ? value : null}
+          onError={(newError) => setError(newError)}
+          slotProps={{
+            textField: {
+              helperText: error && 'Error!',
+            },
+          }}
         />
       </LocalizationProvider>
     </div>

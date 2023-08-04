@@ -3,7 +3,17 @@ import style from '../LoginForm.module.scss'
 import { MainInput } from '@/components/common/Inputs/Inputs'
 import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
-import { EmailFormFieldProps } from '../type'
+import { UseFormTrigger } from 'react-hook-form'
+type FormValuesType = {
+  email: string
+  password: string
+}
+type EmailFormFieldProps = {
+  register: any
+  errors: any
+  setServerError: Dispatch<SetStateAction<string>>
+  trigger: UseFormTrigger<FormValuesType>
+}
 
 const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, trigger, errors, setServerError }) => {
   const { t } = useTranslation()
@@ -16,6 +26,7 @@ const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, trigger, erro
   return (
     <div className={style.input_container}>
       <MainInput
+        onBlurCapture={() => trigger('email')}
         className={errors.email ? style.error : ''}
         validation={{ ...register('email', Validate(ValidateField.Email)) }}
         placeholder="Epam@epam.com"

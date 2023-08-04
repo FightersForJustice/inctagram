@@ -46,6 +46,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('userName')}
             className={errors.userName || errorMessageName ? style.error : ''}
             validation={{ ...register('userName', Validate(ValidateField.Username)) }}
             placeholder="Epam"
@@ -57,6 +58,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('email')}
             className={errors.email || errorMessageEmail ? style.error : ''}
             validation={{ ...register('email', Validate(ValidateField.Email)) }}
             placeholder="Epam@epam.com"
@@ -68,6 +70,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('password')}
             className={errors.password || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password', Validate(ValidateField.Password)) }}
             placeholder="******************"
@@ -79,6 +82,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('password2')}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password2', Validate(ValidateField.Password)) }}
             placeholder="******************"

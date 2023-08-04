@@ -43,8 +43,8 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
       )}
 
       <form className={authStyle.authForm}>
-      <h1 className={classNames(authStyle.header, style.header)}>{translate('sign_in')}</h1>
-      <AuthLogoGroup />
+        <h1 className={classNames(authStyle.header, style.header)}>{translate('sign_in')}</h1>
+        <AuthLogoGroup />
         <EmailFormField register={register} errors={errors} setServerError={setServerError} />
         <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
@@ -53,12 +53,12 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
           </Link>
         </div>
         <div className={style.buttonWrapper}>
-        <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+          <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} />
         </div>
         <p className={style.text}>{translate('Dont_have_an_account?')}</p>
-      <Link href={authRouts.registration} className={style.SignUp}>
-        {translate('sign_up')}
-      </Link>
+        <Link href={authRouts.registration} className={style.SignUp}>
+          {translate('sign_up')}
+        </Link>
       </form>
     </div>
   )

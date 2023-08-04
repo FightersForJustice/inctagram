@@ -6,22 +6,11 @@ import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
 import { MainButton } from '@/components/common/Buttons/Buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
-import { Dispatch } from 'react'
-import { SetStateAction } from 'react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
+import { FormValuesType, LoginFormProps } from './type'
 
-type FormValuesType = {
-  email: string
-  password: string
-}
 
-type LoginFormProps = {
-  onSubmit: SubmitHandler<FormValuesType>
-  isLoading: boolean
-  serverError: string
-  setServerError: Dispatch<SetStateAction<string>>
-}
 
 const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFormProps) => {
   const { t } = useTranslation()
@@ -30,7 +19,8 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValuesType>()
+    trigger
+  } = useForm<FormValuesType>({ mode: "onBlur" })
 
   return (
     <div className={style.registration}>
@@ -43,8 +33,8 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
       <h1>{translate('sign_in')}</h1>
       <AuthLogoGroup />
       <form>
-        <EmailFormField register={register} errors={errors} setServerError={setServerError} />
-        <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
+        <EmailFormField register={register} trigger={trigger} errors={errors} setServerError={setServerError} />
+        <PasswordFormField register={register} trigger={trigger} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
           <Link className={style.forgot_password_link} href={authRouts.forgotPassword}>
             {translate('Forgot_Password')}

@@ -7,11 +7,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { setAccessTokenCookie } from '@/utils/cookies'
 import { useLoginMutation } from '@/assets/api/auth/authQueryApi'
-
-type LoginParamsData = {
-  email: string
-  password: string
-}
+import { LoginParamsData } from './type'
 
 const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { t } = useTranslation()

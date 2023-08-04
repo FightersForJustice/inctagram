@@ -29,7 +29,6 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
           <Loading />
         </div>
       )}
-
       <h1>{translate('sign_in')}</h1>
       <AuthLogoGroup />
       <form>

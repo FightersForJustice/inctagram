@@ -1,19 +1,10 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import style from '../LoginForm.module.scss'
 import { MainInput } from '@/components/common/Inputs/Inputs'
 import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
-import { UseFormTrigger } from 'react-hook-form'
-type FormValuesType = {
-  email: string
-  password: string
-}
-type EmailFormFieldProps = {
-  register: any
-  errors: any
-  setServerError: Dispatch<SetStateAction<string>>
-  trigger: UseFormTrigger<FormValuesType>
-}
+import { EmailFormFieldProps } from '../type'
+
 
 const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, trigger, errors, setServerError }) => {
   const { t } = useTranslation()

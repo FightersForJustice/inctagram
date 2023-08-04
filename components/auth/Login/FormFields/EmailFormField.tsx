@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import style from '../LoginForm.module.scss'
 import { MainInput } from '@/components/common/Inputs/Inputs'
-import { ValidateEmail } from '../validate'
+import { Validate } from '../validate'
 import { useTranslation } from 'react-i18next'
 
 type EmailFormFieldProps = {
@@ -17,7 +17,7 @@ const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors, setSe
     <div className={style.input_container}>
       <MainInput
         className={errors.email ? style.error : ''}
-        validation={{ ...register('email', ValidateEmail) }}
+        validation={{ ...register('email', Validate('email')) }}
         placeholder="Epam@epam.com"
         label={translate('email')}
       />

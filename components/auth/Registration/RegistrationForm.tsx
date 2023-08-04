@@ -17,6 +17,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     register,
     handleSubmit,
     formState: { errors },
+    trigger
   } = useForm<FormValuesType>()
   const disabled = Object.keys(errors).length === 0 ? false : true
   return (
@@ -39,6 +40,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('userName')}
             className={errors.userName || errorMessageName ? style.error : ''}
             validation={{ ...register('userName', Validate('username')) }}
             placeholder="Epam"
@@ -50,6 +52,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <MainInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('email')}
             className={errors.email || errorMessageEmail ? style.error : ''}
             validation={{ ...register('email', Validate('email')) }}
             placeholder="Epam@epam.com"
@@ -61,6 +64,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('password')}
             className={errors.password || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password', Validate('password')) }}
             placeholder="******************"
@@ -72,6 +76,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         <div className={style.block}>
           <PasswordInput
             onClick={ArrayErrorMessager}
+            onBlurCapture={() => trigger('password2')}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
             validation={{ ...register('password2', Validate('password')) }}
             placeholder="******************"

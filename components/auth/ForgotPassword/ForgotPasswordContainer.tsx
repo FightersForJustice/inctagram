@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, useRef, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
+import { usePasswordRecoverMutation } from '@/assets/api/auth/authQueryApi'
 import ForgotPassword from './ForgotPassword'
 import { IFormInput } from './forgotPasswordTypes'
 import ReCAPTCHA from 'react-google-recaptcha'

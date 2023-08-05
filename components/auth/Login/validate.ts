@@ -75,4 +75,8 @@ export const Validate = (validate: ValidateField) => {
 
 }
 
-
+export const confirmPassword = (value: string, watch: (val: string) => string) => {
+  if (watch('password') !== value) {
+    return "Your passwords do not match";
+  }
+};

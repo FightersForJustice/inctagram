@@ -1,7 +1,7 @@
 import style from './RegistrationForm.module.scss'
 import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { Validate, ValidateField } from '../Login/validate'
+import { Validate, ValidateField, confirmPassword } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { FormValuesTypeRegister, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
@@ -18,6 +18,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     trigger
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
@@ -80,7 +81,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password2', Validate(ValidateField.Password)) }}
+            validation={{ ...register('password2', { validate: (value) => confirmPassword(value, watch) }) }}
             placeholder="******************"
             label={translate('password_confirmation')}
           />

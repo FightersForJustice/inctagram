@@ -18,23 +18,19 @@ const RegistrationFormContainer = () => {
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
   const onSubmit = async (data: FormValuesTypeRegister) => {
-    if (data.password === data.password2) {
-      registers(data)
-        .unwrap()
-        .then(() => {
-          setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
-        })
-        .catch((error: any) => {
-          if (error.status == 'FETCH_ERROR') {
-            setPrintModal({ title: 'Error', content: 'error' })
-          }
-          if (typeof error.data != 'undefined') {
-            setArrayErrorMessager(error.data.messages)
-          }
-        })
-    } else {
-      setArrayErrorMessager([{ field: 'password', message: '* Passwords must match' }])
-    }
+    registers(data)
+      .unwrap()
+      .then(() => {
+        setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
+      })
+      .catch((error: any) => {
+        if (error.status == 'FETCH_ERROR') {
+          setPrintModal({ title: 'Error', content: 'error' })
+        }
+        if (typeof error.data != 'undefined') {
+          setArrayErrorMessager(error.data.messages)
+        }
+      })
   }
   return (
     <div>

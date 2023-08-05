@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import style from './LoginForm.module.scss'
 import { Loading } from '@/components/common/Loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
@@ -8,7 +8,9 @@ import { MainButton } from '@/components/common/Buttons/Buttons'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
-import { FormValuesType, LoginFormProps } from './type'
+import { FormValuesTypeLogin, LoginFormProps } from './type'
+import { useEffect } from 'react'
+import { errorsTrigger } from '@/hooks/errorsTrigger'
 
 
 
@@ -20,7 +22,10 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     handleSubmit,
     formState: { errors },
     trigger
-  } = useForm<FormValuesType>({ mode: "onBlur" })
+  } = useForm<FormValuesTypeLogin>({ mode: "onBlur" })
+  useEffect(() => {
+    errorsTrigger(trigger, errors)
+  }, [t])
 
   return (
     <div className={style.registration}>

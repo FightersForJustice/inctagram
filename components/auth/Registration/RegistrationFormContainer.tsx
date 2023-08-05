@@ -1,5 +1,5 @@
 import RegistrationForm from './RegistrationForm'
-import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
+import { ErrorMessagerType, FormValuesTypeRegister, PrintModalType } from './type'
 import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
@@ -17,7 +17,7 @@ const RegistrationFormContainer = () => {
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
-  const onSubmit = async (data: FormValuesType) => {
+  const onSubmit = async (data: FormValuesTypeRegister) => {
     if (data.password === data.password2) {
       registers(data)
         .unwrap()

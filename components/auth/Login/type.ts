@@ -1,25 +1,25 @@
 import { Dispatch, SetStateAction } from "react"
-import { SubmitHandler, UseFormTrigger } from "react-hook-form"
+import { FieldErrors, SubmitHandler, UseFormRegister, UseFormTrigger } from "react-hook-form"
 
-export type FormValuesType = {
+export type FormValuesTypeLogin = {
   email: string
   password: string
 }
 export type PasswordFormFieldProps = {
-  register: any
-  errors: any
+  register: UseFormRegister<FormValuesTypeLogin>
+  errors: FieldErrors<FormValuesTypeLogin>
   serverError: string
   setServerError: Dispatch<SetStateAction<string>>
-  trigger: UseFormTrigger<FormValuesType>
+  trigger: UseFormTrigger<FormValuesTypeLogin>
 }
 export type EmailFormFieldProps = {
-  register: any
-  errors: any
+  register: UseFormRegister<FormValuesTypeLogin>
+  errors: FieldErrors<FormValuesTypeLogin>
   setServerError: Dispatch<SetStateAction<string>>
-  trigger: UseFormTrigger<FormValuesType>
+  trigger: UseFormTrigger<FormValuesTypeLogin>
 }
 export type LoginFormProps = {
-  onSubmit: SubmitHandler<FormValuesType>
+  onSubmit: SubmitHandler<FormValuesTypeLogin>
   isLoading: boolean
   serverError: string
   setServerError: Dispatch<SetStateAction<string>>

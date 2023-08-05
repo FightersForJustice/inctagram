@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import style from '../LoginForm.module.scss'
 import { MainInput } from '@/components/common/Inputs/Inputs'
 import { Validate, ValidateField } from '../validate'
@@ -9,11 +9,7 @@ import { EmailFormFieldProps } from '../type'
 const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, trigger, errors, setServerError }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
-  useEffect(() => {
-    Object.keys(errors).forEach((fieldName: any) => {
-      trigger(fieldName);
-    });
-  }, [t])
+
   return (
     <div className={style.input_container}>
       <MainInput

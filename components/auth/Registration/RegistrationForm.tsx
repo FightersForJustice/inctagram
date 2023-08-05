@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
 import { Validate, ValidateField } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { FormValuesType, RegistrationPropsType } from './type'
+import { FormValuesTypeRegister, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useEffect } from 'react'
+import { errorsTrigger } from '@/hooks/errorsTrigger'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -19,12 +20,11 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     handleSubmit,
     formState: { errors },
     trigger
-  } = useForm<FormValuesType>({ mode: 'onBlur' })
+  } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
   const disabled = Object.keys(errors).length === 0 ? false : true
+
   useEffect(() => {
-    Object.keys(errors).forEach((fieldName: any) => {
-      trigger(fieldName);
-    });
+    errorsTrigger(trigger, errors)
   }, [t])
   return (
     <div className={style.registration}>

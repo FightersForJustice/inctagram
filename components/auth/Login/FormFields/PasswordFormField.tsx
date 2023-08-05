@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import style from '../LoginForm.module.scss'
 import { PasswordInput } from '@/components/common/Inputs/Inputs'
 import { Validate, ValidateField } from '../validate'
@@ -10,11 +10,6 @@ import { PasswordFormFieldProps } from '../type'
 const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, trigger, errors, serverError, setServerError }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
-  useEffect(() => {
-    Object.keys(errors).forEach((fieldName: any) => {
-      trigger(fieldName);
-    });
-  }, [t])
   return (
     <div className={style.input_container}>
       <PasswordInput

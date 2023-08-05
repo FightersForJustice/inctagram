@@ -6,14 +6,13 @@ import { useTranslation } from 'react-i18next'
 import { EmailFormFieldProps } from '../type'
 
 
-const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, trigger, errors, setServerError }) => {
+const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
 
   return (
     <div className={style.input_container}>
       <MainInput
-        onBlurCapture={() => trigger('email')}
         className={errors.email ? style.error : ''}
         validation={{ ...register('email', Validate(ValidateField.Email)) }}
         placeholder="Epam@epam.com"

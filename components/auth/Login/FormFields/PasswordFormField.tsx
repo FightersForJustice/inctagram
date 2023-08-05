@@ -7,13 +7,12 @@ import { PasswordFormFieldProps } from '../type'
 
 
 
-const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, trigger, errors, serverError, setServerError }) => {
+const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
   return (
     <div className={style.input_container}>
       <PasswordInput
-        onBlurCapture={() => trigger('password')}
         className={errors.password ? style.error : ''}
         validation={{ ...register('password', Validate(ValidateField.Password)) }}
         placeholder="******************"

@@ -10,13 +10,11 @@ export type PasswordFormFieldProps = {
   errors: FieldErrors<FormValuesTypeLogin>
   serverError: string
   setServerError: Dispatch<SetStateAction<string>>
-  trigger: UseFormTrigger<FormValuesTypeLogin>
 }
 export type EmailFormFieldProps = {
   register: UseFormRegister<FormValuesTypeLogin>
   errors: FieldErrors<FormValuesTypeLogin>
   setServerError: Dispatch<SetStateAction<string>>
-  trigger: UseFormTrigger<FormValuesTypeLogin>
 }
 export type LoginFormProps = {
   onSubmit: SubmitHandler<FormValuesTypeLogin>

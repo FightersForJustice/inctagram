@@ -37,8 +37,8 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
       <h1>{translate('sign_in')}</h1>
       <AuthLogoGroup />
       <form>
-        <EmailFormField register={register} trigger={trigger} errors={errors} setServerError={setServerError} />
-        <PasswordFormField register={register} trigger={trigger} errors={errors} setServerError={setServerError} serverError={serverError} />
+        <EmailFormField register={register} errors={errors} setServerError={setServerError} />
+        <PasswordFormField register={register} errors={errors} setServerError={setServerError} serverError={serverError} />
         <div className={style.forgot_password_container}>
           <Link className={style.forgot_password_link} href={authRouts.forgotPassword}>
             {translate('Forgot_Password')}

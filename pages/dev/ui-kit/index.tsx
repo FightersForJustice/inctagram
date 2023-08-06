@@ -7,6 +7,10 @@ import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
 
+import * as Tabs from '@radix-ui/react-tabs'
+import { TAB_COLORS } from '@/@ui/ui-kit/Tabs/constants'
+import Tab from '@/@ui/ui-kit/Tabs/Tabs'
+
 export const getStaticProps = async () => {
   return {
     props: {},
@@ -14,7 +18,12 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
-  const [ModalActive, setModalActive] = useState(false);
+  const tabsData = [
+    { value: 'tab1', label: 'Tab' },
+    { value: 'tab2', label: 'Tab' },
+    { value: 'tab3', label: 'Tab' },
+  ]
+  const [ModalActive, setModalActive] = useState(false)
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -48,23 +57,35 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Button Links</h2>
           <div className={style.components}>
-
             <ButtonLink text="Internal Button link" url="/auth/login"></ButtonLink>
             <ButtonLink text="External Button link" url="https://www.awwwards.com/"></ButtonLink>
-
           </div>
         </div>
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Modal</h2>
           <div className={style.modal}>
-            <Button text="Modal open" onClick={() => { setModalActive(true) }}></Button>
+            <Button
+              text="Modal open"
+              onClick={() => {
+                setModalActive(true)
+              }}
+            ></Button>
             <Modal active={ModalActive} setActive={setModalActive} title="Email sent">
               <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
               <div className={style.buttonModal}>
-                <Button text="Ok" onClick={() => { setModalActive(false) }}></Button>
+                <Button
+                  text="Ok"
+                  onClick={() => {
+                    setModalActive(false)
+                  }}
+                ></Button>
               </div>
             </Modal>
           </div>
+        </div>
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Tabs</h2>
+          <Tab values={tabsData}></Tab>
         </div>
       </div>
     </PageWrapper>

@@ -1,3 +1,4 @@
+@use '/styles/library' as s;
 .kitContainer {
   padding: 50px;
 
@@ -31,4 +32,17 @@
 .buttonModal {
   text-align: right;
   padding-top: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.TabsRoot {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 36px;
 }

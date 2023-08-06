@@ -34,7 +34,7 @@ export interface ICheckRecoveryCode {
       BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
       never,
       void | ServerErrorResponse,
-      'authApi'
+      'authQueryApi'
     >
   >
   router: NextRouter
@@ -52,7 +52,7 @@ export interface ICreateNewPassword {
       BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
       never,
       void | ServerErrorResponse,
-      'authApi'
+      'authQueryApi'
     >
   >
   router: NextRouter

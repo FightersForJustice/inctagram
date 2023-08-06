@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "cy:reg": "npx cypress run --spec 'cypress/e2e/Registration.cy.js'",
+    "cy:log": "npx cypress run --spec 'cypress/e2e/LogIn.cy.js'"
   },
   "keywords": [],
   "author": "",

@@ -1,16 +1,33 @@
-//import faker from "faker"
-
+import { faker } from '@faker-js/faker'
 const regTestData = require("../fixtures/regTestData.json")
 const regSelectors = require("../fixtures/registrationSelectors.json")
 
-// const randomUsername = faker.internet.userName();
-// const randomEmail = faker.internet.email();
-// const randomPassword = faker.internet.password();
+const generateRandomName = () => {
+  let randomName
+  do {
+    randomName = faker.internet.userName().replace(/[\W_]+/g, '') // Remove special symbols and dots
+  } while (randomName.length < 6 || randomName.length > 30)
+
+  return randomName
+}
+
+const generateRandomPassword = () => {
+  let randomPassword
+  do {
+    randomPassword = faker.internet.password()
+  } while (randomPassword.length < 6 || randomPassword.length > 20)
+
+  return randomPassword
+};
+
+let randomName = generateRandomName()
+let randomEmail = faker.internet.email()
+let randomPassword = generateRandomPassword()
 
 
 describe("Registration Page", () => {
   beforeEach("Visit", () => {
-    cy.visit("/auth/registration")
+    cy.visit("https://inctagram-git-staging-fightersforjustice.vercel.app/auth/registration")
    // cy.get(regSelectors.ButtonSignUp).contains("Sign Up")
   })
 
@@ -19,21 +36,18 @@ describe("Registration Page", () => {
     cy.get(regSelectors.Text).contains("Do you have an account?")
   })
 
-  it("Should register a new user with unique data", () => {
-      const timestamp = Date.now()
-      const username = `newuser_${timestamp}`
-      const email = `newuser_${timestamp}@example.com`
-      const password = 'password123'
-
-      cy.get(regSelectors.Name).clear().type(username)
-      cy.get(regSelectors.Mail).clear().type(email)
-      cy.get(regSelectors.Password).clear().type(password)
-      cy.get(regSelectors.Password2).clear().type(password)
+  it("Should register a new user with unique data and get message email sent", () => {
+      cy.get(regSelectors.Name).clear().type(randomName)
+      cy.get(regSelectors.Mail).clear().type(randomEmail)
+      cy.get(regSelectors.Password).clear().type(randomPassword)
+      cy.get(regSelectors.Password2).clear().type(randomPassword)
       cy.get(regSelectors.ButtonSignUp).click()
+      cy.get('.Modal_text__GjVrh').contains(`We have sent a link to confirm your email to ${randomEmail}`).should("be.visible")
+      cy.get('.Modal_buttonClose__mIbC9 > img').click() 
   })
    
   
-  it("Validation error that user already exist", () => {
+  it.only("Validation error that user already exist", () => {
 
     cy.get(regSelectors.Name).clear().type("turpicrypto")
     cy.get(regSelectors.Mail).clear().type("turpicrypto@gmail.com")
@@ -41,6 +55,10 @@ describe("Registration Page", () => {
     cy.get(regSelectors.Password2).clear().type("11111111")
     cy.get(regSelectors.ButtonSignUp).click()
     cy.get(regSelectors.RegError).contains("User with this email is already exist")
+    cy.get(regSelectors.Name).clear().type(randomName)
+    cy.get(regSelectors.Mail).clear().type(randomEmail)
+    cy.get(regSelectors.ButtonSignUp).click()
+   
 })
 
   it("Registration with blank fields", () => {
@@ -52,10 +70,10 @@ describe("Registration Page", () => {
 
   it("Registration with incorrect email format", () => {
     cy.wrap(regTestData.invalidEmail).each(($item, index) => {
-      cy.get(regSelectors.Name).clear().type("TestUser")
+      cy.get(regSelectors.Name).clear().type(randomName)
       cy.get(regSelectors.Mail).clear().type($item)
-      cy.get(regSelectors.Password).clear().type("123456")
-      cy.get(regSelectors.Password2).clear().type("123456")
+      cy.get(regSelectors.Password).clear().type(randomPassword)
+      cy.get(regSelectors.Password2).clear().type(randomPassword)
       // If it's the first iteration, click the "SignUp" button
       if (index === 0) {
         cy.get(regSelectors.ButtonSignUp).click()
@@ -70,9 +88,9 @@ describe("Registration Page", () => {
   it("Registration with incorrect userName format", () => {
     cy.wrap(regTestData.invalidName).each(($item, index) => {
       cy.get(regSelectors.Name).clear().type($item)
-      cy.get(regSelectors.Mail).clear().type("testAAAAA@mail.com")
-      cy.get(regSelectors.Password).clear().type("123456")
-      cy.get(regSelectors.Password2).clear().type("123456")
+      cy.get(regSelectors.Mail).clear().type(randomEmail)
+      cy.get(regSelectors.Password).clear().type(randomPassword)
+      cy.get(regSelectors.Password2).clear().type(randomPassword)
       if (index === 0) {
         cy.get(regSelectors.ButtonSignUp).click()
       }
@@ -98,8 +116,8 @@ describe("Registration Page", () => {
 
   it("Registration with incorrect pasword format", () => {
     cy.wrap(regTestData.Password).each(($item, index) => {
-      cy.get(regSelectors.Name).clear().type("TestUser")
-      cy.get(regSelectors.Mail).clear().type("testAnna123@mail.com")
+      cy.get(regSelectors.Name).clear().type(randomName)
+      cy.get(regSelectors.Mail).clear().type(randomEmail)
       cy.get(regSelectors.Password).clear().type($item)
       cy.get(regSelectors.Password2).clear().type($item)
       if (index === 0) {

@@ -9,7 +9,6 @@ interface TabData {
   value: string
   label: string
   disabled?: boolean
-  color?: (typeof TAB_COLORS)[keyof typeof TAB_COLORS]
 }
 
 interface TabsProps {
@@ -27,22 +26,30 @@ const Tab: React.FC<TabsProps> = ({ values, color = TAB_COLORS.PRIMARY }) => {
 
   const handleTabChange = (value: string) => {
     setActiveTab(value)
-
     router.push({ query: { tab: value } })
   }
 
   useEffect(() => {
     setActiveTab(router.query.tab as string)
   }, [router.query.tab])
-  const buttonClasses = classNames(styles.tab, {
-    [styles[`tab${currentColor}`]]: Boolean(currentColor),
-  })
+
+  const buttonClasses = (tabData: TabData) =>
+    classNames(styles.tab, {
+      [styles[`tab${currentColor}`]]: Boolean(currentColor),
+      [styles.disabled]: tabData.disabled,
+    })
 
   return (
     <Tabs.Root value={activeTab || ''} defaultValue={values[0].value} onValueChange={handleTabChange}>
       <Tabs.List className={styles.TabsList}>
         {values.map((tabData) => (
-          <Tabs.Trigger key={tabData.value} value={tabData.value} className={buttonClasses}>
+          <Tabs.Trigger
+            key={tabData.value}
+            value={tabData.value}
+            className={buttonClasses(tabData)}
+            disabled={tabData.disabled}
+            onClick={() => !tabData.disabled && handleTabChange(tabData.value)}
+          >
             {tabData.label}
           </Tabs.Trigger>
         ))}

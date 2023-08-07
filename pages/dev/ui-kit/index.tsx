@@ -20,7 +20,7 @@ const Login = () => {
   const tabsData = [
     { value: 'tab1', label: 'Tab' },
     { value: 'tab2', label: 'Tab' },
-    { value: 'tab3', label: 'Tab' },
+    { value: 'tab3', label: 'Tab', disabled: true },
   ]
   const [ModalActive, setModalActive] = useState(false)
   return (

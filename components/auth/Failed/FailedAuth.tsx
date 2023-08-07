@@ -4,7 +4,7 @@ import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import style from './FailedAuth.module.scss'
 import commonStyle from '@/@ui/design/settings/Common.module.scss'
 import { MainButton } from '@/components/common/Buttons/Buttons'
-import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authQueryApi'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 

@@ -87,5 +87,16 @@
     "Statistics": "Статистика",
     "Favorites": "Избранное",
     "Logout": "Выйти"
+  },
+  "profile_settings__general": {
+    "username": "Ник",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "dateOfBirth": "Дата рождения",
+    "city": "Город",
+    "aboutMe": "Обо мне",
+    "save_changes": "Сохранить изменения",
+    "modal_error_title": "Извините!",
+    "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу."
   }
 }

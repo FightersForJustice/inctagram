@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: false 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic"
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: true 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic"
+    disabled=""
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: false 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost"
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: true 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost"
+    disabled=""
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: false 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined"
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: true 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined"
+    disabled=""
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: false 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary"
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: true 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary"
+    disabled=""
+    type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;

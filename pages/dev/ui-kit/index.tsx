@@ -118,7 +118,7 @@ const Login = () => {
           </div>
           <div>
           <h2>Error</h2>
-          <MainDatePicker value={new Date('99/99/9999')}/>
+          <MainDatePicker value={'99/99/9999'}/>
           </div>          
           <div>
           <h2>Disabled</h2>

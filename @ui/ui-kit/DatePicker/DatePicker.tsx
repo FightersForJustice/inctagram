@@ -7,17 +7,18 @@ import 'dayjs/locale/en'
 import { useTranslation } from 'react-i18next'
 import { Dispatch, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Controller } from 'react-hook-form'
 import { DateValidationError } from '@mui/x-date-pickers'
+import dayjs from 'dayjs'
 
 type DatePickerTypes = {
-  value?: Date
+  value?: string
   setValue?: Dispatch<React.SetStateAction<any>>
   disabled?: boolean
+  id?: string
 }
 
 export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
-  return (value: Date) => {
+  return (value: string) => {
     setValue((prevData: any) => ({
       ...prevData,
       [name]: value,
@@ -25,7 +26,7 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
   }
 }
 
-export const MainDatePicker = ({ value, setValue, disabled }: DatePickerTypes) => {
+export const MainDatePicker = ({ value, setValue, disabled, id }: DatePickerTypes) => {
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
   const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
@@ -35,7 +36,7 @@ export const MainDatePicker = ({ value, setValue, disabled }: DatePickerTypes) =
     setValue = setDate
   }, [])
   return (
-    <div className={classNames('UIKitDatePicker', pickerState)}>
+    <div className={classNames('UIKitDatePicker', pickerState)} >
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
           disabled={disabled}
@@ -46,10 +47,11 @@ export const MainDatePicker = ({ value, setValue, disabled }: DatePickerTypes) =
           onChange={(e: any) => {
             setValue && setValue(e.$d)
           }}
-          value={value ? value : null}
+          value={value ? dayjs(value) : null}
           onError={(newError) => setError(newError)}
           slotProps={{
             textField: {
+              id: id ? id : '',
               helperText: error && 'Error!',
             },
           }}
@@ -58,11 +60,3 @@ export const MainDatePicker = ({ value, setValue, disabled }: DatePickerTypes) =
     </div>
   )
 }
-
-// export const TestComp = () => {
-//   const [test, setTest] = useState<{date?: Date}>({})
-//   return <div>
-//     <MainDatePicker value={test.date} setValue={saveToArray(setTest, 'dateOfBirth')} />
-//     <button onClick={() => console.log(test)}>test</button>
-//   </div>
-// }

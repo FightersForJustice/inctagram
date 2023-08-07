@@ -33,9 +33,28 @@ export const profileQueryApi = createApi({
         body: userData,
       }),
     }),
+    avatarAdd: builder.mutation({
+      query: (file) => ({
+        url: userRouts.avatar,
+        method: 'POST',
+        body: file,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }),
+    }),
+    avatarDelete: builder.mutation({
+      query: () => ({
+        url: userRouts.avatar,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      }),
+    }),
   }),
 })
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = profileQueryApi
+export const { useAvatarAddMutation, useAvatarDeleteMutation, useGetProfileQuery, useUpdateProfileMutation } = profileQueryApi
 
 export default profileQueryApi

@@ -1,6 +1,7 @@
 import { Button } from "@/@ui/ui-kit/Button/Button";
 import style from "./start.module.scss"
 import { ChangeEvent, useRef } from "react";
+import { Loading } from "@/components/common/Loaders/Loading";
 
 interface ComponentProps {
   setUploadedImage: any;
@@ -57,10 +58,11 @@ const StartImg: React.FC<ComponentProps> = ({ setUploadedImage, setStatesСompon
   };
   return (
     <>
+
       <label className={style.form}>
         <input ref={fileInputRef} className={style.input} type="file" name="file" onChange={handleImageUpload} />
         <div className={style.img}>
-          <img src="icons/image-outline.svg" alt="img" />
+          <img src="/../icons/image-outline.svg" alt="img" />
         </div>
         <div className={style.button}>
           <Button onClick={handleButtonClick} text='Select from Computer'></Button>

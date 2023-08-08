@@ -1,23 +1,9 @@
-import ReactCrop, { centerCrop, makeAspectCrop, type Crop } from 'react-image-crop'
+import ReactCrop, { type Crop } from 'react-image-crop'
 import s from "./crop.module.scss"
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { ComponentCropProps } from '../type';
 
-type cron = {
-  unit: string
-  x: number
-  y: number
-  width: number
-  height: number
-}
-
-interface ComponentProps {
-  crop: Crop;
-  uploadedImage: string
-  setCrop: any
-  setCroppedImageUrl: any
-  setStatesСomponent: any
-}
 const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   const sizeImg = 192;
   const canvas = document.createElement('canvas');
@@ -29,7 +15,6 @@ const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   }
   canvas.width = sizeImg;
   canvas.height = sizeImg;
-
   ctx.drawImage(
     image,
     crop.x * scaleX,
@@ -41,10 +26,9 @@ const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
     sizeImg,
     sizeImg
   );
-
   return canvas.toDataURL('image/jpeg');
 };
-const CropImg: React.FC<ComponentProps> = ({ crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent }) => {
+const CropImg: React.FC<ComponentCropProps> = ({ crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent }) => {
   const Crop = () => {
     const image = document.createElement('img');
     image.src = uploadedImage;

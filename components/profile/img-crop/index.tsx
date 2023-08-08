@@ -1,7 +1,7 @@
-import ReactCrop, { centerCrop, makeAspectCrop, type Crop } from 'react-image-crop'
+import { type Crop } from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import s from "./index.module.scss"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import StartImg from './Start/Start'
 import CropImg from './Crop/Crop'
@@ -9,23 +9,18 @@ import ImgSave from './Save/Save'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useAvatarDeleteMutation } from '@/assets/api/user/profileQueryApi'
+import { ComponentMainProps } from './type'
 
-
-type Props = {
-  avatarUrl: any
-  setIsLoading: any
-}
-
-const ImgCrop: React.FC<Props> = (props) => {
+const ImgCrop: React.FC<ComponentMainProps> = (props) => {
   const { avatarUrl, setIsLoading } = props
-  console.log(avatarUrl.length)
-  let arg: string = ""
   const [avatar, setAvatar] = useState('');
-  if (avatarUrl.length == 2 && avatar == '') { setAvatar(avatarUrl[0].url) }
+  useEffect(() => {
+    avatarUrl.length == 2 ? setAvatar(avatarUrl[0].url) : ''
+  }, []);
   const [avatarDelete] = useAvatarDeleteMutation()
   const Delete = () => {
     setIsLoading(true)
-    avatarDelete(null)
+    avatarDelete({})
       .then(() => {
         setAvatar('')
         setIsLoading(false)
@@ -61,7 +56,7 @@ const ImgCrop: React.FC<Props> = (props) => {
         <div className={s.close} >
           <img className={s.img} onClick={Delete} src="/../icons/close.svg" alt="Close" />
         </div>
-        {avatar == "" ?
+        {avatar === "" ?
           <div className={s.avatar}>
             <img className={s.icon} src="/../icons/image-outline.svg" alt="img" />
           </div>

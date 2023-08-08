@@ -1,32 +1,25 @@
 import { Button } from "@/@ui/ui-kit/Button/Button";
 import s from "./save.module.scss"
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-
 import { useAvatarAddMutation, useGetProfileQuery } from "@/assets/api/user/profileQueryApi";
 import { Loading } from "@/components/common/Loaders/Loading";
 import { useState } from "react";
-interface ComponentProps {
-  croppedImageUrl: string | null;
-  setStatesСomponent: (modalStates: string) => void
-  setCroppedImageUrl: any
-  setAvatar: any
-  setModalActive: any
-  setIsLoading: any
-}
-const ImgSave: React.FC<ComponentProps> = ({ croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl }) => {
+import { ComponentSaveProps } from "../type";
+
+const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl }) => {
 
   const [AvatarAdd, { isLoading }] = useAvatarAddMutation()
   const [loading, setIsLoading] = useState(false)
   const getProfileQuery = useGetProfileQuery()
   const back = () => { setStatesСomponent("crop"), setCroppedImageUrl(null) }
   const save = () => {
-    type www =
+    type DataURLtoFileType =
       (
         dataurl: any,
         filename: any,
       ) => any
 
-    const dataURLtoFile: www = (dataurl, filename) => {
+    const dataURLtoFile: DataURLtoFileType = (dataurl, filename) => {
       var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
       while (n--) {

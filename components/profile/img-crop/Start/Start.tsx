@@ -1,14 +1,9 @@
 import { Button } from "@/@ui/ui-kit/Button/Button";
 import style from "./start.module.scss"
 import { ChangeEvent, useRef } from "react";
-import { Loading } from "@/components/common/Loaders/Loading";
+import { ComponentStartProps } from "../type";
 
-interface ComponentProps {
-  setUploadedImage: any;
-  setStatesСomponent: (modalStates: string) => void
-}
-
-const StartImg: React.FC<ComponentProps> = ({ setUploadedImage, setStatesСomponent }) => {
+const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesСomponent }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -34,6 +29,7 @@ const StartImg: React.FC<ComponentProps> = ({ setUploadedImage, setStatesСompon
       setStatesСomponent("crop");
     }
   };
+
   const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number) => {
     let width = originalWidth;
     let height = originalHeight;

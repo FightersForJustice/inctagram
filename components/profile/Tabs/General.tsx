@@ -76,21 +76,21 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             label={translate('username')}
             id="username"
             name={'userName'}
-            value={updatedUserProfile.userName}
+            value={updatedUserProfile.userName || ''}
             onChange={handleInputChange}
           />
           <FormInput
             label={translate('firstName')}
             id="first-name"
             name="firstName"
-            value={updatedUserProfile.firstName}
+            value={updatedUserProfile.firstName || ''}
             onChange={handleInputChange}
           />
           <FormInput
             label={translate('lastName')}
             id="last-name"
             name="lastName"
-            value={updatedUserProfile.lastName}
+            value={updatedUserProfile.lastName || ''}
             onChange={handleInputChange}
           />
 
@@ -101,12 +101,12 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             <input className={commonStyle.Input} id="date" type="date" />
           </fieldset>
 
-          <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
+          <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city || ''} onChange={handleInputChange} />
           <FormTextarea
             label={translate('aboutMe')}
             id="aboutMe"
             name="aboutMe"
-            value={updatedUserProfile.aboutMe}
+            value={updatedUserProfile.aboutMe || ''}
             onChange={handleInputChange}
           />
           <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />

@@ -10,9 +10,18 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useAvatarDeleteMutation } from '@/assets/api/user/profileQueryApi'
 import { ComponentMainProps } from './type'
+import { useTranslation } from 'react-i18next'
+
+
 
 const ImgCrop: React.FC<ComponentMainProps> = (props) => {
   const { avatarUrl, setIsLoading } = props
+
+
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`add_profile_photo.${key}`)
+
+
   const [avatar, setAvatar] = useState('');
   useEffect(() => {
     avatarUrl.length == 2 ? setAvatar(avatarUrl[0].url) : ''
@@ -34,7 +43,7 @@ const ImgCrop: React.FC<ComponentMainProps> = (props) => {
   const buttonOpen = () => { setModalActive(true), setStatesСomponent("start") }
   return (
     <>
-      <Modal active={ModalActive} setActive={setModalActive} title="Add a Profile Photo" close={true}>
+      <Modal active={ModalActive} setActive={setModalActive} title={translate('add_profile_photo')} close={true}>
         {statesСomponent == "start" ? <StartImg setUploadedImage={setUploadedImage} setStatesСomponent={setStatesСomponent} /> : ""}
         {statesСomponent == "crop" ? <CropImg
           crop={crop}
@@ -53,9 +62,11 @@ const ImgCrop: React.FC<ComponentMainProps> = (props) => {
         /> : ""}
       </Modal>
       <div className={s.avatarBloc}>
-        <div className={s.close} >
-          <img className={s.img} onClick={Delete} src="/../icons/close.svg" alt="Close" />
-        </div>
+        {avatar === "" ? '' :
+          <div className={s.close} >
+            <img className={s.img} onClick={Delete} src="/../icons/close.svg" alt="Close" />
+          </div>
+        }
         {avatar === "" ?
           <div className={s.avatar}>
             <img className={s.icon} src="/../icons/image-outline.svg" alt="img" />
@@ -66,7 +77,7 @@ const ImgCrop: React.FC<ComponentMainProps> = (props) => {
           </div>
         }
         <div className={s.blocButton}>
-          <Button color={BUTTON_COLORS.OUTLINED} text="Add a Profile Photo" onClick={buttonOpen}></Button>
+          <Button color={BUTTON_COLORS.OUTLINED} text={translate('add_profile_photo')} onClick={buttonOpen}></Button>
         </div>
       </div>
     </>

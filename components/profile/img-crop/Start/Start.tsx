@@ -2,8 +2,11 @@ import { Button } from "@/@ui/ui-kit/Button/Button";
 import style from "./start.module.scss"
 import { ChangeEvent, useRef } from "react";
 import { ComponentStartProps } from "../type";
+import { useTranslation } from "react-i18next";
 
 const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesСomponent }) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`add_profile_photo.${key}`)
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -61,7 +64,7 @@ const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesС
           <img src="/../icons/image-outline.svg" alt="img" />
         </div>
         <div className={style.button}>
-          <Button onClick={handleButtonClick} text='Select from Computer'></Button>
+          <Button onClick={handleButtonClick} text={translate('select_from_computer')}></Button>
         </div>
       </label>
     </>

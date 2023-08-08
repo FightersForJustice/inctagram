@@ -5,9 +5,11 @@ import { useAvatarAddMutation, useGetProfileQuery } from "@/assets/api/user/prof
 import { Loading } from "@/components/common/Loaders/Loading";
 import { useState } from "react";
 import { ComponentSaveProps } from "../type";
+import { useTranslation } from "react-i18next";
 
 const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl }) => {
-
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`add_profile_photo.${key}`)
   const [AvatarAdd, { isLoading }] = useAvatarAddMutation()
   const [loading, setIsLoading] = useState(false)
   const getProfileQuery = useGetProfileQuery()
@@ -48,10 +50,10 @@ const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive
     <div className={s.content}>
       {croppedImageUrl && <img className={s.img} src={croppedImageUrl} alt="Avatar" />}
       <div className={s.button}>
-        <Button text="Сохранить" onClick={save} ></Button>
+        <Button text={translate('Save')} onClick={save} ></Button>
       </div>
       <div className={s.button}>
-        <Button color={BUTTON_COLORS.OUTLINED} text="Назад" onClick={back} ></Button>
+        <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={back} ></Button>
       </div>
       {loading ? <Loading /> : ''}
     </div>

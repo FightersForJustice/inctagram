@@ -98,5 +98,12 @@
     "save_changes": "Save changes",
     "modal_error_title": "Sorry!",
     "modal_error_content": "Your data was not changed. Please reload the page."
+  },
+  "add_profile_photo": {
+    "add_profile_photo": "Add a Profile Photo",
+    "select_from_computer": "Select from Computer",
+    "crop": "Crop",
+    "back": "Back",
+    "Save": "Save"
   }
 }

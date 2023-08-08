@@ -3,6 +3,7 @@ import s from "./crop.module.scss"
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { ComponentCropProps } from '../type';
+import { useTranslation } from 'react-i18next';
 
 const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   const sizeImg = 192;
@@ -29,6 +30,8 @@ const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   return canvas.toDataURL('image/jpeg');
 };
 const CropImg: React.FC<ComponentCropProps> = ({ crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent }) => {
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`add_profile_photo.${key}`)
   const Crop = () => {
     const image = document.createElement('img');
     image.src = uploadedImage;
@@ -49,8 +52,8 @@ const CropImg: React.FC<ComponentCropProps> = ({ crop, uploadedImage, setCrop, s
           <img src={uploadedImage} />
         </ReactCrop>
         <div className={s.buttons}>
-          <Button color={BUTTON_COLORS.OUTLINED} text="Назад" onClick={back}></Button>
-          <Button text="Обрезать" onClick={Crop}></Button>
+          <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={back}></Button>
+          <Button text={translate('crop')} onClick={Crop}></Button>
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
 import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
+import { useTranslation } from 'react-i18next'
 
 const RegistrationFormContainer = () => {
   const ModalNull = () => {
@@ -17,16 +18,26 @@ const RegistrationFormContainer = () => {
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
+  const { t } = useTranslation()
+  const translate = (key: string, replacements: object = {}): string => {
+    let translation = t(`merge_accounts.${key}`);
+    for (const [placeholder, value] of Object.entries(replacements)) {
+      translation = translation.replace(new RegExp(`{${placeholder}}`, "g"), value);
+    }
+    return translation;
+  };
   const onSubmit = async (data: FormValuesType) => {
     if (data.password === data.password2) {
       registers(data)
         .unwrap()
         .then(() => {
-          setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + data.email })
+          setPrintModal({
+            title: translate('Email_sent'), content: translate('confirm_message', { email: data.email })
+          })
         })
         .catch((error: any) => {
           if (error.status == 'FETCH_ERROR') {
-            setPrintModal({ title: 'Error', content: 'error' })
+            setPrintModal({ title: translate('error_title'), content: translate('error_message') })
           }
           if (typeof error.data != 'undefined') {
             setArrayErrorMessager(error.data.messages)

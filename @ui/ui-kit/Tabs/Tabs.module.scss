@@ -1,11 +1,9 @@
-@use '/styles/library' as s;
-@use 'styles/mixin' as m;
 @use '../../design/settings/colors.scss' as colors;
 .TabsList {
   flex-shrink: 0;
   display: flex;
   justify-content: space-around;
-  border-bottom: 1px solid s.$dark-100;
+  border-bottom: 1px solid colors.$dark-100;
 }
 
 .tab {
@@ -19,6 +17,8 @@
   padding: 6px 15px;
   width: 85px;
   height: 36px;
+  flex-grow: 1;
+  flex-basis: 0;
   flex-shrink: 0;
   display: flex;
   align-items: center;

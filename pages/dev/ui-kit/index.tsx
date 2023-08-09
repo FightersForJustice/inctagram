@@ -8,7 +8,7 @@ import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
-import Tab from '@/@ui/ui-kit/Tabs/Tabs'
+import TabComponent from '@/@ui/ui-kit/Tabs/TabComponent'
 
 export const getStaticProps = async () => {
   return {
@@ -17,11 +17,6 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
-  const tabsData = [
-    { value: 'tab1', label: 'Tab' },
-    { value: 'tab2', label: 'Tab' },
-    { value: 'tab3', label: 'Tab', disabled: true },
-  ]
   const [ModalActive, setModalActive] = useState(false)
   return (
     <PageWrapper>
@@ -124,7 +119,7 @@ const Login = () => {
         </div>
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Tabs</h2>
-          <Tab values={tabsData}></Tab>
+          <TabComponent />
         </div>
       </div>
     </PageWrapper>

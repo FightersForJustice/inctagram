@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React from 'react'
 import * as Tabs from '@radix-ui/react-tabs'
 import { TAB_COLORS } from './constants'
 import styles from './Tabs.module.scss'
@@ -11,50 +10,22 @@ interface TabData {
   disabled?: boolean
 }
 
-interface TabsProps {
-  values: TabData[]
-  color?: (typeof TAB_COLORS)[keyof typeof TAB_COLORS]
+interface TabProps extends TabData {
+  color: (typeof TAB_COLORS)[keyof typeof TAB_COLORS]
+  isActive: boolean
+  onClick: () => void
 }
 
-const Tab: React.FC<TabsProps> = ({ values, color = TAB_COLORS.PRIMARY }) => {
-  const [currentColor] = useState(color)
-  const router = useRouter()
-  const initialTab = router.query.tab
-  const [activeTab, setActiveTab] = useState<string | null>(
-    Array.isArray(initialTab) ? initialTab[0] : initialTab || (values.length > 0 ? values[0].value : null)
-  )
-
-  const handleTabChange = (value: string) => {
-    setActiveTab(value)
-    router.push({ query: { tab: value } })
-  }
-
-  useEffect(() => {
-    setActiveTab(router.query.tab as string)
-  }, [router.query.tab])
-
-  const buttonClasses = (tabData: TabData) =>
-    classNames(styles.tab, {
-      [styles[`tab${currentColor}`]]: Boolean(currentColor),
-      [styles.disabled]: tabData.disabled,
-    })
+const Tab: React.FC<TabProps> = ({ value, label, color, disabled, onClick }) => {
+  const buttonClasses = classNames(styles.tab, {
+    [styles[`tab${color}`]]: Boolean(color),
+    [styles.disabled]: disabled,
+  })
 
   return (
-    <Tabs.Root value={activeTab || ''} defaultValue={values[0].value} onValueChange={handleTabChange}>
-      <Tabs.List className={styles.TabsList}>
-        {values.map((tabData) => (
-          <Tabs.Trigger
-            key={tabData.value}
-            value={tabData.value}
-            className={buttonClasses(tabData)}
-            disabled={tabData.disabled}
-            onClick={() => !tabData.disabled && handleTabChange(tabData.value)}
-          >
-            {tabData.label}
-          </Tabs.Trigger>
-        ))}
-      </Tabs.List>
-    </Tabs.Root>
+    <Tabs.Trigger value={value} className={buttonClasses} disabled={disabled} onClick={() => !disabled && onClick()}>
+      {label}
+    </Tabs.Trigger>
   )
 }
 

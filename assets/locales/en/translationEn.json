@@ -41,7 +41,8 @@
     "Password_must_be_longer": "Password must be longer than or equal to 6 characters",
     "Password_not_contain_space": "Password must not contain space symbols",
     "Passwords_doesnt_match": "Passwords doesn’t match",
-    "password_hint": "Your password must be between 6 and 20 characters"
+    "password_hint": "Your password must be between 6 and 20 characters",
+    "email_hint": "Enter your email address and we will send you further instructions"
   },
   "merge_accounts": {
     "merger_of_accounts": "Merger of Accounts",

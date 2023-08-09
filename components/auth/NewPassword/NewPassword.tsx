@@ -43,14 +43,14 @@ const NewPassword = (props: INewPasswordProps) => {
               validation={{
                 ...register('password', {
                   ...ValidatePassword(confirmPassword),
-                  onChange: (e) => handleChange(e, setPassword),
+                  onChange: (e) => handleChange(e, setPassword, errors),
                 }),
               }}
               key="password"
               id="password"
               label={translate('New_password')}
               placeholder="******************"
-              errormessages={[errors.confirmPassword && errors.password && 'Error!']}
+              errormessages={[errors.password?.message && translate(errors.password?.message)]}
             />
           </div>
           <div className={style.input_wrapper}>
@@ -58,23 +58,19 @@ const NewPassword = (props: INewPasswordProps) => {
               validation={{
                 ...register('confirmPassword', {
                   ...ValidatePassword(password),
-                  onChange: (e) => handleChange(e, setConfirmPassword),
+                  onChange: (e) => handleChange(e, setConfirmPassword, errors),
                 }),
               }}
               key="confirmPassword"
               id="confirmPassword"
               label={translate('Password_confirmation')}
               placeholder="******************"
-              errormessages={[errors.confirmPassword && errors.password && 'Error!']}
+              errormessages={[
+                errors.password && errors.confirmPassword && errors.confirmPassword.type === 'value' && errors.password.type === 'value' ? translate('Passwords_doesnt_match') : undefined, 
+                errors.confirmPassword?.message && translate(errors.confirmPassword?.message),]}
             />
           </div>
-
-          <div>
-            {errors.password && errors.password.type === 'value' && <p className={style.error_message}>{translate('Passwords_doesnt_match')}</p>}
-            {errors.password?.message && errors.confirmPassword
-            ? <p className={style.error_message}>{translate(errors.password.message)}</p>
-            : <p className={style.hint_message}>{translate('password_hint')}</p>}
-          </div>
+          <p className={style.hint_message}>{translate('password_hint')}</p>
           <div className={style.button_wrapper}>
           <Button
             onClick={handleSubmit(onSubmit)}

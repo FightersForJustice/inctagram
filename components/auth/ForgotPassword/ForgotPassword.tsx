@@ -24,6 +24,7 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
       <form className={authStyle.authForm} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={authStyle.header}>{translate('Forgot_Password')}</h1>
         <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
+        <p className={style.hint}>{translate('email_hint')}</p>
         <div className={style.button_wrapper}>
           <Button
             onClick={handleSubmit(onSubmit)}

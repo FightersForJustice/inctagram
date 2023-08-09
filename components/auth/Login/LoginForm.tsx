@@ -1,29 +1,20 @@
 import Link from 'next/link'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import style from './LoginForm.module.scss'
 import { Loading } from '@/components/common/Loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
-import { Dispatch } from 'react'
-import { SetStateAction } from 'react'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
 import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import classNames from 'classnames'
+import { FormValuesTypeLogin, LoginFormProps } from './type'
+import { useEffect } from 'react'
+import { errorsTrigger } from '@/hooks/errorsTrigger'
 
-type FormValuesType = {
-  email: string
-  password: string
-}
 
-type LoginFormProps = {
-  onSubmit: SubmitHandler<FormValuesType>
-  isLoading: boolean
-  serverError: string
-  setServerError: Dispatch<SetStateAction<string>>
-}
 
 const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFormProps) => {
   const { t } = useTranslation()
@@ -32,7 +23,11 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValuesType>()
+    trigger
+  } = useForm<FormValuesTypeLogin>({ mode: "onBlur" })
+  useEffect(() => {
+    errorsTrigger(trigger, errors)
+  }, [t])
 
   return (
     <div className={authStyle.authContainer}>

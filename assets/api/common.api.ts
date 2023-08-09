@@ -1,1 +1,1 @@
-export const baseUrl = 'https://inctagram.net/api/v1/'
+export const baseUrl = 'https://inctagram.work/api/'

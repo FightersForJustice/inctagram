@@ -31,6 +31,10 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
+
+  useEffect(() => {
+    errorsTrigger(trigger, errors)
+  }, [t])
   return (
     <div className={authStyle.authContainer}>
       {isLoading && (

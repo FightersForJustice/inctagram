@@ -28,6 +28,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
+    trigger
 
   return (
     <div className={authStyle.authContainer}>

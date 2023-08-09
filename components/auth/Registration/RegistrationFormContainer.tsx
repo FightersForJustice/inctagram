@@ -20,6 +20,8 @@ const RegistrationFormContainer = () => {
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
 
 
+
+
   const { t } = useTranslation()
   const translate = (key: string, replacements: object = {}): string => {
     let translation = t(`merge_accounts.${key}`);
@@ -44,6 +46,7 @@ const RegistrationFormContainer = () => {
             setArrayErrorMessager(error.data.messages)
           }
         })
+
 
   }
   return (

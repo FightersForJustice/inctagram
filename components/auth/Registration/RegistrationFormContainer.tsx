@@ -1,5 +1,5 @@
 import RegistrationForm from './RegistrationForm'
-import { ErrorMessagerType, FormValuesType, PrintModalType } from './type'
+import { ErrorMessagerType, FormValuesTypeRegister, PrintModalType } from './type'
 import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
@@ -18,6 +18,8 @@ const RegistrationFormContainer = () => {
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
+
+
   const { t } = useTranslation()
   const translate = (key: string, replacements: object = {}): string => {
     let translation = t(`merge_accounts.${key}`);
@@ -27,7 +29,6 @@ const RegistrationFormContainer = () => {
     return translation;
   };
   const onSubmit = async (data: FormValuesType) => {
-    if (data.password === data.password2) {
       registers(data)
         .unwrap()
         .then(() => {
@@ -43,9 +44,7 @@ const RegistrationFormContainer = () => {
             setArrayErrorMessager(error.data.messages)
           }
         })
-    } else {
-      setArrayErrorMessager([{ field: 'password', message: '* Passwords must match' }])
-    }
+
   }
   return (
     <div>

@@ -3,18 +3,18 @@ import { render, cleanup } from '@testing-library/react'
 import Icons from '../IconsComponent'
 import style from '../IconsComponent.module.scss'
 
-const iconsSubcomponent = ['Home', 'Create', 'Profile', 'Messenger', 'Search', 'Statistics', 'Favorites', 'Logout']
+const iconsSubcomponent: Array<string> = ['Home', 'Create', 'Profile', 'Messenger', 'Search', 'Statistics', 'Favorites', 'Logout']
 const disabledProps = [true, false]
 
 describe('render snapshot correctly \t', () => {
   afterEach(cleanup)
 
-  iconsSubcomponent.map((Subcomponent: any) => {
+  iconsSubcomponent.map((Subcomponent: string) => {
     disabledProps.map((isDisabled) => {
       it(`Subcomponent: ${Subcomponent} \t
       disabled: ${isDisabled} \t
       `, () => {
-        const Icon = Icons[Subcomponent]
+        const Icon = Icons[Subcomponent as keyof typeof Icons]
         const props = { isDisabled: isDisabled }
         const { asFragment } = render(<Icon {...props} />)
         expect(asFragment()).toMatchSnapshot()

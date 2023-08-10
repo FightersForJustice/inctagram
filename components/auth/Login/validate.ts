@@ -1,7 +1,11 @@
 import { useTranslation } from "react-i18next"
 
-
-export const Validate = (validate: string) => {
+export enum ValidateField {
+  Email = 'email',
+  Password = 'password',
+  Username = 'username'
+}
+export const Validate = (validate: ValidateField) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`Validate.${key}`)
   const Email = {
@@ -59,11 +63,11 @@ export const Validate = (validate: string) => {
     },
   }
   switch (validate) {
-    case "email":
+    case ValidateField.Email:
       return Email
-    case "password":
+    case ValidateField.Password:
       return Password
-    case "username":
+    case ValidateField.Username:
       return Username
     default:
 
@@ -71,4 +75,8 @@ export const Validate = (validate: string) => {
 
 }
 
-
+export const confirmPassword = (value: string, watch: (val: string) => string) => {
+  if (watch('password') !== value) {
+    return "Your passwords do not match";
+  }
+};

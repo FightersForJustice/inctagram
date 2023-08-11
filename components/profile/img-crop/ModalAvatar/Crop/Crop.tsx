@@ -4,7 +4,7 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useTranslation } from 'react-i18next';
 import { Dispatch, SetStateAction } from 'react';
-import { StatesСomponentType } from '../type'
+import { StatesСomponentType } from '../../type'
 
 export interface Props {
   crop: Crop;

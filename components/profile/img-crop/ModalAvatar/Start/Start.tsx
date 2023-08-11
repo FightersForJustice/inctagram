@@ -1,13 +1,17 @@
 import { Button } from "@/@ui/ui-kit/Button/Button";
 import style from "./start.module.scss"
 import { ChangeEvent, useRef } from "react";
-import { ComponentStartProps } from "../type";
+import { ComponentStartProps } from "../../type";
 import { useTranslation } from "react-i18next";
+import { calculateNewSize } from "../../utils/calculateNewSize";
 
-const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesСomponent }) => {
+export const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesСomponent }) => {
+
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
+
   const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -33,31 +37,14 @@ const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesС
     }
   };
 
-  const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number) => {
-    let width = originalWidth;
-    let height = originalHeight;
-
-    if (width > maxDimension || height > maxDimension) {
-      const aspectRatio = width / height;
-      if (width > height) {
-        width = maxDimension;
-        height = width / aspectRatio;
-      } else {
-        height = maxDimension;
-        width = height * aspectRatio;
-      }
-    }
-
-    return { width, height };
-  };
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
+
   return (
     <>
-
       <label className={style.form}>
         <input ref={fileInputRef} className={style.input} type="file" name="file" onChange={handleImageUpload} />
         <div className={style.img}>
@@ -70,4 +57,3 @@ const StartImg: React.FC<ComponentStartProps> = ({ setUploadedImage, setStatesС
     </>
   )
 }
-export default StartImg;

@@ -4,7 +4,7 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useAvatarAddMutation, useGetProfileQuery } from "@/assets/api/user/profileQueryApi";
 import { Loading } from "@/components/common/Loaders/Loading";
 import { useState } from "react";
-import { ComponentSaveProps } from "../type";
+import { ComponentSaveProps } from "../../type";
 import { useTranslation } from "react-i18next";
 
 const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl }) => {

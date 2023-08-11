@@ -37,10 +37,14 @@ export const CropImg: React.FC<Props> = (Props) => {
     setStatesСomponent("start")
   }
 
+  const handlerSetCrop = (c: SetStateAction<Crop>) => {
+    setCrop(c)
+  }
+
   return (
     <>
       <div className={s.contentCrop}>
-        <ReactCrop crop={crop} minHeight={192} minWidth={192} circularCrop={true} aspect={1 / 1} onChange={c => setCrop(c)}>
+        <ReactCrop crop={crop} minHeight={192} minWidth={192} circularCrop={true} aspect={1 / 1} onChange={handlerSetCrop}>
           <img src={uploadedImage} />
         </ReactCrop>
         <div className={s.buttons}>

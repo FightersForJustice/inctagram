@@ -5,7 +5,7 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useTranslation } from 'react-i18next';
 import { Dispatch, SetStateAction } from 'react';
 import { StatesСomponentType } from '../../type'
-import { getCroppedImage } from '../../utils/getCroppedImage';
+import { getCroppedImage } from '@/utils/Image/getCroppedImage';
 
 export interface Props {
   crop: Crop;

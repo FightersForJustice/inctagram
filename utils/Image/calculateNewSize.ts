@@ -5,7 +5,7 @@
  * @param {number} maxDimension - Максимальный размер нового изображения по вертикали или горизонтали
  */
 
-export const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number) => {
+export const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number): any => {
   let width = originalWidth;
   let height = originalHeight;
   if (width > maxDimension || height > maxDimension) {

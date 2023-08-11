@@ -2,8 +2,8 @@ import { Button } from "@/@ui/ui-kit/Button/Button";
 import style from "./start.module.scss"
 import { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { calculateNewSize } from "../../utils/calculateNewSize";
 import { StatesСomponentType } from '../../type'
+import { calculateNewSize } from "@/utils/Image/calculateNewSize";
 
 export interface Props {
   setUploadedImage: Dispatch<SetStateAction<string>>

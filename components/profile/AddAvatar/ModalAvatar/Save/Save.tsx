@@ -6,7 +6,7 @@ import { Loading } from "@/components/common/Loaders/Loading";
 import { useState } from "react";
 import { ComponentSaveProps } from "../../type";
 import { useTranslation } from "react-i18next";
-import { dataURLtoFile } from "../../utils/dataURLtoFile";
+import { dataURLtoFile } from "@/utils/Image/dataURLtoFile";
 
 export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
 
@@ -32,9 +32,8 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
       .then((data) => {
         setAvatar(data.avatars[0].url)
         setModalActive(false)
-        setIsLoading(false)
       })
-      .catch(() => {
+      .finally(() => {
         setIsLoading(false)
       })
   };

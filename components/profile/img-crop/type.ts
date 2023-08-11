@@ -3,11 +3,6 @@ import ReactCrop, { type Crop } from 'react-image-crop'
 
 export type StatesСomponentType = 'start' | 'crop' | 'save' | ''
 
-export interface ComponentStartProps {
-  setUploadedImage: Dispatch<SetStateAction<string>>
-  setStatesСomponent: (modalStates: StatesСomponentType) => void
-}
-
 export interface ComponentSaveProps {
   croppedImageUrl: string | null;
   setStatesСomponent: (modalStates: StatesСomponentType) => void

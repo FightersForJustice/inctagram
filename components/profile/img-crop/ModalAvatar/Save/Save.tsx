@@ -1,35 +1,28 @@
 import { Button } from "@/@ui/ui-kit/Button/Button";
 import s from "./save.module.scss"
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { useAvatarAddMutation, useGetProfileQuery } from "@/assets/api/user/profileQueryApi";
+import { useAvatarAddMutation } from "@/assets/api/user/profileQueryApi";
 import { Loading } from "@/components/common/Loaders/Loading";
 import { useState } from "react";
 import { ComponentSaveProps } from "../../type";
 import { useTranslation } from "react-i18next";
+import { dataURLtoFile } from "../../utils/dataURLtoFile";
 
-const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl }) => {
+export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
+
+  const { croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl } = Props
+
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
-  const [AvatarAdd, { isLoading }] = useAvatarAddMutation()
-  const [loading, setIsLoading] = useState(false)
-  const getProfileQuery = useGetProfileQuery()
-  const back = () => { setStatesСomponent("crop"), setCroppedImageUrl(null) }
-  const save = () => {
-    type DataURLtoFileType =
-      (
-        dataurl: any,
-        filename: any,
-      ) => any
 
-    const dataURLtoFile: DataURLtoFileType = (dataurl, filename) => {
-      var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
-      }
-      return new File([u8arr], filename, { type: mime });
-    }
-    //Usage example:
+  const [AvatarAdd] = useAvatarAddMutation()
+  const [loading, setIsLoading] = useState(false)
+
+  const handlerBack = () => {
+    setStatesСomponent("crop")
+    setCroppedImageUrl(null)
+  }
+  const handlerSave = () => {
     var file = dataURLtoFile(croppedImageUrl, 'a.png');
     const formData = new FormData();
     formData.append('file', file);
@@ -48,16 +41,14 @@ const ImgSave: React.FC<ComponentSaveProps> = ({ croppedImageUrl, setModalActive
 
   return (
     <div className={s.content}>
+      {loading ? <Loading /> : ''}
       {croppedImageUrl && <img className={s.img} src={croppedImageUrl} alt="Avatar" />}
       <div className={s.button}>
-        <Button text={translate('Save')} onClick={save} ></Button>
+        <Button text={translate('Save')} onClick={handlerSave} ></Button>
       </div>
       <div className={s.button}>
-        <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={back} ></Button>
+        <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={handlerBack} ></Button>
       </div>
-      {loading ? <Loading /> : ''}
     </div>
-
   )
 }
-export default ImgSave;

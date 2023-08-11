@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from 'react';
-import ReactCrop, { type Crop } from 'react-image-crop'
 
 export type StatesСomponentType = 'start' | 'crop' | 'save' | ''
 

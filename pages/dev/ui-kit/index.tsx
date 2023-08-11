@@ -2,7 +2,9 @@ import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
+import IconStyle from '@/@ui/ui-kit/Icon/IconsComponent.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
@@ -86,7 +88,7 @@ const Login = () => {
                 setModalActive(true)
               }}
             ></Button>
-            <Modal active={ModalActive} setActive={setModalActive} title="Email sent">
+            <Modal active={ModalActive} setActive={setModalActive} close={true} title="Email sent">
               <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
               <div className={style.buttonModal}>
                 <Button

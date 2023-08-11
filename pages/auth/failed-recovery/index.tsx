@@ -1,12 +1,10 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import FailedRecovery from '@/components/auth/Failed/FailedRecovery'
+import { hideWhenAuth } from '@/utils/getServerSideProps/hideWhenAuth'
+import { GetServerSideProps } from 'next'
 
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  }
-}
+export const getServerSideProps: GetServerSideProps = hideWhenAuth
 
 const FailedRecoveryPage = () => {
   return (

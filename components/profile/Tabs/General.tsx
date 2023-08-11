@@ -9,7 +9,7 @@ import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
-import ImgCrop from '../img-crop'
+import { ImgCrop } from '../img-crop'
 
 type GeneralType = {
   userProfile: UserProfile

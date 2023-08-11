@@ -12,10 +12,10 @@
   margin-top: 48px;
 
   .close {
+    width: 28.5px;
+    height: 28.5px;
     border-radius: 50%;
     background-color: red;
-    width: 29px;
-    height: 29px;
     border: 6px solid #0D0D0D;
     position: absolute;
     top: 9px;
@@ -23,9 +23,6 @@
     z-index: 2;
     cursor: pointer;
 
-    .img {
-      width: 17px;
-    }
   }
 
   .avatar {
@@ -45,8 +42,8 @@
 
     .icon {
       position: absolute;
-      top: 72px;
-      left: 72px;
+      top: 81px;
+      left: 81px;
     }
   }
 

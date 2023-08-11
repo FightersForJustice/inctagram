@@ -12,13 +12,13 @@ import { useAvatarDeleteMutation } from '@/assets/api/user/profileQueryApi'
 import { useTranslation } from 'react-i18next'
 import { ImageInfo, StatesСomponentType } from './type'
 import { Loading } from '@/components/common/Loaders/Loading'
+import Image from 'next/image'
 
 type Props = {
   avatarUrl: ImageInfo[]
 }
 
-
-const ImgCrop: React.FC<Props> = (props) => {
+export const ImgCrop: React.FC<Props> = (props) => {
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
@@ -81,12 +81,12 @@ const ImgCrop: React.FC<Props> = (props) => {
       <div className={s.avatarBloc}>
         {avatar === "" ?
           <div className={s.avatar}>
-            <img className={s.icon} src="/../icons/image-outline.svg" alt="img" />
+            <Image className={s.icon} width={30} height={30} src="/../icons/image-outline.svg" alt="img" />
           </div>
           :
           <>
             <div className={s.close} >
-              <img className={s.img} onClick={handlerDeleteAvatar} src="/../icons/close.svg" alt="Close" />
+              <Image width={17} height={17} onClick={handlerDeleteAvatar} src="/../icons/close.svg" alt="Close" />
             </div>
             <div className={s.avatar}>
               <img className={s.img} src={avatar} alt="img" />
@@ -100,4 +100,3 @@ const ImgCrop: React.FC<Props> = (props) => {
     </>
   )
 }
-export default ImgCrop;

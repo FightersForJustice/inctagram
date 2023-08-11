@@ -70,7 +70,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
     <>
       {isLoading && <Loading />}
       <div className={style.content}>
-        <ImgCrop avatarUrl={updatedUserProfile.avatars} setIsLoading={setIsLoading} />
+        <ImgCrop avatarUrl={updatedUserProfile.avatars} />
         <form className={style.form}>
           <FormInput
             label={translate('username')}

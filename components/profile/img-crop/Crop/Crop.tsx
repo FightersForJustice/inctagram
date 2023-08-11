@@ -2,8 +2,17 @@ import ReactCrop, { type Crop } from 'react-image-crop'
 import s from "./crop.module.scss"
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { ComponentCropProps } from '../type';
 import { useTranslation } from 'react-i18next';
+import { Dispatch, SetStateAction } from 'react';
+import { StatesСomponentType } from '../type'
+
+export interface Props {
+  crop: Crop;
+  uploadedImage: string
+  setCrop: Dispatch<SetStateAction<Crop>>
+  setCroppedImageUrl: Dispatch<SetStateAction<string | null>>
+  setStatesСomponent: Dispatch<SetStateAction<StatesСomponentType>>
+}
 
 const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   const sizeImg = 192;
@@ -29,7 +38,7 @@ const getCroppedImage = (image: HTMLImageElement, crop: Crop): string => {
   );
   return canvas.toDataURL('image/jpeg');
 };
-const CropImg: React.FC<ComponentCropProps> = ({ crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent }) => {
+const CropImg: React.FC<Props> = ({ crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
   const Crop = () => {

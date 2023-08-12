@@ -3,9 +3,14 @@
  * @param {number} originalWidth - Ширина изображения
  * @param {number} originalHeight - Высота изображения
  * @param {number} maxDimension - Максимальный размер нового изображения по вертикали или горизонтали
+ * @returns {Object} Рассчитанные ширина и высота
  */
+interface newImageType {
+  width: number;
+  height: number;
+}
 
-export const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number): any => {
+export const calculateNewSize = (originalWidth: number, originalHeight: number, maxDimension: number): newImageType => {
   let width = originalWidth;
   let height = originalHeight;
   if (width > maxDimension || height > maxDimension) {

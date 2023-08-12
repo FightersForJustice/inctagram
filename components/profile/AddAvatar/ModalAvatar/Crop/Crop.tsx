@@ -21,7 +21,7 @@ export const CropImg: React.FC<Props> = (Props) => {
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
-  console.log(crop)
+
   const handlerCrop = () => {
     const image = document.createElement('img');
     image.src = uploadedImage;

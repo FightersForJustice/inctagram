@@ -23,19 +23,21 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
     setCroppedImageUrl(null)
   }
   const handlerSave = () => {
-    var file = dataURLtoFile(croppedImageUrl, 'a.png');
-    const formData = new FormData();
-    formData.append('file', file);
-    setIsLoading(true)
-    AvatarAdd(formData)
-      .unwrap()
-      .then((data) => {
-        setAvatar(data.avatars[0].url)
-        setModalActive(false)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    if (croppedImageUrl) {
+      var file = dataURLtoFile(croppedImageUrl, 'a.png');
+      const formData = new FormData();
+      formData.append('file', file);
+      setIsLoading(true)
+      AvatarAdd(formData)
+        .unwrap()
+        .then((data) => {
+          setAvatar(data.avatars[0].url)
+          setModalActive(false)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    }
   };
 
   return (

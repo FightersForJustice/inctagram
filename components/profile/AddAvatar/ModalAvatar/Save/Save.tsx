@@ -1,15 +1,14 @@
-import { Button } from "@/@ui/ui-kit/Button/Button";
-import s from "./save.module.scss"
+import { Button } from '@/@ui/ui-kit/Button/Button'
+import s from './save.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { useAvatarAddMutation } from "@/assets/api/user/profileQueryApi";
-import { Loading } from "@/components/common/Loaders/Loading";
-import { useState } from "react";
-import { ComponentSaveProps } from "../../type";
-import { useTranslation } from "react-i18next";
-import { dataURLtoFile } from "@/utils/Image/dataURLtoFile";
+import { useAvatarAddMutation } from '@/assets/api/user/profileQueryApi'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { useState } from 'react'
+import { ComponentSaveProps } from '../../type'
+import { useTranslation } from 'react-i18next'
+import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
 
 export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
-
   const { croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl } = Props
 
   const { t } = useTranslation()
@@ -19,14 +18,14 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
   const [loading, setIsLoading] = useState(false)
 
   const handlerBack = () => {
-    setStatesСomponent("crop")
+    setStatesСomponent('crop')
     setCroppedImageUrl(null)
   }
   const handlerSave = () => {
     if (croppedImageUrl) {
-      var file = dataURLtoFile(croppedImageUrl, 'a.png');
-      const formData = new FormData();
-      formData.append('file', file);
+      var file = dataURLtoFile(croppedImageUrl, 'a.png')
+      const formData = new FormData()
+      formData.append('file', file)
       setIsLoading(true)
       AvatarAdd(formData)
         .unwrap()
@@ -38,17 +37,17 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
           setIsLoading(false)
         })
     }
-  };
+  }
 
   return (
     <div className={s.content}>
       {loading ? <Loading /> : ''}
       {croppedImageUrl && <img className={s.img} src={croppedImageUrl} alt="Avatar" />}
       <div className={s.button}>
-        <Button text={translate('Save')} onClick={handlerSave} ></Button>
+        <Button text={translate('Save')} onClick={handlerSave}></Button>
       </div>
       <div className={s.button}>
-        <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={handlerBack} ></Button>
+        <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={handlerBack}></Button>
       </div>
     </div>
   )

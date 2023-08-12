@@ -1,14 +1,14 @@
 import ReactCrop, { type Crop } from 'react-image-crop'
-import s from "./crop.module.scss"
+import s from './crop.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { useTranslation } from 'react-i18next';
-import { Dispatch, SetStateAction } from 'react';
+import { useTranslation } from 'react-i18next'
+import { Dispatch, SetStateAction } from 'react'
 import { StatesСomponentType } from '../../type'
-import { getCroppedImage } from '@/utils/Image/getCroppedImage';
+import { getCroppedImage } from '@/utils/Image/getCroppedImage'
 
 export interface Props {
-  crop: Crop;
+  crop: Crop
   uploadedImage: string
   setCrop: Dispatch<SetStateAction<Crop>>
   setCroppedImageUrl: Dispatch<SetStateAction<string | null>>
@@ -16,25 +16,24 @@ export interface Props {
 }
 
 export const CropImg: React.FC<Props> = (Props) => {
-
   const { crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent } = Props
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
 
   const handlerCrop = () => {
-    const image = document.createElement('img');
-    image.src = uploadedImage;
+    const image = document.createElement('img')
+    image.src = uploadedImage
     image.onload = () => {
-      const croppedImage = getCroppedImage(image, crop);
-      setCroppedImageUrl(croppedImage);
-      setStatesСomponent("save")
-    };
+      const croppedImage = getCroppedImage(image, crop)
+      setCroppedImageUrl(croppedImage)
+      setStatesСomponent('save')
+    }
   }
 
   const handlerback = () => {
     setCroppedImageUrl(null)
-    setStatesСomponent("start")
+    setStatesСomponent('start')
   }
 
   const handlerSetCrop = (c: SetStateAction<Crop>) => {

@@ -9,6 +9,7 @@ import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -72,19 +73,13 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
 
       <form className={style.form}>
         <FormInput
-          label={translate('username')}
-          id="username"
-          name={'userName'}
-          value={updatedUserProfile.userName}
-          onChange={handleInputChange}
-        />
-        <FormInput
           label={translate('firstName')}
           id="first-name"
           name="firstName"
           value={updatedUserProfile.firstName}
           onChange={handleInputChange}
         />
+
         <FormInput
           label={translate('lastName')}
           id="last-name"
@@ -101,7 +96,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
         </fieldset>
 
         <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
-        <FormTextarea
+        <TextArea
           label={translate('aboutMe')}
           id="aboutMe"
           name="aboutMe"

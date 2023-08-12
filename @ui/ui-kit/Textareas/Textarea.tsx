@@ -9,11 +9,13 @@ export type TextAreaProps = {
   hovered?: boolean
   errorMessage?: string
   placeholder?: string
+  label?: string
   color?: (typeof TEXTAEREA_COLORS)[keyof typeof TEXTAEREA_COLORS]
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement> // Inherit all textarea HTML attributes
 
 export const TextArea: React.FC<TextAreaProps> = ({
-  defaultValue,
+  value,
+  label = '',
   hasError = false,
   disabled = false,
   hovered = false,
@@ -30,10 +32,10 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
   return (
     <div>
-      <p className={styles.title}>Textarea</p>
+      <p className={styles.title}>{label}</p>
       <textarea
         className={textareaClasses}
-        defaultValue={defaultValue}
+        value={value}
         disabled={disabled}
         placeholder={placeholder}
         {...restProps} // Spread the remaining HTML attributes

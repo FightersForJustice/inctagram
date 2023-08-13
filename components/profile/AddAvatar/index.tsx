@@ -84,7 +84,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
       <div className={s.avatarBloc}>
         {avatar === '' ? (
           <div className={s.avatar}>
-            <Image className={s.icon} width={30} height={30} src="/../icons/image-outline.svg" alt="img" />
+            <Image className={s.icon} width={48} height={48} src="/../icons/image-outline.svg" alt="img" />
           </div>
         ) : (
           <>

@@ -1,4 +1,5 @@
 {
+  "locale": "ru",
   "registration_form": {
     "email": "Электронная почта",
     "sign_up": "Регистрация",

@@ -1,7 +1,6 @@
 import { Crop } from 'react-image-crop'
 /**
- * Преобразует строку с данными в формате Data URL в объект типа 'File'.
- * (для отправки изображения на сервер)
+ * Обрезает изображения
  * @param {HTMLImageElement} image - Изображения
  * @param {Сrop} crop - Принимает обьект в виде { x: 152, y: 34, width: 192, height: 192, unit: 'px' }
  * @returns {string} - Изображения в формате Data URL

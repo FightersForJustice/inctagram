@@ -1,8 +1,6 @@
 @use '../../design/settings/colors.scss' as colors;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .UIKitDatePicker {
-
   & .MuiInputBase-input {
     color: colors.$light-100;
     padding: 6px 12px;
@@ -14,11 +12,10 @@
   }
   &--open {
     & .MuiInputBase-input {
-      width: 285px;
+      width: 250px;
     }
-    & fieldset{
-      padding-right: 320px;
-      
+    & fieldset {
+      padding-right: 288px;
     }
   }
 
@@ -28,7 +25,7 @@
     width: 158px;
   }
 
-  & .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  & .MuiOutlinedInput-root {
     &:hover .MuiOutlinedInput-notchedOutline {
       border-color: colors.$dark-100;
       background-color: colors.$dark-500;
@@ -56,7 +53,7 @@
     }
   }
 
-  & .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
+  & .MuiInputBase-input.Mui-disabled {
     -webkit-text-fill-color: colors.$light-900;
   }
 
@@ -76,18 +73,18 @@
 .MuiDateCalendar-root {
   width: 300px;
   height: 348px;
-  background-color: colors.$dark-500;;
+  background-color: colors.$dark-500;
   color: colors.$light-100;
 
   .MuiTypography-caption {
-    color: colors.$dark-100;;
+    color: colors.$dark-100;
   }
 
   .MuiPickersDay-root {
-    color: colors.$light-100;;
+    color: colors.$light-100;
     font-size: 16px;
     font-family: 'Inter';
-    transition: .2s;
+    transition: 0.2s;
 
     &:hover,
     &:active {
@@ -98,21 +95,19 @@
       background-color: inherit;
       border: 2px solid colors.$primary-300;
     }
-
   }
 
   .MuiPickersDay-today {
     color: colors.$primary-500;
     font-weight: 400;
-    border: none;
-  }
 
-  .css-1jsy6pn-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
-    border: none;
+    &:not(.Mui-selected):not(.Mui-focusVisible) {
+      border: none;
+    }
   }
 
   .Mui-selected {
-    transition: all .2s;
+    transition: all 0.2s;
     border: 4px solid colors.$primary-900;
     background-color: colors.$primary-500;
     color: colors.$light-100;
@@ -140,10 +135,9 @@
     &-monthContainer {
       margin-top: 5px;
     }
-  
+
     &-header {
       margin-top: 10px;
     }
   }
-
 }

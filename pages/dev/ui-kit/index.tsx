@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
-  const [ModalActive, setModalActive] = useState(false);
+  const [ModalActive, setModalActive] = useState(false)
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -98,32 +98,41 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Modal</h2>
           <div className={style.modal}>
-            <Button text="Modal open" onClick={() => { setModalActive(true) }}></Button>
+            <Button
+              text="Modal open"
+              onClick={() => {
+                setModalActive(true)
+              }}
+            ></Button>
             <Modal active={ModalActive} setActive={setModalActive} close={true} title="Email sent">
               <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
               <div className={style.buttonModal}>
-                <Button text="Ok" onClick={() => { setModalActive(false) }}></Button>
+                <Button
+                  text="Ok"
+                  onClick={() => {
+                    setModalActive(false)
+                  }}
+                ></Button>
               </div>
             </Modal>
           </div>
         </div>
-        
-        <div className={style.kitBlock} >
-          
-        <h2 className={style.componentHeader}>Icons</h2>
-        <div style={{display: 'flex', gap: '50px', color: 'white'}}>
-          <div>
-          <h2>Default</h2>
-          <MainDatePicker />
-          </div>
-          <div>
-          <h2>Error</h2>
-          <MainDatePicker value={'99/99/9999'}/>
-          </div>          
-          <div>
-          <h2>Disabled</h2>
-          <MainDatePicker disabled/>
-          </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
+            <div>
+              <h2>Default</h2>
+              <MainDatePicker />
+            </div>
+            <div>
+              <h2>Error</h2>
+              <MainDatePicker value={'99/99/9999'} />
+            </div>
+            <div>
+              <h2>Disabled</h2>
+              <MainDatePicker disabled />
+            </div>
           </div>
         </div>
       </div>
@@ -133,4 +142,3 @@ const Login = () => {
 
 Login.getLayout = getLayout
 export default Login
-

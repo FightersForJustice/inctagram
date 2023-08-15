@@ -38,7 +38,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
 
   const handlerDeleteAvatar = () => {
     setIsLoading(true)
-    avatarDelete({}).then(() => {
+    avatarDelete().then(() => {
       setAvatar('')
       setIsLoading(false)
     })

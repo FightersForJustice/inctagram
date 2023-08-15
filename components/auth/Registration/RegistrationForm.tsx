@@ -1,13 +1,15 @@
 import style from './RegistrationForm.module.scss'
 import { useForm } from 'react-hook-form'
 import { getLayout } from '@/components/Layout/Layout'
-import { Validate } from '../Login/validate'
+import { Validate, ValidateField, confirmPassword } from '../Login/validate'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { FormValuesType, RegistrationPropsType } from './type'
+import { FormValuesTypeRegister, RegistrationPropsType } from './type'
 import { PasswordInput, MainInput } from '@/components/common/Inputs/Inputs'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { authRouts } from '@/components/common/Auth/authRoutes'
+import { useEffect } from 'react'
+import { errorsTrigger } from '@/hooks/errorsTrigger'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -16,9 +18,15 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<FormValuesType>()
+    trigger
+  } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
   const disabled = Object.keys(errors).length === 0 ? false : true
+
+  useEffect(() => {
+    errorsTrigger(trigger, errors)
+  }, [t])
   return (
     <div className={style.registration}>
       {isLoading && (
@@ -40,7 +48,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.userName || errorMessageName ? style.error : ''}
-            validation={{ ...register('userName', Validate('username')) }}
+            validation={{ ...register('userName', Validate(ValidateField.Username)) }}
             placeholder="Epam"
             label={translate('username')}
           />
@@ -51,7 +59,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <MainInput
             onClick={ArrayErrorMessager}
             className={errors.email || errorMessageEmail ? style.error : ''}
-            validation={{ ...register('email', Validate('email')) }}
+            validation={{ ...register('email', Validate(ValidateField.Email)) }}
             placeholder="Epam@epam.com"
             label={translate('email')}
           />
@@ -62,7 +70,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password', Validate('password')) }}
+            validation={{ ...register('password', Validate(ValidateField.Password)) }}
             placeholder="******************"
             label={translate('password')}
           />
@@ -73,7 +81,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           <PasswordInput
             onClick={ArrayErrorMessager}
             className={errors.password2 || errorMessagePassword ? style.error : ''}
-            validation={{ ...register('password2', Validate('password')) }}
+            validation={{ ...register('password2', { validate: (value) => confirmPassword(value, watch) }) }}
             placeholder="******************"
             label={translate('password_confirmation')}
           />

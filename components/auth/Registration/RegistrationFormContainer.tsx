@@ -13,38 +13,37 @@ const RegistrationFormContainer = () => {
   const [arrayErrorMessager, setArrayErrorMessager] = useState<ErrorMessagerType[]>([])
   const [registers, { isLoading }] = useRegistrationMutation()
   const ArrayErrorMessager = () => {
-    arrayErrorMessager.length == 0 ? "" : setArrayErrorMessager([])
+    arrayErrorMessager.length == 0 ? '' : setArrayErrorMessager([])
   }
   const errorMessageEmail = arrayErrorMessager.find((obj) => obj.field === 'email')
   const errorMessageName = arrayErrorMessager.find((obj) => obj.field === 'name')
   const errorMessagePassword = arrayErrorMessager.find((obj) => obj.field === 'password')
 
-
   const { t } = useTranslation()
   const translate = (key: string, replacements: object = {}): string => {
-    let translation = t(`merge_accounts.${key}`);
+    let translation = t(`merge_accounts.${key}`)
     for (const [placeholder, value] of Object.entries(replacements)) {
-      translation = translation.replace(new RegExp(`{${placeholder}}`, "g"), value);
+      translation = translation.replace(new RegExp(`{${placeholder}}`, 'g'), value)
     }
-    return translation;
-  };
-  const onSubmit = async (data: FormValuesType) => {
-      registers(data)
-        .unwrap()
-        .then(() => {
-          setPrintModal({
-            title: translate('Email_sent'), content: translate('confirm_message', { email: data.email })
-          })
+    return translation
+  }
+  const onSubmit = async (data: FormValuesTypeRegister) => {
+    registers(data)
+      .unwrap()
+      .then(() => {
+        setPrintModal({
+          title: translate('Email_sent'),
+          content: translate('confirm_message', { email: data.email }),
         })
-        .catch((error: any) => {
-          if (error.status == 'FETCH_ERROR') {
-            setPrintModal({ title: translate('error_title'), content: translate('error_message') })
-          }
-          if (typeof error.data != 'undefined') {
-            setArrayErrorMessager(error.data.messages)
-          }
-        })
-
+      })
+      .catch((error: any) => {
+        if (error.status == 'FETCH_ERROR') {
+          setPrintModal({ title: translate('error_title'), content: translate('error_message') })
+        }
+        if (typeof error.data != 'undefined') {
+          setArrayErrorMessager(error.data.messages)
+        }
+      })
   }
   return (
     <div>

@@ -29,7 +29,7 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
       setIsLoading(true)
       AvatarAdd(formData)
         .unwrap()
-        .then((data) => {
+        .then((data:any) => {
           setAvatar(data.avatars[0].url)
           setModalActive(false)
         })

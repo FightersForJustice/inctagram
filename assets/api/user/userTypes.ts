@@ -32,5 +32,5 @@ type ResponseAvatars = {
   fileSize: number
 }
 export type ServerAvatarResponse = {
-  messages: ResponseAvatars[]
+  avatars: ResponseAvatars[]
 }

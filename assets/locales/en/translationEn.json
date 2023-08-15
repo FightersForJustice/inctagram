@@ -1,4 +1,5 @@
 {
+  "locale": "en",
   "registration_form": {
     "email": "Email",
     "sign_up": "Sign Up",
@@ -33,12 +34,14 @@
     "Password_has_been_changed": "Your password has been successfully changed"
   },
   "merge_accounts": {
+    "error_title": "Error",
+    "error_message": "Error repeat the request",
     "merger_of_accounts": "Merger of Accounts",
     "the_user_with_email_Epam@epam.com_is_already_in_the_system_could_we_merge_this_accounts": "The user with email Epam@epam.com is already in the system. Could we merge this accounts?",
     "yes_merge": "Yes merge",
     "no": "No",
     "Email_sent": "Email sent",
-    "confirm_message": "We have sent a link to confirm your email to epam@epam.com"
+    "confirm_message": "We have sent a link to confirm your email to {email}"
   },
   "success": {
     "Congratulations": "Congratulations!",
@@ -47,14 +50,14 @@
   },
   "Validate": {
     "required": "Required field to fill in",
-    "usernameMaxLength": "Username must be shorter than or equal to {{maxLength}} characters",
-    "usernameMinLength": "Username must be longer than or equal to {{minLength}} characters",
+    "usernameMaxLength": "Username must be shorter than or equal to 30 characters",
+    "usernameMinLength": "Username must be longer than or equal to 6 characters",
     "invalidUsernameFormat": "Invalid username format",
-    "emailMaxLength": "Email must be shorter than or equal to {{maxLength}} characters",
+    "emailMaxLength": "Email must be shorter than or equal to 30 characters",
     "invalidEmailFormat": "Invalid email format",
-    "emailMinLength": "Email must be longer than or equal to {{minLength}} characters",
-    "passwordMaxLength": "Password must be shorter than or equal to {{maxLength}} characters",
-    "passwordMinLength": "Password must be longer than or equal to {{minLength}} characters",
+    "emailMinLength": "Email must be longer than or equal to 6 characters",
+    "passwordMaxLength": "Password must be shorter than or equal to 20 characters",
+    "passwordMinLength": "Password must be longer than or equal to 6 characters",
     "passwordNoSpaces": "Don't use spaces in password"
   },
   "Email_verification_link_expired": "Email verification link expired",

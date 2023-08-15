@@ -1,5 +1,5 @@
 import { SubmitHandler } from 'react-hook-form'
-export type FormValuesType = {
+export type FormValuesTypeRegister = {
   userName: string
   email: string
   password: string
@@ -14,10 +14,10 @@ export type PrintModalType = {
   content: string
 }
 export type RegistrationPropsType = {
-  onSubmit: SubmitHandler<FormValuesType>
+  onSubmit: SubmitHandler<FormValuesTypeRegister>
   isLoading: boolean
-  errorMessageEmail: any
-  errorMessageName: any
-  errorMessagePassword: any
-  ArrayErrorMessager: any
+  errorMessageEmail: ErrorMessagerType | undefined
+  errorMessageName: ErrorMessagerType | undefined
+  errorMessagePassword: ErrorMessagerType | undefined
+  ArrayErrorMessager: () => void
 }

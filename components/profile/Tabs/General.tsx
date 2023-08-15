@@ -9,6 +9,7 @@ import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
+import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
 import { ImgCrop } from '../AddAvatar'
 
 type GeneralType = {
@@ -94,6 +95,16 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             onChange={handleInputChange}
           />
 
+        <fieldset className={style.Fieldset}>
+          <label className={commonStyle.Label} htmlFor="date">
+            {translate('dateOfBirth')}
+          </label>
+          <MainDatePicker
+            id="date"
+            value={updatedUserProfile.dateOfBirth}
+            setValue={saveToArray(setChangedFields, 'dateOfBirth')}
+          />
+        </fieldset>
           <fieldset className={style.Fieldset}>
             <label className={commonStyle.Label} htmlFor="date">
               {translate('dateOfBirth')}

@@ -2,7 +2,7 @@ import { baseUrl } from '@/assets/api/common.api'
 import { userRouts } from '@/components/common/User/userRouts'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ServerErrorResponse } from '../auth/authTypes'
-import { UpdateUserProfile, UserProfile } from './userTypes'
+import { AvatarAddUserProfile, ServerAvatarResponse, UpdateUserProfile, UserProfile } from './userTypes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 
 export const profileQueryApi = createApi({
@@ -33,7 +33,7 @@ export const profileQueryApi = createApi({
         body: userData,
       }),
     }),
-    avatarAdd: builder.mutation({
+    avatarAdd: builder.mutation<ServerAvatarResponse | ServerErrorResponse, AvatarAddUserProfile>({
       query: (file) => ({
         url: userRouts.avatar,
         method: 'POST',
@@ -43,7 +43,7 @@ export const profileQueryApi = createApi({
         },
       }),
     }),
-    avatarDelete: builder.mutation({
+    avatarDelete: builder.mutation<void | void, void>({
       query: () => ({
         url: userRouts.avatar,
         method: 'DELETE',

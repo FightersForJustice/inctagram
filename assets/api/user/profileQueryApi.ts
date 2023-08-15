@@ -33,7 +33,7 @@ export const profileQueryApi = createApi({
         body: userData,
       }),
     }),
-    avatarAdd: builder.mutation<ServerAvatarResponse | ServerErrorResponse, any>({
+    avatarAdd: builder.mutation<ServerAvatarResponse, FormData>({
       query: (file) => ({
         url: userRouts.avatar,
         method: 'POST',
@@ -43,7 +43,7 @@ export const profileQueryApi = createApi({
         },
       }),
     }),
-    avatarDelete: builder.mutation<void | void, void>({
+    avatarDelete: builder.mutation<void, void>({
       query: () => ({
         url: userRouts.avatar,
         method: 'DELETE',

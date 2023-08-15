@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { ComponentSaveProps } from '../../type'
 import { useTranslation } from 'react-i18next'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
+import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 
 export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
   const { croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl } = Props
@@ -29,9 +30,12 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
       setIsLoading(true)
       AvatarAdd(formData)
         .unwrap()
-        .then((data:any) => {
+        .then((data) => {
           setAvatar(data.avatars[0].url)
           setModalActive(false)
+        })
+        .catch((error:ServerErrorResponse)=>{
+          console.log(error)
         })
         .finally(() => {
           setIsLoading(false)

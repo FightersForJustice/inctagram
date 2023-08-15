@@ -10,6 +10,7 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
+import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -92,7 +93,11 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
           <label className={commonStyle.Label} htmlFor="date">
             {translate('dateOfBirth')}
           </label>
-          <input className={commonStyle.Input} id="date" type="date" />
+          <MainDatePicker
+            id="date"
+            value={updatedUserProfile.dateOfBirth}
+            setValue={saveToArray(setChangedFields, 'dateOfBirth')}
+          />
         </fieldset>
 
         <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />

@@ -28,12 +28,12 @@ export type userAvatar = {
 export type AvatarAddUserProfile = {
   file: string
 }
-export type ServerAvatarResponse = {
-  messages: ResponseAvatars[]
-}
 type ResponseAvatars = {
   url: string
   width: number
   height: number
   fileSize: number
+}
+export type ServerAvatarResponse = {
+  messages: ResponseAvatars[]
 }

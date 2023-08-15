@@ -25,9 +25,6 @@ export type userAvatar = {
   height: number
   fileSize: number
 }
-export type AvatarAddUserProfile = {
-  file: string
-}
 type ResponseAvatars = {
   url: string
   width: number

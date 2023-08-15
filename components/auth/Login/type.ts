@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from "react"
-import { FieldErrors, SubmitHandler, UseFormRegister, UseFormTrigger } from "react-hook-form"
+import { Dispatch, SetStateAction } from 'react'
+import { FieldErrors, SubmitHandler, UseFormRegister, UseFormTrigger } from 'react-hook-form'
 
 export type FormValuesTypeLogin = {
   email: string

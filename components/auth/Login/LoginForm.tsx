@@ -12,8 +12,6 @@ import { FormValuesTypeLogin, LoginFormProps } from './type'
 import { useEffect } from 'react'
 import { errorsTrigger } from '@/hooks/errorsTrigger'
 
-
-
 const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFormProps) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
@@ -21,8 +19,8 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     register,
     handleSubmit,
     formState: { errors },
-    trigger
-  } = useForm<FormValuesTypeLogin>({ mode: "onBlur" })
+    trigger,
+  } = useForm<FormValuesTypeLogin>({ mode: 'onBlur' })
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])

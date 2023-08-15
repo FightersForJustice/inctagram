@@ -102,23 +102,22 @@ const Login = () => {
             </Modal>
           </div>
         </div>
-        
-        <div className={style.kitBlock} >
-          
-        <h2 className={style.componentHeader}>Icons</h2>
-        <div style={{display: 'flex', gap: '50px', color: 'white'}}>
-          <div>
-          <h2>Default</h2>
-          <MainDatePicker />
-          </div>
-          <div>
-          <h2>Error</h2>
-          <MainDatePicker value={'99/99/9999'}/>
-          </div>          
-          <div>
-          <h2>Disabled</h2>
-          <MainDatePicker disabled/>
-          </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
+            <div>
+              <h2>Default</h2>
+              <MainDatePicker />
+            </div>
+            <div>
+              <h2>Error</h2>
+              <MainDatePicker value={'99/99/9999'} />
+            </div>
+            <div>
+              <h2>Disabled</h2>
+              <MainDatePicker disabled />
+            </div>
           </div>
         </div>
       </div>

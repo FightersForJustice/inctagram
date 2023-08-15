@@ -36,7 +36,7 @@ export const MainDatePicker = ({ value, setValue, disabled, id }: DatePickerType
     setValue = setDate
   }, [])
   return (
-    <div className={classNames('UIKitDatePicker', pickerState)} >
+    <div className={classNames('UIKitDatePicker', pickerState)}>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
         <DatePicker
           disabled={disabled}

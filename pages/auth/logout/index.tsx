@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { getLayout } from '@/components/Layout/Layout'
 import { useLogoutMutation } from '@/assets/api/auth/authQueryApi'
 import { authRouts } from '@/components/common/Auth/authRoutes'
+import { removeAccessTokenCookie } from '@/utils/cookies'
 
 const Logout = () => {
   const [logout] = useLogoutMutation()
@@ -14,7 +15,7 @@ const Logout = () => {
           .unwrap()
           .then(() => {
             router.push(authRouts.login)
-            // localStorage.removeItem('accessToken') //remove from cookie
+            removeAccessTokenCookie()
           })
       } catch (error) {
         console.error('Error occurred while logging out:', error)

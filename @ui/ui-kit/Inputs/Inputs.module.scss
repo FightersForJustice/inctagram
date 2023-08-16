@@ -24,7 +24,9 @@
   background-color: colors.$dark-500;
   padding: 5px 11px;
   margin-top: 4px;
-
+  &_dark {
+    background-color: colors.$dark-700;
+  }
   &:hover {
     border-color: colors.$light-900;
   }
@@ -33,6 +35,10 @@
     border-color: colors.$light-100;
     color: colors.$light-100;
     background-color: colors.$dark-300;
+  }
+
+  &_dark:focus {
+    background-color: colors.$dark-500;
   }
 
   &:disabled {

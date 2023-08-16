@@ -95,7 +95,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
         />
 
         <fieldset className={style.Fieldset}>
-          <label className={commonStyle.Label} htmlFor="date">
+          <label className={commonStyle.label} htmlFor="date">
             {translate('dateOfBirth')}
           </label>
           <MainDatePicker

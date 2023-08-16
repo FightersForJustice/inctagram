@@ -57,20 +57,20 @@ export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
 export const FormInput: React.FC<FormInputType> = ({ onChange, label, id, name, value }) => {
   return (
     <fieldset>
-      <label className={style.Label} htmlFor={id}>
+      <label className={style.label} htmlFor={id}>
         {label}
       </label>
-      <input className={style.Input} id={id} name={name} value={value} onChange={onChange} />
+      <input className={classNames(style.input, style.input_dark)} id={id} name={name} value={value} onChange={onChange} />
     </fieldset>
   )
 }
 export const FormTextarea: React.FC<FormTextareaType> = ({ onChange, label, id, name, value }) => {
   return (
     <fieldset>
-      <label className={style.Label} htmlFor={id}>
+      <label className={style.label} htmlFor={id}>
         {label}
       </label>
-      <textarea className={style.Input} id={id} name={name} value={value} onChange={onChange} />
+      <textarea className={classNames(style.input, style.input_dark)} id={id} name={name} value={value} onChange={onChange} />
     </fieldset>
   )
 }

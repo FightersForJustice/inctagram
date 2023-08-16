@@ -10,7 +10,7 @@ export type ButtonType = {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const Button: React.FC<ButtonType> = ({ text="", color = BUTTON_COLORS.PRIMARY, disabled = false, onClick }) => {
+export const Button: React.FC<ButtonType> = ({ text = '', color = BUTTON_COLORS.PRIMARY, disabled = false, onClick }) => {
   const buttonClasses = classNames(styles.button, {
     [styles[`button${color}`]]: Boolean(color),
   })

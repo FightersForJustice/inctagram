@@ -31,21 +31,21 @@ const RegistrationFormContainer = () => {
     return translation;
   };
   const onSubmit = async (data: FormValuesTypeRegister) => {
-      registers(data)
-        .unwrap()
-        .then(() => {
-          setPrintModal({
-            title: translate('Email_sent'), content: translate('confirm_message', { email: data.email })
-          })
+    registers(data)
+      .unwrap()
+      .then(() => {
+        setPrintModal({
+          title: translate('Email_sent'), content: translate('confirm_message', { email: data.email })
         })
-        .catch((error: any) => {
-          if (error.status == 'FETCH_ERROR') {
-            setPrintModal({ title: translate('error_title'), content: translate('error_message') })
-          }
-          if (typeof error.data != 'undefined') {
-            setArrayErrorMessager(error.data.messages)
-          }
-        })
+      })
+      .catch((error: any) => {
+        if (error.status == 'FETCH_ERROR') {
+          setPrintModal({ title: translate('error_title'), content: translate('error_message') })
+        }
+        if (typeof error.data != 'undefined') {
+          setArrayErrorMessager(error.data.messages)
+        }
+      })
 
 
   }

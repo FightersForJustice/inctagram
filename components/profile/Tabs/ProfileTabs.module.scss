@@ -16,22 +16,9 @@
 .TabsList {
   flex-shrink: 0;
   display: flex;
-  // border-bottom: 1px solid c.$primary-500;
-  width: 726px;
+  width: 737px;
   height: 36px;
 }
-
-.TabsContent {
-  flex-grow: 1;
-  padding: 20px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  outline: none;
-}
-.TabsContent:focus {
-  box-shadow: 0 0 0 2px black;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -54,14 +41,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.Label {
-  font-size: 13px;
-  line-height: 1;
-  margin-bottom: 10px;
-  color: var(--violet-12);
-  display: block;
 }
 
 .Input {

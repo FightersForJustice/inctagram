@@ -8,7 +8,10 @@ import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
-import TabComponent from '@/@ui/ui-kit/Tabs/TabComponent'
+import { useRouter } from 'next/router'
+import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
+import * as Tabs from '@radix-ui/react-tabs'
+import { userRouts } from '@/components/common/User/userRouts'
 
 export const getStaticProps = async () => {
   return {
@@ -17,6 +20,14 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState('general')
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+
+    router.replace(`/ui-kit?tab=${value}`)
+  }
   const [ModalActive, setModalActive] = useState(false)
   return (
     <PageWrapper>
@@ -119,12 +130,19 @@ const Login = () => {
         </div>
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Tabs</h2>
-          <TabComponent />
+          <div className={style.container}>
+            <Tabs.Root defaultValue="general" onValueChange={handleTabChange} className={style.TabsRoot}>
+              <Tabs.List aria-label="Manage your account" className={style.TabsList}>
+                <Tab label="TAB " value="tab1" />
+                <Tab label="TAB" value="tab2" disabled />
+                <Tab label="TAB" value="tab3" />
+              </Tabs.List>
+            </Tabs.Root>
+          </div>
         </div>
       </div>
     </PageWrapper>
   )
 }
-
 Login.getLayout = getLayout
 export default Login

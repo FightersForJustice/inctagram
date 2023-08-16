@@ -7,9 +7,10 @@ import General from './General'
 import Devices from './Devices'
 import Account from './Account'
 import Payments from './Payments'
-import { Tab } from './Tab/Tab'
+import { Tab } from '../../../@ui/ui-kit/Tabs/Tab'
 import style from './ProfileTabs.module.scss'
 import { UserProfile } from '@/assets/api/user/userTypes'
+import { useTranslation } from 'react-i18next'
 
 type ProfileTabs = {
   userProfile: UserProfile
@@ -25,6 +26,8 @@ const ProfileTabs = (props: ProfileTabs) => {
 
     router.replace(`${userRouts.profileSettings}?tab=${value}`)
   }
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`profile_settings.${key}`)
 
   return (
     <>
@@ -32,10 +35,10 @@ const ProfileTabs = (props: ProfileTabs) => {
         <div className={style.container}>
           <Tabs.Root defaultValue="general" onValueChange={handleTabChange} className={style.TabsRoot}>
             <Tabs.List aria-label="Manage your account" className={style.TabsList}>
-              <Tab title="General Information" value="general" />
-              <Tab title="Devices" value="devices" />
-              <Tab title="Account Management" value="account" />
-              <Tab title="My Payments" value="payments" />
+              <Tab label={translate('generalInformation')} value="general" />
+              <Tab label={translate('devices')} value="devices" />
+              <Tab label={translate('accountManagement')} value="account" />
+              <Tab label={translate('myPayments')} value="payments" />
             </Tabs.List>
             <Tabs.Content value="general">{activeTab === 'general' && <General userProfile={userProfile} />}</Tabs.Content>
             <Tabs.Content value="devices">{activeTab === 'devices' && <Devices />}</Tabs.Content>

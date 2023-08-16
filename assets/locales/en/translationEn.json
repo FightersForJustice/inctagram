@@ -88,6 +88,12 @@
     "Favorites": "Favorites",
     "Logout": "Log Out"
   },
+  "profile_settings": {
+    "generalInformation": "General Information",
+    "devices": "Devices",
+    "accountManagement": "Account Management",
+    "myPayments": "My Payments"
+  },
   "profile_settings__general": {
     "username": "Username",
     "firstName": "First Name",

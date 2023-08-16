@@ -88,6 +88,12 @@
     "Favorites": "Избранное",
     "Logout": "Выйти"
   },
+  "profile_settings": {
+    "generalInformation": "Общая информация",
+    "devices": "Устройства",
+    "accountManagement": "Управление аккаунтом",
+    "myPayments": "Мои платежи"
+  },
   "profile_settings__general": {
     "username": "Ник",
     "firstName": "Имя",

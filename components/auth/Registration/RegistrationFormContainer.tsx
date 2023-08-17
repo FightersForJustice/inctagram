@@ -46,7 +46,7 @@ const RegistrationFormContainer = () => {
       })
   }
   return (
-    <div>
+    <>
       {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
       <RegistrationForm
         onSubmit={onSubmit}
@@ -56,7 +56,7 @@ const RegistrationFormContainer = () => {
         errorMessagePassword={errorMessagePassword}
         ArrayErrorMessager={ArrayErrorMessager}
       />
-    </div>
+    </>
   )
 }
 

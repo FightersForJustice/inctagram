@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './ProfileTabs.module.scss'
-import commonStyle from '../../common/Inputs/Inputs.module.scss'
-import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
+import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
+import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
@@ -90,7 +90,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
         />
 
         <fieldset className={style.Fieldset}>
-          <label className={commonStyle.Label} htmlFor="date">
+          <label className={commonStyle.label} htmlFor="date">
             {translate('dateOfBirth')}
           </label>
           <MainDatePicker

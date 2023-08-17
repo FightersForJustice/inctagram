@@ -56,7 +56,7 @@ const RegistrationFormContainer = () => {
         errorMessagePassword={errorMessagePassword}
         ArrayErrorMessager={ArrayErrorMessager}
       />
-    </>
+    </div>
   )
 }
 

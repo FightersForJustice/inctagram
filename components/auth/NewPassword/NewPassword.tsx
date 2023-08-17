@@ -27,60 +27,66 @@ const NewPassword = (props: INewPasswordProps) => {
 
   return (
     <div className={authStyle.authContainer}>
-        {isLoaderShown && (
-          <div className={authStyle.loading}>
-            <Loading />
-          </div>
-        )}
-        <form
-          className={classNames(authStyle.authForm, style.authForm)}
-          onSubmit={handleSubmit(onSubmit)}
-          style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}
-        >
-          <h1 className={authStyle.header}>{translate('Create_new_password')}</h1>
-          <div className={style.input_wrapper}>
-            <PasswordInput
-              validation={{
-                ...register('password', {
-                  ...ValidatePassword(confirmPassword),
-                  onChange: (e) => handleChange(e, setPassword, errors),
-                }),
-              }}
-              key="password"
-              id="password"
-              label={translate('New_password')}
-              placeholder="******************"
-              errormessages={[errors.password?.message && translate(errors.password?.message)]}
-            />
-          </div>
-          <div className={style.input_wrapper}>
-            <PasswordInput
-              validation={{
-                ...register('confirmPassword', {
-                  ...ValidatePassword(password),
-                  onChange: (e) => handleChange(e, setConfirmPassword, errors),
-                }),
-              }}
-              key="confirmPassword"
-              id="confirmPassword"
-              label={translate('Password_confirmation')}
-              placeholder="******************"
-              errormessages={[
-                errors.password && errors.confirmPassword && errors.confirmPassword.type === 'value' && errors.password.type === 'value' ? translate('Passwords_doesnt_match') : undefined, 
-                errors.confirmPassword?.message && translate(errors.confirmPassword?.message),]}
-            />
-          </div>
-          <p className={style.hint_message}>{translate('password_hint')}</p>
-          <div className={style.button_wrapper}>
+      {isLoaderShown && (
+        <div className={authStyle.loading}>
+          <Loading />
+        </div>
+      )}
+      <form
+        className={classNames(authStyle.authForm, style.authForm)}
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}
+      >
+        <h1 className={authStyle.header}>{translate('Create_new_password')}</h1>
+        <div className={style.input_wrapper}>
+          <PasswordInput
+            validation={{
+              ...register('password', {
+                ...ValidatePassword(confirmPassword),
+                onChange: (e) => handleChange(e, setPassword, errors),
+              }),
+            }}
+            key="password"
+            id="password"
+            label={translate('New_password')}
+            placeholder="******************"
+            errormessages={[errors.password?.message && translate(errors.password?.message)]}
+          />
+        </div>
+        <div className={style.input_wrapper}>
+          <PasswordInput
+            validation={{
+              ...register('confirmPassword', {
+                ...ValidatePassword(password),
+                onChange: (e) => handleChange(e, setConfirmPassword, errors),
+              }),
+            }}
+            key="confirmPassword"
+            id="confirmPassword"
+            label={translate('Password_confirmation')}
+            placeholder="******************"
+            errormessages={[
+              errors.password &&
+              errors.confirmPassword &&
+              errors.confirmPassword.type === 'value' &&
+              errors.password.type === 'value'
+                ? translate('Passwords_doesnt_match')
+                : undefined,
+              errors.confirmPassword?.message && translate(errors.confirmPassword?.message),
+            ]}
+          />
+        </div>
+        <p className={style.hint_message}>{translate('password_hint')}</p>
+        <div className={style.button_wrapper}>
           <Button
             onClick={handleSubmit(onSubmit)}
             text={translate('Create_new_password')}
             disabled={isLoaderShown}
-            color='Primary'
+            color="Primary"
           />
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   )
 }
 

@@ -45,7 +45,7 @@ export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   return (
     <>
       <div style={{ position: 'relative', width: '100%' }}>
-        <span className={style.eyeButton} style={{marginTop: labelMargin}} onClick={() => setIsPasswordShown((prev) => !prev)}>
+        <span className={style.eyeButton} style={{ marginTop: labelMargin }} onClick={() => setIsPasswordShown((prev) => !prev)}>
           {isPasswordShown ? <LightEyeOpen /> : <LightEyeClosed />}
         </span>
       </div>

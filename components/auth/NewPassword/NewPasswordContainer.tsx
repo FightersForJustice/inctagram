@@ -32,8 +32,8 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     CreateNewPassword({ recoveryCode, router, password, passwordCreateMutation, setServerError, setIsSucceed })
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any, errors: FieldErrors<IFormInput>) => {
-    if(errors.password?.type === 'value' ) clearErrors('password')
-    if(errors.confirmPassword?.type === 'value') clearErrors('confirmPassword')
+    if (errors.password?.type === 'value') clearErrors('password')
+    if (errors.confirmPassword?.type === 'value') clearErrors('confirmPassword')
     setValue(e.target.value)
   }
 

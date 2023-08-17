@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = hideWhenAuth
 const Registration = () => {
   return (
     <PageWrapper>
-        <RegistrationFormContainer />
+      <RegistrationFormContainer />
     </PageWrapper>
   )
 }

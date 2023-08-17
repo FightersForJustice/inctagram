@@ -26,12 +26,7 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
         <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
         <p className={style.hint}>{translate('email_hint')}</p>
         <div className={style.button_wrapper}>
-          <Button
-            onClick={handleSubmit(onSubmit)}
-            text={translate('Send_link')}
-            disabled={isLoading}
-            color='Primary'
-          />
+          <Button onClick={handleSubmit(onSubmit)} text={translate('Send_link')} disabled={isLoading} color="Primary" />
         </div>
 
         <Link className={style.link} href={'login'}>
@@ -39,7 +34,7 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
         </Link>
 
         <div className={style.recaptcha_wrapper}>
-          <ReCAPTCHA sitekey={siteKey} onChange={onChange} className={style.recaptcha} ref={recaptchaRef} theme='dark' />
+          <ReCAPTCHA sitekey={siteKey} onChange={onChange} className={style.recaptcha} ref={recaptchaRef} theme="dark" />
         </div>
       </form>
     </div>

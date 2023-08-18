@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly should render default correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render disabled correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input"
+    disabled=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render error correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input inputError"
+    errormessages="test error message"
+  />
+  <span
+    class="errorMessage"
+  >
+    test error message
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render with label correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+  >
+    test label
+  </label>
+  <input
+    class="input"
+    label="test label"
+  />
+</DocumentFragment>
+`;

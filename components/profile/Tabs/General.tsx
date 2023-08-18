@@ -10,6 +10,7 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
+import { ImgCrop } from '../AddAvatar'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -66,33 +67,33 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       [name]: value,
     }))
   }
-
   return (
     <>
       {isLoading && <Loading />}
-
-      <form className={style.form}>
-        <FormInput
-          label={translate('username')}
-          id="username"
-          name={'userName'}
-          value={updatedUserProfile.userName}
-          onChange={handleInputChange}
-        />
-        <FormInput
-          label={translate('firstName')}
-          id="first-name"
-          name="firstName"
-          value={updatedUserProfile.firstName}
-          onChange={handleInputChange}
-        />
-        <FormInput
-          label={translate('lastName')}
-          id="last-name"
-          name="lastName"
-          value={updatedUserProfile.lastName}
-          onChange={handleInputChange}
-        />
+      <div className={style.content}>
+        <ImgCrop avatarUrl={updatedUserProfile.avatars} />
+        <form className={style.form}>
+          <FormInput
+            label={translate('username')}
+            id="username"
+            name={'userName'}
+            value={updatedUserProfile.userName || ''}
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label={translate('firstName')}
+            id="first-name"
+            name="firstName"
+            value={updatedUserProfile.firstName || ''}
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label={translate('lastName')}
+            id="last-name"
+            name="lastName"
+            value={updatedUserProfile.lastName || ''}
+            onChange={handleInputChange}
+          />
 
         <fieldset className={style.Fieldset}>
           <label className={commonStyle.Label} htmlFor="date">
@@ -104,19 +105,24 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             setValue={saveToArray(setChangedFields, 'dateOfBirth')}
           />
         </fieldset>
+          <fieldset className={style.Fieldset}>
+            <label className={commonStyle.Label} htmlFor="date">
+              {translate('dateOfBirth')}
+            </label>
+            <input className={commonStyle.Input} id="date" type="date" />
+          </fieldset>
 
-        <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city} onChange={handleInputChange} />
-        <FormTextarea
-          label={translate('aboutMe')}
-          id="aboutMe"
-          name="aboutMe"
-          value={updatedUserProfile.aboutMe}
-          onChange={handleInputChange}
-        />
-
-        <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
-      </form>
-
+          <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city || ''} onChange={handleInputChange} />
+          <FormTextarea
+            label={translate('aboutMe')}
+            id="aboutMe"
+            name="aboutMe"
+            value={updatedUserProfile.aboutMe || ''}
+            onChange={handleInputChange}
+          />
+          <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
+        </form>
+      </div>
       {isModalOpen && (
         <Modal
           title={translate('modal_error_title')}

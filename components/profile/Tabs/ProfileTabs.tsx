@@ -37,7 +37,7 @@ const ProfileTabs = (props: ProfileTabs) => {
               <Tab title="Account Management" value="account" />
               <Tab title="My Payments" value="payments" />
             </Tabs.List>
-            <Tabs.Content value="general">{activeTab === 'general' && <General userProfile={userProfile} />}</Tabs.Content>
+            <Tabs.Content className={style.tabContent} value="general">{activeTab === 'general' && <General userProfile={userProfile} />}</Tabs.Content>
             <Tabs.Content value="devices">{activeTab === 'devices' && <Devices />}</Tabs.Content>
             <Tabs.Content value="account">{activeTab === 'account' && <Account />}</Tabs.Content>
             <Tabs.Content value="payments">{activeTab === 'payments' && <Payments />}</Tabs.Content>

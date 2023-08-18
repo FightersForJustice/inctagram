@@ -88,6 +88,7 @@ const authQueryApi = createApi({
         method: 'POST',
       }),
     }),
+
   }),
 })
 

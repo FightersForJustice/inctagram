@@ -27,17 +27,17 @@ const Login = () => {
           <h2 className={style.componentHeader}>Buttons</h2>
           <div className={style.components}>
             <div className={style.buttonBlock}>
-              <Button text="Button"></Button>
-              <Button text="Button" disabled></Button>
+              <Button text="Button5"></Button>
+              <Button text="Button3" disabled></Button>
             </div>
 
             <div className={style.buttonBlock}>
-              <Button color={BUTTON_COLORS.BASIC} text="Button"></Button>
-              <Button color={BUTTON_COLORS.BASIC} text="Button" disabled></Button>
+              <Button color={BUTTON_COLORS.BASIC} text="Button7"></Button>
+              <Button color={BUTTON_COLORS.BASIC} text="Button8" disabled></Button>
             </div>
 
             <div className={style.buttonBlock}>
-              <Button color={BUTTON_COLORS.OUTLINED} text="Button"></Button>
+              <Button color={BUTTON_COLORS.OUTLINED} text="Button9"></Button>
               <Button color={BUTTON_COLORS.OUTLINED} text="Button" disabled></Button>
             </div>
 

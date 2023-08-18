@@ -101,5 +101,12 @@
     "save_changes": "Сохранить изменения",
     "modal_error_title": "Извините!",
     "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу."
+  },
+  "add_profile_photo": {
+    "add_profile_photo": "Добавить фотографию",
+    "select_from_computer": "Выбрать с компьютера",
+    "crop": "Обрезать",
+    "back": "Назад",
+    "Save": "Сохранить"
   }
 }

@@ -11,6 +11,7 @@ import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
+import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -21,6 +22,7 @@ type ChangedFields = {
 }
 
 const General: React.FC<GeneralType> = ({ userProfile }) => {
+  const [validationError, setValidationError] = useState(false)
   const [updateProfile] = useUpdateProfileMutation()
   const [updatedUserProfile, setUpdatedUserProfile] = useState<UserProfile>(userProfile)
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
@@ -55,7 +57,15 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newValue = event.target.value
     const { name, value } = event.target
+    if (name === 'aboutMe') {
+      if (value.length > 200) {
+        setValidationError(true)
+      } else {
+        setValidationError(false)
+      }
+    }
     setUpdatedUserProfile((prevData) => ({
       ...prevData,
       [name]: value,
@@ -107,6 +117,9 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
           name="aboutMe"
           value={updatedUserProfile.aboutMe}
           onChange={handleInputChange}
+          color={validationError ? TEXTAEREA_COLORS.ERROR : undefined}
+          hasError={validationError}
+          errorMessage={translate('textareaLengthValidationError')}
         />
 
         <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />

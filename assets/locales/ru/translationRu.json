@@ -1,4 +1,5 @@
 {
+  "locale": "ru",
   "registration_form": {
     "email": "Электронная почта",
     "sign_up": "Регистрация",
@@ -33,12 +34,14 @@
     "Password_has_been_changed": "Ваш пароль был успешно изменен"
   },
   "merge_accounts": {
+    "error_title": "Ошибка",
+    "error_message": "Ошибка повторите запрос",
     "merger_of_accounts": "Объеденить учетные записи",
     "the_user_with_email_Epam@epam.com_is_already_in_the_system_could_we_merge_this_accounts": "Пользователь с электронной почтой Epam@epam.com уже находится в системе. Можем ли мы объединить эти аккаунты?",
     "yes_merge": "Да, объединить",
     "no": "Нет",
     "Email_sent": "Письмо отправлено",
-    "confirm_message": "Мы отправили ссылку для подтверждения вашего адреса электронной почты на адрес epam@epam.com"
+    "confirm_message": "Мы отправили ссылку для подтверждения вашего адреса электронной почты на адрес {email}"
   },
   "success": {
     "Congratulations": "Поздравляем!",
@@ -47,14 +50,14 @@
   },
   "Validate": {
     "required": "Поле обязательно для заполнения",
-    "usernameMaxLength": "Имя пользователя должно быть не более {{maxLength}} символов",
-    "usernameMinLength": "Имя пользователя должно быть не менее {{minLength}} символов",
+    "usernameMaxLength": "Имя пользователя должно быть не более 30 символов",
+    "usernameMinLength": "Имя пользователя должно быть не менее 6 символов",
     "invalidUsernameFormat": "Неверный формат имени пользователя",
-    "emailMaxLength": "Email должен быть не более {{maxLength}} символов",
+    "emailMaxLength": "Email должен быть не более 30 символов",
     "invalidEmailFormat": "Неверный формат email",
-    "emailMinLength": "Email должен быть не менее {{minLength}} символов",
-    "passwordMaxLength": "Пароль должен быть не более {{maxLength}} символов",
-    "passwordMinLength": "Пароль должен быть не менее {{minLength}} символов",
+    "emailMinLength": "Email должен быть не менее 6 символов",
+    "passwordMaxLength": "Пароль должен быть не более 20 символов",
+    "passwordMinLength": "Пароль должен быть не менее 6 символов",
     "passwordNoSpaces": "Не используйте пробелы в пароле"
   },
   "Email_verification_link_expired": "Срок действия ссылки для подтверждения электронной почты истек",
@@ -98,5 +101,12 @@
     "save_changes": "Сохранить изменения",
     "modal_error_title": "Извините!",
     "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу."
+  },
+  "add_profile_photo": {
+    "add_profile_photo": "Добавить фотографию",
+    "select_from_computer": "Выбрать с компьютера",
+    "crop": "Обрезать",
+    "back": "Назад",
+    "Save": "Сохранить"
   }
 }

@@ -25,3 +25,12 @@ export type userAvatar = {
   height: number
   fileSize: number
 }
+type ResponseAvatars = {
+  url: string
+  width: number
+  height: number
+  fileSize: number
+}
+export type ServerAvatarResponse = {
+  avatars: ResponseAvatars[]
+}

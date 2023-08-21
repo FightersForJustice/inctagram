@@ -4,7 +4,8 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
 import IconStyle from '@/@ui/ui-kit/Icon/IconsComponent.module.scss'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import Icons from '@/@ui/ui-kit/Icon/IconsComponent'
+import { MainDatePicker } from '@/@ui/ui-kit/DatePicker/DatePicker'
+import { Icons } from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
@@ -16,7 +17,7 @@ export const getStaticProps = async () => {
 }
 
 const Login = () => {
-  const [ModalActive, setModalActive] = useState(false);
+  const [ModalActive, setModalActive] = useState(false)
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -26,17 +27,17 @@ const Login = () => {
           <h2 className={style.componentHeader}>Buttons</h2>
           <div className={style.components}>
             <div className={style.buttonBlock}>
-              <Button text="Button"></Button>
-              <Button text="Button" disabled></Button>
+              <Button text="Button5"></Button>
+              <Button text="Button3" disabled></Button>
             </div>
 
             <div className={style.buttonBlock}>
-              <Button color={BUTTON_COLORS.BASIC} text="Button"></Button>
-              <Button color={BUTTON_COLORS.BASIC} text="Button" disabled></Button>
+              <Button color={BUTTON_COLORS.BASIC} text="Button7"></Button>
+              <Button color={BUTTON_COLORS.BASIC} text="Button8" disabled></Button>
             </div>
 
             <div className={style.buttonBlock}>
-              <Button color={BUTTON_COLORS.OUTLINED} text="Button"></Button>
+              <Button color={BUTTON_COLORS.OUTLINED} text="Button9"></Button>
               <Button color={BUTTON_COLORS.OUTLINED} text="Button" disabled></Button>
             </div>
 
@@ -97,13 +98,41 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Modal</h2>
           <div className={style.modal}>
-            <Button text="Modal open" onClick={() => { setModalActive(true) }}></Button>
+            <Button
+              text="Modal open"
+              onClick={() => {
+                setModalActive(true)
+              }}
+            ></Button>
             <Modal active={ModalActive} setActive={setModalActive} close={true} title="Email sent">
               <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
               <div className={style.buttonModal}>
-                <Button text="Ok" onClick={() => { setModalActive(false) }}></Button>
+                <Button
+                  text="Ok"
+                  onClick={() => {
+                    setModalActive(false)
+                  }}
+                ></Button>
               </div>
             </Modal>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
+            <div>
+              <h2>Default</h2>
+              <MainDatePicker />
+            </div>
+            <div>
+              <h2>Error</h2>
+              <MainDatePicker value={'99/99/9999'} />
+            </div>
+            <div>
+              <h2>Disabled</h2>
+              <MainDatePicker disabled />
+            </div>
           </div>
         </div>
       </div>
@@ -113,4 +142,3 @@ const Login = () => {
 
 Login.getLayout = getLayout
 export default Login
-

@@ -103,6 +103,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             id="date"
             value={updatedUserProfile.dateOfBirth}
             setValue={saveToArray(setChangedFields, 'dateOfBirth')}
+            disableFuture
           />
         </fieldset>
           <fieldset className={style.Fieldset}>

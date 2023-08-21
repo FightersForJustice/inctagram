@@ -144,7 +144,6 @@ describe('Date picker', () => {
     fireEvent.click(screen.getByRole('button'))
   }
 
-
   afterEach(cleanup)
   it('should change the date when "number" button clicked', () => {
     render(<MainDatePicker value="10/10/2000" />)
@@ -245,7 +244,7 @@ describe('Date picker', () => {
 
     openPicker()
     const dateNumberButton = screen.getByRole('gridcell', { name: '10' })
-    
+
     expect(dateNumberButton).toHaveClass('Mui-selected')
   })
 })

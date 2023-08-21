@@ -34,7 +34,7 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
           setAvatar(data.avatars[0].url)
           setModalActive(false)
         })
-        .catch((error:ServerErrorResponse)=>{
+        .catch((error: ServerErrorResponse) => {
           console.log(error)
         })
         .finally(() => {

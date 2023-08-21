@@ -12,11 +12,7 @@ const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
   return (
     <>
       <div className={style.input_wrapper}>
-        <MainInput
-          validation={{ ...register('email', ValidateEmail) }}
-          id="email"
-          label={translate('email')}
-        />
+        <MainInput validation={{ ...register('email', ValidateEmail) }} id="email" label={translate('email')} />
       </div>
       <div className={style.error_message}>
         {errors.email && <p>{errors.email.message}</p>}

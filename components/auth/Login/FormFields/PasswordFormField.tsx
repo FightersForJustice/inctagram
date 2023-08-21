@@ -5,8 +5,6 @@ import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
 import { PasswordFormFieldProps } from '../type'
 
-
-
 const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)

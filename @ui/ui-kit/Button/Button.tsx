@@ -5,12 +5,12 @@ import { BUTTON_COLORS } from './constants'
 
 export type ButtonType = {
   text: string
-  color?: typeof BUTTON_COLORS[keyof typeof BUTTON_COLORS]
+  color?: (typeof BUTTON_COLORS)[keyof typeof BUTTON_COLORS]
   disabled?: boolean
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const Button: React.FC<ButtonType> = ({ text="", color = BUTTON_COLORS.PRIMARY, disabled = false, onClick }) => {
+export const Button: React.FC<ButtonType> = ({ text = '', color = BUTTON_COLORS.PRIMARY, disabled = false, onClick }) => {
   const buttonClasses = classNames(styles.button, {
     [styles[`button${color}`]]: Boolean(color),
   })

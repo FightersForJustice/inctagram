@@ -27,34 +27,34 @@ describe('Icons', () => {
   afterEach(cleanup)
   it('renders correctly', () => {
     const { getByText } = render(<Icons.Home />)
-    
+
     const IconElement = getByText('Home')
     expect(IconElement).toBeInTheDocument()
   })
 
   it('custom text renders correctly', () => {
-    const { getByText } = render(<Icons.Home customText='test' />)
-    
+    const { getByText } = render(<Icons.Home customText="test" />)
+
     const IconElement = getByText('test')
     expect(IconElement).toBeInTheDocument()
-  }) 
+  })
 
   it('custom class renders correctly', () => {
-    const { getByText } = render(<Icons.Home customClass='test' />)
-    
+    const { getByText } = render(<Icons.Home customClass="test" />)
+
     const IconElement = getByText('Home')
     expect(IconElement.closest('a')).toHaveClass('test')
-  }) 
+  })
 
   it('redirects to the specified url', () => {
-    const { getByText } = render(<Icons.Home url='test'  />)
+    const { getByText } = render(<Icons.Home url="test" />)
 
     const IconElement = getByText('Home')
     expect(IconElement.closest('a')).toHaveAttribute('href', 'test')
   })
 
   it('link doesnt work when disabled', () => {
-    const { getByText } = render(<Icons.Home url='test' isDisabled={true} />)
+    const { getByText } = render(<Icons.Home url="test" isDisabled={true} />)
 
     const IconElement = getByText('Home')
     expect(IconElement.closest('a')).toBeFalsy()

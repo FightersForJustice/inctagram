@@ -95,25 +95,25 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             onChange={handleInputChange}
           />
 
-        <fieldset className={style.Fieldset}>
-          <label className={commonStyle.Label} htmlFor="date">
-            {translate('dateOfBirth')}
-          </label>
-          <MainDatePicker
-            id="date"
-            value={updatedUserProfile.dateOfBirth}
-            setValue={saveToArray(setChangedFields, 'dateOfBirth')}
-            disableFuture
-          />
-        </fieldset>
           <fieldset className={style.Fieldset}>
             <label className={commonStyle.Label} htmlFor="date">
               {translate('dateOfBirth')}
             </label>
-            <input className={commonStyle.Input} id="date" type="date" />
+            <MainDatePicker
+              id="date"
+              value={updatedUserProfile.dateOfBirth}
+              setValue={saveToArray(setChangedFields, 'dateOfBirth')}
+              disableFuture
+            />
           </fieldset>
 
-          <FormInput label={translate('city')} id="city" name="city" value={updatedUserProfile.city || ''} onChange={handleInputChange} />
+          <FormInput
+            label={translate('city')}
+            id="city"
+            name="city"
+            value={updatedUserProfile.city || ''}
+            onChange={handleInputChange}
+          />
           <FormTextarea
             label={translate('aboutMe')}
             id="aboutMe"

@@ -106,6 +106,7 @@
     "aboutMe": "About me",
     "save_changes": "Save changes",
     "modal_error_title": "Sorry!",
-    "modal_error_content": "Your data was not changed. Please reload the page."
+    "modal_error_content": "Your data was not changed. Please reload the page.",
+    "textareaLengthValidationError": "The number of characters must not exceed 200"
   }
 }

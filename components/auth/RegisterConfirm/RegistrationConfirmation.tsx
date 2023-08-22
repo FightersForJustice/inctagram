@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authApi'
+import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { authRouts } from '@/components/common/Auth/authRoutes'
 

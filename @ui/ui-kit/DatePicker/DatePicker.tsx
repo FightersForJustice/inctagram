@@ -48,6 +48,7 @@ export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture }:
           onChange={(e: any) => {
             setValue && setValue(e.$d)
           }}
+          orientation='portrait'
           disableFuture={disableFuture}
           value={value ? dayjs(value) : null}
           onError={(newError) => setError(newError)}

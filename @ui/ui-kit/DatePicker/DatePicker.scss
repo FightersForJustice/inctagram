@@ -69,6 +69,18 @@
     padding: 20px;
   }
 }
+.MuiDialogContent-root {
+  background-color: colors.$dark-500;
+  color: colors.$light-100;
+}
+
+.MuiPickersToolbar-root span {
+  color: colors.$light-700;
+}
+
+.MuiDialogActions-root button {
+  color: colors.$primary-300;
+}
 
 .MuiDateCalendar-root {
   width: 300px;

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea has Active styles 1`] = `
+<textarea
+  class="textarea Active"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea has Active styles when Active color prop is not provided 1`] = `
+<textarea
+  class="textarea Active"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea has Active styles when Active color prop is provided 1`] = `
+<textarea
+  class="textarea Active"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea has Error styles 1`] = `
+<textarea
+  class="textarea Error"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea has Error styles when Error color prop is not provided 1`] = `
+<textarea
+  class="textarea Error"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea has Error styles when Error color prop is provided 1`] = `
+<textarea
+  class="textarea Error"
+  placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea renders correctly 1`] = `
+<textarea
+  class="textarea Default"
+  placeholder="Textarea"
+/>
+`;

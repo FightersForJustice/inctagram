@@ -5,4 +5,4 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
 
-jest.mock('path/to/image.svg', () => 'svg');
+jest.mock('path/to/image.svg', () => 'svg')

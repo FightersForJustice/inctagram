@@ -94,7 +94,6 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             value={updatedUserProfile.lastName || ''}
             onChange={handleInputChange}
           />
-
           <fieldset className={style.Fieldset}>
             <label className={commonStyle.Label} htmlFor="date">
               {translate('dateOfBirth')}

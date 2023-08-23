@@ -1,9 +1,8 @@
 @use '../../design/settings/colors.scss';
 
 .IconWrapper {
-
   display: flex;
-  transition: .2s;
+  transition: 0.2s;
   width: fit-content;
   color: colors.$light-100;
   box-sizing: content-box;

@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render snapshot correctly 	 active:false 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: false 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:false 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: true 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+        <button
+          class="buttonClose"
+          data-testid="closeModal"
+        >
+          <img
+            alt=""
+            src="/icons/close.svg"
+          />
+        </button>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:true 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: false 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect show"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:true 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: true 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect show"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+        <button
+          class="buttonClose"
+          data-testid="closeModal"
+        >
+          <img
+            alt=""
+            src="/icons/close.svg"
+          />
+        </button>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;

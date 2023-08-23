@@ -102,5 +102,12 @@
     "modal_error_title": "Sorry!",
     "modal_error_content": "Your data was not changed. Please reload the page.",
     "textareaLengthValidationError": "The number of characters must not exceed 200"
+  },
+  "add_profile_photo": {
+    "add_profile_photo": "Add a Profile Photo",
+    "select_from_computer": "Select from Computer",
+    "crop": "Cut",
+    "back": "Back",
+    "Save": "Save"
   }
 }

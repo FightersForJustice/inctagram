@@ -47,7 +47,7 @@ const RegistrationFormContainer = () => {
   }
   return (
     <div>
-      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
+      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClose={ModalNull} onClick={ModalNull} /> : ''}
       <RegistrationForm
         onSubmit={onSubmit}
         isLoading={isLoading}

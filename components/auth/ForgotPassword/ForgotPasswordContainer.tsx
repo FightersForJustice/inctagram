@@ -72,7 +72,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   }
   return (
     <>
-      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
+      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClose={ModalNull} /> : ''}
       <ForgotPassword
         siteKey={siteKey}
         isLoading={isLoading}

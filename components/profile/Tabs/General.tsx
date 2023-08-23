@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './ProfileTabs.module.scss'
-import commonStyle from '../../common/Inputs/Inputs.module.scss'
-import { FormInput, FormTextarea } from '@/components/common/Inputs/Inputs'
+import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
+import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
@@ -9,8 +9,10 @@ import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
 import { ImgCrop } from '../AddAvatar'
+import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 
 type GeneralType = {
   userProfile: UserProfile
@@ -21,6 +23,7 @@ type ChangedFields = {
 }
 
 const General: React.FC<GeneralType> = ({ userProfile }) => {
+  const [validationError, setValidationError] = useState(false)
   const [updateProfile] = useUpdateProfileMutation()
   const [updatedUserProfile, setUpdatedUserProfile] = useState<UserProfile>(userProfile)
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
@@ -55,7 +58,15 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newValue = event.target.value
     const { name, value } = event.target
+    if (name === 'aboutMe') {
+      if (value.length > 200) {
+        setValidationError(true)
+      } else {
+        setValidationError(false)
+      }
+    }
     setUpdatedUserProfile((prevData) => ({
       ...prevData,
       [name]: value,
@@ -95,22 +106,16 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             onChange={handleInputChange}
           />
 
-          <fieldset className={style.Fieldset}>
-            <label className={commonStyle.Label} htmlFor="date">
-              {translate('dateOfBirth')}
-            </label>
-            <MainDatePicker
-              id="date"
-              value={updatedUserProfile.dateOfBirth}
-              setValue={saveToArray(setChangedFields, 'dateOfBirth')}
-            />
-          </fieldset>
-          <fieldset className={style.Fieldset}>
-            <label className={commonStyle.Label} htmlFor="date">
-              {translate('dateOfBirth')}
-            </label>
-            <input className={commonStyle.Input} id="date" type="date" />
-          </fieldset>
+        <fieldset className={style.Fieldset}>
+          <label className={commonStyle.label} htmlFor="date">
+            {translate('dateOfBirth')}
+          </label>
+          <MainDatePicker
+            id="date"
+            value={updatedUserProfile.dateOfBirth}
+            setValue={saveToArray(setChangedFields, 'dateOfBirth')}
+          />
+        </fieldset>
 
           <FormInput
             label={translate('city')}

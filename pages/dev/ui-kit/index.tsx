@@ -9,15 +9,26 @@ import Icons from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
+import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
+
+import { useForm, Control } from 'react-hook-form'
 
 export const getStaticProps = async () => {
   return {
     props: {},
   }
 }
-
+interface FormValues {
+  myTextarea: string
+}
 const Login = () => {
   const [ModalActive, setModalActive] = useState(false)
+  const { control, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data)
+  }
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -47,52 +58,26 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Textarea</h2>
+          <div className={style.components}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea />
+            </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
+            </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea disabled />
+            </form>
+          </div>
+        </div>
 
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Button Links</h2>
           <div className={style.components}>
             <ButtonLink text="Internal Button link" url="/auth/login"></ButtonLink>
             <ButtonLink text="External Button link" url="https://www.awwwards.com/"></ButtonLink>
-          </div>
-        </div>
-        <div className={style.kitBlock}>
-          <h2 className={style.componentHeader}>Icons</h2>
-          <div className={style.components}>
-            <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
-              <div className={IconStyle.SideBar}>
-                <h2>Default</h2>
-                <Icons.Home />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-              <div className={IconStyle.SideBar}>
-                <h2>Active</h2>
-                <Icons.Home isActive />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-              <div className={IconStyle.SideBar}>
-                <h2>Disabled</h2>
-                <Icons.Home isDisabled />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-            </div>
           </div>
         </div>
         <div className={style.kitBlock}>

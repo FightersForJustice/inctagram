@@ -22,15 +22,18 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     },
   }
 }
+
 type HomeType = {
   isAuth: UserData
 }
+
 const Logout = (props:HomeType) => {
-  const { t } = useTranslation()
-  const translate = (key: string): string => t(`logout.${key}`)
+
   const [logout] = useLogoutMutation()
   const router = useRouter()
   const [ModalActive, setModalActive] = useState(true)
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`logout.${key}`)
 
   const handlerYes = ()=>{
     const performLogout = async () => {
@@ -47,9 +50,11 @@ const Logout = (props:HomeType) => {
     }
     performLogout()
   }
+
   const handlerNo = ()=>{
     router.push(userRouts.home)
   }
+
   return (
     <>
       <Modal title={translate('title')} active={ModalActive} setActive={setModalActive} close={true}>

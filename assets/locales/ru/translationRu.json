@@ -100,7 +100,8 @@
     "aboutMe": "Обо мне",
     "save_changes": "Сохранить изменения",
     "modal_error_title": "Извините!",
-    "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу."
+    "modal_error_content": "Ваши данные не были изменены. Пожалуйста, перезагрузите страницу.",
+    "textareaLengthValidationError": "Число символов не должно быть больше 200"
   },
   "add_profile_photo": {
     "add_profile_photo": "Добавить фотографию",

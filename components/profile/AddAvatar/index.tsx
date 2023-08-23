@@ -43,7 +43,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
       setIsLoading(false)
     })
   }
-  const hendlerOpenModal = () => {
+  const handlerOpenModal = () => {
     setModalActive(true)
     setStatesСomponent('start')
   }
@@ -97,7 +97,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
           </>
         )}
         <div className={s.blocButton}>
-          <Button color={BUTTON_COLORS.OUTLINED} text={translate('add_profile_photo')} onClick={hendlerOpenModal}></Button>
+          <Button color={BUTTON_COLORS.OUTLINED} autoHeight text={translate('add_profile_photo')} onClick={handlerOpenModal}></Button>
         </div>
       </div>
     </>

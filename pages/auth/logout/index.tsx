@@ -11,6 +11,8 @@ import s from './index.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { userRouts } from '@/components/common/User/userRouts'
+import { UserData } from '@/assets/api/auth/authTypes'
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
@@ -20,18 +22,17 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     },
   }
 }
-
-const Logout = (props) => {
+type HomeType = {
+  isAuth: UserData
+}
+const Logout = (props:HomeType) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`logout.${key}`)
   const [logout] = useLogoutMutation()
   const router = useRouter()
   const [ModalActive, setModalActive] = useState(true)
 
-  const handlerYes = ()=>{}
-  const handlerNo = ()=>{}
-  /*
-  useEffect(() => {
+  const handlerYes = ()=>{
     const performLogout = async () => {
       try {
         await logout({})
@@ -45,8 +46,10 @@ const Logout = (props) => {
       }
     }
     performLogout()
-  }, [logout])
-  */
+  }
+  const handlerNo = ()=>{
+    router.push(userRouts.home)
+  }
   return (
     <>
       <Modal title={translate('title')} active={ModalActive} setActive={setModalActive} close={true}>

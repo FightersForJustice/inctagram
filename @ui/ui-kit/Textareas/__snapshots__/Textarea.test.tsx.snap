@@ -1,50 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textarea has Active styles 1`] = `
-<textarea
-  class="textarea Active"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea has Active styles when Active color prop is not provided 1`] = `
-<textarea
-  class="textarea Active"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea has Active styles when Active color prop is provided 1`] = `
-<textarea
-  class="textarea Active"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea has Error styles 1`] = `
-<textarea
-  class="textarea Error"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea has Error styles when Error color prop is not provided 1`] = `
-<textarea
-  class="textarea Error"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea has Error styles when Error color prop is provided 1`] = `
-<textarea
-  class="textarea Error"
-  placeholder="Textarea"
-/>
-`;
-
-exports[`Textarea renders correctly 1`] = `
+exports[`Textarea checks placeholder value 1`] = `
 <textarea
   class="textarea Default"
   placeholder="Textarea"
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Active 	
+                disabled: Active 	
+                 1`] = `
+<textarea
+  class="textarea Active"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Active 	
+                disabled: Default 	
+                 1`] = `
+<textarea
+  class="textarea Active"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Active 	
+                disabled: Error 	
+                 1`] = `
+<textarea
+  class="textarea Active"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Default 	
+                disabled: Active 	
+                 1`] = `
+<textarea
+  class="textarea Default"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Default 	
+                disabled: Default 	
+                 1`] = `
+<textarea
+  class="textarea Default"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Default 	
+                disabled: Error 	
+                 1`] = `
+<textarea
+  class="textarea Default"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Error 	
+                disabled: Active 	
+                 1`] = `
+<textarea
+  class="textarea Error"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Error 	
+                disabled: Default 	
+                 1`] = `
+<textarea
+  class="textarea Error"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea renders correctly 	
+                color: Error 	
+                disabled: Error 	
+                 1`] = `
+<textarea
+  class="textarea Error"
+  disabled=""
+  placeholder="Enter your text..."
 />
 `;

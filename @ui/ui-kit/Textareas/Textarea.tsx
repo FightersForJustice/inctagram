@@ -26,7 +26,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
 }) => {
   const textareaClasses = classNames(styles.textarea, {
     [styles.Default]: color === TEXTAEREA_COLORS.DEFAULT,
-    [styles.Active]: color === TEXTAEREA_COLORS.ACTIVE,
+    [styles.Active]: hovered || color === TEXTAEREA_COLORS.ACTIVE,
     [styles.Error]: color === TEXTAEREA_COLORS.ERROR,
   })
 

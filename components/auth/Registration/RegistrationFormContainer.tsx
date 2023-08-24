@@ -2,7 +2,7 @@ import RegistrationForm from './RegistrationForm'
 import { ErrorMessagerType, FormValuesTypeRegister, PrintModalType } from './type'
 import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
-import { Modal } from '@/components/common/Modal/Modal'
+
 import { useTranslation } from 'react-i18next'
 
 const RegistrationFormContainer = () => {

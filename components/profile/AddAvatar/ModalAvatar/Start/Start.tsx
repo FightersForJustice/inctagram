@@ -5,9 +5,12 @@ import { useTranslation } from 'react-i18next'
 import { StatesСomponentType } from '../../type'
 import { calculateNewSize } from '@/utils/Image/calculateNewSize'
 
+export interface Props {
+  setUploadedImage: Dispatch<SetStateAction<string>>
+  setStatesСomponent: (modalStates: StatesСomponentType) => void
+}
 
-
-export const StartImg: React.FC = ({ setUploadedImage, setStatesСomponent }) => {
+export const StartImg: React.FC<Props> = ({ setUploadedImage, setStatesСomponent }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
 

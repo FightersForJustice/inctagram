@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import style from './ForgotPassword.module.scss'
-import { MainButton } from '@/components/common/Buttons/Buttons'
-
 import ReCAPTCHA from 'react-google-recaptcha'
 import { IForgotPasswordProps } from './forgotPasswordTypes'
 import ForgotPasswordInput from './ForgotPasswordInput'
 import { useTranslation } from 'react-i18next'
 import { Loading } from '@/components/common/Loaders/Loading'
+import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
+import { Button } from '@/@ui/ui-kit/Button/Button'
 
 const ForgotPassword = (props: IForgotPasswordProps) => {
   const { t } = useTranslation()
@@ -14,34 +14,29 @@ const ForgotPassword = (props: IForgotPasswordProps) => {
   const { siteKey, errors, isLoading, isSucceed, serverError, recaptchaRef, handleSubmit, register, onSubmit, onChange } = props
 
   return (
-    <div className={style.mainContainer}>
-      <div className={style.form_wrapper}>
-        {isLoading && (
-          <div className={style.modal}>
-            <Loading />
-          </div>
-        )}
+    <div className={authStyle.authContainer}>
+      {isLoading && (
+        <div className={authStyle.loading}>
+          <Loading />
+        </div>
+      )}
 
-        <form className={style.FormRoot} onSubmit={handleSubmit(onSubmit)}>
-          <h1 className={style.header}>{translate('Forgot_Password')}</h1>
-          <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
+      <form className={authStyle.authForm} onSubmit={handleSubmit(onSubmit)}>
+        <h1 className={authStyle.header}>{translate('Forgot_Password')}</h1>
+        <ForgotPasswordInput register={register} serverError={serverError} errors={errors} />
+        <p className={style.hint}>{translate('email_hint')}</p>
+        <div className={style.button_wrapper}>
+          <Button onClick={handleSubmit(onSubmit)} text={translate('Send_link')} disabled={isLoading} color="Primary" />
+        </div>
 
-          <MainButton
-            onClick={() => 1 - 1}
-            title={translate('Create_New_Password')}
-            disabled={isLoading}
-            style={{ width: '100%', marginTop: '30px' }}
-          />
+        <Link className={style.link} href={'login'}>
+          {translate('Back_to_Sign_In')}
+        </Link>
 
-          <Link className={style.link} href={'login'}>
-            {translate('Back_to_Sign_In')}
-          </Link>
-
-          <div className={style.recaptcha_wrapper}>
-            <ReCAPTCHA sitekey={siteKey} onChange={onChange} className={style.recaptcha} ref={recaptchaRef} />
-          </div>
-        </form>
-      </div>
+        <div className={style.recaptcha_wrapper}>
+          <ReCAPTCHA sitekey={siteKey} onChange={onChange} className={style.recaptcha} ref={recaptchaRef} theme="dark" />
+        </div>
+      </form>
     </div>
   )
 }

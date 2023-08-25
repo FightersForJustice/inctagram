@@ -12,7 +12,8 @@ import { useState } from 'react'
 import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
-import { useForm, Control } from 'react-hook-form'import { useRouter } from 'next/router'
+import { useForm, Control } from 'react-hook-form'
+import { useRouter } from 'next/router'
 import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/components/common/User/userRouts'
@@ -25,7 +26,8 @@ export const getStaticProps = async () => {
 interface FormValues {
   myTextarea: string
 }
-const Login = () => {  const router = useRouter()
+const Login = () => {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('general')
 
   const handleTabChange = (value: string) => {
@@ -33,7 +35,7 @@ const Login = () => {  const router = useRouter()
 
     router.replace(`/ui-kit?tab=${value}`)
   }
-  const [ModalActive, setModalActive] = useState(false);
+  const [ModalActive, setModalActive] = useState(false)
   const { control, handleSubmit } = useForm<FormValues>()
 
   const onSubmit = (data: FormValues) => {
@@ -124,22 +126,21 @@ const Login = () => {  const router = useRouter()
             </Tabs.Root>
           </div>
         </div>
-        <div className={style.kitBlock} >
-          
-        <h2 className={style.componentHeader}>Icons</h2>
-        <div style={{display: 'flex', gap: '50px', color: 'white'}}>
-          <div>
-          <h2>Default</h2>
-          <MainDatePicker />
-          </div>
-          <div>
-          <h2>Error</h2>
-          <MainDatePicker value={'99/99/9999'}/>
-          </div>          
-          <div>
-          <h2>Disabled</h2>
-          <MainDatePicker disabled/>
-          </div>
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
+            <div>
+              <h2>Default</h2>
+              <MainDatePicker />
+            </div>
+            <div>
+              <h2>Error</h2>
+              <MainDatePicker value={'99/99/9999'} />
+            </div>
+            <div>
+              <h2>Disabled</h2>
+              <MainDatePicker disabled />
+            </div>
           </div>
         </div>
       </div>

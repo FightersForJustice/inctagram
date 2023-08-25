@@ -121,5 +121,11 @@
     "crop": "Cut",
     "back": "Back",
     "Save": "Save"
+  },
+  "logout": {
+    "title": "Log Out",
+    "text": "Are you really want to log out of your account ",
+    "yes": "Yes",
+    "no": "No"
   }
 }

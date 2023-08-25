@@ -1,13 +1,14 @@
 export class LoginPage {
   elements = {
-    emailField: () => cy.get(':nth-child(1) > input'),
-    passwordField: () => cy.get(':nth-child(2) > input'),
-    loginButton: () => cy.get('.Buttons_mainButton__z1kxd'),
+    emailField: () => cy.get(':nth-child(3) > .Inputs_input__0eCrr'),
+    passwordField: () => cy.get(':nth-child(4) > .Inputs_input__0eCrr'),
+    loginButton: () => cy.get('.Button_button__mwjOx'),
     registrationLink: () => cy.get('.LoginForm_SignUp__HdCNz'),
     forgotPasswordLink: () => cy.get('.LoginForm_forgot_password_link__2xS_j'),
-    blankEmailMess: () => cy.get(':nth-child(1) > .LoginForm_errorText__xRtll'),
-    blankPasMes: () => cy.get(':nth-child(2) > .LoginForm_errorText__xRtll'),
-    errorMesLogin: () => cy.get(''),
+    blankEmailMess: () => cy.get(':nth-child(3) > .Inputs_errorMessage__4AKqh'),
+    invEmailMess: () => cy.get('.Inputs_errorMessage__4AKqh'),
+    blankPasMess: () => cy.get(':nth-child(4) > .Inputs_errorMessage__4AKqh'),
+    errorMesLogin: () => cy.get('.Toastify__toast-container.Toastify__toast-container--top-right'),
   }
   login(userEmail, userPassword) {
     this.elements.emailField().type(userEmail)

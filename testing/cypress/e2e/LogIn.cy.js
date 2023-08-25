@@ -1,17 +1,15 @@
 import { LoginPage } from '../pages/LoginPage'
-// const user = require('../fixtures/user.json')
-const { faker } = require('@faker-js/faker')
+const users = require('../fixtures/loginTestData.json')
+const regTestData = require('../fixtures/regTestData.json')
 
-let userName = faker.person.fullName()
-let userEmail = faker.internet.email()
-let userPassword = faker.internet.password({ length: 7 })
+function createTestData() {
+  const randomNumber = Math.floor(Math.random() * users.length)
+  return users[randomNumber]
+}
+
+let user = createTestData()
 
 describe('Login Page', () => {
-  before('Registrate new user', () => {
-    cy.visit('auth/registration')
-    cy.registration(userName, userEmail, userPassword)
-  })
-
   beforeEach('Visit Sign in page', () => {
     cy.visit('auth/login')
   })
@@ -21,45 +19,74 @@ describe('Login Page', () => {
   it('Validate LoginPage elements ', () => {
     loginPage.elements.emailField().should('exist')
     loginPage.elements.passwordField().should('exist')
-    loginPage.elements.loginButton().should('exist').contains('Sign In')
-    loginPage.elements.registrationLink().should('exist').contains('Sign Up')
-    loginPage.elements.forgotPasswordLink().should('exist').contains('Forgot Password')
+    loginPage.elements.loginButton().should('exist').and('contain', 'Sign In')
+    loginPage.elements.registrationLink().should('exist').and('contain', 'Sign Up')
+    loginPage.elements.forgotPasswordLink().should('exist').and('contain', 'Forgot Password')
   })
 
-  it('Positive login for a user who does not have an account', () => {
-    loginPage.login(userEmail, userPassword)
-    cy.url().should('include', '/')
-    cy.visit('auth/log-out')
-  })
-
-  it('Positive login for a user who have own account', () => {
-    loginPage.login(userEmail, userPassword)
-    cy.url().should('include', '/')
-    cy.visit('auth/log-out')
+  it('Positive login', () => {
+    loginPage.login(user.userEmail, user.userPassword)
+    cy.url().should('include', 'home')
   })
 
   it('Login with wrong email', () => {
-    loginPage.login(userEmail.slice(1), userPassword)
-    loginPage.elements
-      .errorMesLogin()
-      .should('be.visible')
-      .and('have.text', 'The password or the email are incorrect. Try again, please')
+    let arr = user.userEmail.split('')
+    arr.splice(1, 1)
+    let incEmail = arr.join('')
+    loginPage.login(incEmail, user.userPassword)
+    cy.wait(3000)
+    loginPage.elements.errorMesLogin().should('be.visible').and('contain', 'Authorization error')
     cy.url().should('include', 'auth/login')
   })
 
   it('Login with wrong password', () => {
-    loginPage.login(userEmail, userPassword.slice(-1))
-    loginPage.elements
-      .errorMesLogin()
-      .should('be.visible')
-      .and('have.text', 'The password or the email are incorrect. Try again, please')
+    loginPage.login(user.userEmail, user.userPassword.slice(0, -1))
+    cy.wait(3000)
+    loginPage.elements.errorMesLogin().should('be.visible').and('contain', 'invalid password or email')
     cy.url().should('include', 'auth/login')
   })
 
-  it('Login with blank fields', () => {
+  it('Check validation of the email field', () => {
+    cy.wrap(regTestData.invalidEmail).each(($item) => {
+      loginPage.elements.emailField().clear().type($item)
+      loginPage.elements.passwordField().clear()
+      loginPage.elements.invEmailMess().should('be.visible').and('contain', 'Invalid email format')
+      cy.url().should('include', 'auth/login')
+    })
+  })
+
+  it('Login with the blank email field', () => {
+    loginPage.elements.passwordField().type(user.userPassword)
     loginPage.elements.loginButton().click()
-    loginPage.elements.blankEmailMess().should('be.visible').and('have.text', '* Required field to fill in')
-    loginPage.elements.blankPasMes().should('be.visible').and('have.text', '* Required field to fill in')
+    loginPage.elements.blankEmailMess().should('be.visible').and('contain', 'Required field to fill in')
+    cy.url().should('include', 'auth/login')
+  })
+
+  it('Check validation of the password field', () => {
+    cy.wrap(regTestData.invalidPassword).each(($item) => {
+      loginPage.elements.emailField().clear().type(user.userEmail)
+      loginPage.elements.passwordField().clear().type($item)
+      loginPage.elements.loginButton().click()
+      if ($item.length < 6) {
+        loginPage.elements
+          .blankPasMess()
+          .should('be.visible')
+          .and('contain', 'Password must be longer than or equal to 6 characters')
+        cy.url().should('include', 'auth/login')
+      } else if ($item.length > 20) {
+        loginPage.elements
+          .blankPasMess()
+          .should('be.visible')
+          .and('contain', 'Password must be shorter than or equal to 20 characters')
+        cy.url().should('include', 'auth/login')
+      }
+    })
+  })
+
+  it('Login with the blank password field', () => {
+    loginPage.elements.emailField().type(user.userEmail)
+    loginPage.elements.loginButton().click()
+    loginPage.elements.blankPasMess().should('be.visible').and('contain', 'Required field to fill in')
     cy.url().should('include', 'auth/login')
   })
 })

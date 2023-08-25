@@ -21,7 +21,7 @@ const setupTextArea = (props = {}) => {
 
 const value = 'type sth here...'
 
-describe('should render TextArea snapshots correctly \t', () => {
+describe('TextArea snapshots \t', () => {
   afterEach(cleanup)
 
   const textProps = ['', 'Some text', 'Custom placeholder']

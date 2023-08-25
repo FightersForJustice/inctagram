@@ -7,6 +7,8 @@
   border-radius: 50%;
 }
 
-.button {
+.buttons {
   padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }

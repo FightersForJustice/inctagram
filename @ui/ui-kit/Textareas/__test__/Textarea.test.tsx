@@ -21,23 +21,32 @@ const setupTextArea = (props = {}) => {
 
 const value = 'type sth here...'
 
-describe('Snapshot', () => {
+describe('should render TextArea snapshots correctly \t', () => {
   afterEach(cleanup)
 
+  const textProps = ['', 'Some text', 'Custom placeholder']
   const colorProps = [TEXTAEREA_COLORS.DEFAULT, TEXTAEREA_COLORS.ACTIVE, TEXTAEREA_COLORS.ERROR]
-  const disabledProps = [true, false]
+  const booleanProps = [true, false]
 
-  colorProps.forEach((color) => {
-    disabledProps.forEach((disabled) => {
-      it(`renders correctly \t
-                color: ${color} \t
-                disabled: ${disabled} \t
-                `, () => {
-        const placeholder = 'Enter your text...'
+  textProps.forEach((text) => {
+    colorProps.forEach((color) => {
+      booleanProps.forEach((hasError) => {
+        booleanProps.forEach((disabled) => {
+          booleanProps.forEach((hovered) => {
+            it(`text: "${text}", color: ${color}, hasError: ${hasError}, disabled: ${disabled}, hovered: ${hovered}`, () => {
+              const props = {
+                value: text,
+                color: color,
+                hasError: hasError,
+                disabled: disabled,
+                hovered: hovered,
+              }
+              const { asFragment } = render(<TextArea {...props} />)
 
-        const { textarea } = setupTextArea({ color, disabled, placeholder })
-        expect(textarea).toBeInTheDocument()
-        expect(textarea).toMatchSnapshot()
+              expect(asFragment()).toMatchSnapshot()
+            })
+          })
+        })
       })
     })
   })
@@ -48,7 +57,7 @@ describe('Textarea', () => {
     cleanup()
     jest.clearAllMocks()
   })
-  
+
   it('does not respond to events when disabled', () => {
     const { textarea, onChange } = setupTextArea({ disabled: true })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../LoginForm.module.scss'
-import { PasswordInput } from '@/components/common/Inputs/Inputs'
+import { PasswordInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
 import { PasswordFormFieldProps } from '../type'
@@ -11,14 +11,12 @@ const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors,
   return (
     <div className={style.input_container}>
       <PasswordInput
-        className={errors.password ? style.error : ''}
         validation={{ ...register('password', Validate(ValidateField.Password)) }}
         placeholder="******************"
         label={translate('password')}
         onClick={() => setServerError('')}
+        errormessages={[errors.password?.message, serverError]}
       />
-      {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
-      {serverError && <p className={style.errorText}>{serverError}</p>}
     </div>
   )
 }

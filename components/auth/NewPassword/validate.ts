@@ -14,19 +14,19 @@ export const ValidatePassword: Function = (password: string): RegisterOptions =>
   return {
     required: {
       value: true,
-      message: 'Password field is empty',
+      message: 'Password_field_is_empty',
     },
     maxLength: {
       value: 20,
-      message: 'Password must be shorter than or equal to 20 characters',
+      message: 'Password_must_be_shorter',
     },
     minLength: {
       value: 6,
-      message: 'Password must be longer than or equal to 6 characters',
+      message: 'Password_must_be_longer',
     },
     pattern: {
       value: /^\S+$/,
-      message: 'Password must not contain space symbols',
+      message: 'Password_not_contain_space',
     },
     validate: {
       value: (value: string, formValue: boolean) => value === password,

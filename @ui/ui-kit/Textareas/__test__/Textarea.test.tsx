@@ -1,63 +1,71 @@
 import React from 'react'
 import { render, fireEvent, cleanup, screen } from '@testing-library/react'
-import { TextArea } from './Textarea'
+import { TextArea } from '../Textarea'
 import styles from './Textarea.module.scss'
-import { TEXTAEREA_COLORS } from './constants'
+import { TEXTAEREA_COLORS } from '../constants'
 
-describe('Textarea', () => {
-  const value = 'type sth here...'
+const setupTextArea = (props = {}) => {
+  const defaultProps = {
+    onChange: jest.fn(),
+    onFocus: jest.fn(),
+    ...props,
+  }
+
+  render(<TextArea {...defaultProps} />)
+
+  return {
+    textarea: screen.getByRole('textbox'),
+    ...defaultProps,
+  }
+}
+
+const value = 'type sth here...'
+
+describe('Snapshot', () => {
+  afterEach(cleanup)
+
   const colorProps = [TEXTAEREA_COLORS.DEFAULT, TEXTAEREA_COLORS.ACTIVE, TEXTAEREA_COLORS.ERROR]
+  const disabledProps = [true, false]
 
   colorProps.forEach((color) => {
-    colorProps.forEach((disabled) => {
+    disabledProps.forEach((disabled) => {
       it(`renders correctly \t
                 color: ${color} \t
                 disabled: ${disabled} \t
                 `, () => {
         const placeholder = 'Enter your text...'
 
-        const { textarea, ...defaultProps } = setup({ color, disabled, placeholder })
+        const { textarea } = setupTextArea({ color, disabled, placeholder })
         expect(textarea).toBeInTheDocument()
         expect(textarea).toMatchSnapshot()
       })
     })
   })
+})
 
-  const setup = (props = {}) => {
-    const defaultProps = {
-      onChange: jest.fn(),
-      onFocus: jest.fn(),
-      ...props,
-    }
+describe('Textarea', () => {
+  afterEach(() => {
+    cleanup()
+    jest.clearAllMocks()
+  })
+  
+  it('does not respond to events when disabled', () => {
+    const { textarea, onChange } = setupTextArea({ disabled: true })
 
-    render(<TextArea {...defaultProps} />)
+    fireEvent.change(textarea, { target: { value } })
+    fireEvent.focus(textarea)
 
-    return {
-      textarea: screen.getByRole('textbox'),
-      ...defaultProps,
-    }
-  }
-
-  //doesn't work correctly
-
-  // it('does not respond to events when disabled', () => {
-  //   const { textarea, onChange, onFocus } = setup({ disabled: true })
-
-  //   fireEvent.change(textarea, { target: { value } })
-  //   fireEvent.focus(textarea)
-
-  //   expect(onChange).not.toHaveBeenCalled()
-  //   expect(onFocus).not.toHaveBeenCalled()
-  // })
+    expect(onChange).not.toHaveBeenCalled()
+  })
 
   it('renders correctly', () => {
-    const { textarea } = setup()
+    const { textarea } = setupTextArea()
 
     expect(textarea).toBeInTheDocument()
   })
 
   it('changes value and calls onChange', () => {
-    const { textarea, onChange } = setup()
+    const { textarea, onChange } = setupTextArea()
     fireEvent.change(textarea, { target: { value } })
 
     expect(textarea).toHaveValue(value)
@@ -66,7 +74,7 @@ describe('Textarea', () => {
 
   it('renders label', () => {
     const label = 'Test Label'
-    const { textarea } = setup({ label })
+    const { textarea } = setupTextArea({ label })
     const labelElement = screen.getByText(label)
 
     expect(labelElement).toBeInTheDocument()
@@ -75,30 +83,30 @@ describe('Textarea', () => {
 
   it('displays error message when hasError is true', () => {
     const errorMessage = 'Test Error Message'
-    setup({ hasError: true, errorMessage })
+    setupTextArea({ hasError: true, errorMessage })
 
     const error = screen.getByText(errorMessage)
     expect(error).toBeInTheDocument()
   })
 
   it('is disabled when disabled prop is true', () => {
-    const { textarea } = setup({ disabled: true })
+    const { textarea } = setupTextArea({ disabled: true })
 
     expect(textarea).toBeDisabled()
   })
   it('is not disabled when disabled prop is missing', () => {
-    const { textarea } = setup()
+    const { textarea } = setupTextArea()
 
     expect(textarea).not.toBeDisabled()
   })
   it('is not disabled when disabled prop is false', () => {
-    const { textarea } = setup({ disabled: false })
+    const { textarea } = setupTextArea({ disabled: false })
 
     expect(textarea).not.toBeDisabled()
   })
 
   it('renders placeholder', () => {
-    const { textarea } = setup()
+    const { textarea } = setupTextArea()
 
     expect(textarea).toHaveAttribute('placeholder')
   })
@@ -111,35 +119,30 @@ describe('Textarea', () => {
   })
 
   it('has default styles when color prop is not provided', () => {
-    const { textarea } = setup()
+    const { textarea } = setupTextArea()
 
     expect(textarea).toHaveClass(styles.Default)
   })
   it('has Active styles when Active color prop is provided', () => {
-    const { textarea } = setup({ color: 'Active' })
+    const { textarea } = setupTextArea({ color: 'Active' })
 
     expect(textarea).toHaveClass(styles.Active)
   })
   it('applies Active class when hovered', () => {
-    setup({ hovered: true })
+    setupTextArea({ hovered: true })
 
     const textareaElement = screen.getByRole('textbox')
     expect(textareaElement).toHaveClass('Active')
   })
   it('does not apply Active class when not hovered', () => {
-    setup({ hovered: false })
+    setupTextArea({ hovered: false })
 
     const textareaElement = screen.getByRole('textbox')
     expect(textareaElement).not.toHaveClass('Active')
   })
   it('has Error styles when Error color prop is provided', () => {
-    const { textarea } = setup({ color: 'Error' })
+    const { textarea } = setupTextArea({ color: 'Error' })
 
     expect(textarea).toHaveClass(styles.Error)
-  })
-
-  afterEach(() => {
-    cleanup()
-    jest.clearAllMocks()
   })
 })

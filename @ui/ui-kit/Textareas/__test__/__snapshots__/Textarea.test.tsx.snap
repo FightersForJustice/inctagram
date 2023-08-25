@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot renders correctly 	
+                color: Active 	
+                disabled: false 	
+                 1`] = `
+<textarea
+  class="textarea Active"
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Snapshot renders correctly 	
+                color: Active 	
+                disabled: true 	
+                 1`] = `
+<textarea
+  class="textarea Active"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Snapshot renders correctly 	
+                color: Default 	
+                disabled: false 	
+                 1`] = `
+<textarea
+  class="textarea Default"
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Snapshot renders correctly 	
+                color: Default 	
+                disabled: true 	
+                 1`] = `
+<textarea
+  class="textarea Default"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Snapshot renders correctly 	
+                color: Error 	
+                disabled: false 	
+                 1`] = `
+<textarea
+  class="textarea Error"
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Snapshot renders correctly 	
+                color: Error 	
+                disabled: true 	
+                 1`] = `
+<textarea
+  class="textarea Error"
+  disabled=""
+  placeholder="Enter your text..."
+/>
+`;
+
+exports[`Textarea checks placeholder value 1`] = `
+<textarea
+  class="textarea Default"
+  placeholder="Textarea"
+/>
+`;

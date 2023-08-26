@@ -40,9 +40,9 @@ export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) =
 }
 
 export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
-  const {disabled} = props
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const labelMargin = props.label ? '0px' : '-20px'
+  const {disabled} = props
   return (
     <>
       <div style={{ position: 'relative', width: '100%' }}>

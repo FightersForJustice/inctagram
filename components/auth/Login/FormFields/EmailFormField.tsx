@@ -5,11 +5,9 @@ import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
 import { EmailFormFieldProps } from '../type'
 
-
 const EmailFormField: React.FC<EmailFormFieldProps> = ({ register, errors }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`login_form.${key}`)
-
 
   return (
     <div className={style.input_container}>

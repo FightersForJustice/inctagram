@@ -16,13 +16,15 @@ const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
           validation={{ ...register('email', ValidateEmail) }}
           id="email"
           label={translate('email')}
-          placeholder='Epam@epam.com'
+          placeholder="Epam@epam.com"
         />
       </div>
-      {errors?.email || errors?.recaptcha ? <div className={style.error_message}>
-        {errors.email?.message && <p>{translate(errors.email.message)}</p>}
-        {errors.recaptcha?.message && <p>{translate(errors.recaptcha.message)}</p>}
-      </div>: null}
+      {errors?.email || errors?.recaptcha ? (
+        <div className={style.error_message}>
+          {errors.email?.message && <p>{translate(errors.email.message)}</p>}
+          {errors.recaptcha?.message && <p>{translate(errors.recaptcha.message)}</p>}
+        </div>
+      ) : null}
     </>
   )
 }

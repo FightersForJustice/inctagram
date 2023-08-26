@@ -18,12 +18,14 @@ export const MakeIcon: FC<MakeIconPropsType> = (props) => {
       {!isDisabled ? (
         <Link href={url ? url : ''} className={className}>
           <div className={style.Icon}>{isActive ? <Icon /> : <OutlineIcon />}</div>
-          <span className={style.Text}>{text && translate(text)}</span>
+          <span className={style.Text}>{text && translate(text).replace('Sidebar.', '')}</span>
         </Link>
       ) : (
         <div className={className}>
-          <div className={style.Icon}><OutlineIcon /></div>
-          <span className={style.Text}>{text && translate(text)}</span>
+          <div className={style.Icon}>
+            <OutlineIcon />
+          </div>
+          <span className={style.Text}>{text && translate(text).replace('Sidebar.', '')}</span>
         </div>
       )}
     </>

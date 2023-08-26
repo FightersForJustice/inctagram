@@ -14,9 +14,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [recaptchaCode, setRecaptchaCode] = useState('')
   const [isSucceed, setIsSucceed] = useState(false)
   const { t } = useTranslation()
-  const translate = (text: string) => (
-    t('forgot_password.' + text)
-)
+  const translate = (text: string) => t('forgot_password.' + text)
   const ModalNull = () => {
     setPrintModal({ title: 'null', content: 'null' })
   }
@@ -77,7 +75,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   }
   return (
     <>
-      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
+      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClose={ModalNull} /> : ''}
       <ForgotPassword
         siteKey={siteKey}
         isLoading={isLoading}

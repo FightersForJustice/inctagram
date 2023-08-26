@@ -24,7 +24,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     handleSubmit,
     watch,
     formState: { errors },
-    trigger
+    trigger,
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
   const disabled = Object.keys(errors).length === 0 ? false : true
 

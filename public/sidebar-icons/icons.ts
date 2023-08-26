@@ -16,22 +16,22 @@ import LogoutOutline from './log-out-outline.svg'
 import Logout from './log-out.svg'
 
 const icons = {
-HomeOutline,
-Home,
-CreateOutline,
-Create,
-ProfileOutline,
-Profile,
-MessageOutline,
-Message,
-SearchOutline,
-Search,
-TrendingUpOutline,
-TrendingUp,
-BookmarkOutline,
-Bookmark,
-LogoutOutline,
-Logout,
+  HomeOutline,
+  Home,
+  CreateOutline,
+  Create,
+  ProfileOutline,
+  Profile,
+  MessageOutline,
+  Message,
+  SearchOutline,
+  Search,
+  TrendingUpOutline,
+  TrendingUp,
+  BookmarkOutline,
+  Bookmark,
+  LogoutOutline,
+  Logout,
 }
 
 export default icons

@@ -22,7 +22,9 @@ export const MakeIcon: FC<MakeIconPropsType> = (props) => {
         </Link>
       ) : (
         <div className={className}>
-          <div className={style.Icon}><OutlineIcon /></div>
+          <div className={style.Icon}>
+            <OutlineIcon />
+          </div>
           <span className={style.Text}>{text && translate(text).replace('Sidebar.', '')}</span>
         </div>
       )}

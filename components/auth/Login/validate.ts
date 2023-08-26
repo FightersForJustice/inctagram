@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 
 export enum ValidateField {
   Email = 'email',
   Password = 'password',
-  Username = 'username'
+  Username = 'username',
 }
 export const Validate = (validate: ValidateField) => {
   const { t } = useTranslation()
@@ -59,7 +59,7 @@ export const Validate = (validate: ValidateField) => {
     },
     pattern: {
       value: /^[a-zA-Z0-9_-]*$/i,
-      message: translate('invalidUsernameFormat')
+      message: translate('invalidUsernameFormat'),
     },
   }
   switch (validate) {
@@ -70,13 +70,11 @@ export const Validate = (validate: ValidateField) => {
     case ValidateField.Username:
       return Username
     default:
-
   }
-
 }
 
 export const confirmPassword = (value: string, watch: (val: string) => string) => {
   if (watch('password') !== value) {
-    return "Your passwords do not match";
+    return 'Your passwords do not match'
   }
-};
+}

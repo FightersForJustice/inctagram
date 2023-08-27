@@ -1,4 +1,4 @@
-@use './colors.scss' as colors;
+@use '@ui/design/settings/colors.scss' as colors;
 
 .container {
   background-color: colors.$dark-700;

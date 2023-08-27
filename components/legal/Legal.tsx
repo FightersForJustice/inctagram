@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { MakeIcon } from '@/@ui/ui-kit/Icon/MakeIcon'
 import icons from '@/public/sidebar-icons/icons'
-import common from '@ui/design/settings/common.module.scss'
+import common from '@ui/design/settings/Common.module.scss'
 import style from './Legal.module.scss'
 
 type LegalType = {

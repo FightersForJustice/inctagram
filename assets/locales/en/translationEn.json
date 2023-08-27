@@ -131,5 +131,8 @@
     "crop": "Cut",
     "back": "Back",
     "Save": "Save"
+  },
+  "legalPages": {
+    "goBack": "Back to sign up"
   }
 }

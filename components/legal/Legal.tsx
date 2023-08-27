@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 import { MakeIcon } from '@/@ui/ui-kit/Icon/MakeIcon'
 import icons from '@/public/sidebar-icons/icons'
 import common from '@ui/design/settings/common.module.scss'
 import style from './Legal.module.scss'
-import { useRouter } from 'next/router'
 
 type LegalType = {
   title: string
@@ -10,6 +11,8 @@ type LegalType = {
 
 export const Legal: React.FC<LegalType> = ({ title }) => {
   const router = useRouter()
+  const { t } = useTranslation()
+  const translate = (key: string): string => t(`legalPages.${key}`)
 
   const handleClick = () => {
     router.back()
@@ -20,7 +23,7 @@ export const Legal: React.FC<LegalType> = ({ title }) => {
       <div className={style.buttonContainer}>
         <button onClick={handleClick} className={style.backButton}>
           <MakeIcon Icon={icons.ArrowBack} OutlineIcon={icons.ArrowBackOutline} />
-          Back to sign up
+          {translate('goBack')}
         </button>
       </div>
       <div className={common.contentContainer}>

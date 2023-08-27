@@ -133,6 +133,8 @@
     "Save": "Save"
   },
   "legalPages": {
-    "goBack": "Back to sign up"
+    "goBack": "Back to sign up",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
   }
 }

@@ -91,17 +91,22 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           />
         </div>
 
-        <div>
-          <label>
-            {/* translate */}
-            <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />I agree to the{' '}
-            <Link href={legalRoutes.termsOfService}>{' Terms of Service '}</Link>
-            and <Link href={legalRoutes.privacyPolicy}>{' Privacy Policy'}</Link>
+        <div className={style.checkboxWrapper}>
+          <label className={style.label}>
+            <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} className={style.checkbox} />
+            {translate('legal')}
+            <Link href={legalRoutes.termsOfService} className={style.link}>
+              {translate('termsOfService')}
+            </Link>
+            {translate('and')}
+            <Link href={legalRoutes.privacyPolicy} className={style.link}>
+              {translate('privacyPolicy')}
+            </Link>
           </label>
         </div>
 
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || !isChecked} text={translate('sign_up')} />
+          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || isChecked} text={translate('sign_up')} />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

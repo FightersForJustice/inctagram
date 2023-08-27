@@ -29,7 +29,14 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
   const [isChecked, setIsChecked] = useState(false)
 
-  const disabled = Object.keys(errors).length === 0 ? false : true
+  //if fields are empty or contain errors, or checkbox is not checked
+  const disabled =
+    Object.keys(errors).length > 0 ||
+    watch('userName') === '' ||
+    watch('email') === '' ||
+    watch('password') === '' ||
+    watch('password2') === '' ||
+    isChecked === false
 
   useEffect(() => {
     errorsTrigger(trigger, errors)
@@ -106,7 +113,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
 
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || isChecked} text={translate('sign_up')} />
+          <Button onClick={handleSubmit(onSubmit)} disabled={disabled} text={translate('sign_up')} />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

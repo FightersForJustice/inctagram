@@ -12,8 +12,9 @@ import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import classNames from 'classnames'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { errorsTrigger } from '@/hooks/errorsTrigger'
+import { legalRoutes } from '@/app/routes/legalRoutes'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -26,6 +27,8 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
+  const [isChecked, setIsChecked] = useState(false)
+
   const disabled = Object.keys(errors).length === 0 ? false : true
 
   useEffect(() => {
@@ -35,6 +38,10 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked)
+  }
   return (
     <div className={authStyle.authContainer}>
       {isLoading && (
@@ -83,8 +90,18 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.password2?.message, errorMessagePassword?.message]}
           />
         </div>
+
+        <div>
+          <label>
+            {/* translate */}
+            <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />I agree to the{' '}
+            <Link href={legalRoutes.termsOfService}>{' Terms of Service '}</Link>
+            and <Link href={legalRoutes.privacyPolicy}>{' Privacy Policy'}</Link>
+          </label>
+        </div>
+
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled} text={translate('sign_up')} />
+          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || !isChecked} text={translate('sign_up')} />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

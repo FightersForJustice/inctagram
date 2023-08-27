@@ -106,7 +106,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             onChange={handleInputChange}
           />
           <fieldset className={style.Fieldset}>
-            <label className={commonStyle.Label} htmlFor="date">
+            <label className={commonStyle.label} htmlFor="date">
               {translate('dateOfBirth')}
             </label>
             <MainDatePicker

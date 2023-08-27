@@ -9,15 +9,38 @@ import Icons from '@/@ui/ui-kit/Icon/IconsComponent'
 import { ButtonLink } from '@/@ui/ui-kit/ButtonLink/ButtonLink'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useState } from 'react'
+import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
+
+import { useForm, Control } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
+import * as Tabs from '@radix-ui/react-tabs'
+import { userRouts } from '@/components/common/User/userRouts'
 
 export const getStaticProps = async () => {
   return {
     props: {},
   }
 }
-
+interface FormValues {
+  myTextarea: string
+}
 const Login = () => {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState('general')
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+
+    router.replace(`/ui-kit?tab=${value}`)
+  }
   const [ModalActive, setModalActive] = useState(false)
+  const { control, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data)
+  }
   return (
     <PageWrapper>
       <div className={style.kitContainer}>
@@ -47,52 +70,26 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Textarea</h2>
+          <div className={style.components}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea />
+            </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
+            </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextArea disabled />
+            </form>
+          </div>
+        </div>
 
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Button Links</h2>
           <div className={style.components}>
             <ButtonLink text="Internal Button link" url="/auth/login"></ButtonLink>
             <ButtonLink text="External Button link" url="https://www.awwwards.com/"></ButtonLink>
-          </div>
-        </div>
-        <div className={style.kitBlock}>
-          <h2 className={style.componentHeader}>Icons</h2>
-          <div className={style.components}>
-            <div style={{ display: 'flex', textAlign: 'center', color: 'white' }}>
-              <div className={IconStyle.SideBar}>
-                <h2>Default</h2>
-                <Icons.Home />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-              <div className={IconStyle.SideBar}>
-                <h2>Active</h2>
-                <Icons.Home isActive />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-              <div className={IconStyle.SideBar}>
-                <h2>Disabled</h2>
-                <Icons.Home isDisabled />
-                <Icons.Create />
-                <Icons.Profile />
-                <Icons.Messenger />
-                <Icons.Search />
-                <Icons.Statistics />
-                <Icons.Favorites />
-                <Icons.Logout />
-              </div>
-            </div>
           </div>
         </div>
         <div className={style.kitBlock}>
@@ -117,7 +114,18 @@ const Login = () => {
             </Modal>
           </div>
         </div>
-
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Tabs</h2>
+          <div className={style.container}>
+            <Tabs.Root defaultValue="general" onValueChange={handleTabChange} className={style.TabsRoot}>
+              <Tabs.List aria-label="Manage your account" className={style.TabsList}>
+                <Tab label="TAB " value="tab1" />
+                <Tab label="TAB" value="tab2" disabled />
+                <Tab label="TAB" value="tab3" />
+              </Tabs.List>
+            </Tabs.Root>
+          </div>
+        </div>
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Icons</h2>
           <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
@@ -139,6 +147,5 @@ const Login = () => {
     </PageWrapper>
   )
 }
-
 Login.getLayout = getLayout
 export default Login

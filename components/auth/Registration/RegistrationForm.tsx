@@ -42,10 +42,6 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     errorsTrigger(trigger, errors)
   }, [t])
 
-  useEffect(() => {
-    errorsTrigger(trigger, errors)
-  }, [t])
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
   }

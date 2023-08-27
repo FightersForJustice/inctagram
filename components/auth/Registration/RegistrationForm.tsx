@@ -84,7 +84,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
           />
         </div>
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled} text={translate('sign_up')} />
+          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || isLoading} text={translate('sign_up')} type="submit" />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

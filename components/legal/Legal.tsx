@@ -1,15 +1,31 @@
-import styles from '@ui/design/settings/common.module.scss'
+import { MakeIcon } from '@/@ui/ui-kit/Icon/MakeIcon'
+import icons from '@/public/sidebar-icons/icons'
+import common from '@ui/design/settings/common.module.scss'
+import style from './Legal.module.scss'
+import { useRouter } from 'next/router'
 
 type LegalType = {
   title: string
 }
 
 export const Legal: React.FC<LegalType> = ({ title }) => {
+  const router = useRouter()
+
+  const handleClick = () => {
+    router.back()
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles.contentContainer}>
-        <h1 className={styles.title}>{title}</h1>
-        <section className={styles.paragraph}>
+    <div className={common.container}>
+      <div className={style.buttonContainer}>
+        <button onClick={handleClick} className={style.backButton}>
+          <MakeIcon Icon={icons.ArrowBack} OutlineIcon={icons.ArrowBackOutline} />
+          Back to sign up
+        </button>
+      </div>
+      <div className={common.contentContainer}>
+        <h1 className={common.title}>{title}</h1>
+        <section className={common.paragraph}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim viverra nunc id pellentesque. Sed ultrices
             dignissim ex luctus facilisis. Donec eu massa sed felis varius scelerisque in id quam. Morbi porta dui et pretium

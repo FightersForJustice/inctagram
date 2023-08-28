@@ -13,6 +13,7 @@ import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
 import { useForm, Control } from 'react-hook-form'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox'
 
 export const getStaticProps = async () => {
   return {
@@ -118,6 +119,13 @@ const Login = () => {
               <h2>Disabled</h2>
               <MainDatePicker disabled />
             </div>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Icons</h2>
+          <div style={{ display: 'flex' }}>
+            <CheckBox checked={false} disabled={true}>Confirm your actions</CheckBox>
           </div>
         </div>
       </div>

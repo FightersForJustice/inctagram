@@ -1,0 +1,17 @@
+@use '@ui/design/settings/colors.scss' as colors;
+
+.buttonContainer {
+  margin-top: 10px;
+  display: flex;
+  align-self: flex-start;
+}
+
+.backButton {
+  background-color: transparent;
+  color: colors.$light-100;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 59px;
+}

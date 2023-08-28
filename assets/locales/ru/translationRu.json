@@ -7,7 +7,11 @@
     "password": "Пароль",
     "password_confirmation": "Подтвердите пароль",
     "sign_in": "Войти",
-    "do_you_have_an_account?": "Уже есть аккаунт?"
+    "do_you_have_an_account?": "Уже есть аккаунт?",
+    "legal": "Я соглашаюсь с ",
+    "termsOfService": " Условиями пользования ",
+    "privacyPolicy": " Политикой конфиденциальности",
+    "and": "и"
   },
   "login_form": {
     "email": "Электронная почта",
@@ -103,6 +107,12 @@
     "Favorites": "Избранное",
     "Logout": "Выйти"
   },
+  "profile_settings": {
+    "generalInformation": "Общая информация",
+    "devices": "Устройства",
+    "accountManagement": "Управление аккаунтом",
+    "myPayments": "Мои платежи"
+  },
   "profile_settings__general": {
     "username": "Ник",
     "firstName": "Имя",
@@ -121,6 +131,11 @@
     "crop": "Обрезать",
     "back": "Назад",
     "Save": "Сохранить"
+  },
+  "legalPages": {
+    "goBack": "Вернуться к регистрации",
+    "termsOfService": "Условия пользования",
+    "privacyPolicy": " Политика конфиденциальности"
   },
   "logout": {
     "title": "Выйти из системы",

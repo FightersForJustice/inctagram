@@ -1,0 +1,110 @@
+.label {
+  position: relative;
+  width: 100%;
+  .text {
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 44px;
+  }
+  .input {
+    display: none;
+  }
+  .block {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    &:hover {
+      background-color: #333333;
+    }
+    &:focus {
+      background-color: #171717;
+    }
+    &:active {
+      background-color: #4c4c4c;
+    }
+    .checkbox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid white;
+      border-radius: 3px;
+    }
+    .checkboxOn {
+      color: white;
+      display: block;
+      background-color: white;
+      opacity: 0;
+      transition: 0.2s;
+      width: 100%;
+      height: 100%;
+      border: 2px solid white;
+      &:before {
+        content: '✔';
+        color: black;
+        display: block;
+        position: absolute;
+        top: -4px;
+        left: 1px;
+      }
+    }
+  }
+  .blockDisabled{
+    width: 36px;
+    height: 36px;
+    position: relative;
+    display: inline-block;
+    cursor: not-allowed;
+    .checkbox {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transition: 0.2s;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid #8D9094;
+      border-radius: 3px;
+    }
+    .checkboxOn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid #4C4C4C;
+      border-radius: 3px;
+      display: block;
+      background-color: #4C4C4C;
+      opacity: 0;
+      transition: 0.2s;
+      width: 18px;
+      height: 18px;
+      &:before {
+        content: '✔';
+        color: white;
+        display: block;
+        position: absolute;
+        top: -4px;
+        left: 1px;
+      }
+    }
+  }
+  .input:checked + .block .checkbox .checkboxOn {
+    opacity: 1;
+  }
+  .input:checked + .blockDisabled  .checkboxOn {
+    opacity: 1;
+  }
+  .input:not(:checked) + .blockDisabled  .checkbox {
+    opacity: 1;
+  }
+}

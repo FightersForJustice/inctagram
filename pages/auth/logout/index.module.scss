@@ -1,0 +1,13 @@
+.content {
+  width: 390px;
+  line-height: 24px;
+  .buttons {
+    display: flex;
+    margin-top: 30px;
+    justify-content: flex-end;
+    button {
+      margin-left: 24px;
+      width: 96px;
+    }
+  }
+}

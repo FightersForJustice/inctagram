@@ -47,11 +47,9 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
     <div className={s.content}>
       {loading ? <Loading /> : ''}
       {croppedImageUrl && <img className={s.img} src={croppedImageUrl} alt="Avatar" />}
-      <div className={s.button}>
-        <Button text={translate('Save')} onClick={handlerSave}></Button>
-      </div>
-      <div className={s.button}>
+      <div className={s.buttons}>
         <Button color={BUTTON_COLORS.OUTLINED} text={translate('back')} onClick={handlerBack}></Button>
+        <Button text={translate('Save')} onClick={handlerSave}></Button>
       </div>
     </div>
   )

@@ -53,7 +53,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
         .then((data) => {
           setPrintModal({ title: translate('Link_send'), content: translate('Link_send_text') })
         })
-        .catch((error: any) => {
+        .catch((error) => {
           setIsSucceed(false)
           recaptchaRef.current?.reset()
           switch (error.status) {

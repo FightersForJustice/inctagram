@@ -15,7 +15,7 @@ import Bookmark from './bookmark.svg'
 import LogoutOutline from './log-out-outline.svg'
 import Logout from './log-out.svg'
 
-export const icons = {
+const icons = {
   HomeOutline,
   Home,
   CreateOutline,
@@ -33,3 +33,5 @@ export const icons = {
   LogoutOutline,
   Logout,
 }
+
+export default icons

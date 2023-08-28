@@ -20,7 +20,7 @@ export interface INewPasswordProps {
   setConfirmPassword: Dispatch<SetStateAction<string>>
   setPassword: Dispatch<SetStateAction<string>>
   handleSubmit: UseFormHandleSubmit<IFormInput, undefined>
-  handleChange: (e: ChangeEvent<HTMLInputElement>, setValue: any) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>, setValue: any, errors: FieldErrors<IFormInput>) => void
   register: UseFormRegister<IFormInput>
   onSubmit: SubmitHandler<IFormInput>
 }

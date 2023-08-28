@@ -1,10 +1,10 @@
 export const ValidateEmail = {
   required: {
     value: true,
-    message: 'Email field is empty',
+    message: 'email_is_empty',
   },
   pattern: {
     value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    message: 'Email is invalid',
+    message: 'email_invalid',
   },
 }

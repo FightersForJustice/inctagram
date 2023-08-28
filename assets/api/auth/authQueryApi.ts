@@ -27,55 +27,55 @@ const authQueryApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    me: builder.query<UserData | ServerErrorResponse, void>({
+    me: builder.query<UserData, void>({
       query: () => ({
         url: authRouts.me,
         method: 'GET',
       }),
     }),
-    login: builder.mutation<ServerLoginResponse | ServerErrorResponse, LoginParamsData>({
+    login: builder.mutation<ServerLoginResponse, LoginParamsData>({
       query: (credentials) => ({
         url: authRouts.login,
         method: 'POST',
         body: credentials,
       }),
     }),
-    registration: builder.mutation<void | ServerErrorResponse, RegisterParamsData>({
+    registration: builder.mutation<void, RegisterParamsData>({
       query: (newUser) => ({
         url: authRouts.registration,
         method: 'POST',
         body: newUser,
       }),
     }),
-    registrationСonfirm: builder.mutation<void | ServerErrorResponse, string>({
+    registrationСonfirm: builder.mutation<void, string>({
       query: (confirmationCode) => ({
         url: authRouts.registrationСonfirm,
         method: 'POST',
         body: { confirmationCode },
       }),
     }),
-    registrationEmailResend: builder.mutation<void | ServerErrorResponse, string>({
+    registrationEmailResend: builder.mutation<void, string>({
       query: (email) => ({
         url: authRouts.registrationEmailResend,
         method: 'POST',
         body: { email },
       }),
     }),
-    passwordRecover: builder.mutation<ServerErrorResponse | void, ForgotPasswordParamsData>({
+    passwordRecover: builder.mutation<ServerErrorResponse, ForgotPasswordParamsData>({
       query: (recoverQuery) => ({
         url: authRouts.passwordRecover,
         method: 'POST',
         body: recoverQuery,
       }),
     }),
-    newPasswordCreate: builder.mutation<ServerErrorResponse | void, NewPasswordParamsData>({
+    newPasswordCreate: builder.mutation<ServerErrorResponse, NewPasswordParamsData>({
       query: (createQuery) => ({
         url: authRouts.newPasswordCreate,
         method: 'POST',
         body: createQuery,
       }),
     }),
-    recoveryCodeCheck: builder.mutation<ServerErrorResponse | void, recoveryCodeCheckParamsData>({
+    recoveryCodeCheck: builder.mutation<ServerErrorResponse, recoveryCodeCheckParamsData>({
       query: (recoveryCode) => ({
         url: authRouts.recoveryCodeCheck,
         method: 'POST',

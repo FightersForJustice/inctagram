@@ -86,6 +86,9 @@ dependencies:
   react-i18next:
     specifier: ^13.0.1
     version: 13.0.1(i18next@23.2.7)(react-dom@18.2.0)(react@18.2.0)
+  react-image-crop:
+    specifier: ^10.1.5
+    version: 10.1.5(react@18.2.0)
   react-redux:
     specifier: ^8.1.1
     version: 8.1.1(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
@@ -5130,6 +5133,15 @@ packages:
       i18next: 23.2.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-image-crop@10.1.5(react@18.2.0):
+    resolution: {integrity: sha512-BL8Rd/UHCE4O5GcYQiWDKVh5JOJb0Ic/Gde2W171v5nY7RyQzFLM1cxIzlYfESLO/lNgBVhDHuEV9RHnqALMkA==}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      clsx: 1.2.1
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

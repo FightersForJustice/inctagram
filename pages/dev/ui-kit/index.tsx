@@ -73,15 +73,17 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Textarea</h2>
           <div className={style.components}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea disabled />
-            </form>
+            <div className={style.buttonBlock}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea disabled />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
+              </form>
+            </div>
           </div>
         </div>
 

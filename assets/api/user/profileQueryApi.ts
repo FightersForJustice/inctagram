@@ -26,7 +26,7 @@ export const profileQueryApi = createApi({
         method: 'GET',
       }),
     }),
-    updateProfile: builder.mutation<void | ServerErrorResponse, UpdateUserProfile>({
+    updateProfile: builder.mutation<void, UpdateUserProfile>({
       query: (userData) => ({
         url: userRouts.profile,
         method: 'PUT',

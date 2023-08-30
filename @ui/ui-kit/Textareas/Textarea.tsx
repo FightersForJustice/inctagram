@@ -4,6 +4,8 @@ import styles from './Textarea.module.scss'
 import { TEXTAEREA_COLORS } from './constants'
 
 export type TextAreaProps = {
+  value?: string
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   hasError?: boolean
   disabled?: boolean
   hovered?: boolean
@@ -11,10 +13,11 @@ export type TextAreaProps = {
   placeholder?: string
   label?: string
   color?: (typeof TEXTAEREA_COLORS)[keyof typeof TEXTAEREA_COLORS]
-} & React.TextareaHTMLAttributes<HTMLTextAreaElement> // Inherit all textarea HTML attributes
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement> 
 
 export const TextArea: React.FC<TextAreaProps> = ({
   value,
+  onChange = () => {},
   label = '',
   hasError = false,
   disabled = false,
@@ -22,13 +25,21 @@ export const TextArea: React.FC<TextAreaProps> = ({
   errorMessage = 'Error text',
   placeholder = 'Textarea',
   color = TEXTAEREA_COLORS.DEFAULT,
-  ...restProps // Spread the remaining HTML attributes
+
 }) => {
   const textareaClasses = classNames(styles.textarea, {
     [styles.Default]: color === TEXTAEREA_COLORS.DEFAULT,
-    [styles.Active]: color === TEXTAEREA_COLORS.ACTIVE,
+    [styles.Active]: hovered || color === TEXTAEREA_COLORS.ACTIVE,
     [styles.Error]: color === TEXTAEREA_COLORS.ERROR,
   })
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    if (!disabled) {
+      if (onChange) {
+        onChange(event);
+      }
+    }
+  }
 
   return (
     <div>
@@ -38,7 +49,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         value={value}
         disabled={disabled}
         placeholder={placeholder}
-        {...restProps} // Spread the remaining HTML attributes
+        onChange={handleChange}
       />
       {hasError && <p className={styles.error_message}>{errorMessage}</p>}
     </div>

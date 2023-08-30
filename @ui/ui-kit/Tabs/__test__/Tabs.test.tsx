@@ -83,6 +83,7 @@ describe('Tab', () => {
 
     expect(tab).not.toHaveClass(styles.disabled)
   })
+
   it('does not trigger onClick event when disabled', () => {
     const onClick = jest.fn()
     const { tab } = setupTab({ disabled: true, onClick })
@@ -91,6 +92,7 @@ describe('Tab', () => {
 
     expect(onClick).not.toHaveBeenCalled()
   })
+
   it('becomes active when selected', () => {
     const { tab, label } = setupTab()
     const activeTab = screen.getByRole('tab', { selected: true, name: label })

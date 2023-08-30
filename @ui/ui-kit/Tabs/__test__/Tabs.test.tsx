@@ -4,8 +4,6 @@ import * as Tabs from '@radix-ui/react-tabs'
 import { Tab } from '../Tab'
 import styles from '@ui/ui-kit/Tabs/Tabs.module.scss'
 
-import { TAB_COLORS } from '../constants'
-
 const setupTab = (props = {}) => {
   const defaultProps = {
     value: 'tab1',
@@ -26,7 +24,33 @@ const setupTab = (props = {}) => {
     ...defaultProps,
   }
 }
+describe('render snapshot correctly \t', () => {
+  afterEach(cleanup)
 
+  const disabledProps = [true, false]
+
+  disabledProps.forEach((disabled) => {
+    it(`disabled: ${disabled} \t
+    value: 'value' \t
+    lable: 'label'
+            `, () => {
+      const props = {
+        disabled: disabled,
+        value: 'value',
+        label: 'label',
+      }
+      const { asFragment } = render(
+        <Tabs.Root>
+          <Tabs.List>
+            <Tab {...props} />
+          </Tabs.List>
+        </Tabs.Root>
+      )
+
+      expect(asFragment()).toMatchSnapshot()
+    })
+  })
+})
 describe('Tab', () => {
   afterEach(cleanup)
 
@@ -59,11 +83,6 @@ describe('Tab', () => {
 
     expect(tab).not.toHaveClass(styles.disabled)
   })
-  it('displays the correct label', () => {
-    const { label } = setupTab()
-
-    expect(screen.getByText(label)).toBeInTheDocument()
-  })
   it('does not trigger onClick event when disabled', () => {
     const onClick = jest.fn()
     const { tab } = setupTab({ disabled: true, onClick })
@@ -86,7 +105,6 @@ describe('Tab', () => {
   it('has correct ARIA roles and attributes', () => {
     const { tab, label } = setupTab()
     const tabButton = screen.getByRole('tab', { name: label })
-
     expect(tab).toBe(tabButton)
 
     fireEvent.click(tab)
@@ -94,5 +112,3 @@ describe('Tab', () => {
     expect(tabButton).toHaveAttribute('aria-selected', 'true')
   })
 })
-const colorProps = [TAB_COLORS.PRIMARY, TAB_COLORS.GHOST]
-const disabledProps = [true, false]

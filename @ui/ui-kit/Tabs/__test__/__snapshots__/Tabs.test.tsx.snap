@@ -1,253 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot renders correctly 	
-                color: Ghost 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:rs:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:rs:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
+exports[`render snapshot correctly 	 disabled: false 	
+    value: 'value' 	
+    lable: 'label'
+             1`] = `
+<DocumentFragment>
+  <div
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="0"
+    >
+      <button
+        aria-controls="radix-:r2:-content-value"
+        aria-selected="false"
+        class="tab"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r2:-trigger-value"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        label
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
-exports[`Snapshot renders correctly 	
-                color: Ghost 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rq:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rq:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Snapshot renders correctly 	
-                color: Primary 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:ro:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:ro:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Snapshot renders correctly 	
-                color: Primary 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rm:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rm:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab Snapshot renders correctly 	
-                color: Ghost 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:rs:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:rs:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab Snapshot renders correctly 	
-                color: Ghost 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rq:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rq:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab Snapshot renders correctly 	
-                color: Primary 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:ro:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:ro:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab Snapshot renders correctly 	
-                color: Primary 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rm:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rm:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab renders correctly 	
-                color: Ghost 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:rs:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:rs:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab renders correctly 	
-                color: Ghost 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rq:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rq:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab renders correctly 	
-                color: Primary 	
-                disabled: false 	
-                 1`] = `
-<button
-  aria-controls="radix-:ro:-content-tab1"
-  aria-selected="true"
-  class="tab"
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  id="radix-:ro:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
-`;
-
-exports[`Tab renders correctly 	
-                color: Primary 	
-                disabled: true 	
-                 1`] = `
-<button
-  aria-controls="radix-:rm:-content-tab1"
-  aria-selected="true"
-  class="tab disabled"
-  data-disabled=""
-  data-orientation="horizontal"
-  data-radix-collection-item=""
-  data-state="active"
-  disabled=""
-  id="radix-:rm:-trigger-tab1"
-  role="tab"
-  tabindex="-1"
-  type="button"
->
-  Tab 1
-</button>
+exports[`render snapshot correctly 	 disabled: true 	
+    value: 'value' 	
+    lable: 'label'
+             1`] = `
+<DocumentFragment>
+  <div
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="-1"
+    >
+      <button
+        aria-controls="radix-:r0:-content-value"
+        aria-selected="false"
+        class="tab disabled"
+        data-disabled=""
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        disabled=""
+        id="radix-:r0:-trigger-value"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        label
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
 `;

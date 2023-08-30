@@ -32,7 +32,8 @@
   }
 
   &:focus {
-    border-color: colors.$light-100;
+    border-color: colors.$primary-500;
+    outline: 1px solid colors.$primary-500;
     background-color: colors.$dark-300;
   }
 
@@ -51,17 +52,33 @@
 
   &:active {
     border-color: colors.$light-500;
+    outline: none;
   }
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    -webkit-text-fill-color: colors.$light-900;
+    -webkit-text-fill-color: colors.$light-100;
     -webkit-box-shadow: 0 0 0px 1000px colors.$dark-500 inset;
+    caret-color: colors.$light-100;
   }
   &:-webkit-autofill:focus {
     -webkit-text-fill-color: colors.$light-100;
     -webkit-box-shadow: 0 0 0px 1000px colors.$dark-300 inset;
+  }
+
+  &_dark {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: colors.$light-100;
+      -webkit-box-shadow: 0 0 0px 1000px colors.$dark-700 inset;
+      caret-color: colors.$light-100;
+    }
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: colors.$light-100;
+      -webkit-box-shadow: 0 0 0px 1000px colors.$dark-500 inset;
+    }
   }
 
   &::placeholder {

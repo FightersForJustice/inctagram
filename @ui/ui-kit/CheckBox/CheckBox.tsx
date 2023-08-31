@@ -7,10 +7,12 @@ type CheckBoxType = {
   disabled?: boolean
   validation?: object
   value?: string
-
+  error?: boolean
 }
 
-export const CheckBox: React.FC<CheckBoxType> = ({ children, checked, disabled, validation, value }) => {
+export const CheckBox: React.FC<CheckBoxType> = ({ children, checked, disabled, validation, value, error }) => {
+
+  const classs = error? s.checkboxError : s.checkbox;
   return (
     <label className={s.label}>
       <input type="checkbox" 
@@ -29,7 +31,7 @@ export const CheckBox: React.FC<CheckBoxType> = ({ children, checked, disabled, 
         </div>
       ) : (
         <div className={s.block}>
-          <span className={s.checkbox}>
+          <span className={classs}>
             <span className={s.checkboxOn}>
               <span className={s.check}></span>
             </span>

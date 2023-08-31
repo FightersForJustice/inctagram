@@ -34,6 +34,16 @@
       border: 2px solid colors.$light-100;
       border-radius: 3px;
     }
+    .checkboxError{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 18px;
+      border: 2px solid colors.$danger-500;
+      border-radius: 3px;
+    }
     .checkboxOn {
       color: colors.$light-100;
       display: block;

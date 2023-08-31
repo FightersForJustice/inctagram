@@ -32,7 +32,7 @@ const RegistrationForm = (props: RegistrationPropsType) => {
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
-
+const errorCheckbox  = errors.checkbox === undefined ? false : true
   return (
     <div className={authStyle.authContainer}>
       {isLoading && (
@@ -83,7 +83,11 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
 
         <div className={style.checkboxWrapper}>
-          <CheckBox value="yes" validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}>
+          <CheckBox 
+          value="yes" 
+          validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}
+          error={errorCheckbox}
+          >
             <span className={style.text}>
               {translate('legal')}
               <Link href={legalRoutes.termsOfService} className={style.link}>

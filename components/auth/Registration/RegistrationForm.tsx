@@ -84,9 +84,9 @@ const errorCheckbox  = errors.checkbox === undefined ? false : true
 
         <div className={style.checkboxWrapper}>
           <CheckBox 
-          value="yes" 
-          validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}
-          error={errorCheckbox}
+            value="yes" 
+            validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}
+            error={errorCheckbox}
           >
             <span className={style.text}>
               {translate('legal')}

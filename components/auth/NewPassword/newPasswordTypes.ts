@@ -33,7 +33,7 @@ export interface ICheckRecoveryCode {
       recoveryCodeCheckParamsData,
       BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
       never,
-      void | ServerErrorResponse,
+      ServerErrorResponse,
       'authQueryApi'
     >
   >

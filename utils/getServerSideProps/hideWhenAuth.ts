@@ -1,4 +1,5 @@
 import { axiosAPI } from '@/assets/api/api'
+import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { GetServerSideProps, NextApiRequest } from 'next'
 
 type Props = {
@@ -23,8 +24,8 @@ export const hideWhenAuth: GetServerSideProps<Props> = async ({ req }) => {
         isAuth: false, // Provide the isAuth value as false when user is not authenticated
       },
     }
-  } catch (error) {
-    console.error(error)
+  } catch (error: any) {
+    console.error(error.response.status)
 
     return {
       props: {

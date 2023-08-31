@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import s from './modal.module.scss'
-import {CLOSE_MODAL_TEST_ID} from './constants'
+import { CLOSE_MODAL_TEST_ID } from './constants'
 
 type ModalType = {
   active: boolean
@@ -21,7 +21,7 @@ const Modal: React.FC<ModalType> = ({ active, setActive, title, children, close 
             {close ? (
               <button
                 className={s.buttonClose}
-                data-testid= {CLOSE_MODAL_TEST_ID}
+                data-testid={CLOSE_MODAL_TEST_ID}
                 onClick={() => {
                   setActive(false)
                 }}

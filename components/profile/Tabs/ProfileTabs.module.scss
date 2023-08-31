@@ -25,8 +25,7 @@
 .TabsList {
   flex-shrink: 0;
   display: flex;
-  // border-bottom: 1px solid c.$primary-500;
-  width: 726px;
+  width: 737px;
   height: 36px;
 }
 
@@ -61,19 +60,10 @@
 }
 
 .Fieldset {
-  margin-bottom: 15px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.Label {
-  font-size: 13px;
-  line-height: 1;
-  margin-bottom: 10px;
-  color: var(--violet-12);
-  display: block;
 }
 
 .Input {

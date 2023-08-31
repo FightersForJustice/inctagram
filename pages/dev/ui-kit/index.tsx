@@ -13,6 +13,10 @@ import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
 import { useForm, Control } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
+import * as Tabs from '@radix-ui/react-tabs'
+import { userRouts } from '@/components/common/User/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 export const getStaticProps = async () => {
@@ -24,6 +28,14 @@ interface FormValues {
   myTextarea: string
 }
 const Login = () => {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState('general')
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+
+    router.replace(`/ui-kit?tab=${value}`)
+  }
   const [ModalActive, setModalActive] = useState(false)
   const { control, handleSubmit } = useForm<FormValues>()
 
@@ -62,15 +74,17 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Textarea</h2>
           <div className={style.components}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea disabled />
-            </form>
+            <div className={style.buttonBlock}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea disabled />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
+              </form>
+            </div>
           </div>
         </div>
 
@@ -103,7 +117,18 @@ const Login = () => {
             </Modal>
           </div>
         </div>
-
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Tabs</h2>
+          <div className={style.container}>
+            <Tabs.Root defaultValue="general" onValueChange={handleTabChange} className={style.TabsRoot}>
+              <Tabs.List aria-label="Manage your account" className={style.TabsList}>
+                <Tab label="TAB " value="tab1" />
+                <Tab label="TAB" value="tab2" disabled />
+                <Tab label="TAB" value="tab3" />
+              </Tabs.List>
+            </Tabs.Root>
+          </div>
+        </div>
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Icons</h2>
           <div style={{ display: 'flex', gap: '50px', color: 'white' }}>
@@ -143,6 +168,5 @@ const Login = () => {
     </PageWrapper>
   )
 }
-
 Login.getLayout = getLayout
 export default Login

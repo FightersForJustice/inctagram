@@ -4,6 +4,7 @@ export type FormValuesTypeRegister = {
   email: string
   password: string
   password2: string
+  checkbox: string
 }
 export type ErrorMessagerType = {
   field: string

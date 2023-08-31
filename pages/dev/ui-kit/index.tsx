@@ -124,11 +124,19 @@ const Login = () => {
 
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>CheckBox</h2>
-          <div style={{ display: 'flex',flexDirection: 'column' }}>
-            <CheckBox checked={false} disabled={true}>1. Confirm your actions</CheckBox>
-            <CheckBox checked={true} disabled={true}>2. Confirm your actions</CheckBox>
-            <CheckBox checked={true} disabled={false}>3. Confirm your actions</CheckBox>
-            <CheckBox checked={false} disabled={false}>4. Confirm your actions</CheckBox>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <CheckBox checked={false} disabled={true}>
+              1. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={true}>
+              2. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={false}>
+              3. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={false} disabled={false}>
+              4. Confirm your actions
+            </CheckBox>
           </div>
         </div>
       </div>

@@ -56,7 +56,7 @@
       }
     }
   }
-  .blockDisabled{
+  .blockDisabled {
     width: 36px;
     height: 36px;
     position: relative;
@@ -101,10 +101,10 @@
   .input:checked + .block .checkbox .checkboxOn {
     opacity: 1;
   }
-  .input:checked + .blockDisabled  .checkboxOn {
+  .input:checked + .blockDisabled .checkboxOn {
     opacity: 1;
   }
-  .input:not(:checked) + .blockDisabled  .checkbox {
+  .input:not(:checked) + .blockDisabled .checkbox {
     opacity: 1;
   }
 }

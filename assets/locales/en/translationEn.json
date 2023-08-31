@@ -8,10 +8,10 @@
     "password_confirmation": "Password confirmation",
     "sign_in": "Sign In",
     "do_you_have_an_account?": "Do you have an account?",
-    "legal": "I agree to the",
-    "termsOfService": " Terms of Service ",
-    "privacyPolicy": " Privacy Policy",
-    "and": "and"
+    "legal": "I agree to the ",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "and": " and "
   },
   "login_form": {
     "sign_up": "Sign Up",

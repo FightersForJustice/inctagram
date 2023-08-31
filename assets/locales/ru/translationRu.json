@@ -9,9 +9,9 @@
     "sign_in": "Войти",
     "do_you_have_an_account?": "Уже есть аккаунт?",
     "legal": "Я соглашаюсь с ",
-    "termsOfService": " Условиями пользования ",
-    "privacyPolicy": " Политикой конфиденциальности",
-    "and": "и"
+    "termsOfService": "Условиями пользования",
+    "privacyPolicy": "Политикой конфиденциальности",
+    "and": " и "
   },
   "login_form": {
     "email": "Электронная почта",

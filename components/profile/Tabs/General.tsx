@@ -33,6 +33,11 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
 
+  const disabled =
+    Object.values(changedFields).some((value) => value.length < 1) ||
+    changedFields.userName?.length < 6 ||
+    validationError === true
+
   const handleSave = async () => {
     try {
       setIsLoading(true)
@@ -131,7 +136,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             hasError={validationError}
             errorMessage={translate('textareaLengthValidationError')}
           />
-          <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
+          <Button text={translate('save_changes')} onClick={handleSave} disabled={disabled} />
         </form>
       </div>
       {isModalOpen && (

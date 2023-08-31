@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
-import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
+import { FormInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
@@ -37,19 +37,14 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
     try {
       setIsLoading(true)
 
-      // Send separate requests for each changed field
-      const promises = Object.keys(changedFields).map(async (field) => {
-        const data = { [field]: changedFields[field] }
-        return updateProfile(data).unwrap()
-      })
+      if (Object.keys(changedFields).length > 0) {
+        await updateProfile(changedFields).unwrap()
+        const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
+        setUpdatedUserProfile(updatedProfileData)
 
-      await Promise.allSettled(promises)
-      await axiosAPI.profile.getProfile()
+        setChangedFields({})
+      }
 
-      const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
-      setUpdatedUserProfile(updatedProfileData)
-
-      setChangedFields({})
       setIsLoading(false)
     } catch (error) {
       setIsLoading(false)

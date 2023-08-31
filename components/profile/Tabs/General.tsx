@@ -73,6 +73,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       [name]: value,
     }))
   }
+
   return (
     <>
       {isLoading && <Loading />}
@@ -85,6 +86,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             name={'userName'}
             value={updatedUserProfile.userName || ''}
             onChange={handleInputChange}
+            validation={{ minLength: 6 }}
           />
           <FormInput
             label={translate('firstName')}

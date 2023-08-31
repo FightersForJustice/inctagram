@@ -13,7 +13,7 @@ import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 
 import { useForm, Control } from 'react-hook-form'
-import { CheckBox } from '@/@ui/ui-kit/CheckBox'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 export const getStaticProps = async () => {
   return {

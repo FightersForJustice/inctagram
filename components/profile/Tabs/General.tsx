@@ -128,11 +128,11 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             label={translate('aboutMe')}
             id="aboutMe"
             name="aboutMe"
-            value={updatedUserProfile.aboutMe || ''}
             onChange={handleInputChange}
             color={validationError ? TEXTAEREA_COLORS.ERROR : undefined}
             hasError={validationError}
             errorMessage={translate('textareaLengthValidationError')}
+            value={updatedUserProfile.aboutMe}
           />
           <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
         </form>

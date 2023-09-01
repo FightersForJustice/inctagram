@@ -15,6 +15,7 @@ import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
 import { useEffect, useState } from 'react'
 import { errorsTrigger } from '@/hooks/errorsTrigger'
 import { legalRoutes } from '@/app/routes/legalRoutes'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -27,24 +28,11 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
-  const [isChecked, setIsChecked] = useState(false)
-
-  //if fields are empty or contain errors, or checkbox is not checked
-  const disabled =
-    Object.keys(errors).length > 0 ||
-    watch('userName') === '' ||
-    watch('email') === '' ||
-    watch('password') === '' ||
-    watch('password2') === '' ||
-    isChecked === false
 
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
+const errorCheckbox  = errors.checkbox === undefined ? false : true
   return (
     <div className={authStyle.authContainer}>
       {isLoading && (
@@ -95,21 +83,27 @@ const RegistrationForm = (props: RegistrationPropsType) => {
         </div>
 
         <div className={style.checkboxWrapper}>
-          <label className={style.label}>
-            <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} className={style.checkbox} />
-            {translate('legal')}
-            <Link href={legalRoutes.termsOfService} className={style.link}>
-              {translate('termsOfService')}
-            </Link>
-            {translate('and')}
-            <Link href={legalRoutes.privacyPolicy} className={style.link}>
-              {translate('privacyPolicy')}
-            </Link>
-          </label>
+          <CheckBox 
+            value="yes" 
+            validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}
+            error={errorCheckbox}
+          >
+            <span className={style.text}>
+              {translate('legal')}
+              <Link href={legalRoutes.termsOfService} className={style.link}>
+                {translate('termsOfService')}
+              </Link>
+              {translate('and')}
+              <Link href={legalRoutes.privacyPolicy} className={style.link}>
+                {translate('privacyPolicy')}
+              </Link>
+            </span>
+          </CheckBox>
+          <div className={style.errorCheckbox}>{errors.checkbox?.message}</div>
         </div>
 
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled || isLoading} text={translate('sign_up')} type="submit" />
+          <Button onClick={handleSubmit(onSubmit)} text={translate('sign_up')} />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

@@ -27,15 +27,14 @@ type HomeType = {
   isAuth: UserData
 }
 
-const Logout = (props:HomeType) => {
-
+const Logout = (props: HomeType) => {
   const [logout] = useLogoutMutation()
   const router = useRouter()
   const [ModalActive, setModalActive] = useState(true)
   const { t } = useTranslation()
   const translate = (key: string): string => t(`logout.${key}`)
 
-  const handlerYes = ()=>{
+  const handlerYes = () => {
     const performLogout = async () => {
       try {
         await logout({})
@@ -51,7 +50,7 @@ const Logout = (props:HomeType) => {
     performLogout()
   }
 
-  const handlerNo = ()=>{
+  const handlerNo = () => {
     router.push(userRouts.home)
   }
 
@@ -59,7 +58,9 @@ const Logout = (props:HomeType) => {
     <>
       <Modal title={translate('title')} active={ModalActive} setActive={setModalActive} close={true}>
         <div className={s.content}>
-          <p>{translate('text')} “{props.isAuth.email}”?</p>
+          <p>
+            {translate('text')} “{props.isAuth.email}”?
+          </p>
           <div className={s.buttons}>
             <Button color={BUTTON_COLORS.OUTLINED} text={translate('yes')} onClick={handlerYes}></Button>
             <Button text={translate('no')} onClick={handlerNo}></Button>

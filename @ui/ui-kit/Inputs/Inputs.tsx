@@ -13,12 +13,16 @@ interface IMainInputProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 
 type FormInputType = {
-  validation?: object
+  validation?: Validation
   label: string
   id: string
   name: string
   value: string | number | readonly string[] | undefined //fix
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+}
+
+type Validation = {
+  minLength: number
 }
 
 type FormTextareaType = FormInputType & {}
@@ -55,16 +59,38 @@ export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   )
 }
 
-export const FormInput: React.FC<FormInputType> = ({ onChange, label, id, name, value }) => {
+export const FormInput: React.FC<FormInputType> = ({ onChange, label, id, name, value, validation }) => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value
+
+    if (validation?.minLength && newValue.length < validation.minLength) {
+      setErrorMessage(`Minimum length is ${validation.minLength} characters`)
+    } else {
+      setErrorMessage(null)
+    }
+
+    onChange(event)
+  }
+
   return (
     <fieldset>
       <label className={style.label} htmlFor={id}>
         {label}
       </label>
-      <input className={classNames(style.input, style.input_dark)} id={id} name={name} value={value} onChange={onChange} />
+      <input
+        className={classNames(style.input, style.input_dark, { [style.inputError]: errorMessage })}
+        id={id}
+        name={name}
+        value={value}
+        onChange={handleInputChange}
+      />
+      {errorMessage && <span className={style.errorMessage}>{errorMessage}</span>}
     </fieldset>
   )
 }
+
 export const FormTextarea: React.FC<FormTextareaType> = ({ onChange, label, id, name, value }) => {
   return (
     <fieldset>

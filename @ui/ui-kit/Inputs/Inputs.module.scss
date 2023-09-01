@@ -55,6 +55,7 @@
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
+  &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     -webkit-text-fill-color: colors.$light-900;
     -webkit-box-shadow: 0 0 0px 1000px colors.$dark-500 inset;
@@ -72,7 +73,6 @@
     border: 1px solid colors.$danger-500;
   }
 }
-
 .errorMessage {
   color: colors.$danger-500;
   margin: 4px 0px 0px 5px;
@@ -89,6 +89,7 @@
 
   &Disabled {
     color: colors.$dark-100;
+    color: colors.$dark-100;
   }
 }
 
@@ -99,11 +100,22 @@
   color: white;
   cursor: pointer;
   transition: 0.1s;
+  transition: 0.1s;
   filter: invert(1);
   &:hover {
     filter: invert(0.6);
   }
   &:active {
     filter: invert(0.4);
+  }
+  &_disabled {
+    cursor: default;
+    filter: invert(0.3);
+    &:hover {
+      filter: invert(0.3);
+    }
+    &:active {
+      filter: invert(0.3);
+    }
   }
 }

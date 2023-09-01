@@ -39,36 +39,29 @@ export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture, l
     setValue = setDate
   }, [])
   return (
-    <>
-      {label && (
-        <label htmlFor={id} className={classNames(style.label, { [style.labelDisabled]: disabled })}>
-          {label}
-        </label>
-      )}
-      <div className={classNames('UIKitDatePicker', pickerState)}>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
-          <DatePicker
-            disabled={disabled}
-            onOpen={() => setPickerState('UIKitDatePicker--open')}
-            onClose={() => setPickerState('UIKitDatePicker--close')}
-            showDaysOutsideCurrentMonth
-            dayOfWeekFormatter={(day) => day}
-            onChange={(e: any) => {
-              setValue && setValue(e.$d)
-            }}
-            orientation="portrait"
-            disableFuture={disableFuture}
-            value={value ? dayjs(value) : null}
-            onError={(newError) => setError(newError)}
-            slotProps={{
-              textField: {
-                id: id ? id : '',
-                helperText: error && 'Error!',
-              },
-            }}
-          />
-        </LocalizationProvider>
-      </div>
-    </>
+    <div className={classNames('UIKitDatePicker', pickerState)}>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
+        <DatePicker
+          disabled={disabled}
+          onOpen={() => setPickerState('UIKitDatePicker--open')}
+          onClose={() => setPickerState('UIKitDatePicker--close')}
+          showDaysOutsideCurrentMonth
+          dayOfWeekFormatter={(day) => day}
+          onChange={(e: any) => {
+            setValue && setValue(e.$d)
+          }}
+          orientation="portrait"
+          disableFuture={disableFuture}
+          value={value ? dayjs(value) : null}
+          onError={(newError) => setError(newError)}
+          slotProps={{
+            textField: {
+              id: id ? id : '',
+              helperText: error && 'Error!',
+            },
+          }}
+        />
+      </LocalizationProvider>
+    </div>
   )
 }

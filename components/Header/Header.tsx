@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Header.module.css'
+import s from './Header.module.scss'
 import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/Header/Logo'
 import dynamic from 'next/dynamic'
@@ -17,9 +17,6 @@ const DynamicLanguageFlags = dynamic(() => import('./SelectBox'), { ssr: false }
 export const Header = (): JSX.Element => {
   return (
     <div className={s.header}>
-      <Link href={authRouts.login}>
-        <Logo className={s.inctagram} />
-      </Link>
       <Link href={authRouts.login}>
         <Logo className={s.inctagram} />
       </Link>

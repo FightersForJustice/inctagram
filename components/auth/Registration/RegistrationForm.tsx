@@ -12,8 +12,10 @@ import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import classNames from 'classnames'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { errorsTrigger } from '@/hooks/errorsTrigger'
+import { legalRoutes } from '@/app/routes/legalRoutes'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 const RegistrationForm = (props: RegistrationPropsType) => {
   const { t } = useTranslation()
@@ -26,15 +28,11 @@ const RegistrationForm = (props: RegistrationPropsType) => {
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeRegister>({ mode: 'onBlur' })
-  const disabled = Object.keys(errors).length === 0 ? false : true
 
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
-
-  useEffect(() => {
-    errorsTrigger(trigger, errors)
-  }, [t])
+const errorCheckbox  = errors.checkbox === undefined ? false : true
   return (
     <div className={authStyle.authContainer}>
       {isLoading && (
@@ -83,8 +81,29 @@ const RegistrationForm = (props: RegistrationPropsType) => {
             errormessages={[errors.password2?.message, errorMessagePassword?.message]}
           />
         </div>
+
+        <div className={style.checkboxWrapper}>
+          <CheckBox 
+            value="yes" 
+            validation={{ ...register('checkbox', Validate(ValidateField.Checkbox)) }}
+            error={errorCheckbox}
+          >
+            <span className={style.text}>
+              {translate('legal')}
+              <Link href={legalRoutes.termsOfService} className={style.link}>
+                {translate('termsOfService')}
+              </Link>
+              {translate('and')}
+              <Link href={legalRoutes.privacyPolicy} className={style.link}>
+                {translate('privacyPolicy')}
+              </Link>
+            </span>
+          </CheckBox>
+          <div className={style.errorCheckbox}>{errors.checkbox?.message}</div>
+        </div>
+
         <div className={style.buttonWrapper}>
-          <Button onClick={handleSubmit(onSubmit)} disabled={disabled} text={translate('sign_up')} />
+          <Button onClick={handleSubmit(onSubmit)} text={translate('sign_up')} />
         </div>
         <p className={style.text}>{translate('do_you_have_an_account?')}</p>
         <Link href={authRouts.login} className={style.SignIn}>

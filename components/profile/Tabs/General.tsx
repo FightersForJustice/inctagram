@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
 import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
@@ -13,22 +13,25 @@ import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
 import { ImgCrop } from '../AddAvatar'
 import { TEXTAEREA_COLORS } from '@/@ui/ui-kit/Textareas/constants'
-
-type GeneralType = {
-  userProfile: UserProfile
-}
+import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 
 type ChangedFields = {
   [field: string]: string
 }
 
-const General: React.FC<GeneralType> = ({ userProfile }) => {
+const General: React.FC = () => {
+  let userProfile = useProfileSettingsSSRSelector()
+
   const [validationError, setValidationError] = useState(false)
   const [updateProfile] = useUpdateProfileMutation()
-  const [updatedUserProfile, setUpdatedUserProfile] = useState<UserProfile>(userProfile)
+  const [updatedUserProfile, setUpdatedUserProfile] = useState(userProfile)
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    setUpdatedUserProfile(userProfile)
+  }, [userProfile])
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
@@ -46,7 +49,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       await Promise.allSettled(promises)
       await axiosAPI.profile.getProfile()
 
-      const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
+      const updatedProfileData: any = await axiosAPI.profile.getProfile()
       setUpdatedUserProfile(updatedProfileData)
 
       setChangedFields({})

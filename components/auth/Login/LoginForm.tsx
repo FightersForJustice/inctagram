@@ -23,6 +23,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeLogin>({ mode: 'onBlur' })
+  
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])

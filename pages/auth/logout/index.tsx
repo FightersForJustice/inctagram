@@ -37,7 +37,7 @@ const Logout = (props: HomeType) => {
   const handlerYes = () => {
     const performLogout = async () => {
       try {
-        await logout({})
+        await logout()
           .unwrap()
           .then(() => {
             router.push(authRouts.login)

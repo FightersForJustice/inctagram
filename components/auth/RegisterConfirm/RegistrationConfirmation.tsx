@@ -15,8 +15,11 @@ const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
   useEffect(() => {
     const confirmRegistration = async () => {
       try {
-        await registerConfirmMutation(code!.toString())
-      } catch (error) {}
+        await registerConfirmMutation(code!.toString() as string)
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
 
     if (code) {

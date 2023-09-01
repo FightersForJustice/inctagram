@@ -10,12 +10,9 @@ const getProfileFromServer = async (req: NextApiRequest) => {
   return response.data
 }
 
-export const profileAxiosApi = {
+export  const profileAxiosApi = {
   getProfile() {
     return instance.get<UserProfile>(userRouts.profile).then(({ data }) => data)
-  },
-  updateProfile() {
-    return instance.post<UpdateUserProfile>(userRouts.profile).then(({ data }) => data)
-  },
+  },//move to RTK Query
   getProfileFromServer,
 }

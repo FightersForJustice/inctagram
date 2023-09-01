@@ -1,12 +1,12 @@
 import { baseUrl } from '@/assets/api/common.api'
 import { userRouts } from '@/components/common/User/userRouts'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ServerErrorResponse } from '../auth/authTypes'
 import { ServerAvatarResponse, UpdateUserProfile, UserProfile } from './userTypes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
+import { PROFILE_API_KEY } from '@/core/reducers/constant_keys'
 
-export const profileQueryApi = createApi({
-  reducerPath: 'profileApi',
+const profileQueryApi = createApi({
+  reducerPath: PROFILE_API_KEY,
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',

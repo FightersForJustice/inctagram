@@ -7,7 +7,11 @@
     "password": "Password",
     "password_confirmation": "Password confirmation",
     "sign_in": "Sign In",
-    "do_you_have_an_account?": "Do you have an account?"
+    "do_you_have_an_account?": "Do you have an account?",
+    "legal": "I agree to the ",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "and": " and "
   },
   "login_form": {
     "sign_up": "Sign Up",
@@ -70,7 +74,9 @@
     "emailMinLength": "Email must be longer than or equal to 6 characters",
     "passwordMaxLength": "Password must be shorter than or equal to 20 characters",
     "passwordMinLength": "Password must be longer than or equal to 6 characters",
-    "passwordNoSpaces": "Don't use spaces in password"
+    "passwordNoSpaces": "Don't use spaces in password",
+    "confirmConsent": "Confirm your consent",
+    "passwordsNotMatch": "Your passwords do not match"
   },
   "Email_verification_link_expired": "Email verification link expired",
   "expired_link": "Looks like the verification link has expired. Not to worry, we can send the link again",
@@ -127,6 +133,11 @@
     "crop": "Cut",
     "back": "Back",
     "Save": "Save"
+  },
+  "legalPages": {
+    "goBack": "Back to sign up",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
   },
   "logout": {
     "title": "Log Out",

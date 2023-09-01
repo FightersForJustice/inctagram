@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
-import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
+import { FormInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
@@ -33,23 +33,23 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
 
+  const disabled =
+    Object.values(changedFields).some((value) => value.length < 1) ||
+    changedFields.userName?.length < 6 ||
+    validationError === true
+
   const handleSave = async () => {
     try {
       setIsLoading(true)
 
-      // Send separate requests for each changed field
-      const promises = Object.keys(changedFields).map(async (field) => {
-        const data = { [field]: changedFields[field] }
-        return updateProfile(data).unwrap()
-      })
+      if (Object.keys(changedFields).length > 0) {
+        await updateProfile(changedFields).unwrap()
+        const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
+        setUpdatedUserProfile(updatedProfileData)
 
-      await Promise.allSettled(promises)
-      await axiosAPI.profile.getProfile()
+        setChangedFields({})
+      }
 
-      const updatedProfileData: UserProfile = await axiosAPI.profile.getProfile()
-      setUpdatedUserProfile(updatedProfileData)
-
-      setChangedFields({})
       setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
@@ -78,6 +78,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
       [name]: value,
     }))
   }
+
   return (
     <>
       {isLoading && <Loading />}
@@ -90,6 +91,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             name={'userName'}
             value={updatedUserProfile.userName || ''}
             onChange={handleInputChange}
+            validation={{ minLength: 6 }}
           />
           <FormInput
             label={translate('firstName')}
@@ -106,14 +108,12 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             onChange={handleInputChange}
           />
           <fieldset className={style.Fieldset}>
-            <label className={commonStyle.label} htmlFor="date">
-              {translate('dateOfBirth')}
-            </label>
             <MainDatePicker
               id="date"
               value={updatedUserProfile.dateOfBirth}
               setValue={saveToArray(setChangedFields, 'dateOfBirth')}
               disableFuture
+              label={translate('dateOfBirth')}
             />
           </fieldset>
 
@@ -134,7 +134,7 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             errorMessage={translate('textareaLengthValidationError')}
             value={updatedUserProfile.aboutMe}
           />
-          <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
+          <Button text={translate('save_changes')} onClick={handleSave} disabled={disabled} />
         </form>
       </div>
       {isModalOpen && (

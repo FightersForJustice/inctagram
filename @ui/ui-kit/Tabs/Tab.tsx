@@ -1,6 +1,5 @@
 import React from 'react'
 import * as Tabs from '@radix-ui/react-tabs'
-import { TAB_COLORS } from '@ui/ui-kit/Tabs/constants'
 import styles from '@ui/ui-kit/Tabs/Tabs.module.scss'
 import classNames from 'classnames'
 

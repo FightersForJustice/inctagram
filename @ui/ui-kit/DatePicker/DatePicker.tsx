@@ -9,6 +9,7 @@ import { Dispatch, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { DateValidationError } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
+import style from './DatePicker.module.scss'
 
 type DatePickerTypes = {
   value?: string
@@ -16,6 +17,7 @@ type DatePickerTypes = {
   disabled?: boolean
   id?: string
   disableFuture?: boolean
+  label?: string
 }
 
 export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name = 'date') => {
@@ -27,7 +29,7 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
   }
 }
 
-export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture }: DatePickerTypes) => {
+export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture, label }: DatePickerTypes) => {
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
   const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
@@ -37,29 +39,36 @@ export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture }:
     setValue = setDate
   }, [])
   return (
-    <div className={classNames('UIKitDatePicker', pickerState)}>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
-        <DatePicker
-          disabled={disabled}
-          onOpen={() => setPickerState('UIKitDatePicker--open')}
-          onClose={() => setPickerState('UIKitDatePicker--close')}
-          showDaysOutsideCurrentMonth
-          dayOfWeekFormatter={(day) => day}
-          onChange={(e: any) => {
-            setValue && setValue(e.$d)
-          }}
-          orientation="portrait"
-          disableFuture={disableFuture}
-          value={value ? dayjs(value) : null}
-          onError={(newError) => setError(newError)}
-          slotProps={{
-            textField: {
-              id: id ? id : '',
-              helperText: error && 'Error!',
-            },
-          }}
-        />
-      </LocalizationProvider>
-    </div>
+    <>
+      {label && (
+        <label htmlFor={id} className={classNames(style.label, { [style.labelDisabled]: disabled })}>
+          {label}
+        </label>
+      )}
+      <div className={classNames('UIKitDatePicker', pickerState)}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={t('locale')}>
+          <DatePicker
+            disabled={disabled}
+            onOpen={() => setPickerState('UIKitDatePicker--open')}
+            onClose={() => setPickerState('UIKitDatePicker--close')}
+            showDaysOutsideCurrentMonth
+            dayOfWeekFormatter={(day) => day}
+            onChange={(e: any) => {
+              setValue && setValue(e.$d)
+            }}
+            orientation="portrait"
+            disableFuture={disableFuture}
+            value={value ? dayjs(value) : null}
+            onError={(newError) => setError(newError)}
+            slotProps={{
+              textField: {
+                id: id ? id : '',
+                helperText: error && 'Error!',
+              },
+            }}
+          />
+        </LocalizationProvider>
+      </div>
+    </>
   )
 }

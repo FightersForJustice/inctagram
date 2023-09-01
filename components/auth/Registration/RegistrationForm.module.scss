@@ -8,16 +8,33 @@
   margin-top: -6px;
 }
 
-.link {
-  padding: 0px 30px;
-}
-
 .inputWrapper {
   margin-bottom: 27px;
 }
 
+.checkboxWrapper {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: -12px;
+  margin-left: -3px;
+  .text {
+    color: #fff;
+    display: block;
+    margin: -30px 0px 0px 46px;
+    text-align: left;
+  }
+  .errorCheckbox {
+    color: #cc1439;
+    margin: 14px 0px 0px 5px;
+    float: left;
+    text-align: left;
+    font-size: 13px;
+  }
+}
+
 .buttonWrapper {
-  margin-top: 27px;
+  margin-top: 23px;
   display: flex;
   justify-content: center;
   button {
@@ -25,11 +42,23 @@
   }
 }
 
-.text {
-  color: #fff;
-  text-align: center;
+.text,
+.label {
+  color: colors.$light-100;
   font-family: 'Inter';
+}
+
+.text {
+  text-align: center;
   margin-top: 15px;
+}
+
+.label {
+  color: colors.$light-100;
+}
+
+.link {
+  color: colors.$primary-300;
 }
 
 .SignIn {

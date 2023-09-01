@@ -4,6 +4,7 @@ export enum ValidateField {
   Email = 'email',
   Password = 'password',
   Username = 'username',
+  Checkbox = 'checkbox',
 }
 export const Validate = (validate: ValidateField) => {
   const { t } = useTranslation()
@@ -62,6 +63,12 @@ export const Validate = (validate: ValidateField) => {
       message: translate('invalidUsernameFormat'),
     },
   }
+  const Checkbox = {
+    required: {
+      value: true,
+      message: translate('confirmConsent'),
+    },
+  }
   switch (validate) {
     case ValidateField.Email:
       return Email
@@ -69,6 +76,8 @@ export const Validate = (validate: ValidateField) => {
       return Password
     case ValidateField.Username:
       return Username
+    case ValidateField.Checkbox:
+      return Checkbox
     default:
   }
 }

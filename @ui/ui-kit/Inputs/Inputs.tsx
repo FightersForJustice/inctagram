@@ -46,11 +46,16 @@ export const MainInput: React.FC<IMainInputProps> = ({ validation, ...props }) =
 export const PasswordInput: React.FC<IMainInputProps> = ({ ...props }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
   const labelMargin = props.label ? '0px' : '-20px'
-  const {disabled} = props
+  const { disabled } = props
   return (
     <>
       <div style={{ position: 'relative', width: '100%' }}>
-        <span className={classNames(style.eyeButton, {[style.eyeButton_disabled]: disabled})} style={{marginTop: labelMargin}} onClick={() => !disabled && setIsPasswordShown((prev) => !prev)} role='button'>
+        <span
+          className={classNames(style.eyeButton, { [style.eyeButton_disabled]: disabled })}
+          style={{ marginTop: labelMargin }}
+          onClick={() => !disabled && setIsPasswordShown((prev) => !prev)}
+          role="button"
+        >
           {isPasswordShown ? <LightEyeOpen /> : <LightEyeClosed />}
         </span>
       </div>

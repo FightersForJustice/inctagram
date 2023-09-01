@@ -25,7 +25,7 @@ export const hideWhenAuth: GetServerSideProps<Props> = async ({ req }) => {
       },
     }
   } catch (error: any) {
-    console.error(error.response.status)
+    console.error(error)
 
     return {
       props: {

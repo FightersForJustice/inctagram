@@ -7,7 +7,6 @@ import { hideWhenAuth } from '@/utils/getServerSideProps/hideWhenAuth'
 export const getServerSideProps: GetServerSideProps = hideWhenAuth
 
 const Login = () => {
-  
   return (
     <PageWrapper>
       <LoginFormContainer />

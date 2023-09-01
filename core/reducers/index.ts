@@ -12,7 +12,7 @@ const reducers = {
 export const getReducers = () => ({ ...reducers })
 
 export type RootState = {
-    [USER_KEY]: {
-      userData: User;
-    };
-  };
+  [USER_KEY]: {
+    userData: User
+  }
+}

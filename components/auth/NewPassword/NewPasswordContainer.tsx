@@ -22,7 +22,7 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   const [recoveryMutation, { isLoading: isRecoverLoading }] = useRecoveryCodeCheckMutation()
   const [passwordCreateMutation, { isLoading: isCreatePasswordLoading }] = useNewPasswordCreateMutation()
-  
+
   const recoveryCode = router.query['code']
 
   useEffect(() => {

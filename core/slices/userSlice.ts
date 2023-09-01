@@ -30,7 +30,6 @@ const userSlice = createSlice({
   name: USER_KEY,
   initialState,
   reducers: {
-    
     setMeSSR: (state, action: PayloadAction<UserData>) => {
       state.userData = {
         ...state.userData,
@@ -53,7 +52,6 @@ const userSlice = createSlice({
         avatars: action.payload.avatars,
       }
     },
-
   },
 })
 

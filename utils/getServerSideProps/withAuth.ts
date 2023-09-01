@@ -18,12 +18,11 @@ export const withAuth = <P extends {}>(getServerSidePropsFunc: GetServerSideProp
           },
         }
       }
-      
+
       return await getServerSidePropsFunc(context)
-      
     } catch (error) {
       console.log('SSR meServer Error withAuth')
-      
+
       return {
         redirect: {
           destination: authRouts.login,

@@ -17,8 +17,7 @@ const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
       try {
         await registerConfirmMutation(code!.toString() as string)
       } catch (error) {
-        console.log(error);
-        
+        console.log(error)
       }
     }
 

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly should render default correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render disabled correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input"
+    disabled=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render error correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input inputError"
+    errormessages="test error message"
+  />
+  <span
+    class="errorMessage"
+  >
+    test error message
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Input renders correctly should render with label correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+  >
+    test label
+  </label>
+  <input
+    class="input"
+    label="test label"
+  />
+</DocumentFragment>
+`;
+
+exports[`Password input renders correctly should render default correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; width: 100%;"
+  >
+    <span
+      class="eyeButton"
+      role="button"
+      style="margin-top: -20px;"
+    >
+      <svg />
+    </span>
+  </div>
+  <input
+    class="input"
+    type="password"
+  />
+</DocumentFragment>
+`;
+
+exports[`Password input renders correctly should render disabled correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; width: 100%;"
+  >
+    <span
+      class="eyeButton eyeButton_disabled"
+      role="button"
+      style="margin-top: -20px;"
+    >
+      <svg />
+    </span>
+  </div>
+  <input
+    class="input"
+    disabled=""
+    type="password"
+  />
+</DocumentFragment>
+`;
+
+exports[`Password input renders correctly should render error correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; width: 100%;"
+  >
+    <span
+      class="eyeButton"
+      role="button"
+      style="margin-top: -20px;"
+    >
+      <svg />
+    </span>
+  </div>
+  <input
+    class="input inputError"
+    errormessages="test error message"
+    type="password"
+  />
+  <span
+    class="errorMessage"
+  >
+    test error message
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Password input renders correctly should render with label correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; width: 100%;"
+  >
+    <span
+      class="eyeButton"
+      role="button"
+      style="margin-top: 0px;"
+    >
+      <svg />
+    </span>
+  </div>
+  <label
+    class="label"
+  >
+    test label
+  </label>
+  <input
+    class="input"
+    label="test label"
+    type="password"
+  />
+</DocumentFragment>
+`;

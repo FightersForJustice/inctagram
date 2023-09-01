@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import style from './ProfileTabs.module.scss'
 import commonStyle from '@/@ui/ui-kit/Inputs/Inputs.module.scss'
-import { FormInput, FormTextarea } from '@/@ui/ui-kit/Inputs/Inputs'
+import { FormInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
-import { Modal } from '@/components/common/Modal/Modal'
+import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
@@ -36,23 +36,23 @@ const General: React.FC = () => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
 
+  const disabled =
+    Object.values(changedFields).some((value) => value.length < 1) ||
+    changedFields.userName?.length < 6 ||
+    validationError === true
+
   const handleSave = async () => {
     try {
       setIsLoading(true)
 
-      // Send separate requests for each changed field
-      const promises = Object.keys(changedFields).map(async (field) => {
-        const data = { [field]: changedFields[field] }
-        return updateProfile(data).unwrap()
-      })
+      if (Object.keys(changedFields).length > 0) {
+        await updateProfile(changedFields).unwrap()
+        const updatedProfileData: any = await axiosAPI.profile.getProfile()
+        setUpdatedUserProfile(updatedProfileData)
 
-      await Promise.allSettled(promises)
-      await axiosAPI.profile.getProfile()
+        setChangedFields({})
+      }
 
-      const updatedProfileData: any = await axiosAPI.profile.getProfile()
-      setUpdatedUserProfile(updatedProfileData)
-
-      setChangedFields({})
       setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
@@ -81,6 +81,7 @@ const General: React.FC = () => {
       [name]: value,
     }))
   }
+
   return (
     <>
       {isLoading && <Loading />}
@@ -93,6 +94,7 @@ const General: React.FC = () => {
             name={'userName'}
             value={updatedUserProfile.userName || ''}
             onChange={handleInputChange}
+            validation={{ minLength: 6 }}
           />
           <FormInput
             label={translate('firstName')}
@@ -109,14 +111,12 @@ const General: React.FC = () => {
             onChange={handleInputChange}
           />
           <fieldset className={style.Fieldset}>
-            <label className={commonStyle.label} htmlFor="date">
-              {translate('dateOfBirth')}
-            </label>
             <MainDatePicker
               id="date"
               value={updatedUserProfile.dateOfBirth}
               setValue={saveToArray(setChangedFields, 'dateOfBirth')}
               disableFuture
+              label={translate('dateOfBirth')}
             />
           </fieldset>
 
@@ -131,20 +131,22 @@ const General: React.FC = () => {
             label={translate('aboutMe')}
             id="aboutMe"
             name="aboutMe"
-            value={updatedUserProfile.aboutMe || ''}
             onChange={handleInputChange}
             color={validationError ? TEXTAEREA_COLORS.ERROR : undefined}
             hasError={validationError}
             errorMessage={translate('textareaLengthValidationError')}
+            value={updatedUserProfile.aboutMe}
           />
-          <Button text={translate('save_changes')} onClick={handleSave} disabled={isLoading} />
+          <Button text={translate('save_changes')} onClick={handleSave} disabled={disabled} />
         </form>
       </div>
       {isModalOpen && (
         <Modal
           title={translate('modal_error_title')}
-          content={translate('modal_error_content')}
-          onClose={() => setIsModalOpen(false)}
+          children={translate('modal_error_content')}
+          setActive={() => setIsModalOpen(false)}
+          active={isModalOpen}
+          close
         />
       )}
     </>

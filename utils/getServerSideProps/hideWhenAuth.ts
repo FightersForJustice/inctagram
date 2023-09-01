@@ -24,7 +24,7 @@ export const hideWhenAuth: GetServerSideProps<Props> = async ({ req }) => {
       },
     }
   } catch (error) {
-    console.log("SSR meServer Error hideWhenAuth");
+    console.log('SSR meServer Error hideWhenAuth')
 
     return {
       props: {

@@ -23,7 +23,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeLogin>({ mode: 'onBlur' })
-  
+
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
@@ -48,7 +48,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
           </Link>
         </div>
         <div className={style.buttonWrapper}>
-          <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+          <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} type="submit" />
         </div>
         <p className={style.text}>{translate('Dont_have_an_account?')}</p>
         <Link href={authRouts.registration} className={style.SignUp}>

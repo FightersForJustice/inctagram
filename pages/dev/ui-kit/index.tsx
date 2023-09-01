@@ -17,6 +17,7 @@ import { useRouter } from 'next/router'
 import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/components/common/User/userRouts'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 export const getStaticProps = async () => {
   return {
@@ -73,15 +74,17 @@ const Login = () => {
         <div className={style.kitBlock}>
           <h2 className={style.componentHeader}>Textarea</h2>
           <div className={style.components}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
-            </form>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <TextArea disabled />
-            </form>
+            <div className={style.buttonBlock}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea disabled />
+              </form>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <TextArea color={TEXTAEREA_COLORS.ERROR} hasError />
+              </form>
+            </div>
           </div>
         </div>
 
@@ -141,6 +144,24 @@ const Login = () => {
               <h2>Disabled</h2>
               <MainDatePicker disabled />
             </div>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>CheckBox</h2>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <CheckBox checked={false} disabled={true}>
+              1. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={true}>
+              2. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={false}>
+              3. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={false} disabled={false}>
+              4. Confirm your actions
+            </CheckBox>
           </div>
         </div>
       </div>

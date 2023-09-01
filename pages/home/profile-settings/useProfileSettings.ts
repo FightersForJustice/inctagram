@@ -20,5 +20,4 @@ export const useProfileSettings = ({ userProfile }: ProfileType) => {
       })
     )
   }, [dispatch])
-
 }

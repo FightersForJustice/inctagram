@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import i18next from 'i18next'
-import style from './Header.module.css'
+import style from './Header.module.scss'
 import UpArrow from '@/public/img/arrow/up.svg'
 import DownArrow from '@/public/img/arrow/down.svg'
 import Ru from '@/public/img/flags/ru.svg'

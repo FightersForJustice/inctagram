@@ -32,11 +32,7 @@ const NewPassword = (props: INewPasswordProps) => {
           <Loading />
         </div>
       )}
-      <form
-        className={classNames(authStyle.authForm, style.authForm)}
-        onSubmit={handleSubmit(onSubmit)}
-        style={{ visibility: isLoaderShown ? 'hidden' : 'visible' }}
-      >
+      <form className={classNames(authStyle.authForm, style.authForm)} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={authStyle.header}>{translate('Create_new_password')}</h1>
         <div className={style.input_wrapper}>
           <PasswordInput
@@ -83,6 +79,7 @@ const NewPassword = (props: INewPasswordProps) => {
             text={translate('Create_new_password')}
             disabled={isLoaderShown}
             color="Primary"
+            type="submit"
           />
         </div>
       </form>

@@ -11,7 +11,7 @@ import s from './index.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { UserData } from '@/assets/api/auth/authTypes'
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {

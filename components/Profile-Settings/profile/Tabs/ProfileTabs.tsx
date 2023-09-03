@@ -1,5 +1,5 @@
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import * as Tabs from '@radix-ui/react-tabs'
 import { useRouter } from 'next/router'
 import { useState } from 'react'

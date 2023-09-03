@@ -4,7 +4,7 @@ import { HomeType } from './homeTypes'
 import { useEffect } from 'react'
 import { setMeSSR } from '@/core/slices/userSlice'
 import { useRouter } from 'next/router'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 
 export const useHomePage = ({ isAuth }: HomeType) => {
   const dispatch = useDispatch()

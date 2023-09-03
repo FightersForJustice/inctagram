@@ -1,5 +1,5 @@
 import { baseUrl } from '@/assets/api/common.api'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ServerAvatarResponse, UpdateUserProfile, UserProfile } from './userTypes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'

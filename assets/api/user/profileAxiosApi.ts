@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { UserProfile, UpdateUserProfile } from './userTypes'
 import { NextApiRequest } from 'next'
 import { createAxiosServerInstance, instance } from '../instance'

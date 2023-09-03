@@ -16,7 +16,7 @@ import { useForm, Control } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 export const getStaticProps = async () => {

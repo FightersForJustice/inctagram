@@ -1,10 +1,9 @@
 import { axiosAPI } from '@/assets/api/api'
-import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
-import { useHomePage } from './useHomePage'
-import { HomeType } from './homeTypes'
+import { HomeType } from '../../components/Home/homeTypes'
+import Home from '@/components/Home/Home'
+import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
@@ -15,23 +14,9 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
   }
 })
 
-const Home = (props: HomeType) => {
-  const { handleClick } = useHomePage(props)
-
-  return (
-    <PageWrapper>
-      <button
-        onClick={handleClick}
-        style={{
-          width: '200px',
-          height: '50px',
-        }}
-      >
-        Profile Settings
-      </button>
-    </PageWrapper>
-  )
+const HomePage = (props: HomeType) => {
+  return <Home isAuth={props.isAuth} />
 }
 
-Home.getLayout = getSideBarLayout
+HomePage.getLayout = getSideBarLayout
 export default Home

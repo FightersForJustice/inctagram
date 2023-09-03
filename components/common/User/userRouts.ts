@@ -3,9 +3,10 @@ export const userRouts = {
   avatar: '/users/profile/avatar',
 
   home: '/home',
-  profileSettings: '/home/profile-settings',
-  generalInfo: '/home/profile-settings/general',
-  devices: '/home/profile-settings/devices',
-  account: '/home/profile-settings/account',
-  payments: '/home/profile-settings/payments',
+
+  profileSettings: '/profile/profile-settings',
+  generalInfo: '/profile/profile-settings/general',
+  devices: '/profile/profile-settings/devices',
+  account: '/profile/profile-settings/account',
+  payments: '/profile/profile-settings/payments',
 }

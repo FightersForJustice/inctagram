@@ -1,6 +1,6 @@
 import { getLayout } from '@/components/Layout/Layout'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { Legal } from '@/components/legal/Legal'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
+import { Legal } from '@/components/auth/Legal/Legal'
 import { useTranslation } from 'react-i18next'
 
 const PrivacyPolicy = () => {

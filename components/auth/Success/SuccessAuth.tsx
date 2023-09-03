@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import img from '../../../public/img/wall-success.png'
-import style from './SuccessAuth.module.scss'
+import style from '@ui/design/settings/AuthMessages.module.scss'
 import commonStyle from '@/@ui/design/settings/Common.module.scss'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
-import { MainButton } from '@/components/common/Buttons/Buttons'
+
 import { authRouts } from '@/components/common/Auth/authRoutes'
 import { useTranslation } from 'react-i18next'
+import { Button } from '@/@ui/ui-kit/Button/Button'
 
 const SuccessAuth = () => {
   const { t } = useTranslation()
@@ -21,23 +22,23 @@ const SuccessAuth = () => {
     <PageWrapper>
       <div className={commonStyle.container}>
         <div className={style.item}>
-          <div className={style.textBlock}>
-            <h1 className={commonStyle.title}>{translate('Congratulations')}</h1>
-            <p className={commonStyle.text}> {translate('Your_email_has_been_confirmed')}</p>
+          <div className={style.infoContainer}>
+            <div className={style.textBlock}>
+              <h1 className={commonStyle.title}>{translate('Congratulations')}</h1>
+              <p className={commonStyle.text}> {translate('Your_email_has_been_confirmed')}</p>
+            </div>
+            <Button text={translate('sign_in')} onClick={handleLogin} disabled={false} />
           </div>
-          <MainButton title={translate('sign_in')} onClick={handleLogin} disabled={false} style={{ width: '182px' }} />
-          <div style={{ position: 'relative', height: '291px' }}>
-            <Image
-              alt="successful registration"
-              src={img}
-              placeholder="blur"
-              quality={100}
-              sizes="(max-width: 808px) 50vw, 100vw"
-              style={{
-                objectFit: 'cover',
-              }}
-            />
-          </div>
+          <Image
+            alt="successful registration"
+            src={img}
+            placeholder="blur"
+            quality={100}
+            sizes="(max-width: 808px) 50vw, 100vw"
+            style={{
+              objectFit: 'cover',
+            }}
+          />
         </div>
       </div>
     </PageWrapper>

@@ -4,3 +4,9 @@ export const BUTTON_COLORS = Object.freeze({
   OUTLINED: 'Outlined',
   GHOST: 'Ghost',
 })
+
+export const BUTTON_VARIATIONS = Object.freeze({
+  FULL_WIDTH: 'FullWidth',
+  AUTO_HEIGHT: 'AutoHeight',
+  DEFAULT: 'Default'
+})

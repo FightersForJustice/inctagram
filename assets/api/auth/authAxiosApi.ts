@@ -1,4 +1,4 @@
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { createAxiosServerInstance } from '../instance'
 import { NextApiRequest } from 'next'
 

@@ -1,4 +1,4 @@
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { userRouts } from '@/app/routes/userRouts'
 import { legalRoutes } from './routes/legalRoutes'
 

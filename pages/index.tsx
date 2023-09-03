@@ -2,7 +2,7 @@ import { NextPageWithLayout } from './_app'
 import { getLayout } from '@/components/Layout/Layout'
 import { GetServerSideProps, NextApiRequest } from 'next'
 import { axiosAPI } from '@/assets/api/api'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   try {

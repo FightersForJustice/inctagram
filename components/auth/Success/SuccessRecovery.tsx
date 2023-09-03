@@ -4,7 +4,7 @@ import style from '@ui/design/settings/AuthMessages.module.scss'
 import commonStyle from '@/@ui/design/settings/Common.module.scss'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { useRouter } from 'next/router'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 

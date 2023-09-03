@@ -1,4 +1,4 @@
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { ICheckRecoveryCode } from './newPasswordTypes'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 

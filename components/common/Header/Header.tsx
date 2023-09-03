@@ -4,7 +4,7 @@ import { OutlineBell } from './OutlineBell'
 import { Logo } from '@/components/common/Header/Logo'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { authRouts } from '../Auth/authRoutes'
+import { authRouts } from '../../../app/routes/authRoutes'
 
 interface Props {
   className: any

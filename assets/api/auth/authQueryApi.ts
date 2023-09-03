@@ -11,7 +11,7 @@ import {
   recoveryResponse,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 import { AUTH_API_KEY } from '@/core/reducers/constant_keys'
 

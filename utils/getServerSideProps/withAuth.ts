@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import { axiosAPI } from '@/assets/api/api'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { NextApiRequest } from 'next'
 
 export const withAuth = <P extends {}>(getServerSidePropsFunc: GetServerSideProps<P>) => {

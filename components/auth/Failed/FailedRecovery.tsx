@@ -27,17 +27,17 @@ const FailedRecovery = () => {
             </div>
             <Button text={translate('Resend_recovery_link')} onClick={handleResendEmail} disabled={false} />
           </div>
-            <Image
-              alt="failed recovery"
-              src={img}
-              placeholder="blur"
-              quality={100}
-              sizes="(max-width: 808px) 50vw, 100vw"
-              style={{
-                objectFit: 'cover',
-                position: 'static',
-              }}
-            />
+          <Image
+            alt="failed recovery"
+            src={img}
+            placeholder="blur"
+            quality={100}
+            sizes="(max-width: 808px) 50vw, 100vw"
+            style={{
+              objectFit: 'cover',
+              position: 'static',
+            }}
+          />
         </div>
       </div>
     </PageWrapper>

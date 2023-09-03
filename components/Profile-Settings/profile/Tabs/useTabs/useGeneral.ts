@@ -81,6 +81,6 @@ export const useGeneral = () => {
     translate,
     setChangedFields,
     disabled,
-    setIsModalOpen
+    setIsModalOpen,
   }
 }

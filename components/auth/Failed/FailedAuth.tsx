@@ -33,19 +33,19 @@ const FailedAuth = () => {
               <h1 className={commonStyle.title}>{t('Email_verification_link_expired')}</h1>
               <p className={commonStyle.text}>{t('expired_link')}</p>
             </div>
-              <Button text={t('Resend_verification_link')} onClick={handleResendEmail} disabled={isLoading} />
+            <Button text={t('Resend_verification_link')} onClick={handleResendEmail} disabled={isLoading} />
           </div>
-            <Image
-              alt="failed registration"
-              src={img}
-              placeholder="blur"
-              quality={100}
-              sizes="(max-width: 808px) 50vw, 100vw"
-              style={{
-                objectFit: 'cover',
-                position: 'static',
-              }}
-            />
+          <Image
+            alt="failed registration"
+            src={img}
+            placeholder="blur"
+            quality={100}
+            sizes="(max-width: 808px) 50vw, 100vw"
+            style={{
+              objectFit: 'cover',
+              position: 'static',
+            }}
+          />
         </div>
       </div>
     </PageWrapper>

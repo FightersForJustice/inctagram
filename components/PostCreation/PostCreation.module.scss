@@ -1,0 +1,26 @@
+@use '@ui/design/settings/colors.scss' as colors;
+
+.container {
+  min-width: 444px;
+  min-height: 450px;
+}
+
+.paginator {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  .next {
+    cursor: pointer;
+    color: colors.$primary-500;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .previous {
+    cursor: pointer;
+    filter: invert(1);
+    margin-right: 16px;
+  }
+}

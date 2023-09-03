@@ -1,0 +1,19 @@
+@use '@ui/design/settings/colors.scss' as colors;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  object-fit: contain;
+  max-width: 222px;
+  max-height: 228px;
+}
+
+.addPhotoContainer {
+  width: 222px;
+  height: 228px;
+  background-color: colors.$dark-500;
+}

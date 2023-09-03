@@ -1,4 +1,3 @@
-import { getSideBarLayout } from '../Layout/SideBarLayout/SideBarLayout'
 import { PageWrapper } from '../common/PageWrapper/PageWrapper'
 import { HomeType } from './homeTypes'
 import { useHomePage } from './useHomePage'

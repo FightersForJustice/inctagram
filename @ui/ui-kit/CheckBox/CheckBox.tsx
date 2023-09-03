@@ -1,4 +1,3 @@
-import { InputHTMLAttributes, useState } from 'react'
 import s from './checkBox.module.scss'
 
 type CheckBoxType = {

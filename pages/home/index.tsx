@@ -1,7 +1,7 @@
 import { axiosAPI } from '@/assets/api/api'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
-import { HomeType } from '../../components/Home/homeTypes'
+import { HomeType } from '@/components/Home/homeTypes'
 import Home from '@/components/Home/Home'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 

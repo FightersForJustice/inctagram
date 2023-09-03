@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import styles from './Button.module.scss'
 import { BUTTON_COLORS, BUTTON_VARIATIONS } from './constants'

@@ -21,5 +21,4 @@ const Home = (props: HomeType) => {
   )
 }
 
-Home.getLayout = getSideBarLayout
 export default Home

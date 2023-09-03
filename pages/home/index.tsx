@@ -19,4 +19,4 @@ const HomePage = (props: HomeType) => {
 }
 
 HomePage.getLayout = getSideBarLayout
-export default Home
+export default HomePage

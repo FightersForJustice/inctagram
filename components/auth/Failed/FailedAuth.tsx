@@ -7,6 +7,7 @@ import { useRegistrationEmailResendMutation } from '@/assets/api/auth/authQueryA
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/@ui/ui-kit/Button/Button'
+import { BUTTON_VARIATIONS } from '@/@ui/ui-kit/Button/constants'
 
 const FailedAuth = () => {
   const { t } = useTranslation()
@@ -33,7 +34,7 @@ const FailedAuth = () => {
               <h1 className={commonStyle.title}>{t('Email_verification_link_expired')}</h1>
               <p className={commonStyle.text}>{t('expired_link')}</p>
             </div>
-            <Button text={t('Resend_verification_link')} onClick={handleResendEmail} disabled={isLoading} />
+            <Button text={t('Resend_verification_link')} onClick={handleResendEmail} disabled={isLoading} variation={BUTTON_VARIATIONS.AUTO_HEIGHT}/>
           </div>
           <Image
             alt="failed registration"

@@ -5,13 +5,6 @@
   display: flex;
   width: 726px;
   height: 36px;
-
-  .TabsList {
-    flex-shrink: 0;
-    display: flex;
-    width: 747px;
-    height: 36px;
-  }
 }
 
 .tab {
@@ -48,9 +41,13 @@
   }
 
   &:focus {
+    margin: 0 -2px;
     border-radius: 2px;
     border: 2px solid colors.$primary-700;
+  }
+  &:active {
     background-color: rgba(colors.$primary-100, 0.5);
+    color: colors.$primary-500;
   }
 
   &[data-state='active'] {

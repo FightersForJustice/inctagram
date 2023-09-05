@@ -1,7 +1,5 @@
 const users = require('../../fixtures/loginTestData.json')
 import { faker } from '@faker-js/faker'
-// const FormData = require('form-data')
-// const XMLHttpRequest = require('xmlhttprequest')
 
 function createTestData() {
   const randomNumber = Math.floor(Math.random() * users.length)
@@ -15,7 +13,7 @@ let id
 const fileType = 'image/jpg'
 
 let userData = {
-  userName: faker.internet.userName({ firstName: 'nikName' }),
+  userName: faker.internet.userName(),
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
   city: faker.location.city(),
@@ -40,7 +38,7 @@ describe('Users profile-settings ', () => {
     })
   })
 
-  it.only('Get profile for user', () => {
+  it('Get profile for user', () => {
     cy.request({
       method: 'GET',
       url: 'https://inctagram.net/api/v1/users/profile',
@@ -95,7 +93,7 @@ describe('Users profile-settings ', () => {
     })
   })
 
-  it.only('Upload the avatar for user profile', () => {
+  it('Upload the avatar for user profile', () => {
     cy.fixture('images/image.jpg', 'binary').then((file) => {
       const blob = Cypress.Blob.binaryStringToBlob(file, fileType)
       const formdata = new FormData()
@@ -120,7 +118,7 @@ describe('Users profile-settings ', () => {
     })
   })
 
-  it.only('Delete avatar from users profile', () => {
+  it('Delete avatar from users profile', () => {
     cy.request({
       method: 'DELETE',
       url: 'https://inctagram.net/api/v1/users/profile/avatar',

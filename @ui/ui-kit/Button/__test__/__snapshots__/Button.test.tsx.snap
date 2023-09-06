@@ -7,6 +7,8 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonBasic"
+    color="Basic"
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -21,7 +23,9 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonBasic"
+    color="Basic"
     disabled=""
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -36,6 +40,8 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonGhost"
+    color="Ghost"
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -50,7 +56,9 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonGhost"
+    color="Ghost"
     disabled=""
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -65,6 +73,8 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonOutlined"
+    color="Outlined"
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -79,7 +89,9 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonOutlined"
+    color="Outlined"
     disabled=""
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -94,6 +106,8 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonPrimary"
+    color="Primary"
+    text="clickMe"
     type="button"
   >
     clickMe
@@ -108,7 +122,9 @@ exports[`render snapshot correctly 	 text:clickMe
 <DocumentFragment>
   <button
     class="button buttonPrimary"
+    color="Primary"
     disabled=""
+    text="clickMe"
     type="button"
   >
     clickMe

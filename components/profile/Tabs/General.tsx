@@ -7,7 +7,7 @@ import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { axiosAPI } from '@/assets/api/api'
 import { Button } from '@/@ui/ui-kit/Button/Button'
-import { Modal } from '@/components/common/Modal/Modal'
+import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { useTranslation } from 'react-i18next'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { MainDatePicker, saveToArray } from '@/@ui/ui-kit/DatePicker/DatePicker'
@@ -128,21 +128,23 @@ const General: React.FC<GeneralType> = ({ userProfile }) => {
             label={translate('aboutMe')}
             id="aboutMe"
             name="aboutMe"
-            value={updatedUserProfile.aboutMe || ''}
             onChange={handleInputChange}
             color={validationError ? TEXTAEREA_COLORS.ERROR : undefined}
             hasError={validationError}
             errorMessage={translate('textareaLengthValidationError')}
+            value={updatedUserProfile.aboutMe}
           />
           <Button text={translate('save_changes')} onClick={handleSave} disabled={disabled} />
         </form>
       </div>
       {isModalOpen && (
         <Modal
-          title={translate('modal_error_title')}
-          content={translate('modal_error_content')}
-          onClose={() => setIsModalOpen(false)}
-        />
+        title={translate('modal_error_title')}
+        children={translate('modal_error_content')}
+        setActive={() => setIsModalOpen(false)}
+        active={isModalOpen}
+        close
+      />
       )}
     </>
   )

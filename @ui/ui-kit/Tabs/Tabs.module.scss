@@ -19,7 +19,6 @@
   background: transparent;
   cursor: pointer;
   box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
-
   color: colors.$dark-100;
   font-family: Inter;
   font-size: 16px;
@@ -41,9 +40,8 @@
   }
 
   &:focus {
-    margin: 0 -2px;
     border-radius: 2px;
-    border: 2px solid colors.$primary-700;
+    outline: 2px solid colors.$primary-700;
   }
   &:active {
     background-color: rgba(colors.$primary-100, 0.5);

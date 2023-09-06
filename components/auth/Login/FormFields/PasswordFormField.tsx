@@ -1,17 +1,9 @@
 import React from 'react'
 import style from '../LoginForm.module.scss'
-import { PasswordInput } from '@/components/common/Inputs/Inputs'
-import { ValidatePassword } from '../validate'
-import { Dispatch } from 'react'
-import { SetStateAction } from 'react'
+import { PasswordInput } from '@/@ui/ui-kit/Inputs/Inputs'
+import { Validate, ValidateField } from '../validate'
 import { useTranslation } from 'react-i18next'
-
-type PasswordFormFieldProps = {
-  register: any
-  errors: any
-  serverError: string
-  setServerError: Dispatch<SetStateAction<string>>
-}
+import { PasswordFormFieldProps } from '../type'
 
 const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors, serverError, setServerError }) => {
   const { t } = useTranslation()
@@ -19,14 +11,12 @@ const PasswordFormField: React.FC<PasswordFormFieldProps> = ({ register, errors,
   return (
     <div className={style.input_container}>
       <PasswordInput
-        className={errors.password ? style.error : ''}
-        validation={{ ...register('password', ValidatePassword) }}
+        validation={{ ...register('password', Validate(ValidateField.Password)) }}
         placeholder="******************"
         label={translate('password')}
         onClick={() => setServerError('')}
+        errormessages={[errors.password?.message, serverError]}
       />
-      {errors.password && <p className={style.errorText}>{errors.password.message}</p>}
-      {serverError && <p className={style.errorText}>{serverError}</p>}
     </div>
   )
 }

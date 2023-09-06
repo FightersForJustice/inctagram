@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render snapshot correctly 	 disabled: false 	
+    value: 'value' 	
+    lable: 'label'
+             1`] = `
+<DocumentFragment>
+  <div
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="0"
+    >
+      <button
+        aria-controls="radix-:r2:-content-value"
+        aria-selected="false"
+        class="tab"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r2:-trigger-value"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        label
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 disabled: true 	
+    value: 'value' 	
+    lable: 'label'
+             1`] = `
+<DocumentFragment>
+  <div
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="-1"
+    >
+      <button
+        aria-controls="radix-:r0:-content-value"
+        aria-selected="false"
+        class="tab disabled"
+        data-disabled=""
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        disabled=""
+        id="radix-:r0:-trigger-value"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        label
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

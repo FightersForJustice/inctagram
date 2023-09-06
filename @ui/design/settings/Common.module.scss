@@ -1,0 +1,42 @@
+@use '@ui/design/settings/colors.scss' as colors;
+
+.container {
+  background-color: colors.$dark-700;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contentContainer {
+  width: 80%;
+}
+
+.title {
+  color: colors.$light-100;
+  text-align: center;
+  text-shadow: 0px 4px 4px 0px colors.$text-shadow;
+  font-size: 20px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  margin: 20px 0;
+}
+
+.paragraph,
+.text {
+  color: colors.$light-100;
+  text-align: center;
+  font-size: 16px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.paragraph p {
+  margin-bottom: 20px;
+}

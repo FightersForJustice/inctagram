@@ -1,0 +1,55 @@
+.kitContainer {
+  padding: 50px;
+  background-color: #0d0d0d;
+
+  .header {
+    color: white;
+    text-align: center;
+  }
+
+  .kitBlock {
+    margin: 20px;
+
+    .componentHeader {
+      text-align: center;
+      color: white;
+    }
+
+    .components {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+    }
+  }
+}
+
+.TabsList {
+  flex-shrink: 0;
+  display: flex;
+
+  width: 726px;
+  height: 36px;
+}
+.buttonBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buttonModal {
+  text-align: right;
+  padding-top: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.TabsRoot {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  margin-top: 36px;
+}

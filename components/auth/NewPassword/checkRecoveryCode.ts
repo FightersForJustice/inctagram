@@ -6,7 +6,7 @@ export const CheckRecoveryCode = async (props: ICheckRecoveryCode) => {
   if (typeof recoveryCode !== 'string') return
   const response = await recoveryMutation({ recoveryCode })
     .unwrap()
-    .catch((error: any) => {
+    .catch((error) => {
       switch (error.status) {
         case 400:
           setServerError(error.data.messages[0].message)

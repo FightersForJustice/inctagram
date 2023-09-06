@@ -1,0 +1,1328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Active, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Default, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "", color: Error, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    />
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Active, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Default, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Custom placeholder", color: Error, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Custom placeholder
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Active, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Default, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Default Active"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: false, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: false, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: false, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: false, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: true, disabled: false, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: true, disabled: false, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: true, disabled: true, hovered: false 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextArea snapshots 	 text: "Some text", color: Error, hasError: true, disabled: true, hovered: true 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="title"
+    />
+    <textarea
+      class="textarea Active Error"
+      disabled=""
+      placeholder="Textarea"
+    >
+      Some text
+    </textarea>
+    <p
+      class="error_message"
+    >
+      Error text
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Textarea checks placeholder value 1`] = `
+<textarea
+  class="textarea Default"
+  placeholder="Textarea"
+/>
+`;

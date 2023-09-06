@@ -1,12 +1,10 @@
 import { PageWrapper } from 'components/PageWrapper/PageWrapper'
 import NewPasswordContainer from '@/components/auth/NewPassword/NewPasswordContainer'
 import { getLayout } from '@/components/Layout/Layout'
+import { GetServerSideProps } from 'next'
+import { hideWhenAuth } from '@/utils/getServerSideProps/hideWhenAuth'
 
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  }
-}
+export const getServerSideProps: GetServerSideProps = hideWhenAuth
 
 const NewPassword = () => {
   return (

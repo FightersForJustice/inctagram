@@ -1,4 +1,4 @@
-import { MainInput } from '../../common/Inputs/Inputs'
+import { MainInput } from '../../../@ui/ui-kit/Inputs/Inputs'
 import style from './ForgotPassword.module.scss'
 import { ValidateEmail } from './validate'
 import { IForgotPasswordInputProps } from './forgotPasswordTypes'
@@ -16,15 +16,15 @@ const ForgotPasswordInput = (props: IForgotPasswordInputProps) => {
           validation={{ ...register('email', ValidateEmail) }}
           id="email"
           label={translate('email')}
-          style={errors.email && { border: '1px solid red' }}
+          placeholder="Epam@epam.com"
         />
-        {errors.email && <p style={{ color: 'red', float: 'left' }}>Error!</p>}
       </div>
-      <div className={style.error_message}>
-        {errors.email && <p>{errors.email.message}</p>}
-        {errors.recaptcha && <p>{errors.recaptcha.message}</p>}
-        {serverError}
-      </div>
+      {errors?.email || errors?.recaptcha ? (
+        <div className={style.error_message}>
+          {errors.email?.message && <p>{translate(errors.email.message)}</p>}
+          {errors.recaptcha?.message && <p>{translate(errors.recaptcha.message)}</p>}
+        </div>
+      ) : null}
     </>
   )
 }

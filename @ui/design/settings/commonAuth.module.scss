@@ -1,0 +1,40 @@
+@use './colors.scss' as colors;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.authContainer {
+  background-color: colors.$dark-700;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+.authForm {
+  width: 378px;
+  height: fit-content;
+  background-color: colors.$dark-500;
+  border: colors.$dark-300 1px solid;
+  border-radius: 2px;
+  padding: 28px 23px 21px;
+  text-align: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  font-family: 'Inter';
+  margin-top: 36px;
+}
+
+.header {
+  color: colors.$light-100;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 36px;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 10;
+}

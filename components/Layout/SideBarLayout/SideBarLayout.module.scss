@@ -1,0 +1,13 @@
+.content_container {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.background_container {
+  background-color: #0d0d0d;
+  min-height: calc(100vh - 60px);
+}
+
+.sidebar {
+  background-color: #0d0d0d;
+}

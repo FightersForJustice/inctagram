@@ -1,16 +1,12 @@
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { useRouter } from 'next/router'
-import { useLoginMutation } from '@/assets/api/auth/authApi'
 import { ServerLoginResponse } from '@/assets/api/auth/authTypes'
 import LoginForm from './LoginForm'
-import style from './LoginForm.module.scss'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-
-type LoginParamsData = {
-  email: string
-  password: string
-}
+import { setAccessTokenCookie } from '@/utils/cookies'
+import { useLoginMutation } from '@/assets/api/auth/authQueryApi'
+import { LoginParamsData } from './type'
 
 const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { t } = useTranslation()
@@ -19,32 +15,20 @@ const LoginFormContainer: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [loginMutation, { isLoading }] = useLoginMutation()
   const router = useRouter()
 
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    if (token) {
-      router.push('/main')
-    }
-  }, [])
-
-  const saveToken = (token: string) => {
-    localStorage.setItem('accessToken', token)
-  }
-
   const onSubmit = async (data: LoginParamsData) => {
     const { email, password } = data
+
     const response = await loginMutation({ email, password })
       .unwrap()
       .then((data) => {
         const loginResponse = data as ServerLoginResponse
-        saveToken(loginResponse.accessToken)
-        router.push('/main')
+        setAccessTokenCookie(loginResponse.accessToken)
+        router.push('/home')
       })
   }
 
   return (
-    <div className={style.content}>
-      <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>
-    </div>
+    <LoginForm onSubmit={onSubmit} setServerError={setServerError} serverError={serverError} isLoading={isLoading}></LoginForm>
   )
 }
 

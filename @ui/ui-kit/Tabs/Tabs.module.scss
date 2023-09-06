@@ -1,0 +1,69 @@
+@use '../../design/settings/colors.scss' as colors;
+
+.TabsList {
+  flex-shrink: 0;
+  display: flex;
+  width: 726px;
+  height: 36px;
+
+  .TabsList {
+    flex-shrink: 0;
+    display: flex;
+    width: 747px;
+    height: 36px;
+  }
+}
+
+.tab {
+  width: 85px;
+  height: 36px;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
+
+  color: colors.$dark-100;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+
+  &:first-child {
+    border-top-left-radius: 6px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 6px;
+  }
+
+  &:hover {
+    background-color: rgba(colors.$primary-900, 0.15);
+  }
+
+  &:focus {
+    border-radius: 2px;
+    border: 2px solid colors.$primary-700;
+    background-color: rgba(colors.$primary-100, 0.5);
+  }
+
+  &[data-state='active'] {
+    color: colors.$primary-500;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  &:disabled {
+    color: colors.$dark-300;
+    text-align: center;
+  }
+}

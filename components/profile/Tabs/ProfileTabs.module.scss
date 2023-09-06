@@ -1,0 +1,107 @@
+@use '@ui/design/settings/colors.scss' as s;
+
+.content {
+  display: flex;
+}
+
+.tabContent {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.TabsRoot {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 740px;
+  margin-top: 36px;
+}
+
+.TabsList {
+  flex-shrink: 0;
+  display: flex;
+  width: 737px;
+  height: 36px;
+}
+
+.TabsContent {
+  flex-grow: 1;
+  padding: 20px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  outline: none;
+}
+
+.TabsContent:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 24px;
+  width: 100%;
+  padding-left: 45px;
+}
+
+.Text {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--mauve-11);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.Fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Input {
+  flex: 1 0 auto;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--violet-11);
+  box-shadow: 0 0 0 1px var(--violet-7);
+  height: 35px;
+}
+
+.Input:focus {
+  box-shadow: 0 0 0 2px var(--violet-8);
+}
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+}
+
+.Button.green {
+  background-color: var(--green-4);
+  color: var(--green-11);
+}
+
+.Button.green:hover {
+  background-color: var(--green-5);
+}
+
+.Button.green:focus {
+  box-shadow: 0 0 0 2px var(--green-7);
+}

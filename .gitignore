@@ -35,4 +35,6 @@ yarn-error.log*
 next-env.d.ts
 
 #other
-pnpm-lock.yaml
+# pnpm-lock.yaml
+# vscode
+.vscode

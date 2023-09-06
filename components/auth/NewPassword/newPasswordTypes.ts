@@ -20,7 +20,7 @@ export interface INewPasswordProps {
   setConfirmPassword: Dispatch<SetStateAction<string>>
   setPassword: Dispatch<SetStateAction<string>>
   handleSubmit: UseFormHandleSubmit<IFormInput, undefined>
-  handleChange: (e: ChangeEvent<HTMLInputElement>, setValue: any) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>, setValue: any, errors: FieldErrors<IFormInput>) => void
   register: UseFormRegister<IFormInput>
   onSubmit: SubmitHandler<IFormInput>
 }
@@ -33,8 +33,8 @@ export interface ICheckRecoveryCode {
       recoveryCodeCheckParamsData,
       BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
       never,
-      void | ServerErrorResponse,
-      'authApi'
+      ServerErrorResponse,
+      'authQueryApi'
     >
   >
   router: NextRouter
@@ -52,7 +52,7 @@ export interface ICreateNewPassword {
       BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
       never,
       void | ServerErrorResponse,
-      'authApi'
+      'authQueryApi'
     >
   >
   router: NextRouter

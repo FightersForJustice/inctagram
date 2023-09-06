@@ -1,17 +1,20 @@
 import { FC, PropsWithChildren, useRef, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { usePasswordRecoverMutation } from '@/assets/api/auth/authApi'
+import { usePasswordRecoverMutation } from '@/assets/api/auth/authQueryApi'
 import ForgotPassword from './ForgotPassword'
 import { IFormInput } from './forgotPasswordTypes'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { PrintModalType } from '../Registration/type'
 import { Modal } from '@/components/common/Modal/Modal'
+import { useTranslation } from 'react-i18next'
 
 const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY!
   const [serverError, setServerError] = useState('')
   const [recaptchaCode, setRecaptchaCode] = useState('')
   const [isSucceed, setIsSucceed] = useState(false)
+  const { t } = useTranslation()
+  const translate = (text: string) => t('forgot_password.' + text)
   const ModalNull = () => {
     setPrintModal({ title: 'null', content: 'null' })
   }
@@ -37,7 +40,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     if (!recaptchaCode) {
       setError('recaptcha', {
         type: 'manual',
-        message: 'captcha is empty',
+        message: 'captcha_is_empty',
       })
       return
     }
@@ -48,9 +51,9 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
       const response = await PasswordRecoveryMutation({ email, recaptcha })
         .unwrap()
         .then((data) => {
-          setPrintModal({ title: 'Email sent', content: 'We have sent a link to confirm your email to ' + email })
+          setPrintModal({ title: translate('Link_send'), content: translate('Link_send_text') })
         })
-        .catch((error: any) => {
+        .catch((error) => {
           setIsSucceed(false)
           recaptchaRef.current?.reset()
           switch (error.status) {
@@ -72,7 +75,7 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   }
   return (
     <>
-      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClick={ModalNull} /> : ''}
+      {printModal.title != 'null' ? <Modal title={printModal.title} content={printModal.content} onClose={ModalNull} /> : ''}
       <ForgotPassword
         siteKey={siteKey}
         isLoading={isLoading}

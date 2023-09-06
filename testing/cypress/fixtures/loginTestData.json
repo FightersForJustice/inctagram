@@ -1,0 +1,14 @@
+[
+  {
+    "userEmail": "testmail@fexpost.com",
+    "userPassword": "qwerty1234"
+  },
+  {
+    "userEmail": "ivan-ivanov@fexbox.org",
+    "userPassword": "zxcvbn1234"
+  },
+  {
+    "userEmail": "olgamaksimova@mailto.plus",
+    "userPassword": "asdfgh1234"
+  }
+]

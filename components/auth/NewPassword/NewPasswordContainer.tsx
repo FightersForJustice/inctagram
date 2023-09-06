@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, FC, PropsWithChildren, useEffect } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, SubmitHandler, FieldErrors } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import { useNewPasswordCreateMutation, useRecoveryCodeCheckMutation } from '@/assets/api/auth/authApi'
+import { useNewPasswordCreateMutation, useRecoveryCodeCheckMutation } from '@/assets/api/auth/authQueryApi'
 import NewPassword from './NewPassword'
 import { IFormInput } from './newPasswordTypes'
 import { CheckRecoveryCode } from './checkRecoveryCode'
@@ -31,8 +31,9 @@ const NewPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
     const { password } = data
     CreateNewPassword({ recoveryCode, router, password, passwordCreateMutation, setServerError, setIsSucceed })
   }
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any) => {
-    clearErrors()
+  const handleChange = (e: ChangeEvent<HTMLInputElement>, setValue: any, errors: FieldErrors<IFormInput>) => {
+    if (errors.password?.type === 'value') clearErrors('password')
+    if (errors.confirmPassword?.type === 'value') clearErrors('confirmPassword')
     setValue(e.target.value)
   }
 

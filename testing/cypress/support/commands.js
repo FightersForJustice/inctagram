@@ -18,3 +18,13 @@ Cypress.on('uncaught:exception', (err, runnable, promise) => {
   // we still want to ensure there are no other unexpected
   // errors, so we let them fail the test
 })
+
+Cypress.Commands.add('form_request', (method, url, formData, token, done) => {
+  const request = new XMLHttpRequest()
+  request.open(method, url, false)
+  request.setRequestHeader('Authorization', token)
+  request.onload = function () {
+    done(request)
+  }
+  request.send(formData)
+})

@@ -1,9 +1,10 @@
 {
-  "RegError": ".RegistrationForm_errorText__lvPSg",
-  "ButtonSignUp": ".Button_button__mwjOx",
-  "Text": ".RegistrationForm_registration__GwDLx",
+  "RegError": ".Inputs_errorMessage__4AKqh",
+  "ButtonSignUp": "[type=submit]",
+  "Text": ".RegistrationForm_text__nAx6p",
   "Name": "[name = userName]",
   "Mail": "[name = email]",
   "Password": "[name = password]",
-  "Password2": "[name = password2]"
+  "Password2": "[name = password2]",
+  "CheckMark": "[class=RegistrationForm_checkbox__XhvSN]"
 }

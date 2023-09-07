@@ -1,5 +1,10 @@
 import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react'
 import style from './AddPhoto.module.scss'
+import { Button } from '@/@ui/ui-kit/Button/Button'
+import buttonStyle from '@/@ui/ui-kit/Button/Button.module.scss'
+import { useTranslation } from 'react-i18next'
+import classNames from 'classnames'
+import Image from 'next/image'
 
 type AddPhotoType = {
   setModuleNum: Dispatch<SetStateAction<number>>
@@ -7,7 +12,7 @@ type AddPhotoType = {
 
 const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
   const [image, setImage] = useState<any | undefined>(undefined)
-
+  const { t } = useTranslation()
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) setImage(URL.createObjectURL(e.target.files[0]))
   }
@@ -15,12 +20,31 @@ const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
   return (
     <div className={style.container}>
       <div className={style.addPhotoContainer}>
-        <img src={image} alt="" className={style.image} />
+        {image ? (
+          <Image src={image} alt="" className={style.image} width={222} height={228} />
+        ) : (
+          <Image width={48} height={48} src="/../icons/image-outline.svg" alt="img" />
+        )}
       </div>
       {!image ? (
-        <input type="file" accept="image/*" onChange={(e) => handleChange(e)} />
+        <>
+          <label
+            htmlFor="custom-upload"
+            className={classNames(buttonStyle.button, buttonStyle.buttonAutoHeight)}
+            style={{ width: '222px', marginTop: '110px' }}
+          >
+            {t('add_profile_photo.select_from_computer')}
+          </label>
+
+          <input type="file" accept="image/*" onChange={(e) => handleChange(e)} id="custom-upload" style={{ display: 'none' }} />
+        </>
       ) : (
-        <button onClick={() => setModuleNum(1)}>Next</button>
+        <Button
+          onClick={() => setModuleNum(1)}
+          text={t('add_profile_photo.add_profile_photo')}
+          style={{ width: '222px', marginTop: '110px' }}
+          autoHeight
+        />
       )}
     </div>
   )

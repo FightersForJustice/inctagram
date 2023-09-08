@@ -10,6 +10,7 @@ export type UserProfile = {
 }
 
 //create generic for UpdateuserProfile
+
 export type UpdateUserProfile = {
   userName?: string
   firstName?: string

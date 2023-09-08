@@ -7,7 +7,7 @@ import { StartImg } from './ModalAvatar/Start/Start'
 import { CropImg } from './ModalAvatar/Crop/Crop'
 import { ImgSave } from './ModalAvatar/Save/Save'
 import { Button } from '@/@ui/ui-kit/Button/Button'
-import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { BUTTON_COLORS, BUTTON_VARIATIONS } from '@/@ui/ui-kit/Button/constants'
 import { useAvatarDeleteMutation } from '@/assets/api/user/profileQueryApi'
 import { useTranslation } from 'react-i18next'
 import { ImageInfo, StatesСomponentType } from './type'
@@ -99,7 +99,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
         <div className={s.blocButton}>
           <Button
             color={BUTTON_COLORS.OUTLINED}
-            autoHeight
+            variation={BUTTON_VARIATIONS.AUTO_HEIGHT}
             text={translate('add_profile_photo')}
             onClick={handlerOpenModal}
           ></Button>

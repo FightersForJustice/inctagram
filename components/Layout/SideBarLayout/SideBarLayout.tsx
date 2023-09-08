@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { PropsWithChildren, ReactElement } from 'react'
-import { Header } from '../../Header/Header'
+import { Header } from '../../common/Header/Header'
 import style from './SideBarLayout.module.scss'
 import SideBar from '../../SideBar/SideBar'
 

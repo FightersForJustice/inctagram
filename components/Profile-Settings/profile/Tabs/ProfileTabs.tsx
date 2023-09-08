@@ -1,5 +1,5 @@
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { userRouts } from '@/components/common/User/userRouts'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
+import { userRouts } from '@/app/routes/userRouts'
 import * as Tabs from '@radix-ui/react-tabs'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -7,7 +7,7 @@ import General from './General'
 import Devices from './Devices'
 import Account from './Account'
 import Payments from './Payments'
-import { Tab } from '../../../@ui/ui-kit/Tabs/Tab'
+import { Tab } from '../../../../@ui/ui-kit/Tabs/Tab'
 import style from './ProfileTabs.module.scss'
 import { UserProfile } from '@/assets/api/user/userTypes'
 import { useTranslation } from 'react-i18next'
@@ -16,8 +16,7 @@ type ProfileTabs = {
   userProfile: UserProfile
 }
 
-const ProfileTabs = (props: ProfileTabs) => {
-  const { userProfile } = props
+const ProfileTabs = () => {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState('general')
 
@@ -41,7 +40,7 @@ const ProfileTabs = (props: ProfileTabs) => {
               <Tab label={translate('myPayments')} value="payments" />
             </Tabs.List>
             <Tabs.Content className={style.tabContent} value="general">
-              {activeTab === 'general' && <General userProfile={userProfile} />}
+              {activeTab === 'general' && <General />}
             </Tabs.Content>
             <Tabs.Content value="devices">{activeTab === 'devices' && <Devices />}</Tabs.Content>
             <Tabs.Content value="account">{activeTab === 'account' && <Account />}</Tabs.Content>

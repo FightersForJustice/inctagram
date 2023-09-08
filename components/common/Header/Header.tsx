@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './Header.module.scss'
 import { OutlineBell } from './OutlineBell'
-import { Logo } from '@/components/Header/Logo'
+import { Logo } from '@/components/common/Header/Logo'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { authRouts } from '../common/Auth/authRoutes'
+import { authRouts } from '../../../app/routes/authRoutes'
 
 interface Props {
   className: any

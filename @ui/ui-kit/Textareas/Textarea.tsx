@@ -13,7 +13,7 @@ export type TextAreaProps = {
   placeholder?: string
   label?: string
   color?: (typeof TEXTAEREA_COLORS)[keyof typeof TEXTAEREA_COLORS]
-} & React.TextareaHTMLAttributes<HTMLTextAreaElement> 
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement>
 
 export const TextArea: React.FC<TextAreaProps> = ({
   value,
@@ -25,7 +25,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   errorMessage = 'Error text',
   placeholder = 'Textarea',
   color = TEXTAEREA_COLORS.DEFAULT,
-
+  ...restProps
 }) => {
   const textareaClasses = classNames(styles.textarea, {
     [styles.Default]: color === TEXTAEREA_COLORS.DEFAULT,
@@ -36,7 +36,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (!disabled) {
       if (onChange) {
-        onChange(event);
+        onChange(event)
       }
     }
   }
@@ -50,6 +50,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         disabled={disabled}
         placeholder={placeholder}
         onChange={handleChange}
+        {...restProps}
       />
       {hasError && <p className={styles.error_message}>{errorMessage}</p>}
     </div>

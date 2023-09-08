@@ -3,12 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { axiosAPI } from '@/assets/api/api'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
+import { useDispatch } from 'react-redux'
+import { setUserProfileSSR } from '@/core/slices/userSlice'
 
 type ChangedFields = {
   [field: string]: string
 }
 
 export const useGeneral = () => {
+  const dispatch = useDispatch()
   const userProfile = useProfileSettingsSSRSelector()
   const [validationError, setValidationError] = useState(false)
   const [updateProfile] = useUpdateProfileMutation()
@@ -38,6 +41,7 @@ export const useGeneral = () => {
         const updatedProfileData: any = await axiosAPI.profile.getProfile()
         setUpdatedUserProfile(updatedProfileData)
 
+        dispatch(setUserProfileSSR(updatedProfileData))
         setChangedFields({})
       }
 

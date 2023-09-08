@@ -49,7 +49,6 @@ export const useGeneral = () => {
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const newValue = event.target.value
     const { name, value } = event.target
     if (name === 'aboutMe') {
       if (value.length > 200) {

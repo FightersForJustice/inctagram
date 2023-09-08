@@ -18,7 +18,6 @@ const General: React.FC = () => {
     isLoading,
     isModalOpen,
     validationError,
-    changedFields,
     translate,
     disabled,
     setChangedFields,

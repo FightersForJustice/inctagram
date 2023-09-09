@@ -1,8 +1,8 @@
 import { UserData } from '@/assets/api/auth/authTypes'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import PostCreation from '@/components/PostCreation/PostCreation'
-import { withAuth } from '@/utils/withAuth'
+import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async () => {

@@ -5,16 +5,22 @@ import buttonStyle from '@/@ui/ui-kit/Button/Button.module.scss'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { setPhoto } from '@/core/slices/postCreationSlice'
 
 type AddPhotoType = {
   setModuleNum: Dispatch<SetStateAction<number>>
 }
 
 const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
+  const dispatch = useDispatch()
   const [image, setImage] = useState<any | undefined>(undefined)
   const { t } = useTranslation()
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) setImage(URL.createObjectURL(e.target.files[0]))
+    if (e.target.files && e.target.files[0]) {
+      setImage(URL.createObjectURL(e.target.files[0]))
+      dispatch(setPhoto({ photo: URL.createObjectURL(e.target.files[0]) }))
+    }
   }
 
   return (
@@ -43,7 +49,7 @@ const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
           onClick={() => setModuleNum(1)}
           text={t('add_profile_photo.add_profile_photo')}
           style={{ width: '222px', marginTop: '110px' }}
-          autoHeight
+          variation="AutoHeight"
         />
       )}
     </div>

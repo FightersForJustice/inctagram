@@ -14,6 +14,8 @@ import { ImageInfo, StatesComponentType } from './type'
 import { Loading } from '@/components/common/Loaders/Loading'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
+import { setUserProfileSSR } from '@/core/slices/userSlice'
+import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 
 type Props = {
   avatarUrl: ImageInfo[]
@@ -24,6 +26,7 @@ export const ImgCrop: React.FC<Props> = (props) => {
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
 
   const [avatarDelete] = useAvatarDeleteMutation()
+  const userProfile = useProfileSettingsSSRSelector()
 
   const [ModalActive, setModalActive] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -43,6 +46,12 @@ export const ImgCrop: React.FC<Props> = (props) => {
     setIsLoading(true)
     avatarDelete().then(() => {
       setAvatar('')
+      dispatch(
+        setUserProfileSSR({
+          ...userProfile,
+          avatars: [],
+        })
+      )
       setIsLoading(false)
     })
   }

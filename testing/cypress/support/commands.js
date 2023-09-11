@@ -28,3 +28,11 @@ Cypress.Commands.add('form_request', (method, url, formData, token, done) => {
   }
   request.send(formData)
 })
+
+Cypress.Commands.add('confirmCode', (confirmLink) => {
+  const codeMatch = confirmLink.match(/code=([a-zA-Z0-9-]+)/)
+  if (codeMatch && codeMatch[1]) {
+    let code = codeMatch[1]
+    return code
+  }
+})

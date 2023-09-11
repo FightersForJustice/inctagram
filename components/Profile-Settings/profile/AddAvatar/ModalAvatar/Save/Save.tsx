@@ -10,7 +10,7 @@ import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 
 export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
-  const { croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl } = Props
+  const { croppedImageUrl, setModalActive, setAvatar, setStatesComponent, setCroppedImageUrl } = Props
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
@@ -19,7 +19,7 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
   const [loading, setIsLoading] = useState(false)
 
   const handlerBack = () => {
-    setStatesСomponent('crop')
+    setStatesComponent('crop')
     setCroppedImageUrl(null)
   }
   const handlerSave = () => {

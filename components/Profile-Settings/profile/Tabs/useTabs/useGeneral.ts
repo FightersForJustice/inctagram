@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { axiosAPI } from '@/assets/api/api'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
+import { useDispatch } from 'react-redux';
+import { setUserProfileSSR } from '@/core/slices/userSlice'
 
 type ChangedFields = {
   [field: string]: string
@@ -16,6 +18,8 @@ export const useGeneral = () => {
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     setUpdatedUserProfile(userProfile)
@@ -37,6 +41,7 @@ export const useGeneral = () => {
         await updateProfile(changedFields).unwrap()
         const updatedProfileData: any = await axiosAPI.profile.getProfile()
         setUpdatedUserProfile(updatedProfileData)
+        dispatch(setUserProfileSSR(updatedProfileData))
 
         setChangedFields({})
       }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserData } from '../../assets/api/auth/authTypes'
-import { UpdateUserProfile, userAvatar, UserProfile } from '../../assets/api/user/userTypes'
+import { UpdateUserProfile, UpdateUserProfilePhoto, userAvatar, UserProfile } from '../../assets/api/user/userTypes'
 import { USER_KEY } from '@/core/reducers/constant_keys'
 
 export type User = UserData & {
@@ -53,6 +53,13 @@ const userSlice = createSlice({
       }
     },
 
+    setUpdateUserProfilePhoto: (state, action: PayloadAction<UpdateUserProfilePhoto>) => {
+      state.userData = {
+        ...state.userData,
+        avatars: action.payload.avatars,
+      }
+    },
+
     setUpdatedUser: (state, action: PayloadAction<UpdateUserProfile>) => {
       state.userData = {
         ...state.userData,
@@ -63,4 +70,4 @@ const userSlice = createSlice({
 })
 
 export const userReducer = userSlice.reducer
-export const { setMeSSR, setUserProfileSSR, setUpdatedUser } = userSlice.actions
+export const { setMeSSR, setUserProfileSSR, setUpdatedUser, setUpdateUserProfilePhoto } = userSlice.actions

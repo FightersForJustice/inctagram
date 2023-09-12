@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { axiosAPI } from '@/assets/api/api'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { setUpdatedUser } from '@/core/slices/userSlice'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { useDispatch } from 'react-redux'
-import { setUserProfileSSR } from '@/core/slices/userSlice'
 
 type ChangedFields = {
   [field: string]: string

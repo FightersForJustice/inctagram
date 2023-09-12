@@ -20,6 +20,10 @@ export type UpdateUserProfile = {
   aboutMe?: string
 }
 
+export type UpdateUserProfilePhoto = {
+  avatars: userAvatar[]
+}
+
 export type userAvatar = {
   url: string
   width: number

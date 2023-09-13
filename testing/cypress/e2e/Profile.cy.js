@@ -1,3 +1,15 @@
+function generateRandomText(length) {
+  let result = ''
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length)
+    result += characters.charAt(randomIndex)
+  }
+
+  return result
+}
+
 describe('Login Page', () => {
   beforeEach('Visit Sign in page', () => {
     cy.visit('auth/login')
@@ -7,6 +19,7 @@ describe('Login Page', () => {
   })
 
   it('Profile Settings check positive', () => {
+    const randomText = generateRandomText(200)
     cy.get('.SideBarLayout_background_container__9aTMC > :nth-child(1) > div > button').click()
     cy.get('.AddAvatar_blocButton__9nHxD > .Button_button__mwjOx').should('exist')
     cy.get('#username').should('have.css', 'writing-mode', 'horizontal-tb').should('have.value', 'AVyalova')
@@ -14,6 +27,15 @@ describe('Login Page', () => {
     cy.get('#last-name').clear().type('Vyalova') // Type text into the last name field
     cy.get('#city').clear().type('Bilbao') // Type text into the city field
     cy.get('#date').clear().type('06/18/1984')
+    cy.get('#aboutMe').clear().type(randomText)
+    cy.get('.ProfileTabs_form__ou2WA > .Button_button__mwjOx').click()
+  })
+
+  it('Profile Settings validation AboutMe', () => {
+    const randomText = generateRandomText(201)
+    cy.get('.SideBarLayout_background_container__9aTMC > :nth-child(1) > div > button').click()
+    cy.get('.AddAvatar_blocButton__9nHxD > .Button_button__mwjOx').should('exist')
+    cy.get('#aboutMe').clear().type(randomText)
     cy.get('.ProfileTabs_form__ou2WA > .Button_button__mwjOx').click()
   })
 })

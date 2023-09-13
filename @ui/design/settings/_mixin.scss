@@ -32,7 +32,7 @@
   line-height: 24px;
 }
 @mixin h3 {
-  color: #000;
+  color: $dark-900;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;

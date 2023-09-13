@@ -32,7 +32,10 @@ const Home = (props: HomeType) => {
         <div className={s.user}>
           <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />
           <span className={s.name}>URLProfiele</span>
+          <span className={s.point}></span>
+          <span className={s.time}>22 Minutes ago</span>
         </div>
+        <img className={s.action} src="sidebar-icons/more-horizontal.svg" alt="" />
         <Example items={['post/5.png', 'post/1.jpg', 'post/2.jpg', 'post/3.jpg', 'post/4.jpg']} />
       </div>
     </PageWrapper>

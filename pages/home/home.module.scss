@@ -11,5 +11,19 @@
     .name {
       @include h3;
     }
+    .point {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: white;
+    }
+    .time {
+      @include small_text;
+      color: #8d9094;
+    }
+  }
+  .action {
+    color: white;
   }
 }

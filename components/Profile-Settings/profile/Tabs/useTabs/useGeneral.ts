@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { axiosAPI } from '@/assets/api/api'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
 import { setUpdatedUser } from '@/core/slices/userSlice'
@@ -24,7 +23,15 @@ export const useGeneral = () => {
 
   useEffect(() => {
     setUpdatedUserProfile(userProfile)
-  }, [userProfile])
+  }, [
+    userProfile.aboutMe,
+    userProfile.city,
+    userProfile.dateOfBirth,
+    userProfile.firstName,
+    userProfile.id,
+    userProfile.lastName,
+    userProfile.userName,
+  ])
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)

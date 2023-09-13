@@ -1,4 +1,4 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import FailedRecovery from '@/components/auth/Failed/FailedRecovery'
 import { hideWhenAuth } from '@/utils/getServerSideProps/hideWhenAuth'

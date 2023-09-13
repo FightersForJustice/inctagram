@@ -2,15 +2,11 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import authQueryApi from '../assets/api/auth/authQueryApi'
 import { handleGlobalError } from '@/hooks/handleGlobalError'
-import { userReducer } from '@/assets/api/auth/userSlice'
 import profileApi from '@/assets/api/user/profileQueryApi'
+import { getReducers } from '@/core/reducers'
 
 export const store = configureStore({
-  reducer: {
-    [authQueryApi.reducerPath]: authQueryApi.reducer,
-    [profileApi.reducerPath]: profileApi.reducer,
-    user: userReducer,
-  },
+  reducer: getReducers(),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(handleGlobalError, authQueryApi.middleware, profileApi.middleware),
 })

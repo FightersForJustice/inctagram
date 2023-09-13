@@ -19,4 +19,10 @@ Cypress.on('uncaught:exception', (err, runnable, promise) => {
   // errors, so we let them fail the test
 })
 
-
+Cypress.Commands.add('confirmCode', (confirmLink) => {
+  const codeMatch = confirmLink.match(/code=([a-zA-Z0-9-]+)/)
+  if (codeMatch && codeMatch[1]) {
+    let code = codeMatch[1]
+    return code
+  }
+})

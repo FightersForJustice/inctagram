@@ -1,29 +1,34 @@
 import React from 'react'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { Button } from '../Button'
-import { BUTTON_COLORS } from '../constants'
+import { BUTTON_COLORS, BUTTON_VARIATIONS } from '../constants'
 
 const textProps = 'clickMe'
 const colorProps = [BUTTON_COLORS.BASIC, BUTTON_COLORS.GHOST, BUTTON_COLORS.OUTLINED, BUTTON_COLORS.PRIMARY]
+const variationsProp = [BUTTON_VARIATIONS.AUTO_HEIGHT, BUTTON_VARIATIONS.DEFAULT, BUTTON_VARIATIONS.FULL_WIDTH]
 const disabledProps = [true, false]
 
 describe('render snapshot correctly \t', () => {
   afterEach(cleanup)
 
   colorProps.forEach((color) => {
-    disabledProps.forEach((disabled) => {
-      it(`text:${textProps} \t
+    variationsProp.forEach((variation) => {
+      disabledProps.forEach((disabled) => {
+        it(`text:${textProps} \t
             color: ${color} \t
             disabled: ${disabled} \t
+            variation: ${variation} \t
             `, () => {
-        const props = {
-          text: textProps,
-          color: color,
-          disabled: disabled,
-        }
-        const { asFragment } = render(<Button {...props} />)
+          const props = {
+            text: textProps,
+            color: color,
+            disabled: disabled,
+            variation: variation,
+          }
+          const { asFragment } = render(<Button {...props} />)
 
-        expect(asFragment()).toMatchSnapshot()
+          expect(asFragment()).toMatchSnapshot()
+        })
       })
     })
   })

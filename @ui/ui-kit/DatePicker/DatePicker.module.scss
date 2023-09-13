@@ -1,0 +1,13 @@
+@use '../../../@ui/design/settings/colors.scss' as colors;
+
+.label {
+  float: left;
+  color: colors.$light-900;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+
+  &Disabled {
+    color: colors.$dark-100;
+  }
+}

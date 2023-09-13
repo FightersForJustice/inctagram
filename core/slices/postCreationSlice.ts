@@ -2,12 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { POST_CREATION_KEY } from '../reducers/constant_keys'
 
 export type Post = {
-  photo: any
+  photos: Array<{ photo: string }>
+}
+
+export type Photo = {
+  photo: string
 }
 
 const initialState: { postData: Post } = {
   postData: {
-    photo: undefined,
+    photos: [],
   },
 }
 
@@ -15,11 +19,8 @@ const postCreationSlice = createSlice({
   name: POST_CREATION_KEY,
   initialState,
   reducers: {
-    setPhoto: (state, action: PayloadAction<Post>) => {
-      state.postData = {
-        ...state.postData,
-        photo: action.payload.photo,
-      }
+    setPhoto: (state, action: PayloadAction<Photo>) => {
+      state.postData.photos.push({ photo: action.payload.photo })
     },
   },
 })

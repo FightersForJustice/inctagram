@@ -28,15 +28,7 @@ export interface INewPasswordProps {
 export interface ICheckRecoveryCode {
   setServerError: Dispatch<SetStateAction<string>>
   recoveryCode: string | string[] | undefined
-  recoveryMutation: MutationTrigger<
-    MutationDefinition<
-      recoveryCodeCheckParamsData,
-      BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
-      never,
-      ServerErrorResponse,
-      'authQueryApi'
-    >
-  >
+  recoveryMutation: any
   router: NextRouter
 }
 

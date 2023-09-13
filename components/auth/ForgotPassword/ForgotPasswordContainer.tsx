@@ -7,6 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { PrintModalType } from '../Registration/type'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
+import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 
 const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY!
@@ -53,15 +54,15 @@ const ForgotPasswordContainer: FC<PropsWithChildren<{}>> = ({ children }) => {
         .then((data) => {
           setPrintModal({ title: translate('Link_send'), content: translate('Link_send_text') })
         })
-        .catch((error) => {
+        .catch((error: ServerErrorResponse) => {
           setIsSucceed(false)
           recaptchaRef.current?.reset()
           switch (error.status) {
             case 400:
               setServerError(error.data.messages[0].message)
               break
-            case 'FETCH_ERROR':
-              setServerError(error.error)
+            case 404:
+              setServerError(error.data.error)
               break
             default:
               setServerError('A server error has occurred. Please try again')

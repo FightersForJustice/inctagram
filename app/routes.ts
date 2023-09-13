@@ -1,5 +1,5 @@
-import { authRouts } from '@/components/common/Auth/authRoutes'
-import { userRouts } from '@/components/common/User/userRouts'
+import { authRouts } from '@/app/routes/authRoutes'
+import { userRouts } from '@/app/routes/userRouts'
 import { legalRoutes } from './routes/legalRoutes'
 
 const routes = {

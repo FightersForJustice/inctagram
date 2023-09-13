@@ -18,6 +18,60 @@ exports[`render snapshot correctly 	 text:clickMe
 
 exports[`render snapshot correctly 	 text:clickMe 	
             color: Basic 	
+            disabled: false 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonAutoHeight"
+    color="Basic"
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: false 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonDefault"
+    color="Basic"
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: false 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonFullWidth"
+    color="Basic"
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
             disabled: true 	
              1`] = `
 <DocumentFragment>
@@ -34,6 +88,63 @@ exports[`render snapshot correctly 	 text:clickMe
 `;
 
 exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: true 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonAutoHeight"
+    color="Basic"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: true 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonDefault"
+    color="Basic"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Basic 	
+            disabled: true 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonBasic buttonFullWidth"
+    color="Basic"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
             color: Ghost 	
             disabled: false 	
              1`] = `
@@ -51,6 +162,60 @@ exports[`render snapshot correctly 	 text:clickMe
 
 exports[`render snapshot correctly 	 text:clickMe 	
             color: Ghost 	
+            disabled: false 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonAutoHeight"
+    color="Ghost"
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: false 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonDefault"
+    color="Ghost"
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: false 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonFullWidth"
+    color="Ghost"
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
             disabled: true 	
              1`] = `
 <DocumentFragment>
@@ -60,6 +225,63 @@ exports[`render snapshot correctly 	 text:clickMe
     disabled=""
     text="clickMe"
     type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: true 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonAutoHeight"
+    color="Ghost"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: true 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonDefault"
+    color="Ghost"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Ghost 	
+            disabled: true 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonGhost buttonFullWidth"
+    color="Ghost"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
   >
     clickMe
   </button>
@@ -84,6 +306,60 @@ exports[`render snapshot correctly 	 text:clickMe
 
 exports[`render snapshot correctly 	 text:clickMe 	
             color: Outlined 	
+            disabled: false 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonAutoHeight"
+    color="Outlined"
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: false 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonDefault"
+    color="Outlined"
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: false 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonFullWidth"
+    color="Outlined"
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
             disabled: true 	
              1`] = `
 <DocumentFragment>
@@ -93,6 +369,63 @@ exports[`render snapshot correctly 	 text:clickMe
     disabled=""
     text="clickMe"
     type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: true 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonAutoHeight"
+    color="Outlined"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: true 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonDefault"
+    color="Outlined"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Outlined 	
+            disabled: true 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonOutlined buttonFullWidth"
+    color="Outlined"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
   >
     clickMe
   </button>
@@ -117,6 +450,60 @@ exports[`render snapshot correctly 	 text:clickMe
 
 exports[`render snapshot correctly 	 text:clickMe 	
             color: Primary 	
+            disabled: false 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonAutoHeight"
+    color="Primary"
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: false 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonDefault"
+    color="Primary"
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: false 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonFullWidth"
+    color="Primary"
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
             disabled: true 	
              1`] = `
 <DocumentFragment>
@@ -126,6 +513,63 @@ exports[`render snapshot correctly 	 text:clickMe
     disabled=""
     text="clickMe"
     type="button"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: true 	
+            variation: AutoHeight 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonAutoHeight"
+    color="Primary"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="AutoHeight"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: true 	
+            variation: Default 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonDefault"
+    color="Primary"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="Default"
+  >
+    clickMe
+  </button>
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 text:clickMe 	
+            color: Primary 	
+            disabled: true 	
+            variation: FullWidth 	
+             1`] = `
+<DocumentFragment>
+  <button
+    class="button buttonPrimary buttonFullWidth"
+    color="Primary"
+    disabled=""
+    text="clickMe"
+    type="button"
+    variation="FullWidth"
   >
     clickMe
   </button>

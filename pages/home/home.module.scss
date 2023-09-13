@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15%;
+  .user {
+    .avatar {
+      border-radius: 50%;
+    }
+    .name {
+    }
+  }
+}

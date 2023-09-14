@@ -19,6 +19,16 @@ Cypress.on('uncaught:exception', (err, runnable, promise) => {
   // errors, so we let them fail the test
 })
 
+Cypress.Commands.add('form_request', (method, url, formData, token, done) => {
+  const request = new XMLHttpRequest()
+  request.open(method, url, false)
+  request.setRequestHeader('Authorization', token)
+  request.onload = function () {
+    done(request)
+  }
+  request.send(formData)
+})
+
 Cypress.Commands.add('confirmCode', (confirmLink) => {
   const codeMatch = confirmLink.match(/code=([a-zA-Z0-9-]+)/)
   if (codeMatch && codeMatch[1]) {

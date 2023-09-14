@@ -4,10 +4,12 @@
 .authContainer {
   background-color: colors.$dark-700;
   width: 100%;
-  min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
-  padding-bottom: 60px;
+
+  &Message {
+    justify-content: flex-start;
+  }
 }
 .authForm {
   width: 378px;

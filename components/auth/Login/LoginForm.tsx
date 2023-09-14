@@ -5,7 +5,7 @@ import { Loading } from '@/components/common/Loaders/Loading'
 import EmailFormField from './FormFields/EmailFormField'
 import PasswordFormField from './FormFields/PasswordFormField'
 import { AuthLogoGroup } from '@/components/common/Auth/LogoGroup'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { useTranslation } from 'react-i18next'
 import authStyle from '@/@ui/design/settings/commonAuth.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
@@ -23,6 +23,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
     formState: { errors },
     trigger,
   } = useForm<FormValuesTypeLogin>({ mode: 'onBlur' })
+
   useEffect(() => {
     errorsTrigger(trigger, errors)
   }, [t])
@@ -47,7 +48,7 @@ const LoginForm = ({ onSubmit, isLoading, serverError, setServerError }: LoginFo
           </Link>
         </div>
         <div className={style.buttonWrapper}>
-          <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} />
+          <Button text={translate('sign_in')} disabled={isLoading} onClick={handleSubmit(onSubmit)} type="submit" />
         </div>
         <p className={style.text}>{translate('Dont_have_an_account?')}</p>
         <Link href={authRouts.registration} className={style.SignUp}>

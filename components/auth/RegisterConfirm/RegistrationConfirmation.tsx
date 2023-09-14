@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useRegistrationСonfirmMutation } from '@/assets/api/auth/authQueryApi'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 
 type RegistrationConfirmType = {}
 
@@ -15,8 +15,10 @@ const RegistrationConfirmation: React.FC<RegistrationConfirmType> = () => {
   useEffect(() => {
     const confirmRegistration = async () => {
       try {
-        await registerConfirmMutation(code!.toString())
-      } catch (error) {}
+        await registerConfirmMutation(code!.toString() as string)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     if (code) {

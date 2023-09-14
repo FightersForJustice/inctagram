@@ -1,0 +1,21 @@
+.item {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 80px;
+  align-items: center;
+  justify-content: space-between;
+  height: 600px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 30px;
+  .textBlock {
+    display: flex;
+    flex-direction: column;
+  }
+}

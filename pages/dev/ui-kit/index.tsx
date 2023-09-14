@@ -1,4 +1,4 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
@@ -16,7 +16,8 @@ import { useForm, Control } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
+import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 export const getStaticProps = async () => {
   return {
@@ -143,6 +144,24 @@ const Login = () => {
               <h2>Disabled</h2>
               <MainDatePicker disabled />
             </div>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>CheckBox</h2>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <CheckBox checked={false} disabled={true}>
+              1. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={true}>
+              2. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={true} disabled={false}>
+              3. Confirm your actions
+            </CheckBox>
+            <CheckBox checked={false} disabled={false}>
+              4. Confirm your actions
+            </CheckBox>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import NewPasswordContainer from '@/components/auth/NewPassword/NewPasswordContainer'
 import { getLayout } from '@/components/Layout/Layout'
 import { GetServerSideProps } from 'next'

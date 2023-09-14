@@ -1,4 +1,4 @@
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { ICreateNewPassword } from './newPasswordTypes'
 
 export const CreateNewPassword = async (props: ICreateNewPassword) => {

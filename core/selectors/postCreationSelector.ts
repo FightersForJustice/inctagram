@@ -6,7 +6,7 @@ import { RootState } from '../reducers'
 const selectPostCreationData = (state: RootState) => state[POST_CREATION_KEY]
 
 const postCreationDataSelector = createSelector([selectPostCreationData], (post) => ({
-  userId: post.postData.photo,
+  photos: post.postData.photos,
 }))
 
 export const usePostCreationDataSelector = () => useSelector(postCreationDataSelector)

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { axiosAPI } from '@/assets/api/api'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 import { useUpdateProfileMutation } from '@/assets/api/user/profileQueryApi'
+import { setUpdatedUser } from '@/core/slices/userSlice'
+import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
+import { useDispatch } from 'react-redux'
 
 type ChangedFields = {
   [field: string]: string
@@ -17,9 +19,19 @@ export const useGeneral = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     setUpdatedUserProfile(userProfile)
-  }, [userProfile])
+  }, [
+    userProfile.aboutMe,
+    userProfile.city,
+    userProfile.dateOfBirth,
+    userProfile.firstName,
+    userProfile.id,
+    userProfile.lastName,
+    userProfile.userName,
+  ])
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`profile_settings__general.${key}`)
@@ -34,9 +46,12 @@ export const useGeneral = () => {
       setIsLoading(true)
 
       if (Object.keys(changedFields).length > 0) {
-        await updateProfile(changedFields).unwrap()
-        const updatedProfileData: any = await axiosAPI.profile.getProfile()
-        setUpdatedUserProfile(updatedProfileData)
+        await updateProfile(changedFields)
+          .unwrap()
+          .then(() => {
+            dispatch(setUpdatedUser(changedFields))
+          })
+          .catch((error: ServerErrorResponse) => console.log(error.data.error))
 
         setChangedFields({})
       }

@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from 'react'
 
-export type StatesСomponentType = 'start' | 'crop' | 'save' | ''
+export type StatesComponentType = 'start' | 'crop' | 'save' | ''
 
 export interface ComponentSaveProps {
   croppedImageUrl: string | null
-  setStatesСomponent: (modalStates: StatesСomponentType) => void
+  setStatesComponent: (modalStates: StatesComponentType) => void
   setCroppedImageUrl: Dispatch<SetStateAction<string | null>>
   setAvatar: Dispatch<SetStateAction<string>>
   setModalActive: Dispatch<SetStateAction<boolean>>

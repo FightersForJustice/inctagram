@@ -8,18 +8,21 @@ import { ComponentSaveProps } from '../../type'
 import { useTranslation } from 'react-i18next'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
+import { useDispatch } from 'react-redux'
+import { setUpdateUserProfilePhoto } from '@/core/slices/userSlice'
 
 export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
-  const { croppedImageUrl, setModalActive, setAvatar, setStatesСomponent, setCroppedImageUrl } = Props
+  const { croppedImageUrl, setModalActive, setAvatar, setStatesComponent, setCroppedImageUrl } = Props
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
+  const dispatch = useDispatch()
 
   const [AvatarAdd] = useAvatarAddMutation()
   const [loading, setIsLoading] = useState(false)
 
   const handlerBack = () => {
-    setStatesСomponent('crop')
+    setStatesComponent('crop')
     setCroppedImageUrl(null)
   }
   const handlerSave = () => {
@@ -32,6 +35,11 @@ export const ImgSave: React.FC<ComponentSaveProps> = (Props) => {
         .unwrap()
         .then((data) => {
           setAvatar(data.avatars[0].url)
+          dispatch(
+            setUpdateUserProfilePhoto({
+              avatars: data.avatars,
+            })
+          )
           setModalActive(false)
         })
         .catch((error: ServerErrorResponse) => {

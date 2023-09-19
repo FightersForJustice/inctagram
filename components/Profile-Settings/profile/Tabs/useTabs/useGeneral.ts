@@ -18,6 +18,7 @@ export const useGeneral = () => {
   const [changedFields, setChangedFields] = useState<ChangedFields>({})
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [datepickerError, setDatepickerError] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -39,6 +40,7 @@ export const useGeneral = () => {
   const disabled =
     Object.values(changedFields).some((value) => value.length < 1) ||
     changedFields.userName?.length < 6 ||
+    datepickerError ||
     validationError === true
 
   const handleSave = async () => {
@@ -97,5 +99,6 @@ export const useGeneral = () => {
     setChangedFields,
     disabled,
     setIsModalOpen,
+    setDatepickerError,
   }
 }

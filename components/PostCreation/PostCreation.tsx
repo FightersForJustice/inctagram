@@ -25,6 +25,7 @@ const PostCreation = () => {
           }
           setActive={() => setIsModalOpen(false)}
           active={isModalOpen}
+          isPaddingDisabled
         />
       )}
     </>

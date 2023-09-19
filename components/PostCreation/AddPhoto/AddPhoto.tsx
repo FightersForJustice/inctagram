@@ -37,7 +37,7 @@ const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
           <label
             htmlFor="custom-upload"
             className={classNames(buttonStyle.button, buttonStyle.buttonAutoHeight)}
-            style={{ width: '222px', marginTop: '110px' }}
+            style={{ width: '222px', marginTop: '60px' }}
           >
             {t('add_profile_photo.select_from_computer')}
           </label>
@@ -48,7 +48,7 @@ const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
         <Button
           onClick={() => setModuleNum(1)}
           text={t('add_profile_photo.add_profile_photo')}
-          style={{ width: '222px', marginTop: '110px' }}
+          style={{ width: '222px', marginTop: '60px' }}
           variation="AutoHeight"
         />
       )}

@@ -137,7 +137,38 @@
   "legalPages": {
     "goBack": "Back to sign up",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "lastUpdated": "Last Updated: 09.19.2023",
+    "sections": [
+      {
+        "title": "1. Acceptance of Terms of Service",
+        "content": "By using our application, you confirm that you have read, understood, and agree to these Terms of Service. If you do not agree with them, please do not use our application."
+      },
+      {
+        "title": "2. Registration and Account",
+        "content": "Creating an account may be required to use our application. You agree to provide accurate information during registration and to update it as necessary. You are responsible for the security of your account and password."
+      },
+      {
+        "title": "3. Rules of Use",
+        "content": "You agree to use our application in accordance with applicable laws and societal norms. Posting, transmitting, or distributing any illegal, harmful, or unwanted content is prohibited. We reserve the right to remove any content that violates these Terms."
+      },
+      {
+        "title": "4. Privacy and Data",
+        "content": "We collect, process, and store your data in accordance with our Privacy Policy. You agree to receive notifications and messages from us."
+      },
+      {
+        "title": "5. Disclaimer",
+        "content": "We provide this application 'as is.' We do not guarantee its uninterrupted operation and are not responsible for any data loss or problems that may arise from its use. We reserve the right to make changes to the application at any time without prior notice."
+      },
+      {
+        "title": "6. Termination of Use",
+        "content": "You may cease using the application at any time. We may also terminate your access to the application in case of a violation of these Terms of Service."
+      },
+      {
+        "title": "7. Conclusion",
+        "content": "Thank you for using our application! We hope you find it useful and satisfactory. If you have any questions or comments, please contact us."
+      }
+    ]
   },
   "logout": {
     "title": "Log Out",

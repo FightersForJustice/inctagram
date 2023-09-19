@@ -8,10 +8,13 @@ type ModalType = {
   title: string
   children: React.ReactNode
   close?: boolean
+  isPaddingDisabled?: boolean
 }
 
-const Modal: React.FC<ModalType> = ({ active, setActive, title, children, close }) => {
-  const open = active ? classNames(s.modal, s.effect, s.show) : classNames(s.modal, s.effect)
+const Modal: React.FC<ModalType> = ({ active, setActive, title, children, close, isPaddingDisabled = false }) => {
+  const open = active
+    ? classNames(s.modal, s.effect, s.show, { [s[`disabledPadding`]]: Boolean(isPaddingDisabled) })
+    : classNames(s.modal, s.effect)
   return (
     <>
       <div className={open}>

@@ -144,5 +144,11 @@
     "text": "Are you really want to log out of your account ",
     "yes": "Yes",
     "no": "No"
+  },
+  "postCreation": {
+    "addPhotoTitle": "Add Photo",
+    "croppingTitle": "Cropping",
+    "filtersTitle": "Filters",
+    "publicationTitle": "Publication"
   }
 }

@@ -144,5 +144,11 @@
     "text": "Вы действительно хотите выйти из своей учетной записи",
     "yes": "Да",
     "no": "Нет"
+  },
+  "postCreation": {
+    "addPhotoTitle": "Добавить фотографию",
+    "croppingTitle": "Обрезать",
+    "filtersTitle": "Фильтры",
+    "publicationTitle": "Публикация"
   }
 }

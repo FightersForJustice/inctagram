@@ -8,16 +8,19 @@ import Uploading from './Uploading/Uploading'
 import style from './PostCreation.module.scss'
 import { useDispatch } from 'react-redux'
 import { clearPhotos } from '@/core/slices/postCreationSlice'
+import { useTranslation } from 'react-i18next'
 
 const PostCreation = () => {
+  const { t } = useTranslation()
+  const T = (moduleName: string) => t(`postCreation.${moduleName}`)
   const dispatch = useDispatch()
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [moduleNum, setModuleNum] = useState(0)
-  const moduleNames = ['Add Photo', 'Cropping', 'Filters', 'Publication']
+  const moduleNames = ['addPhotoTitle', 'croppingTitle', 'filtersTitle', 'publicationTitle']
   const modules = [<AddPhoto setModuleNum={setModuleNum} />, <Cropping />, <Filters />, <Uploading />]
 
   useEffect(() => {
-    if(moduleNum !== 0) return 
+    if (moduleNum !== 0) return
     dispatch(clearPhotos())
   }, [moduleNum])
 
@@ -25,7 +28,7 @@ const PostCreation = () => {
     <>
       {isModalOpen && (
         <Modal
-          title={moduleNames[moduleNum]}
+          title={T(moduleNames[moduleNum])}
           children={
             <div className={style.container}>
               <CreatePostPaginator moduleNum={moduleNum} setModuleNum={setModuleNum} />

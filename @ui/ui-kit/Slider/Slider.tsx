@@ -30,7 +30,7 @@ export function Example(props: ItemsProps) {
 function Item(props: ItemProps) {
   return (
     <Paper>
-      <img src={props.item} alt="img" />
+      <img src={props.item} alt="img" style={{width: '491px', height: '504px', objectFit: 'contain'}} />
     </Paper>
   )
 }

@@ -10,9 +10,10 @@
   height: 48px;
   border-radius: 0;
   color: white;
-  background-color: #00000033;
+  background-color: rgba(33, 33, 33, 0.5);
   margin: -46px 11px 0px 11px;
   opacity: 1;
+  border-radius: 2px;
   svg {
     height: 58px;
     width: 58px;
@@ -20,12 +21,17 @@
 }
 .indicatorContainer {
   position: absolute;
-  width: auto;
   background-color: transparent;
   z-index: 1;
   bottom: 15px;
   left: 197px;
   background-color: #333333;
+  width: 104px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
 }
 .indicatorIcon {
   height: 8px;

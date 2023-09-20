@@ -1,0 +1,26 @@
+.button {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 4px 4px 2px 4px;
+  z-index: 100;
+}
+
+.addPhotosContainer {
+  position: absolute;
+  transition: 0.2s;
+  right: 56px;
+  bottom: 32px;
+  padding: 5px;
+  padding-right: 48px;
+  z-index: 100;
+  background-color: rgba(30, 30, 30, 0.8);
+  img {
+    image-rendering: pixelated;
+    object-fit: cover;
+  }
+  &Hidden {
+    opacity: 0;
+  }
+}

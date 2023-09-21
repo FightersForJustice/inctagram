@@ -35,9 +35,17 @@
     object-fit: cover;
     min-width: 86px;
     margin-right: 5px;
+    margin-bottom: 2px;
     image-resolution: 3dpi;
   }
   &Hidden {
     opacity: 0;
+  }
+  ::-webkit-scrollbar {
+    height: 2px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 4px;
   }
 }

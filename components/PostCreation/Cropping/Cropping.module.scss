@@ -7,6 +7,15 @@
   z-index: 100;
 }
 
+.uploadButton {
+  position: absolute;
+  right: 12px;
+  float: right;
+  top: 12px;
+  z-index: 100;
+  filter: invert(1);
+}
+
 .addPhotosContainer {
   position: absolute;
   transition: 0.2s;
@@ -16,9 +25,17 @@
   padding-right: 48px;
   z-index: 100;
   background-color: rgba(30, 30, 30, 0.8);
-  img {
+  max-width: 300px;
+  .photosContainer {
+    display: flex;
+    overflow-x: scroll;
+  }
+  .uploadedPhoto {
     image-rendering: pixelated;
     object-fit: cover;
+    min-width: 86px;
+    margin-right: 5px;
+    image-resolution: 3dpi;
   }
   &Hidden {
     opacity: 0;

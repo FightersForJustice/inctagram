@@ -2,15 +2,25 @@ import { usePostCreationDataSelector } from '@/core/selectors/postCreationSelect
 import { Example } from '@/@ui/ui-kit/Slider/Slider'
 import style from './Cropping.module.scss'
 import Image from 'next/image'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import classNames from 'classnames'
+import { setPhoto } from '@/core/slices/postCreationSlice'
+import { useDispatch } from 'react-redux'
 
 const Cropping = () => {
+  const dispatch = useDispatch()
   const { photos } = usePostCreationDataSelector()
   const [isAddPhotosClosed, setIsAddPhotosClosed] = useState(true)
   const photosLinks = photos.map((photoObj: any) => {
     return photoObj.photo
   })
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      dispatch(setPhoto({ photo: URL.createObjectURL(e.target.files[0]) }))
+    }
+  }
+
   return (
     <div>
       <Example items={photosLinks} />
@@ -19,9 +29,18 @@ const Cropping = () => {
       </button>
 
       <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
-        {photosLinks.map((photo: string) => (
-          <Image src={photo} alt="" width={86} height={86} />
-        ))}
+        <div className={style.photosContainer}>
+          {photosLinks.map((photo: string) => (
+            <Image src={photo} alt="" width={86} height={86} className={style.uploadedPhoto} />
+          ))}
+        </div>
+        <div className={style.addPhotoButtonContainer}>
+          <label htmlFor="upload-button" className={style.uploadButton}>
+            <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={24} height={24} />
+          </label>
+
+          <input type="file" accept="image/*" onChange={(e) => handleChange(e)} id="upload-button" style={{ display: 'none' }} />
+        </div>
       </div>
     </div>
   )

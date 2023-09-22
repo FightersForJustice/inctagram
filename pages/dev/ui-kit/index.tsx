@@ -18,6 +18,7 @@ import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
+import MyCarousel from '../../../@ui/ui-kit/Slider/index'
 
 export const getStaticProps = async () => {
   return {
@@ -164,6 +165,7 @@ const Login = () => {
             </CheckBox>
           </div>
         </div>
+        <MyCarousel rr="kk" />
       </div>
     </PageWrapper>
   )

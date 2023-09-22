@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getLayout } from '@/components/Layout/Layout'
 import { useLogoutMutation } from '@/assets/api/auth/authQueryApi'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { removeAccessTokenCookie } from '@/utils/cookies'
 import { GetServerSideProps, NextApiRequest } from 'next'
 import { axiosAPI } from '@/assets/api/api'
@@ -11,7 +11,7 @@ import s from './index.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { UserData } from '@/assets/api/auth/authTypes'
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
@@ -37,7 +37,7 @@ const Logout = (props: HomeType) => {
   const handlerYes = () => {
     const performLogout = async () => {
       try {
-        await logout({})
+        await logout()
           .unwrap()
           .then(() => {
             router.push(authRouts.login)

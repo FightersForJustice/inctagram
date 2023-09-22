@@ -1,4 +1,4 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './index.module.scss'
@@ -16,8 +16,9 @@ import { useForm, Control } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
-import { userRouts } from '@/components/common/User/userRouts'
+import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
+import { Example } from '@/@ui/ui-kit/Slider/Slider'
 
 export const getStaticProps = async () => {
   return {
@@ -33,8 +34,6 @@ const Login = () => {
 
   const handleTabChange = (value: string) => {
     setActiveTab(value)
-
-    router.replace(`/ui-kit?tab=${value}`)
   }
   const [ModalActive, setModalActive] = useState(false)
   const { control, handleSubmit } = useForm<FormValues>()
@@ -162,6 +161,15 @@ const Login = () => {
             <CheckBox checked={false} disabled={false}>
               4. Confirm your actions
             </CheckBox>
+          </div>
+        </div>
+
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Карусель</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
+            <Example
+              items={['../img/post/5.png', '../img/post/1.jpg', '../img/post/2.jpg', '../img/post/3.jpg', '../img/post/4.jpg']}
+            />
           </div>
         </div>
       </div>

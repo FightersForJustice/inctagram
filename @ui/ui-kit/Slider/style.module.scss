@@ -1,0 +1,50 @@
+.main {
+  width: 491px;
+  height: 504px;
+}
+.navButtonsWrapper {
+  padding: 0;
+}
+.navButtons {
+  width: 50px;
+  height: 48px;
+  border-radius: 0;
+  color: white;
+  background-color: #00000033;
+  margin: -46px 11px 0px 11px;
+  opacity: 1;
+  svg {
+    height: 58px;
+    width: 58px;
+  }
+}
+.indicatorContainer {
+  position: absolute;
+  width: auto;
+  background-color: transparent;
+  z-index: 1;
+  bottom: 15px;
+  left: 197px;
+  background-color: #333333;
+}
+.indicatorIcon {
+  height: 8px;
+  width: 8px;
+  margin: 6px;
+  background-color: #fff;
+  color: transparent;
+  &:hover {
+    background-color: blue;
+    height: 8px;
+    width: 8px;
+    margin: 6px;
+    color: transparent;
+  }
+}
+.activeIndicatorIconButton {
+  color: #00800000;
+  height: 8px;
+  width: 8px;
+  margin: 6px;
+  background-color: #397df6;
+}

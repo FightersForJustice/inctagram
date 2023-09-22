@@ -1,4 +1,4 @@
-import { PageWrapper } from 'components/PageWrapper/PageWrapper'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { getLayout } from '@/components/Layout/Layout'
 import RegistrationFormContainer from '@/components/auth/Registration/RegistrationFormContainer'
 import { GetServerSideProps } from 'next'

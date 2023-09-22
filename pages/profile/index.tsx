@@ -20,7 +20,7 @@ import img5 from '../../public/img/post/img5.jpg'
 import img6 from '../../public/img/post/img6.jpg'
 import img7 from '../../public/img/post/img7.jpg'
 import img8 from '../../public/img/post/img8.jpg'
-import { withAuth } from '@/utils/withAuth'
+import { withAuth } from '@/utils/getServerSideProps/withAuth'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)

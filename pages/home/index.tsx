@@ -30,13 +30,60 @@ const Home = (props: HomeType) => {
     <PageWrapper>
       <div className={s.content}>
         <div className={s.user}>
-          <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />
-          <span className={s.name}>URLProfiele</span>
-          <span className={s.point}></span>
-          <span className={s.time}>22 Minutes ago</span>
+          <div className={s.left}>
+            <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />
+            <span className={s.name}>URLProfiele</span>
+            <span className={s.point}></span>
+            <span className={s.time}>22 Minutes ago</span>
+          </div>
+          <div className={s.right}>
+            <Image width={24} height={24} className={s.action} src="sidebar-icons/more-horizontal.svg" alt="" />
+          </div>
         </div>
-        <img className={s.action} src="sidebar-icons/more-horizontal.svg" alt="" />
         <Example items={['post/5.png', 'post/1.jpg', 'post/2.jpg', 'post/3.jpg', 'post/4.jpg']} />
+        <div className={s.icons}>
+          <div className={s.left}>
+            <Image width={24} height={24} src="sidebar-icons/heart-outline.svg" alt="" />
+            <Image width={24} height={24} className={s.message} src="sidebar-icons/message-circle-outline.svg" alt="" />
+            <Image width={24} height={24} className={s.paper} src="sidebar-icons/paper-plane-outline.svg" alt="" />
+          </div>
+          <div className={s.right}>
+            <Image width={24} height={24} src="sidebar-icons/bookmark-outline.svg" alt="" />
+          </div>
+        </div>
+        <div className={s.comments}>
+          <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />
+          <p>
+            <span className={s.name}>URLProfiele </span>
+            <span className={s.text}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua.
+            </span>
+          </p>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </PageWrapper>
   )

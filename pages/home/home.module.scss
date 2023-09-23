@@ -3,27 +3,68 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding-left: 15%;
-  .user {
-    .avatar {
-      border-radius: 50%;
+  margin-left: 15%;
+  margin-top: 23px;
+  width: 491px;
+  .avatar {
+    border-radius: 50%;
+  }
+  .name {
+    @include h3;
+    padding-left: 12px;
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    filter: invert(98%) sepia(5%) saturate(408%) hue-rotate(175deg) brightness(117%) contrast(100%);
+    padding-top: 12px;
+    .message {
+      margin-left: 21px;
     }
-    .name {
-      @include h3;
-    }
-    .point {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background-color: white;
-    }
-    .time {
-      @include small_text;
-      color: #8d9094;
+    .paper {
+      margin-left: 20px;
     }
   }
-  .action {
-    color: white;
+  .user {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    .left {
+      display: flex;
+      align-items: center;
+      .point {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: white;
+        margin-left: 9px;
+      }
+      .time {
+        @include small_text;
+        color: #8d9094;
+        padding: 4px 0px 0px 8px;
+      }
+    }
+    .right {
+      .action {
+        filter: invert(98%) sepia(5%) saturate(408%) hue-rotate(175deg) brightness(117%) contrast(100%);
+        margin: 6px 0px 0px 2px;
+      }
+    }
+  }
+  .comments {
+    display: flex;
+    .avatar {
+      margin-top: 17px;
+    }
+    p {
+      display: block;
+      margin: 13px 0px 0px 12px;
+      text-indent: -12px;
+    }
+    .text {
+      @include regular_text_14;
+    }
   }
 }

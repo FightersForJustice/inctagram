@@ -33,8 +33,6 @@ const Login = () => {
 
   const handleTabChange = (value: string) => {
     setActiveTab(value)
-
-    router.replace(`/ui-kit?tab=${value}`)
   }
   const [ModalActive, setModalActive] = useState(false)
   const { control, handleSubmit } = useForm<FormValues>()

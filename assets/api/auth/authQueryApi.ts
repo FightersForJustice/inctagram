@@ -8,13 +8,15 @@ import {
   ServerLoginResponse,
   recoveryCodeCheckParamsData,
   UserData,
+  recoveryResponse,
 } from '@/assets/api/auth/authTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { authRouts } from '@/components/common/Auth/authRoutes'
+import { authRouts } from '@/app/routes/authRoutes'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
+import { AUTH_API_KEY } from '@/core/reducers/constant_keys'
 
 const authQueryApi = createApi({
-  reducerPath: 'authQueryApi',
+  reducerPath: AUTH_API_KEY,
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
@@ -61,28 +63,28 @@ const authQueryApi = createApi({
         body: { email },
       }),
     }),
-    passwordRecover: builder.mutation<ServerErrorResponse, ForgotPasswordParamsData>({
+    passwordRecover: builder.mutation<void, ForgotPasswordParamsData>({
       query: (recoverQuery) => ({
         url: authRouts.passwordRecover,
         method: 'POST',
         body: recoverQuery,
       }),
     }),
-    newPasswordCreate: builder.mutation<ServerErrorResponse, NewPasswordParamsData>({
+    newPasswordCreate: builder.mutation<void, NewPasswordParamsData>({
       query: (createQuery) => ({
         url: authRouts.newPasswordCreate,
         method: 'POST',
         body: createQuery,
       }),
     }),
-    recoveryCodeCheck: builder.mutation<ServerErrorResponse, recoveryCodeCheckParamsData>({
+    recoveryCodeCheck: builder.mutation<recoveryResponse, recoveryCodeCheckParamsData>({
       query: (recoveryCode) => ({
         url: authRouts.recoveryCodeCheck,
         method: 'POST',
         body: recoveryCode,
       }),
     }),
-    logout: builder.mutation({
+    logout: builder.mutation<void, void>({
       query: () => ({
         url: authRouts.logout,
         method: 'POST',

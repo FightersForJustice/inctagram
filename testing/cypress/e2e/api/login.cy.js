@@ -29,6 +29,20 @@ describe('Login API test', () => {
     })
   })
 
+  it('Get information about current user', () => {
+    cy.log(user)
+    cy.request({
+      method: 'GET',
+      url: 'https://inctagram.net/api/v1/auth/me',
+      headers: { Authorization: `Bearer ${token}` },
+    }).then((res) => {
+      expect(res.status).to.eq(200)
+      expect(res.body).to.have.property('userId')
+      expect(res.body).to.have.property('userName', 'Test23')
+      expect(res.body).to.have.property('email', user.userEmail)
+    })
+  })
+
   it('Login with incorrect email', () => {
     let arr = user.userEmail.split('')
     arr.splice(1, 1)

@@ -29,9 +29,12 @@ export type ServerLoginResponse = {
   accessToken: string
 }
 export type ServerErrorResponse = {
-  statusCode: StatusType
-  messages: ResponseMessage[]
-  error: string
+  data: {
+    statusCode: StatusType
+    messages: ResponseMessage[]
+    error: string
+  }
+  status: number
 }
 export type ResponseMessage = {
   message: string

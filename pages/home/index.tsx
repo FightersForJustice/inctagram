@@ -1,17 +1,13 @@
 import { axiosAPI } from '@/assets/api/api'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
-import { HomeType } from '@/components/Home/homeTypes'
-
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
-
-import { useRouter } from 'next/router'
-import { Example } from './slider/Slider'
 import s from './home.module.scss'
 import Image from 'next/image'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
+import MyCarousel from '@/@ui/ui-kit/Carousel'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const postsAll = await axiosAPI.posts.getPostsServer(req as NextApiRequest)
@@ -46,8 +42,8 @@ const Home = (props) => {
               <Image width={24} height={24} className={s.action} src="sidebar-icons/more-horizontal.svg" alt="" />
             </div>
           </div>
+          <MyCarousel items={item.images.map((item, index) => item.url)} />
 
-          <Example items={item.images.map((item, index) => item.url)} />
           <div className={s.icons}>
             <div className={s.left}>
               <Image width={24} height={24} src="sidebar-icons/heart-outline.svg" alt="" />

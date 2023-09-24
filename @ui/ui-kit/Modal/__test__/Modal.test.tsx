@@ -9,26 +9,31 @@ const setActive = jest.fn()
 
 const activeProps = [true, false]
 const closeProps = [true, false]
+const isPaddingDisabledProps = [true, false]
 
 describe('render snapshot correctly \t', () => {
   afterEach(cleanup)
 
-  activeProps.forEach((active) => {
-    closeProps.forEach((close) => {
-      it(`active:${active} \t
+  isPaddingDisabledProps.forEach((isPaddingDisabled) => {
+    activeProps.forEach((active) => {
+      closeProps.forEach((close) => {
+        it(`active:${active} \t
       setActive: ${setActive} \t
       title: ${title} \t
       close: ${close} \t
+      isPaddingDisabled: ${isPaddingDisabled} \t
             `, () => {
-        const props = {
-          active: active,
-          setActive: setActive,
-          title: title,
-          close: close,
-        }
-        const { asFragment } = render(<Modal {...props}>{children}</Modal>)
+          const props = {
+            active: active,
+            setActive: setActive,
+            title: title,
+            close: close,
+            isPaddingDisabled: isPaddingDisabled,
+          }
+          const { asFragment } = render(<Modal {...props}>{children}</Modal>)
 
-        expect(asFragment()).toMatchSnapshot()
+          expect(asFragment()).toMatchSnapshot()
+        })
       })
     })
   })

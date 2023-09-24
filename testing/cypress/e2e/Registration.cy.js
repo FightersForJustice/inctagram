@@ -27,12 +27,11 @@ let randomPassword = generateRandomPassword()
 describe('Registration Page', () => {
   beforeEach('Visit', () => {
     cy.visit('https://inctagram-git-staging-fightersforjustice.vercel.app/auth/registration')
-    // cy.get(regSelectors.ButtonSignUp).contains("Sign Up")
   })
 
   it('Validate RegistrationPage', () => {
-    cy.get(regSelectors.ButtonSignUp).contains('Sign Up')
     cy.get(regSelectors.Text).contains('Do you have an account?')
+    cy.get('.RegistrationForm_SignIn__S8W05').contains('Sign In')
   })
 
   it('Should register a new user with unique data and get message email sent', () => {
@@ -40,26 +39,29 @@ describe('Registration Page', () => {
     cy.get(regSelectors.Mail).clear().type(randomEmail)
     cy.get(regSelectors.Password).clear().type(randomPassword)
     cy.get(regSelectors.Password2).clear().type(randomPassword)
+    cy.get('.RegistrationForm_label__i9EQP').contains('I agree to the Terms of Service and Privacy Policy')
+    cy.get(regSelectors.CheckMark).check()
     cy.get(regSelectors.ButtonSignUp).click()
     cy.get('.Modal_text__GjVrh').contains(`We have sent a link to confirm your email to ${randomEmail}`).should('be.visible')
     cy.get('.Modal_buttonClose__mIbC9 > img').click()
   })
 
-  it.only('Validation error that user already exist', () => {
+  it('Validation error that user already exist', () => {
     cy.get(regSelectors.Name).clear().type('turpicrypto')
     cy.get(regSelectors.Mail).clear().type('turpicrypto@gmail.com')
     cy.get(regSelectors.Password).clear().type('11111111')
     cy.get(regSelectors.Password2).clear().type('11111111')
+    cy.get(regSelectors.CheckMark).check()
     cy.get(regSelectors.ButtonSignUp).click()
+    //cy.get(regSelectors.ButtonSignUp).click()
     cy.get(regSelectors.RegError).contains('User with this email is already exist')
     cy.get(regSelectors.Name).clear().type(randomName)
     cy.get(regSelectors.Mail).clear().type(randomEmail)
     cy.get(regSelectors.ButtonSignUp).click()
   })
 
-  it('Registration with blank fields', () => {
-    cy.get(regSelectors.ButtonSignUp).click()
-    cy.get(regSelectors.RegError).contains('Required field to fill in').and('have.css', 'color', 'rgb(255, 0, 0)')
+  it('Registration with blank fields , Sign Up is disabled', () => {
+    cy.get(regSelectors.ButtonSignUp).should('be.disabled')
   })
 
   it('Registration with incorrect email format', () => {
@@ -68,13 +70,8 @@ describe('Registration Page', () => {
       cy.get(regSelectors.Mail).clear().type($item)
       cy.get(regSelectors.Password).clear().type(randomPassword)
       cy.get(regSelectors.Password2).clear().type(randomPassword)
-      // If it's the first iteration, click the "SignUp" button
-      if (index === 0) {
-        cy.get(regSelectors.ButtonSignUp).click()
-      } else {
-        cy.get(regSelectors.RegError).contains('Invalid email format')
-        cy.get(regSelectors.ButtonSignUp).should('be.disabled')
-      }
+      cy.get(regSelectors.RegError).contains('Invalid email format')
+      cy.get(regSelectors.ButtonSignUp).should('be.disabled')
     })
   })
 
@@ -85,7 +82,7 @@ describe('Registration Page', () => {
       cy.get(regSelectors.Password).clear().type(randomPassword)
       cy.get(regSelectors.Password2).clear().type(randomPassword)
       if (index === 0) {
-        cy.get(regSelectors.ButtonSignUp).click()
+        cy.get(regSelectors.ButtonSignUp).should('be.disabled')
       } else {
         // Check for specific error messages based on the invalid user name
         if ($item.length < 6) {
@@ -108,20 +105,15 @@ describe('Registration Page', () => {
       cy.get(regSelectors.Mail).clear().type(randomEmail)
       cy.get(regSelectors.Password).clear().type($item)
       cy.get(regSelectors.Password2).clear().type($item)
-      if (index === 0) {
-        cy.get(regSelectors.ButtonSignUp).click()
-      } else {
-        // Check for specific error messages based on the invalid password
-        if ($item.length < 6) {
-          cy.get(regSelectors.RegError).contains('Password must be longer than or equal to 6 characters')
-          cy.get(regSelectors.ButtonSignUp).should('be.disabled')
-        } else if ($item.includes(' ')) {
-          cy.get(regSelectors.RegError).contains('*Required field to fill in')
-          cy.get(regSelectors.ButtonSignUp).should('be.disabled')
-        } else if ($item.length > 20) {
-          cy.get(regSelectors.RegError).contains('Password must be shorter than or equal to 20 characters')
-          cy.get(regSelectors.ButtonSignUp).should('be.disabled')
-        }
+      if ($item.length < 6) {
+        cy.get(regSelectors.RegError).contains('Password must be longer than or equal to 6 characters')
+        cy.get(regSelectors.ButtonSignUp).should('be.disabled')
+      } else if ($item.includes(' ')) {
+        cy.get(regSelectors.RegError).contains('*Required field to fill in')
+        cy.get(regSelectors.ButtonSignUp).should('be.disabled')
+      } else if ($item.length > 20) {
+        cy.get(regSelectors.RegError).contains('Password must be shorter than or equal to 20 characters')
+        cy.get(regSelectors.ButtonSignUp).should('be.disabled')
       }
     })
   })

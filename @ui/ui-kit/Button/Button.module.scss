@@ -4,7 +4,6 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: auto;
   height: 36px;
   padding: 6px 24px;
   margin: 5px;
@@ -122,5 +121,13 @@
 
   &AutoHeight {
     height: auto;
+  }
+
+  &FullWidth {
+    width: 100%;
+  }
+
+  &Default {
+    width: auto;
   }
 }

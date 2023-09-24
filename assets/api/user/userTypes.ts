@@ -10,6 +10,7 @@ export type UserProfile = {
 }
 
 //create generic for UpdateuserProfile
+
 export type UpdateUserProfile = {
   userName?: string
   firstName?: string
@@ -17,6 +18,10 @@ export type UpdateUserProfile = {
   city?: string
   dateOfBirth?: string
   aboutMe?: string
+}
+
+export type UpdateUserProfilePhoto = {
+  avatars: userAvatar[]
 }
 
 export type userAvatar = {

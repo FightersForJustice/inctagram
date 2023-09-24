@@ -6,6 +6,46 @@ exports[`render snapshot correctly 	 active:false
       } 	
       title: Test Modal 	
       close: false 	
+      isPaddingDisabled: false 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:false 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: false 	
+      isPaddingDisabled: true 	
              1`] = `
 <DocumentFragment>
   <div
@@ -44,6 +84,55 @@ exports[`render snapshot correctly 	 active:false
       } 	
       title: Test Modal 	
       close: true 	
+      isPaddingDisabled: false 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+        <button
+          class="buttonClose"
+          data-testid="closeModal"
+        >
+          <img
+            alt=""
+            src="/icons/close.svg"
+          />
+        </button>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:false 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: true 	
+      isPaddingDisabled: true 	
              1`] = `
 <DocumentFragment>
   <div
@@ -91,6 +180,7 @@ exports[`render snapshot correctly 	 active:true
       } 	
       title: Test Modal 	
       close: false 	
+      isPaddingDisabled: false 	
              1`] = `
 <DocumentFragment>
   <div
@@ -128,11 +218,99 @@ exports[`render snapshot correctly 	 active:true
         return fn.apply(this, arguments);
       } 	
       title: Test Modal 	
+      close: false 	
+      isPaddingDisabled: true 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect show disabledPadding"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:true 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
       close: true 	
+      isPaddingDisabled: false 	
              1`] = `
 <DocumentFragment>
   <div
     class="modal effect show"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="title"
+        >
+          Test Modal
+        </div>
+        <button
+          class="buttonClose"
+          data-testid="closeModal"
+        >
+          <img
+            alt=""
+            src="/icons/close.svg"
+          />
+        </button>
+      </div>
+      <div
+        class="contents"
+      >
+        <div>
+          Some Text
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="overlay"
+  />
+</DocumentFragment>
+`;
+
+exports[`render snapshot correctly 	 active:true 	
+      setActive: function () {
+        return fn.apply(this, arguments);
+      } 	
+      title: Test Modal 	
+      close: true 	
+      isPaddingDisabled: true 	
+             1`] = `
+<DocumentFragment>
+  <div
+    class="modal effect show disabledPadding"
   >
     <div
       class="content"

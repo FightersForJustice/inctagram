@@ -1,5 +1,8 @@
 import { axiosAPI } from '@/assets/api/api'
-import { UserData } from '@/assets/api/auth/authTypes'
+import { withAuth } from '@/utils/getServerSideProps/withAuth'
+import { GetServerSideProps, NextApiRequest } from 'next'
+import { HomeType } from '@/components/Home/homeTypes'
+import Home from '@/components/Home/Home'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { userRouts } from '@/components/common/User/userRouts'
@@ -88,5 +91,5 @@ const Home = (props) => {
   )
 }
 
-Home.getLayout = getSideBarLayout
-export default Home
+HomePage.getLayout = getSideBarLayout
+export default HomePage

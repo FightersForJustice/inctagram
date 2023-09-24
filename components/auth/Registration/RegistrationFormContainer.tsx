@@ -4,6 +4,7 @@ import { useRegistrationMutation } from '@/assets/api/auth/authQueryApi'
 import { useState } from 'react'
 import { Modal } from '@/components/common/Modal/Modal'
 import { useTranslation } from 'react-i18next'
+import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 
 const RegistrationFormContainer = () => {
   const ModalNull = () => {
@@ -36,8 +37,8 @@ const RegistrationFormContainer = () => {
           content: translate('confirm_message', { email: data.email }),
         })
       })
-      .catch((error: any) => {
-        if (error.status == 'FETCH_ERROR') {
+      .catch((error: ServerErrorResponse) => {
+        if (error.status == 404) {
           setPrintModal({ title: translate('error_title'), content: translate('error_message') })
         }
         if (typeof error.data != 'undefined') {

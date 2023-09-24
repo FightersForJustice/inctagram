@@ -23,6 +23,7 @@ const General: React.FC = () => {
     disabled,
     setChangedFields,
     setIsModalOpen,
+    setDatepickerError,
   } = useGeneral()
 
   return (
@@ -60,6 +61,7 @@ const General: React.FC = () => {
               setValue={saveToArray(setChangedFields, 'dateOfBirth')}
               disableFuture
               label={translate('dateOfBirth')}
+              setError={setDatepickerError}
             />
           </fieldset>
 

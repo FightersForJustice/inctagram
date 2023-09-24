@@ -64,7 +64,7 @@
   line-height: 24px;
 }
 @mixin bold_text_14 {
-  color: $dark-900;
+  color: colors.$light-100;
   font-size: 14px;
   font-weight: 700;
   line-height: 24px;

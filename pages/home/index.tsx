@@ -9,6 +9,8 @@ import { useRouter } from 'next/router'
 import { Example } from './slider/Slider'
 import s from './home.module.scss'
 import Image from 'next/image'
+import { Button } from '@/@ui/ui-kit/Button/Button'
+import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async () => {
   return { props: {} }
@@ -61,6 +63,22 @@ const Home = (props: HomeType) => {
             </span>
           </p>
         </div>
+        <div className={s.like}>
+          <Image className={s.avatar} width={24} height={24} src="/post/5.png" alt="Avatar" />
+          <Image className={s.avatar} width={24} height={24} src="/post/5.png" alt="Avatar" />
+          <Image className={s.avatar} width={24} height={24} src="/post/5.png" alt="Avatar" />
+          <span className={s.number}>2 233</span>
+          <span className={s.text}>"Like"</span>
+        </div>
+        <div className={s.allComments}>
+          <p>View All Comments (114)</p>
+          <div className={s.addComment}>
+            <input type="text" placeholder="Add a Comment..." />
+            <Button color={BUTTON_COLORS.GHOST} text="Publish"></Button>
+          </div>
+          <hr />
+        </div>
+
         <br />
         <br />
         <br />

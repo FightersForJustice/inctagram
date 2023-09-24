@@ -14,6 +14,7 @@ import style from './DatePicker.module.scss'
 type DatePickerTypes = {
   value?: string
   setValue?: Dispatch<React.SetStateAction<any>>
+  setError?: Dispatch<React.SetStateAction<boolean>>
   disabled?: boolean
   id?: string
   disableFuture?: boolean
@@ -29,7 +30,9 @@ export const saveToArray = (setValue: Dispatch<React.SetStateAction<any>>, name 
   }
 }
 
-export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture, label }: DatePickerTypes) => {
+export const MainDatePicker = (props: DatePickerTypes) => {
+  const { value, disabled, id, disableFuture, label } = props
+  let { setValue } = props
   const { t } = useTranslation()
   const [date, setDate] = useState(null)
   const [pickerState, setPickerState] = useState('UIKitDatePicker--close')
@@ -38,6 +41,12 @@ export const MainDatePicker = ({ value, setValue, disabled, id, disableFuture, l
     if (!setValue) return
     setValue = setDate
   }, [])
+
+  useEffect(() => {
+    if (!props.setError) return
+    props.setError(!!error)
+  }, [error])
+
   return (
     <>
       {label && (

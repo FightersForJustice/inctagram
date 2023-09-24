@@ -2,18 +2,16 @@ import { axiosAPI } from '@/assets/api/api'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { GetServerSideProps, NextApiRequest } from 'next'
 import { HomeType } from '@/components/Home/homeTypes'
-import Home from '@/components/Home/Home'
+
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { userRouts } from '@/components/common/User/userRouts'
-import { withAuth } from '@/utils/withAuth'
-import { GetServerSideProps, NextApiRequest } from 'next'
+
 import { useRouter } from 'next/router'
 import { Example } from './slider/Slider'
 import s from './home.module.scss'
 import Image from 'next/image'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const postsAll = await axiosAPI.posts.getPostsServer(req as NextApiRequest)
@@ -91,5 +89,5 @@ const Home = (props) => {
   )
 }
 
-HomePage.getLayout = getSideBarLayout
-export default HomePage
+Home.getLayout = getSideBarLayout
+export default Home

@@ -1,11 +1,11 @@
 import { usePostCreationDataSelector } from '@/core/selectors/postCreationSelector'
-import { Example } from '@/@ui/ui-kit/Slider/Slider'
 import style from './Cropping.module.scss'
 import Image from 'next/image'
 import { ChangeEvent, useState } from 'react'
 import classNames from 'classnames'
 import { setPhoto } from '@/core/slices/postCreationSlice'
 import { useDispatch } from 'react-redux'
+import MyCarousel from '@/@ui/ui-kit/Carousel'
 
 const Cropping = () => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const Cropping = () => {
 
   return (
     <div>
-      <Example items={photosLinks} />
+      <MyCarousel items={photosLinks} />
       <button className={style.button} onClick={() => setIsAddPhotosClosed((prev) => !prev)}>
         <Image src="../icons/image-outline.svg" alt="" width={32} height={32} />
       </button>

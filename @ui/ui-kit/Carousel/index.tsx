@@ -16,7 +16,7 @@ const MyCarousel: React.FC<PropsType> = ({ items }) => {
   ))
 
   return (
-    <CarouselProvider className={s.carouselProvider} naturalSlideWidth={491} naturalSlideHeight={504} totalSlides={5}>
+    <CarouselProvider className={s.carouselProvider} naturalSlideWidth={491} naturalSlideHeight={504} totalSlides={items.length}>
       <Slider>{listItems}</Slider>
       <DotGroup className={s.dot} />
       <ButtonBack className={classNames(s.buttonBack, s.button)}>

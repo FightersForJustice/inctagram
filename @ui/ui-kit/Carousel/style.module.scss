@@ -13,16 +13,16 @@
     }
   }
   .dot {
-    width: 104px;
     height: 24px;
     background-color: #33333380;
     border-radius: 2px;
     position: absolute;
     bottom: 12px;
-    left: 192px;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 50%;
+    transform: translate(-50%);
     button {
       width: 8px;
       height: 8px;

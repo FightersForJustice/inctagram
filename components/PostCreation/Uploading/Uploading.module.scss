@@ -1,0 +1,37 @@
+.uploadingContainer {
+  display: flex;
+  width: 972px;
+  .postDetails {
+    width: 481px;
+    padding: 0 24px;
+    .textareaContainer {
+      margin-top: 24px;
+      textarea {
+        width: 433px;
+        height: 120px;
+      }
+    }
+
+    .buttonContainer {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      margin-top: 27px;
+      .userAvatar {
+        border-radius: 50%;
+        border: 1px solid #171717;
+      }
+      .userName {
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+    }
+  }
+}

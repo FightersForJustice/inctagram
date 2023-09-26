@@ -1,5 +1,40 @@
+import { usePostCreationDataSelector } from '@/core/selectors/postCreationSelector'
+import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
+import style from './Uploading.module.scss'
+import MyCarousel from '@/@ui/ui-kit/Carousel'
+import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
+import { Button } from '@/@ui/ui-kit/Button/Button'
+
 const Uploading = () => {
-  return <div>Uploading</div>
+  const { photos } = usePostCreationDataSelector()
+  const { userName, avatars } = useProfileSettingsSSRSelector()
+  const photosLinks = photos.map((photoObj: any) => {
+    return photoObj.photo
+  })
+
+  return (
+    <div className={style.uploadingContainer}>
+      <MyCarousel items={photosLinks} />
+      <div className={style.postDetails}>
+        <div className={style.user}>
+          <img
+            src={avatars[0] ? avatars[0].url : '/../sidebar-icons/person.svg'}
+            alt=""
+            width={36}
+            height={36}
+            className={style.userAvatar}
+          />
+          <span className={style.userName}>{userName}</span>
+        </div>
+        <div className={style.textareaContainer}>
+          <TextArea label="Add publication descriptions"  />
+        </div>
+        <div className={style.buttonContainer}>
+        <Button text='Publish' />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Uploading

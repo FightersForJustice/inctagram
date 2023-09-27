@@ -16,14 +16,22 @@
         font-weight: 400;
         line-height: 16px;
         right: 32px;
-        color:#8D9094;
+        color: #8d9094;
       }
     }
 
     .buttonContainer {
       position: absolute;
-      bottom: 24px;
+      top: 16px;
       right: 24px;
+      .publishButton {
+        cursor: pointer;
+        color: #397df6;
+        background-color: inherit;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
     }
 
     .user {

@@ -3,7 +3,6 @@ import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsS
 import style from './Uploading.module.scss'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
-import { Button } from '@/@ui/ui-kit/Button/Button'
 import { useState } from 'react'
 
 const Uploading = () => {
@@ -44,7 +43,7 @@ const Uploading = () => {
           </span>
         </div>
         <div className={style.buttonContainer}>
-          <Button text="Publish" />
+          <button className={style.publishButton}>publish</button>
         </div>
       </div>
     </div>

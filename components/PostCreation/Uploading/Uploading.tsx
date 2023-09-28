@@ -4,14 +4,26 @@ import style from './Uploading.module.scss'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { useState } from 'react'
+import { MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
+import Image from 'next/image'
 
 const Uploading = () => {
   const { photos } = usePostCreationDataSelector()
   const { userName, avatars } = useProfileSettingsSSRSelector()
   const [symbolCounter, setSymbolCounter] = useState(0)
+  const [locations, setLocation] = useState<string[]>([])
   const textareaMaxSymbols = 500
+
   const handleTextareaChange = (e: any) => {
     setSymbolCounter(e.target.value.length)
+  }
+
+  const handleLocationSubmit = (e: any) => {
+    e.preventDefault()
+    console.log(locations)
+    if (locations.length === 2) return
+
+    setLocation((prev) => [e.target[0].value, ...prev])
   }
 
   const photosLinks = photos.map((photoObj: any) => {
@@ -44,6 +56,17 @@ const Uploading = () => {
         </div>
         <div className={style.buttonContainer}>
           <button className={style.publishButton}>publish</button>
+        </div>
+        <form onSubmit={(e) => handleLocationSubmit(e)} className={style.locationInput}>
+          <MainInput label="Add location" />
+          <button type="submit">
+            <Image width={24} height={24} src="/../sidebar-icons/pin-outline.svg" alt="" />
+          </button>
+        </form>
+        <div className={style.locationContainer}>
+          {locations.map((location) => (
+            <div className={style.location}>{location}</div>
+          ))}
         </div>
       </div>
     </div>

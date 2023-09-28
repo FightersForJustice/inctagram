@@ -49,5 +49,38 @@
         line-height: 24px;
       }
     }
+    .locationInput {
+      margin-top: 60px;
+      position: relative;
+
+      input {
+        padding-right: 40px;
+        &:has(+ button:hover) {
+          border-color: #8d9094;
+        }
+      }
+
+      button {
+        background-color: inherit;
+        filter: invert(0.9);
+        position: absolute;
+        right: 8px;
+        top: 27px;
+        cursor: pointer;
+        &:hover {
+          filter: invert(0.6);
+        }
+      }
+    }
+    .locationContainer {
+      margin-top: 6px;
+      .location {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        min-height: 60px;
+      }
+    }
   }
 }

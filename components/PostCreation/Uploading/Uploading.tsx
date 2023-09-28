@@ -6,16 +6,20 @@ import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
 import { useState } from 'react'
 import { MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { setDescription } from '@/core/slices/postCreationSlice'
 
 const Uploading = () => {
-  const { photos } = usePostCreationDataSelector()
+  const { photos, description } = usePostCreationDataSelector()
   const { userName, avatars } = useProfileSettingsSSRSelector()
   const [symbolCounter, setSymbolCounter] = useState(0)
   const [locations, setLocation] = useState<string[]>([])
   const textareaMaxSymbols = 500
+  const dispatch = useDispatch()
 
   const handleTextareaChange = (e: any) => {
     setSymbolCounter(e.target.value.length)
+    dispatch(setDescription(e.target.value))
   }
 
   const handleLocationSubmit = (e: any) => {
@@ -49,6 +53,7 @@ const Uploading = () => {
             label="Add publication descriptions"
             maxLength={textareaMaxSymbols}
             onChange={(e) => handleTextareaChange(e)}
+            value={description}
           />
           <span className={style.symbolCounter}>
             {symbolCounter}/{textareaMaxSymbols}

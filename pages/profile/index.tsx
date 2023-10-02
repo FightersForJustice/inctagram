@@ -20,6 +20,7 @@ import img8 from '../../public/img/post/img8.jpg'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
 import { useEffect, useState } from 'react'
 import { ProfileType } from '@/components/Profile-Settings/profileSettingsTypes'
+import { useScrollEffect } from '../../hooks/useScrollEffect'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest)
@@ -38,35 +39,18 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 })
 
 const MyProfile = ({ userProfile }: ProfileType) => {
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8]
+  console.log(userProfile)
 
-  const [imagesContent, setImagesContent] = useState(images)
-  const [fetching, setFetching] = useState(false)
+  const [images, setImagesContent] = useState(['fff', 'hhhh'])
 
   const router = useRouter()
 
-  useEffect(() => {
-    if (fetching) {
-      setImagesContent((prevArray) => [...prevArray, ...images])
-      setFetching(false)
-    }
-  }, [fetching])
-  useEffect(() => {
-    document.addEventListener('scroll', handleScroll)
-    return function () {
-      document.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  useScrollEffect(setImagesContent, images)
 
   const handleClick = () => {
     router.push(userRouts.profileSettings)
   }
-  const handleScroll = (e: Event) => {
-    const target = e.target as Document
-    if (target.documentElement.scrollHeight - (target.documentElement.scrollTop + window.innerHeight) < 100) {
-      setFetching(true)
-    }
-  }
+
   return (
     <PageWrapper>
       <div className={s.main}>
@@ -99,9 +83,9 @@ const MyProfile = ({ userProfile }: ProfileType) => {
           </div>
         </div>
         <div className={s.post}>
-          {imagesContent.map((img, index) => (
-            <Image width={234} height={228} src={img} alt="Post" key={index} />
-          ))}
+          {
+            // тут посты отображаются
+          }
         </div>
       </div>
     </PageWrapper>

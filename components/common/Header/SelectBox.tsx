@@ -3,8 +3,8 @@ import i18next from 'i18next'
 import style from './Header.module.scss'
 import UpArrow from '@/public/img/arrow/up.svg'
 import DownArrow from '@/public/img/arrow/down.svg'
-import Ru from '@/public/img/flags/ru.svg'
-import Gb from '@/public/img/flags/gb.svg'
+import Ru from '@/public/icons/flags/ru.svg'
+import Gb from '@/public/icons/flags/gb.svg'
 interface Language {
   code: string
   country_code: string

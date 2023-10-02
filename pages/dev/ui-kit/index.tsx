@@ -18,6 +18,7 @@ import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
+import PostZooming from '@/@ui/ui-kit/Zooming/Zooming'
 
 export const getStaticProps = async () => {
   return {
@@ -163,6 +164,17 @@ const Login = () => {
               4. Confirm your actions
             </CheckBox>
           </div>
+        </div>
+        <div className={style.kitBlock}>
+          <h2 className={style.componentHeader}>Zooming</h2>
+          <PostZooming
+            initialImageSrc={
+              'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80'
+            }
+            onSave={function (editedImageSrc: string): void {
+              throw new Error('Function not implemented.')
+            }}
+          ></PostZooming>
         </div>
       </div>
     </PageWrapper>

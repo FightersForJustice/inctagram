@@ -8,6 +8,7 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
+import { HomeResponseType } from './Home.types'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const postsAll = await axiosAPI.posts.getPostsServer(req as NextApiRequest)
@@ -25,8 +26,7 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
   }
 })
 
-const Home = (props) => {
-  console.log(props)
+const Home = (props: HomeResponseType) => {
   return (
     <PageWrapper>
       {props.postsAll.items.map((item, index) => (
@@ -42,8 +42,7 @@ const Home = (props) => {
               <Image width={24} height={24} className={s.action} src="sidebar-icons/more-horizontal.svg" alt="" />
             </div>
           </div>
-          <MyCarousel items={item.images.map((item, index) => item.url)} />
-
+          <MyCarousel items={item.images.filter((img) => img.height === 1440).map((img, index) => img.url)} />
           <div className={s.icons}>
             <div className={s.left}>
               <Image width={24} height={24} src="sidebar-icons/heart-outline.svg" alt="" />

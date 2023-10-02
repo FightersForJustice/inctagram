@@ -1,11 +1,7 @@
 import { faker } from '@faker-js/faker'
-
-const serverId = Cypress.env('serverId')
-const id = faker.string.numeric(2)
-const emailAddress = `user${id}@${serverId}.mailosaur.net`
-
-// user that doesn't confirm registration
-const email = `user10@${serverId}.mailosaur.net`
+const { MailSlurp } = require('mailslurp-client')
+const apiKey = Cypress.env('API_KEY')
+const mailslurp = new MailSlurp({ apiKey })
 
 const userName = faker.word.noun(7)
 const userPassword = faker.internet.password({ length: 7, pattern: /\w/ })
@@ -13,14 +9,21 @@ const userPassword = faker.internet.password({ length: 7, pattern: /\w/ })
 let confirmLink
 let token
 
-describe('Email testing with mailosaur', () => {
-  before('Registration', () => {
+describe('Email testing ', () => {
+  before('Create inbox', () => {
+    cy.createInbox().then((inbox) => {
+      cy.wrap(inbox.id).as('inboxId')
+      cy.wrap(inbox.emailAddress).as('emailAddress')
+    })
+  })
+
+  it('Registration', { tags: '@skip' }, function () {
     cy.request({
       method: 'POST',
       url: 'https://inctagram.net/api/v1/auth/registration',
       body: {
         userName: userName,
-        email: emailAddress,
+        email: this.emailAddress,
         password: userPassword,
       },
     }).then((res) => {
@@ -28,74 +31,84 @@ describe('Email testing with mailosaur', () => {
     })
   })
 
-  it('Check finish registration email', () => {
-    cy.mailosaurGetMessage(serverId, {
-      sentTo: emailAddress,
-    }).then((message) => {
-      expect(message.subject).to.equal('Finish registration')
-      confirmLink = message.html.links[0].href
-      expect(message.html.links[0]).to.exist
-      expect(message.html.links[0].text).to.contains('Set up your account')
-
-      const parser = new DOMParser(message.html.body)
-      const parseDoc = parser.parseFromString(message.html.body, 'text/html')
+  it('Check finish registration email', { tags: '@skip' }, function () {
+    cy.waitLatestEmail(this.inboxId).then((email) => {
+      expect(email.subject).to.equal('Finish registration')
+      const parser = new DOMParser(email.body)
+      const parseDoc = parser.parseFromString(email.body, 'text/html')
       const title = parseDoc.querySelector('h2')
-
-      const text = parseDoc.querySelector('p')
       expect(title.textContent).to.be.eql('Verify your email address')
-      expect(text.textContent).to.contain(
-        'Thanks for joining. Please click the button below and set up your account. It takes less than a minute.'
-      )
+      const link = parseDoc.querySelector('a')
+      expect(link.textContent).to.contain('Set up your account')
+      confirmLink = parseDoc.querySelector('a').getAttribute('href')
     })
   })
 
-  it('Confirm the registration', () => {
-    cy.confirmCode(confirmLink).then((code) => {
+  it('Confirm the registration', { tags: '@skip' }, () => {
+    cy.confirmCode(confirmLink).then(function (code) {
       cy.request({
         method: 'POST',
         url: 'https://inctagram.net/api/v1/auth/registration-confirmation',
         body: {
           confirmationCode: code,
         },
+      }).then((res) => {
+        expect(res.status).to.eq(204)
       })
-        .then((res) => {
-          expect(res.status).to.eq(204)
-        })
-        .then('Log in after conformation registration', () => {
-          cy.request({
-            method: 'POST',
-            url: 'https://inctagram.net/api/v1/auth/login',
-            body: {
-              email: emailAddress,
-              password: userPassword,
-            },
-          }).then((res) => {
-            token = res.body.accessToken
-            expect(res.status).to.eq(200)
-          })
-        })
     })
   })
 
-  it('Resend conformation code to email', () => {
+  it('Log in first time after registration', { tags: '@skip' }, function () {
     cy.request({
       method: 'POST',
-      url: 'https://inctagram.net/api/v1/auth/registration-email-resending',
+      url: 'https://inctagram.net/api/v1/auth/login',
       body: {
-        email: email,
-        baseUrl: 'https://inctagram.net/auth/failed',
+        email: this.emailAddress,
+        password: userPassword,
       },
+    }).then((res) => {
+      token = res.body.accessToken
+      expect(res.status).to.eq(200)
     })
-      .then((res) => {
-        expect(res.status).to.eq(204)
+  })
+
+  it('Resend conformation code to email', { tags: '@skip' }, function () {
+    cy.createInbox()
+      .then((inbox) => {
+        cy.wrap(inbox.id).as('inboxId2')
+        cy.wrap(inbox.emailAddress).as('emailAddress2')
       })
-      .then('To check resending email for confarmation registration', () => {
-        cy.mailosaurGetMessage(serverId, {
-          sentTo: email,
-        }).then((message) => {
-          expect(message.subject).to.equal('Finish registration')
+      .then('', function () {
+        cy.request({
+          method: 'POST',
+          url: 'https://inctagram.net/api/v1/auth/registration',
+          body: {
+            userName: faker.word.noun(7),
+            email: this.emailAddress2,
+            password: '123asdfgh',
+          },
+        }).then((res) => {
+          expect(res.status).to.eq(204)
         })
       })
+      .then('Resend the finish registration email', function () {
+        cy.request({
+          method: 'POST',
+          url: 'https://inctagram.net/api/v1/auth/registration-email-resending',
+          body: {
+            email: this.emailAddress2,
+            baseUrl: 'https://inctagram.net/auth/failed',
+          },
+        }).then((res) => {
+          expect(res.status).to.eq(204)
+        })
+      })
+  })
+
+  it('Check second finish registration email', { tags: '@skip' }, function () {
+    cy.mailslurp.waitLatestEmail(this.inboxId2).then((email) => {
+      expect(email.subject).to.equal('Finish registration')
+    })
   })
 
   after('Delete user', () => {

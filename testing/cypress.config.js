@@ -5,8 +5,8 @@ dotenv.config()
 module.exports = defineConfig({
   watchForFileChanges: false,
   env: {
-    MAILOSAUR_API_KEY: process.env.MAILOSAUR_API_KEY,
-    serverId: process.env.SERVER_ID,
+    API_KEY: process.env.MAILSLURP_API_KEY,
+    allureReuseAfterSpec: true,
   },
   e2e: {
     // supportFile:cypress/support/e2e.js,
@@ -14,7 +14,10 @@ module.exports = defineConfig({
     // baseUrl: 'https://inctagram.net/',
     baseUrl: 'https://inctagram-git-staging-fightersforjustice.vercel.app/',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('@cypress/grep/src/plugin')(config)
+      const allureWriter = require('@shelex/cypress-allure-plugin/writer')
+      allureWriter(on, config)
+      return config
     },
   },
 })

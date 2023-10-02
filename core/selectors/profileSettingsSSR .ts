@@ -6,7 +6,7 @@ import { RootState } from '../reducers'
 const selectProfileSettingsSSR = (state: RootState) => state[USER_KEY]
 
 const profileSettingsSSRSelector = createSelector([selectProfileSettingsSSR], (user) => ({
-  userId: user.userData.userId,
+  id: user.userData.userId,
   userName: user.userData.userName,
   firstName: user.userData.firstName,
   lastName: user.userData.lastName,

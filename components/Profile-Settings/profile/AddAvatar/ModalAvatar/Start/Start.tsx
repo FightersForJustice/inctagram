@@ -2,15 +2,15 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import style from './start.module.scss'
 import { ChangeEvent, Dispatch, SetStateAction, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { StatesСomponentType } from '../../type'
+import { StatesComponentType } from '../../type'
 import { calculateNewSize } from '@/utils/Image/calculateNewSize'
 
 export interface Props {
   setUploadedImage: Dispatch<SetStateAction<string>>
-  setStatesСomponent: (modalStates: StatesСomponentType) => void
+  setStatesComponent: (modalStates: StatesComponentType) => void
 }
 
-export const StartImg: React.FC<Props> = ({ setUploadedImage, setStatesСomponent }) => {
+export const StartImg: React.FC<Props> = ({ setUploadedImage, setStatesComponent }) => {
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
 
@@ -37,7 +37,7 @@ export const StartImg: React.FC<Props> = ({ setUploadedImage, setStatesСomponen
         img.src = reader.result as string
       }
       reader.readAsDataURL(file)
-      setStatesСomponent('crop')
+      setStatesComponent('crop')
     }
   }
 

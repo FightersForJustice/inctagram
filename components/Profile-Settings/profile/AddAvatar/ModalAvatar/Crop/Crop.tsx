@@ -4,7 +4,7 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useTranslation } from 'react-i18next'
 import { Dispatch, SetStateAction } from 'react'
-import { StatesСomponentType } from '../../type'
+import { StatesComponentType } from '../../type'
 import { getCroppedImage } from '@/utils/Image/getCroppedImage'
 
 export interface Props {
@@ -12,11 +12,11 @@ export interface Props {
   uploadedImage: string
   setCrop: Dispatch<SetStateAction<Crop>>
   setCroppedImageUrl: Dispatch<SetStateAction<string | null>>
-  setStatesСomponent: Dispatch<SetStateAction<StatesСomponentType>>
+  setStatesComponent: Dispatch<SetStateAction<StatesComponentType>>
 }
 
 export const CropImg: React.FC<Props> = (Props) => {
-  const { crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesСomponent } = Props
+  const { crop, uploadedImage, setCrop, setCroppedImageUrl, setStatesComponent } = Props
 
   const { t } = useTranslation()
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
@@ -27,13 +27,13 @@ export const CropImg: React.FC<Props> = (Props) => {
     image.onload = () => {
       const croppedImage = getCroppedImage(image, crop)
       setCroppedImageUrl(croppedImage)
-      setStatesСomponent('save')
+      setStatesComponent('save')
     }
   }
 
   const handlerback = () => {
     setCroppedImageUrl(null)
-    setStatesСomponent('start')
+    setStatesComponent('start')
   }
 
   const handlerSetCrop = (c: SetStateAction<Crop>) => {

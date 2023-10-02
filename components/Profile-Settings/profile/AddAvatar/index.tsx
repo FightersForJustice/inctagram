@@ -10,9 +10,12 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS, BUTTON_VARIATIONS } from '@/@ui/ui-kit/Button/constants'
 import { useAvatarDeleteMutation } from '@/assets/api/user/profileQueryApi'
 import { useTranslation } from 'react-i18next'
-import { ImageInfo, StatesСomponentType } from './type'
+import { ImageInfo, StatesComponentType } from './type'
 import { Loading } from '@/components/common/Loaders/Loading'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { setUserProfileSSR } from '@/core/slices/userSlice'
+import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
 
 type Props = {
   avatarUrl: ImageInfo[]
@@ -23,55 +26,64 @@ export const ImgCrop: React.FC<Props> = (props) => {
   const translate = (key: string): string => t(`add_profile_photo.${key}`)
 
   const [avatarDelete] = useAvatarDeleteMutation()
+  const userProfile = useProfileSettingsSSRSelector()
 
   const [ModalActive, setModalActive] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [crop, setCrop] = useState<Crop>({ unit: 'px', x: 25, y: 25, width: 192, height: 192 })
   const [croppedImageUrl, setCroppedImageUrl] = useState<string | null>(null)
   const [uploadedImage, setUploadedImage] = useState<string>('')
-  const [statesСomponent, setStatesСomponent] = useState<StatesСomponentType>('')
+  const [statesComponent, setStatesComponent] = useState<StatesComponentType>('')
   const [avatar, setAvatar] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    props.avatarUrl.length == 2 ? setAvatar(props.avatarUrl[0].url) : ''
-  }, [])
+    if (props.avatarUrl.length !== 2) return
+    setAvatar(props.avatarUrl[0].url)
+  }, [props.avatarUrl])
 
   const handlerDeleteAvatar = () => {
     setIsLoading(true)
     avatarDelete().then(() => {
       setAvatar('')
+      dispatch(
+        setUserProfileSSR({
+          ...userProfile,
+          avatars: [],
+        })
+      )
       setIsLoading(false)
     })
   }
   const handlerOpenModal = () => {
     setModalActive(true)
-    setStatesСomponent('start')
+    setStatesComponent('start')
   }
 
   return (
     <>
       {isLoading && <Loading />}
       <Modal active={ModalActive} setActive={setModalActive} title={translate('add_profile_photo')} close={true}>
-        {statesСomponent == 'start' ? (
-          <StartImg setUploadedImage={setUploadedImage} setStatesСomponent={setStatesСomponent} />
+        {statesComponent == 'start' ? (
+          <StartImg setUploadedImage={setUploadedImage} setStatesComponent={setStatesComponent} />
         ) : (
           ''
         )}
-        {statesСomponent == 'crop' ? (
+        {statesComponent == 'crop' ? (
           <CropImg
             crop={crop}
             uploadedImage={uploadedImage}
             setCrop={setCrop}
             setCroppedImageUrl={setCroppedImageUrl}
-            setStatesСomponent={setStatesСomponent}
+            setStatesComponent={setStatesComponent}
           />
         ) : (
           ''
         )}
-        {statesСomponent == 'save' ? (
+        {statesComponent == 'save' ? (
           <ImgSave
             croppedImageUrl={croppedImageUrl}
-            setStatesСomponent={setStatesСomponent}
+            setStatesComponent={setStatesComponent}
             setCroppedImageUrl={setCroppedImageUrl}
             setModalActive={setModalActive}
             setAvatar={setAvatar}

@@ -3,6 +3,7 @@ import AvatarEditor from 'react-avatar-editor'
 import style from './Zooming.module.scss'
 import Maximize from '@/public/icons/maximize.svg'
 import MaximizeOutline from '@/public/icons/maximizeOutline.svg'
+import ExpandOutline from '@/public/icons/expandOutline.svg'
 
 interface PostZoomingProps {
   initialImageSrc: string | File
@@ -41,11 +42,9 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
   const handleCropImage = () => {
     const editor = editorRef.current
     if (editor) {
-      // Получите отредактированное изображение
       const canvas = editor.getImageScaledToCanvas()
-      const editedImageSrc = canvas.toDataURL() // Преобразуйте в формат data URL
+      const editedImageSrc = canvas.toDataURL()
 
-      // Вызовите onSave с отредактированным изображением
       onSave(editedImageSrc)
     }
   }
@@ -53,6 +52,11 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
   return (
     <div className={style.editorContainer}>
       <div className={style.buttonContainer}>
+        <button className={style.toggleButton}>
+          <div className={style.icon}>
+            <ExpandOutline />
+          </div>
+        </button>
         <button className={style.toggleButton} onClick={toggleZoomSlider}>
           <div className={style.icon}>{isZoomSliderOpen ? <Maximize /> : <MaximizeOutline />}</div>
         </button>

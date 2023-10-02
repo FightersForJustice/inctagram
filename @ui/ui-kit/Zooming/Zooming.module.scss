@@ -5,6 +5,8 @@
   height: 490px !important;
 }
 .icon {
+  height: 30px;
+  width: 30px;
   border-radius: 2px;
   opacity: 0.8;
   background: var(--dark-500, #171717);
@@ -17,10 +19,6 @@
   position: absolute;
   bottom: 18px;
   left: 72px;
-}
-
-.toggleButton {
-  /* Стили для кнопки открытия/закрытия слайдера */
 }
 
 .sliderContainer {

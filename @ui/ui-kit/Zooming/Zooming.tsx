@@ -54,7 +54,7 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
     <div className={style.editorContainer}>
       <div className={style.buttonContainer}>
         <button className={style.toggleButton} onClick={toggleZoomSlider}>
-          <div className={style.icon}>{isZoomSliderOpen ? <MaximizeOutline /> : <Maximize />}</div>
+          <div className={style.icon}>{isZoomSliderOpen ? <Maximize /> : <MaximizeOutline />}</div>
         </button>
       </div>
 

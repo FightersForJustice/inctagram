@@ -34,7 +34,7 @@ const Home = (props) => {
           <div className={s.user}>
             <div className={s.left}>
               <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />
-              <span className={s.name}>{item.id}</span>
+              <span className={s.name}>URLProfiele</span>
               <span className={s.point}></span>
               <span className={s.time}>{item.createdAt}</span>
             </div>

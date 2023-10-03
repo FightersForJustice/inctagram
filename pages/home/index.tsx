@@ -13,9 +13,10 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setHomePostSSR } from '@/core/slices/homeSlice'
 import { HomeType } from '@/core/slices/Home.Types'
+import { useScrollEffect } from './hook'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
-  const postsAll = await axiosAPI.posts.getPostsAll(req as NextApiRequest)
+  const postsAll = await axiosAPI.posts.getPostsSSR(req as NextApiRequest)
 
   if (!postsAll) {
     return {
@@ -33,6 +34,10 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 const Home = (props: HomeResponseType) => {
   const { totalCount, pageSize, items } = props.postsAll
   const dispatch = useDispatch()
+  const handleScroll = () => {
+    console.log('Сработал скрол')
+  }
+  useScrollEffect(handleScroll)
 
   useEffect(() => {
     dispatch(setHomePostSSR({ totalCount, pageSize, items }))

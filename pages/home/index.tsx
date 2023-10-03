@@ -9,9 +9,12 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { HomeResponseType } from './Home.types'
+import { useState } from 'react'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
-  const postsAll = await axiosAPI.posts.getPostsServer(req as NextApiRequest)
+  const idPostLast = ''
+
+  const postsAll = await axiosAPI.posts.getPostsAll(req as NextApiRequest, idPostLast)
 
   if (!postsAll) {
     return {
@@ -27,6 +30,7 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 })
 
 const Home = (props: HomeResponseType) => {
+  console.log(props)
   return (
     <PageWrapper>
       {props.postsAll.items.map((item, index) => (

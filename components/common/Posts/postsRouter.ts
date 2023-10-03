@@ -1,3 +1,3 @@
 export const postsRouts = {
-  postsAll: '/posts/all',
+  postsAll: '/posts/all/',
 }

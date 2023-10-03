@@ -1,19 +1,19 @@
 import { AxiosResponse } from 'axios'
-import { userRouts } from '@/components/common/User/userRouts'
 
 import { NextApiRequest } from 'next'
 import { createAxiosServerInstance, instance } from '../instance'
 import { postsRouts } from '@/components/common/Posts/postsRouter'
 
-const getPostsServer = async (req: NextApiRequest) => {
+const params = {
+  pageSize: '2',
+}
+
+const getPostsAll = async (req: NextApiRequest, idPostLast: string) => {
   const axiosInstance = createAxiosServerInstance(req)
-  const response = await axiosInstance.get<AxiosResponse>(postsRouts.postsAll)
+  const response = await axiosInstance.get<AxiosResponse>(postsRouts.postsAll + idPostLast, { params })
   return response.data
 }
 
 export const postsAxiosApi = {
-  getPostsAll() {
-    return instance.get(postsRouts.postsAll).then(({ data }) => data)
-  },
-  getPostsServer,
+  getPostsAll,
 }

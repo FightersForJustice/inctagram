@@ -3,14 +3,11 @@ import { AxiosResponse } from 'axios'
 import { NextApiRequest } from 'next'
 import { createAxiosServerInstance, instance } from '../instance'
 import { postsRouts } from '@/components/common/Posts/postsRouter'
+import { HomeType } from '@/core/slices/Home.Types'
 
-const params = {
-  pageSize: '2',
-}
-
-const getPostsAll = async (req: NextApiRequest, idPostLast: string) => {
+const getPostsAll = async (req: NextApiRequest) => {
   const axiosInstance = createAxiosServerInstance(req)
-  const response = await axiosInstance.get<AxiosResponse>(postsRouts.postsAll + idPostLast, { params })
+  const response = await axiosInstance.get<AxiosResponse<HomeType>>(postsRouts.postsAll)
   return response.data
 }
 

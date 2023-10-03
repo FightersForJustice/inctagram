@@ -9,12 +9,13 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { HomeResponseType } from './Home.types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setHomePostSSR } from '@/core/slices/homeSlice'
+import { HomeType } from '@/core/slices/Home.Types'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
-  const idPostLast = ''
-
-  const postsAll = await axiosAPI.posts.getPostsAll(req as NextApiRequest, idPostLast)
+  const postsAll = await axiosAPI.posts.getPostsAll(req as NextApiRequest)
 
   if (!postsAll) {
     return {
@@ -31,6 +32,13 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 
 const Home = (props: HomeResponseType) => {
   console.log(props)
+  const { totalCount, pageSize, items } = props.postsAll
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setHomePostSSR({ totalCount, pageSize, items }))
+  }, [dispatch, { totalCount, pageSize, items }])
+
   return (
     <PageWrapper>
       {props.postsAll.items.map((item, index) => (

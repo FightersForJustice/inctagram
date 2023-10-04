@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-export const useScrollEffect = (onScrollCallback: () => void) => {
-  const [fetching, setFetching] = useState(false)
+export const useScrollEffect = (
+  onScrollCallback: () => void,
+  fetching: boolean,
+  setFetching: Dispatch<SetStateAction<boolean>>
+) => {
   useEffect(() => {
     if (fetching) {
       onScrollCallback()
-      setFetching(false)
     }
   }, [fetching])
 

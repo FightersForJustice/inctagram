@@ -9,7 +9,7 @@ import { useHomeSSRSelector } from '@/core/selectors/homeSSR'
 import { useDispatch } from 'react-redux'
 import { setHomePostSSR, setSmallestId } from '@/core/slices/homeSlice'
 import { useScrollEffect } from '@/pages/home/hook'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetPostsPreviousMutation } from '@/assets/api/Home/homeQueryApi'
 import { HomeTypeRespons } from '@/core/slices/Home.Types'
 
@@ -22,20 +22,24 @@ const Home = () => {
   useEffect(() => {
     dispatch(setSmallestId({ id }))
   }, [id])
-
+  const [fetching, setFetching] = useState(false)
   const handleScroll = () => {
     loginMutation(id)
       .unwrap()
       .then((data: HomeTypeRespons) => {
         console.log(data)
         dispatch(setHomePostSSR(data))
+        setFetching(false)
       })
-      .catch((error) => console.log(error.data.error))
+      .catch((error) => {
+        console.log(error.data.error)
+        setFetching(false)
+      })
 
     //
   }
 
-  useScrollEffect(handleScroll)
+  useScrollEffect(handleScroll, fetching, setFetching)
 
   // console.log(homeData)
 

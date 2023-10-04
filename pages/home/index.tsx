@@ -30,13 +30,9 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 const HomePage = (props: HomeResponseType) => {
   const { totalCount, pageSize, items } = props.postsAll
   const dispatch = useDispatch()
-  const handleScroll = () => {
-    console.log('Сработал скрол')
-  }
-  useScrollEffect(handleScroll)
 
   useEffect(() => {
-    dispatch(setHomePostSSR({ totalCount, pageSize, items }))
+    dispatch(setHomePostSSR({ items }))
   }, [dispatch, { totalCount, pageSize, items }])
 
   return (

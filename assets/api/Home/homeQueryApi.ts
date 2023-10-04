@@ -2,9 +2,34 @@ import { baseUrl } from '@/assets/api/common.api'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 import { postsRouts } from '@/components/common/Posts/postsRouter'
+import { UserProfile } from '../user/userTypes'
+import { userRouts } from '@/app/routes/userRouts'
+import { PostsAllType } from '@/pages/home/Home.types'
+import { HomeTypeItems, HomeTypeRespons } from '@/core/slices/Home.Types'
+export interface HomeImageType {
+  url: string
+  width: number
+  height: number
+  fileSize: number
+  uploadId: string
+}
 
-export const postsQueryApi = createApi({
-  reducerPath: 'profileApi',
+export interface HomePostType {
+  id: number
+  description: string
+  location: null | string
+  images: HomeImageType[]
+  createdAt: string
+  updatedAt: string
+}
+
+export type HomeType = {
+  totalCount: number
+  pageSize: number
+  items: HomePostType[]
+}
+export const homeQueryApi = createApi({
+  reducerPath: 'homeApi',
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
@@ -18,15 +43,15 @@ export const postsQueryApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getPostsAll: builder.query({
-      query: () => ({
-        url: postsRouts.postsAll,
+    getPostsPrevious: builder.mutation<HomeTypeRespons, number>({
+      query: (id) => ({
+        url: postsRouts.postsAll + id + '?pageSize=1',
         method: 'GET',
       }),
     }),
   }),
 })
 
-export const { useGetPostsAllQuery } = postsQueryApi
+export const { useGetPostsPreviousMutation } = homeQueryApi
 
-export default postsQueryApi
+export default homeQueryApi

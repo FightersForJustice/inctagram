@@ -15,7 +15,7 @@ interface Item {
   updatedAt: string
 }
 
-interface PostsAllType {
+export interface PostsAllType {
   totalCount: number
   pageSize: number
   items: Item[]

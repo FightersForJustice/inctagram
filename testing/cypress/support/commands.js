@@ -1,4 +1,17 @@
 const regSelectors = require('../fixtures/registrationSelectors.json')
+const { MailSlurp } = require('mailslurp-client')
+const apiKey = Cypress.env('API_KEY')
+const mailslurp = new MailSlurp({ apiKey })
+
+Cypress.Commands.add('createInbox', () => {
+  const inbox = mailslurp.createInbox()
+  return inbox
+})
+
+Cypress.Commands.add('waitLatestEmail', (inboxId) => {
+  const email = mailslurp.waitForLatestEmail(inboxId, 30000, true)
+  return email
+})
 
 Cypress.Commands.add('registration', (userName, userEmail, userPassword) => {
   cy.get(regSelectors.Name).type(userName)

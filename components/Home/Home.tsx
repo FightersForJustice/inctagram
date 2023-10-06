@@ -19,13 +19,13 @@ const Home = () => {
 
   const dispatch = useDispatch()
 
+  const [fetching, setFetching] = useState(false)
+
   const id: number = Math.min(...homeData.items.map((item) => item.id))
 
   useEffect(() => {
     dispatch(setSmallestId({ id }))
   }, [id])
-
-  const [fetching, setFetching] = useState(false)
 
   const handleScroll = () => {
     loginMutation(id)

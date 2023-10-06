@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 
 const HomePage = (props: HomeResponseType) => {
   const { totalCount, pageSize, items } = props.postsAll
+
   const dispatch = useDispatch()
 
   useEffect(() => {

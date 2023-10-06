@@ -1,7 +1,7 @@
 import { baseUrl } from '@/assets/api/common.api'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
-import { postsRouts } from '@/components/common/Posts/postsRouter'
+import { postsRouts } from '@/components/common/Home/postsRouter'
 import { UserProfile } from '../user/userTypes'
 import { userRouts } from '@/app/routes/userRouts'
 import { PostsAllType } from '@/pages/home/Home.types'

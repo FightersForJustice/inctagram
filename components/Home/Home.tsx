@@ -5,7 +5,6 @@ import s from './home.module.scss'
 import Image from 'next/image'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { useHomeSSRSelector } from '@/core/selectors/homeSSR'
-
 import { useDispatch } from 'react-redux'
 import { setHomePostSSR, setSmallestId } from '@/core/slices/homeSlice'
 import { useScrollEffect } from '@/pages/home/hook'
@@ -15,33 +14,32 @@ import { HomeTypeRespons } from '@/core/slices/Home.Types'
 
 const Home = () => {
   const [loginMutation, { isLoading }] = useGetPostsPreviousMutation()
+
   const homeData = useHomeSSRSelector()
+
   const dispatch = useDispatch()
+
   const id: number = Math.min(...homeData.items.map((item) => item.id))
-  console.log(id)
+
   useEffect(() => {
     dispatch(setSmallestId({ id }))
   }, [id])
+
   const [fetching, setFetching] = useState(false)
+
   const handleScroll = () => {
     loginMutation(id)
       .unwrap()
       .then((data: HomeTypeRespons) => {
-        console.log(data)
         dispatch(setHomePostSSR(data))
         setFetching(false)
       })
       .catch((error) => {
-        console.log(error.data.error)
         setFetching(false)
       })
-
-    //
   }
 
   useScrollEffect(handleScroll, fetching, setFetching)
-
-  // console.log(homeData)
 
   return (
     <PageWrapper>

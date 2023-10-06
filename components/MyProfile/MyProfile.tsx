@@ -13,7 +13,7 @@ const MyProfile = ({ userProfile }: ProfileType) => {
     router.push(userRouts.profileSettings)
   }
 
-  console.log(userProfile)
+  //console.log(userProfile)
 
   return (
     <div className={s.main}>
@@ -41,13 +41,7 @@ const MyProfile = ({ userProfile }: ProfileType) => {
             </div>
           </div>
           <div className={s.blockBottom}>
-            <p className={s.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco{' '}
-              <Link href="#" className={s.link}>
-                laboris nisi ut aliquip ex ea commodo consequat.
-              </Link>
-            </p>
+            <p className={s.text}>{userProfile.aboutMe}</p>
           </div>
         </div>
       </div>

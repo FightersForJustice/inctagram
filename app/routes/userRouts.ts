@@ -1,5 +1,5 @@
 export const userRouts = {
-  profile: '/users/profile/1',
+  profile: '/users/profile/',
   avatar: '/users/profile/avatar',
 
   home: '/home',

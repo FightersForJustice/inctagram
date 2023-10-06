@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import { NextApiRequest } from 'next'
 import { createAxiosServerInstance, instance } from '../instance'
 import { postsRouts } from '@/components/common/Home/postsRouter'
-import { HomeType } from '@/core/slices/Home.Types'
+import { HomeType } from './Home.types'
 const params = {
   pageSize: 1,
 }

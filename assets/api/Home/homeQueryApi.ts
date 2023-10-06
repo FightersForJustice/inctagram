@@ -2,32 +2,8 @@ import { baseUrl } from '@/assets/api/common.api'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
 import { postsRouts } from '@/components/common/Home/postsRouter'
-import { UserProfile } from '../user/userTypes'
-import { userRouts } from '@/app/routes/userRouts'
-import { PostsAllType } from '@/pages/home/Home.types'
-import { HomeTypeItems, HomeTypeRespons } from '@/core/slices/Home.Types'
-export interface HomeImageType {
-  url: string
-  width: number
-  height: number
-  fileSize: number
-  uploadId: string
-}
+import { HomeType } from './Home.types'
 
-export interface HomePostType {
-  id: number
-  description: string
-  location: null | string
-  images: HomeImageType[]
-  createdAt: string
-  updatedAt: string
-}
-
-export type HomeType = {
-  totalCount: number
-  pageSize: number
-  items: HomePostType[]
-}
 export const homeQueryApi = createApi({
   reducerPath: 'homeApi',
   baseQuery: fetchBaseQuery({
@@ -43,7 +19,7 @@ export const homeQueryApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getPostsPrevious: builder.mutation<HomeTypeRespons, number>({
+    getPostsPrevious: builder.mutation<HomeType, number>({
       query: (id) => ({
         url: postsRouts.postsAll + id + '?pageSize=1',
         method: 'GET',

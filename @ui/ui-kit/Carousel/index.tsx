@@ -9,8 +9,8 @@ type PropsType = {
 }
 
 const MyCarousel: React.FC<PropsType> = ({ items }) => {
-  const listItems = items.map((item: string) => (
-    <Slide index={0} innerClassName={s.slideInner}>
+  const listItems = items.map((item: string, index) => (
+    <Slide index={0} innerClassName={s.slideInner} key={index}>
       <img src={item} alt="" />
     </Slide>
   ))

@@ -7,7 +7,7 @@ import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { useHomeSSRSelector } from '@/core/selectors/homeSSR'
 import { useDispatch } from 'react-redux'
 import { setHomePostSSR, setSmallestId } from '@/core/slices/homeSlice'
-import { useScrollEffect } from '@/pages/home/hook'
+import { useScrollEffect } from '@/hooks/useScrollEffect'
 import { useEffect, useState } from 'react'
 import { useGetPostsPreviousMutation } from '@/assets/api/Home/homeQueryApi'
 import { HomeTypeRespons } from '@/core/slices/Home.Types'
@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <PageWrapper>
       {homeData.items.map((item, index) => (
-        <div className={s.content}>
+        <div className={s.content} key={index}>
           <div className={s.user}>
             <div className={s.left}>
               <Image className={s.avatar} width={36} height={36} src="/post/5.png" alt="Avatar" />

@@ -6,6 +6,8 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { userRouts } from '@/app/routes/userRouts'
+import { usePostsUserMutation } from '@/assets/api/myProfile/PostUserQueryApi'
+import { useState } from 'react'
 const MyProfile = ({ userProfile }: ProfileType) => {
   const router = useRouter()
 
@@ -13,10 +15,27 @@ const MyProfile = ({ userProfile }: ProfileType) => {
     router.push(userRouts.profileSettings)
   }
 
-  //console.log(userProfile)
+  const [postsUserMutation, { isLoading }] = usePostsUserMutation()
 
+  const handleClick = () => {
+    postsUserMutation('')
+      .unwrap()
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
   return (
     <div className={s.main}>
+      <button
+        onClick={handleClick}
+        style={{
+          width: '200px',
+          height: '50px',
+        }}
+      ></button>
       <div className={s.header}>
         <Image className={s.avatar} width={204} height={204} src={userProfile.avatars[0].url} alt="Avatar" />
         <div className={s.info}>

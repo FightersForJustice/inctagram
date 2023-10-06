@@ -6,7 +6,8 @@ import { ProfileType } from '@/components/Profile-Settings/profileSettingsTypes'
 import ProfileSettings from '@/components/Profile-Settings/ProfileSettings'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
-  const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest)
+  const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
+  const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest, isAuth.userId)
 
   if (!userProfile) {
     return {

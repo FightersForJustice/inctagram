@@ -13,7 +13,7 @@ import { useGetPostsPreviousMutation } from '@/assets/api/Home/homeQueryApi'
 import { HomeTypeRespons } from '@/core/slices/Home.Types'
 
 const Home = () => {
-  const [loginMutation, { isLoading }] = useGetPostsPreviousMutation()
+  const [postsPreviousMutation, { isLoading }] = useGetPostsPreviousMutation()
 
   const homeData = useHomeSSRSelector()
 
@@ -28,7 +28,7 @@ const Home = () => {
   }, [id])
 
   const handleScroll = () => {
-    loginMutation(id)
+    postsPreviousMutation(id)
       .unwrap()
       .then((data: HomeTypeRespons) => {
         dispatch(setHomePostSSR(data))

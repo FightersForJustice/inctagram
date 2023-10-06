@@ -7,21 +7,23 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { userRouts } from '@/app/routes/userRouts'
 import { usePostsUserMutation } from '@/assets/api/myProfile/PostUserQueryApi'
-import { useState } from 'react'
+import { setPost, setPostLast } from '@/core/slices/postUserSlice'
+import { useDispatch } from 'react-redux'
 const MyProfile = ({ userProfile }: ProfileType) => {
   const router = useRouter()
 
   const handleProfileSettings = () => {
     router.push(userRouts.profileSettings)
   }
-
+  const dispatch = useDispatch()
   const [postsUserMutation, { isLoading }] = usePostsUserMutation()
 
   const handleClick = () => {
-    postsUserMutation('')
+    postsUserMutation()
       .unwrap()
       .then((data) => {
         console.log(data)
+        dispatch(setPost(data))
       })
       .catch((error) => {
         console.log(error)

@@ -1,4 +1,4 @@
-type MyProfileImageType = {
+export type MyProfileImageType = {
   url: string
   width: number
   height: number
@@ -6,7 +6,7 @@ type MyProfileImageType = {
   uploadId: string
 }
 
-type MyProfileItemType = {
+export type MyProfileItemType = {
   id: number
   description: string
   location: string
@@ -15,8 +15,11 @@ type MyProfileItemType = {
   updatedAt: string
 }
 
-type MyProfileDataType = {
+export type MyProfileDataType = {
   totalCount: number
   pageSize: number
   items: MyProfileItemType[]
+}
+export type PostLastType = {
+  postLast: number
 }

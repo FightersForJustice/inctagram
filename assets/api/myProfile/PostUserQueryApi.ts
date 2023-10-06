@@ -1,11 +1,12 @@
 import { baseUrl } from '@/assets/api/common.api'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getAccessTokenFromCookie } from '@/utils/cookies'
-import { POST_USER_KEY } from '@/core/reducers/constant_keys'
+import { POST_USER_API_KEY } from '@/core/reducers/constant_keys'
 import { postRouts } from '@/app/routes/post'
+import { MyProfileDataType } from './MyProfile.Types'
 
 const PostUserQueryApi = createApi({
-  reducerPath: POST_USER_KEY,
+  reducerPath: POST_USER_API_KEY,
   baseQuery: fetchBaseQuery({
     baseUrl,
     credentials: 'include',
@@ -18,7 +19,7 @@ const PostUserQueryApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    postsUser: builder.mutation({
+    postsUser: builder.mutation<MyProfileDataType, void>({
       query: () => ({
         url: postRouts.postsUser,
         method: 'GET',

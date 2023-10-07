@@ -7,37 +7,46 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { userRouts } from '@/app/routes/userRouts'
 import { usePostsUserMutation } from '@/assets/api/myProfile/PostUserQueryApi'
-import { setPost, setPostLast } from '@/core/slices/postUserSlice'
+import { setPostUser, setPostsUserLast } from '@/core/slices/postUserSlice'
 import { useDispatch } from 'react-redux'
+import { usePostUserSelector } from '@/core/selectors/postUser'
+import { useScrollEffect } from '@/hooks/useScrollEffect'
+import { useEffect, useState } from 'react'
+
 const MyProfile = ({ userProfile }: ProfileType) => {
   const router = useRouter()
+
+  const [fetching, setFetching] = useState(false)
+
+  const dispatch = useDispatch()
 
   const handleProfileSettings = () => {
     router.push(userRouts.profileSettings)
   }
-  const dispatch = useDispatch()
-  const [postsUserMutation, { isLoading }] = usePostsUserMutation()
 
-  const handleClick = () => {
-    postsUserMutation()
+  const [postsUserMutation, { isLoading }] = usePostsUserMutation()
+  const postUserData = usePostUserSelector()
+  const postLast: number = Math.min(...postUserData.items.map((item) => item.id))
+  useEffect(() => {
+    dispatch(setPostsUserLast({ postLast }))
+  }, [postLast])
+  const handleScroll = () => {
+    postsUserMutation(postUserData.postLast)
       .unwrap()
       .then((data) => {
         console.log(data)
-        dispatch(setPost(data))
+        dispatch(setPostUser(data))
       })
       .catch((error) => {
         console.log(error)
       })
+      .finally(() => {
+        setFetching(false)
+      })
   }
+  useScrollEffect(handleScroll, fetching, setFetching)
   return (
     <div className={s.main}>
-      <button
-        onClick={handleClick}
-        style={{
-          width: '200px',
-          height: '50px',
-        }}
-      ></button>
       <div className={s.header}>
         <Image className={s.avatar} width={204} height={204} src={userProfile.avatars[0].url} alt="Avatar" />
         <div className={s.info}>
@@ -66,7 +75,11 @@ const MyProfile = ({ userProfile }: ProfileType) => {
           </div>
         </div>
       </div>
-      <div className={s.post}></div>
+      <div className={s.post}>
+        {postUserData.items.map((img, index) => (
+          <Image width={234} height={228} src={img.images[1].url} alt="Post" />
+        ))}
+      </div>
     </div>
   )
 }

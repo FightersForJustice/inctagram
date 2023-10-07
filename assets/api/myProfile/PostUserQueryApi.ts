@@ -19,9 +19,9 @@ const PostUserQueryApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    postsUser: builder.mutation<MyProfileDataType, void>({
-      query: () => ({
-        url: postRouts.postsUser,
+    postsUser: builder.mutation<MyProfileDataType, number>({
+      query: (postLast) => ({
+        url: postRouts.postsUser + postLast + '?pageSize=8',
         method: 'GET',
       }),
     }),

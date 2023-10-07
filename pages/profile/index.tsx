@@ -2,30 +2,17 @@ import { axiosAPI } from '@/assets/api/api'
 import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayout'
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import { GetServerSideProps, NextApiRequest } from 'next'
-import s from './style.module.scss'
-import Image from 'next/image'
-import { Button } from '@/@ui/ui-kit/Button/Button'
-import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
-import { useRouter } from 'next/router'
-import { userRouts } from '@/app/routes/userRouts'
-
-import img1 from '../../public/img/post/img1.jpg'
-import img2 from '../../public/img/post/img2.jpg'
-import img3 from '../../public/img/post/img3.jpg'
-import img4 from '../../public/img/post/img4.jpg'
-import img5 from '../../public/img/post/img5.jpg'
-import img6 from '../../public/img/post/img6.jpg'
-import img7 from '../../public/img/post/img7.jpg'
-import img8 from '../../public/img/post/img8.jpg'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
-import { useEffect, useState } from 'react'
-import { ProfileType } from '@/components/Profile-Settings/profileSettingsTypes'
-import { useScrollEffect } from '../../hooks/useScrollEffect'
 import MyProfile from '@/components/MyProfile/MyProfile'
+import { MyProfileType } from '@/assets/api/myProfile/MyProfile.Types'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setPostUser } from '@/core/slices/postUserSlice'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
   const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest, isAuth.userId)
+  const postsUser = await axiosAPI.postsUser.getPostsUserSSR(req as NextApiRequest)
 
   if (!userProfile) {
     return {
@@ -36,11 +23,18 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
   return {
     props: {
       userProfile,
+      postsUser,
     },
   }
 })
 
-const MyProfilePage = ({ userProfile }: ProfileType) => {
+const MyProfilePage = ({ userProfile, postsUser }: MyProfileType) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setPostUser(postsUser))
+  }, [dispatch, postsUser])
+
   return (
     <PageWrapper>
       <MyProfile userProfile={userProfile} />

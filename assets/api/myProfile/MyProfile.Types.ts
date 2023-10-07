@@ -1,3 +1,6 @@
+import { ProfileType } from '@/components/Profile-Settings/profileSettingsTypes'
+import { UserProfile } from '../user/userTypes'
+
 export type MyProfileImageType = {
   url: string
   width: number
@@ -22,4 +25,11 @@ export type MyProfileDataType = {
 }
 export type PostLastType = {
   postLast: number
+}
+export type MyProfileType = {
+  postsUser: MyProfileDataType
+  userProfile: UserProfile
+}
+export type postUserType = {
+  postsUser: MyProfileDataType
 }

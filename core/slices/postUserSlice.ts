@@ -15,13 +15,13 @@ const PostUserSlice = createSlice({
   name: POST_USER_KEY,
   initialState,
   reducers: {
-    setPost: (state, action: PayloadAction<MyProfileDataType>) => {
+    setPostUser: (state, action: PayloadAction<MyProfileDataType>) => {
       state.PostUserData = {
         ...state.PostUserData,
-        items: action.payload.items,
+        items: [...state.PostUserData.items, ...action.payload.items],
       }
     },
-    setPostLast: (state, action: PayloadAction<PostLastType>) => {
+    setPostsUserLast: (state, action: PayloadAction<PostLastType>) => {
       state.PostUserData = {
         ...state.PostUserData,
         postLast: action.payload.postLast,
@@ -31,4 +31,4 @@ const PostUserSlice = createSlice({
 })
 
 export const PostUserReducer = PostUserSlice.reducer
-export const { setPost, setPostLast } = PostUserSlice.actions
+export const { setPostUser, setPostsUserLast } = PostUserSlice.actions

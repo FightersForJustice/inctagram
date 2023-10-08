@@ -18,7 +18,9 @@ import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
-import { Example } from '@/@ui/ui-kit/Slider/Slider'
+
+import MyCarousel from '../../../@ui/ui-kit/Carousel/index'
+
 
 export const getStaticProps = async () => {
   return {
@@ -164,14 +166,16 @@ const Login = () => {
           </div>
         </div>
 
-        <div className={style.kitBlock}>
-          <h2 className={style.componentHeader}>Карусель</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-            <Example
-              items={['../img/post/5.png', '../img/post/1.jpg', '../img/post/2.jpg', '../img/post/3.jpg', '../img/post/4.jpg']}
-            />
-          </div>
-        </div>
+        <MyCarousel
+          items={[
+            'https://klike.net/uploads/posts/2023-02/1675839044_3-490.jpg',
+            'https://iphone-wallpaper.pics/wallpaper/d/k/dkxoz3_4df2b5a856d89bb6b9352eafd1333a92_raw.jpg',
+            'https://sun1-83.userapi.com/s/v1/if1/B5cjNd8qZYMHUE3PJ4O8dW1gJI0K8iGbeaolZMHUt9X7FwrdslA7tp9rxBOYbIZWvARw-CQr.jpg?size=400x400&quality=96&crop=619,144,1147,1147&ava=1',
+            'https://avatars.mds.yandex.net/i?id=c189e5932825e3763a40a4603ad5df6188b44526-9202550-images-thumbs&n=13',
+            'https://sun6-23.userapi.com/s/v1/if1/QmHxtJ87yWEQLVXFK-N_MLP2ohNN_nZHRbEuoV_81hTvY0ZdmuAG7FaXjokjGUcPhe2vxJTi.jpg?size=491x504&quality=96&crop=32,58,491,504&ava=1',
+          ]}
+        />
+
       </div>
     </PageWrapper>
   )

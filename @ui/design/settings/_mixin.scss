@@ -34,7 +34,7 @@
   line-height: 24px;
 }
 @mixin h3 {
-  color: #000;
+  color: colors.$light-100;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
@@ -65,13 +65,13 @@
   line-height: 24px;
 }
 @mixin bold_text_14 {
-  color: $dark-900;
+  color: colors.$light-100;
   font-size: 14px;
   font-weight: 700;
   line-height: 24px;
 }
 @mixin small_text {
-  color: $dark-900;
+  color: colors.$light-100;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;

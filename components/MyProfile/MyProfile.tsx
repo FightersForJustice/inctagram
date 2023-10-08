@@ -25,16 +25,15 @@ const MyProfile = ({ userProfile }: ProfileType) => {
   }
 
   const [postsUserMutation, { isLoading }] = usePostsUserMutation()
+
   const postUserData = usePostUserSelector()
+
   const postLast: number = Math.min(...postUserData.items.map((item) => item.id))
-  useEffect(() => {
-    dispatch(setPostsUserLast({ postLast }))
-  }, [postLast])
+
   const handleScroll = () => {
-    postsUserMutation(postUserData.postLast)
+    postsUserMutation(postLast)
       .unwrap()
       .then((data) => {
-        console.log(data)
         dispatch(setPostUser(data))
       })
       .catch((error) => {
@@ -44,7 +43,9 @@ const MyProfile = ({ userProfile }: ProfileType) => {
         setFetching(false)
       })
   }
+
   useScrollEffect(handleScroll, fetching, setFetching)
+
   return (
     <div className={s.main}>
       <div className={s.header}>

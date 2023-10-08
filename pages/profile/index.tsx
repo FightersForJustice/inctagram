@@ -14,12 +14,6 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
   const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest, isAuth.userId)
   const postsUser = await axiosAPI.postsUser.getPostsUserSSR(req as NextApiRequest)
 
-  if (!userProfile) {
-    return {
-      notFound: true,
-    }
-  }
-
   return {
     props: {
       userProfile,
@@ -33,7 +27,7 @@ const MyProfilePage = ({ userProfile, postsUser }: MyProfileType) => {
 
   useEffect(() => {
     dispatch(setPostUser(postsUser))
-  }, [dispatch, postsUser])
+  }, [postsUser])
 
   return (
     <PageWrapper>

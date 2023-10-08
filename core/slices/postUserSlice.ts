@@ -16,10 +16,7 @@ const PostUserSlice = createSlice({
   initialState,
   reducers: {
     setPostUser: (state, action: PayloadAction<MyProfileDataType>) => {
-      state.PostUserData = {
-        ...state.PostUserData,
-        items: [...state.PostUserData.items, ...action.payload.items],
-      }
+      state.PostUserData.items.push(...action.payload.items)
     },
     setPostsUserLast: (state, action: PayloadAction<PostLastType>) => {
       state.PostUserData = {

@@ -43,13 +43,13 @@ const MyProfile = ({ userProfile }: ProfileType) => {
         setFetching(false)
       })
   }
-
+  const avatars = userProfile.avatars[0] === undefined ? '/img/no.jpg' : userProfile.avatars[0].url
   useScrollEffect(handleScroll, fetching, setFetching)
 
   return (
     <div className={s.main}>
       <div className={s.header}>
-        <Image className={s.avatar} width={204} height={204} src={userProfile.avatars[0].url} alt="Avatar" />
+        <Image className={s.avatar} width={204} height={204} src={avatars} alt="Avatar" />
         <div className={s.info}>
           <div className={s.blockTop}>
             <div className={s.name}>{userProfile.userName}</div>

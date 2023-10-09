@@ -1,25 +1,27 @@
 import { usePostCreationDataSelector } from '@/core/selectors/postCreationSelector'
 import style from './Cropping.module.scss'
 import Image from 'next/image'
-import { ChangeEvent, useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { setPhoto } from '@/core/slices/postCreationSlice'
 import { useDispatch } from 'react-redux'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
+import { handlerImageUpload } from '../handlerImageUpload'
 
 const Cropping = () => {
   const dispatch = useDispatch()
   const { photos } = usePostCreationDataSelector()
   const [isAddPhotosClosed, setIsAddPhotosClosed] = useState(true)
+  const [image, setImage] = useState('')
+
+  useEffect(() => {
+    if (!image) return
+    dispatch(setPhoto({ photo: image }))
+  }, [image])
+
   const photosLinks = photos.map((photoObj: any) => {
     return photoObj.photo
   })
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      dispatch(setPhoto({ photo: URL.createObjectURL(e.target.files[0]) }))
-    }
-  }
 
   return (
     <div>
@@ -39,7 +41,13 @@ const Cropping = () => {
             <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={24} height={24} />
           </label>
 
-          <input type="file" accept="image/*" onChange={(e) => handleChange(e)} id="upload-button" style={{ display: 'none' }} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => handlerImageUpload(e, setImage)}
+            id="upload-button"
+            style={{ display: 'none' }}
+          />
         </div>
       </div>
     </div>

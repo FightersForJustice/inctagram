@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { setMeSSR } from '@/core/slices/userSlice'
 import { useRouter } from 'next/router'
 import { userRouts } from '@/app/routes/userRouts'
+import { useHomeSSRSelector } from '@/core/selectors/homeSSR'
 
 export const useHomePage = ({ isAuth }: HomeType) => {
   const dispatch = useDispatch()
@@ -12,12 +13,4 @@ export const useHomePage = ({ isAuth }: HomeType) => {
   useEffect(() => {
     dispatch(setMeSSR({ userId: isAuth.userId, userName: isAuth.userName, email: isAuth.email }))
   }, [dispatch])
-
-  const router = useRouter()
-
-  const handleClick = () => {
-    router.push(userRouts.profileSettings)
-  }
-
-  return { handleClick }
 }

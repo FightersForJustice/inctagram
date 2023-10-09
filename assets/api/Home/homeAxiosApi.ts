@@ -5,7 +5,7 @@ import { createAxiosServerInstance, instance } from '../instance'
 import { postsRouts } from '@/components/common/Home/postsRouter'
 import { HomeType } from './Home.types'
 const params = {
-  pageSize: 1,
+  pageSize: 3,
 }
 const urlWithParams = `${postsRouts.postsAll}?pageSize=${params.pageSize}`
 const getPostsSSR = async (req: NextApiRequest) => {

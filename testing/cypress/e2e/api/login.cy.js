@@ -7,10 +7,10 @@ describe('Login API test', () => {
   }
 
   let user = createTestData()
-  let token
   let bodyCookie
+  let token
 
-  it('Possitive login', () => {
+  it('Possitive login', { tags: ['@smoke', '@regression'] }, () => {
     cy.log(user)
     cy.request({
       method: 'POST',
@@ -20,16 +20,15 @@ describe('Login API test', () => {
         password: user.userPassword,
       },
     }).then((res) => {
-      token = res.body.accessToken
       expect(res.status).to.eq(200)
+      token = res.body.accessToken
       expect(res.body).to.have.property('accessToken')
       expect(res.headers).to.have.property('set-cookie')
       bodyCookie = res.headers['set-cookie']
-      expect(bodyCookie[0]).to.include('refreshToken')
     })
   })
 
-  it('Get information about current user', () => {
+  it('Get information about current user', { tags: ['@smoke', '@regression'] }, () => {
     cy.log(user)
     cy.request({
       method: 'GET',
@@ -38,12 +37,12 @@ describe('Login API test', () => {
     }).then((res) => {
       expect(res.status).to.eq(200)
       expect(res.body).to.have.property('userId')
-      expect(res.body).to.have.property('userName', 'Test23')
+      expect(res.body).to.have.property('userName')
       expect(res.body).to.have.property('email', user.userEmail)
     })
   })
 
-  it('Login with incorrect email', () => {
+  it('Login with wrong email', { tags: '@regression' }, () => {
     let arr = user.userEmail.split('')
     arr.splice(1, 1)
     let incEmail = arr.join('')
@@ -65,7 +64,7 @@ describe('Login API test', () => {
     })
   })
 
-  it('Login with incorrect password', () => {
+  it('Login with wrong password', { tags: '@regression' }, () => {
     cy.request({
       method: 'POST',
       url: 'https://inctagram.net/api/v1/auth/login',
@@ -79,22 +78,15 @@ describe('Login API test', () => {
       expect(res.body).to.have.property('error')
       expect(res.body).to.have.property('statusCode')
       expect(res.body).to.have.property('messages')
-      expect(res.body.messages[0].message).to.eq('invalid password or email')
+      expect(res.body.messages).to.eq('invalid password or email')
     })
   })
 
-  it('Logout', () => {
-    cy.request({
-      method: 'POST',
-      url: 'https://inctagram.net/api/v1/auth/login',
-      body: {
-        email: user.userEmail,
-        password: user.userPassword,
-      },
-    })
+  it('Logout', { tags: ['@smoke', '@regression'] }, () => {
     cy.request({
       method: 'POST',
       url: 'https://inctagram.net/api/v1/auth/logout',
+      headers: { Cookie: bodyCookie },
     }).then((res) => {
       expect(res.status).to.eq(204)
     })

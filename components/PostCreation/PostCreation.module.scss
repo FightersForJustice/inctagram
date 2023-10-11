@@ -1,14 +1,14 @@
 @use '@ui/design/settings/colors.scss' as colors;
 
 .container {
-  min-width: 444px;
-  min-height: 450px;
+  min-width: 492px;
+  min-height: 504px;
 }
 
 .paginator {
   position: absolute;
   top: 16px;
-  right: 16px;
+  right: 24px;
   display: flex;
   align-items: center;
   .next {
@@ -22,5 +22,8 @@
     cursor: pointer;
     filter: invert(1);
     margin-right: 16px;
+  }
+  .previousPublicationPage {
+    margin-right: 36px;
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react'
+import { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import style from './AddPhoto.module.scss'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import buttonStyle from '@/@ui/ui-kit/Button/Button.module.scss'
@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 import { setPhoto } from '@/core/slices/postCreationSlice'
+import { handlerImageUpload } from '../handlerImageUpload'
 
 type AddPhotoType = {
   setModuleNum: Dispatch<SetStateAction<number>>
@@ -14,14 +15,12 @@ type AddPhotoType = {
 
 const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
   const dispatch = useDispatch()
-  const [image, setImage] = useState<any | undefined>(undefined)
+  const [image, setImage] = useState<string>('')
   const { t } = useTranslation()
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(URL.createObjectURL(e.target.files[0]))
-      dispatch(setPhoto({ photo: URL.createObjectURL(e.target.files[0]) }))
-    }
-  }
+  useEffect(() => {
+    if(!image) return
+    dispatch(setPhoto({ photo: image }))
+  }, [image])
 
   return (
     <div className={style.container}>
@@ -37,18 +36,24 @@ const AddPhoto: FC<AddPhotoType> = ({ setModuleNum }) => {
           <label
             htmlFor="custom-upload"
             className={classNames(buttonStyle.button, buttonStyle.buttonAutoHeight)}
-            style={{ width: '222px', marginTop: '110px' }}
+            style={{ width: '222px', marginTop: '60px' }}
           >
             {t('add_profile_photo.select_from_computer')}
           </label>
 
-          <input type="file" accept="image/*" onChange={(e) => handleChange(e)} id="custom-upload" style={{ display: 'none' }} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => handlerImageUpload(e, setImage)}
+            id="custom-upload"
+            style={{ display: 'none' }}
+          />
         </>
       ) : (
         <Button
           onClick={() => setModuleNum(1)}
           text={t('add_profile_photo.add_profile_photo')}
-          style={{ width: '222px', marginTop: '110px' }}
+          style={{ width: '222px', marginTop: '60px' }}
           variation="AutoHeight"
         />
       )}

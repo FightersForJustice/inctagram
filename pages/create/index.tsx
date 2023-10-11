@@ -3,18 +3,39 @@ import { getSideBarLayout } from '@/components/Layout/SideBarLayout/SideBarLayou
 import { PageWrapper } from '@/components/common/PageWrapper/PageWrapper'
 import PostCreation from '@/components/PostCreation/PostCreation'
 import { withAuth } from '@/utils/getServerSideProps/withAuth'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextApiRequest } from 'next'
+import { axiosAPI } from '@/assets/api/api'
+import { ProfileType } from '@/components/Profile-Settings/profileSettingsTypes'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setUserProfileSSR } from '@/core/slices/userSlice'
 
-export const getServerSideProps: GetServerSideProps = withAuth(async () => {
-  return { props: {} }
+export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
+  const userProfile = await axiosAPI.profile.getProfileFromServer(req as NextApiRequest)
+
+  if (!userProfile) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      userProfile,
+    },
+  }
 })
 
 type HomeType = {
   isAuth: UserData
 }
+const Create = (props: HomeType & ProfileType) => {
+  const { isAuth, userProfile } = props
+  const dispatch = useDispatch()
 
-const Create = (props: HomeType) => {
-  const { isAuth } = props
+  useEffect(() => {
+    dispatch(setUserProfileSSR(userProfile))
+  })
 
   return (
     <PageWrapper>

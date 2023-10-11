@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 import style from './PostCreation.module.scss'
 import icons from '@/public/sidebar-icons/icons'
-import Icons from '@/@ui/ui-kit/Icon/IconsComponent'
+import classNames from 'classnames'
 
 type CreatePostPaginatorType = {
   moduleNum: number
@@ -14,7 +14,7 @@ const CreatePostPaginator: FC<CreatePostPaginatorType> = ({ moduleNum, setModule
       <span
         onClick={() => setModuleNum((prev) => (prev -= 1))}
         style={{ visibility: moduleNum === 0 ? 'hidden' : 'visible' }}
-        className={style.previous}
+        className={classNames(style.previous, { [style.previousPublicationPage]: moduleNum === 3 })}
       >
         <icons.ArrowBack />
       </span>

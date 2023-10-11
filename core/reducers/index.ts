@@ -7,6 +7,8 @@ import {
   POST_USER_KEY,
   PROFILE_API_KEY,
   USER_KEY,
+  POST_API_KEY,
+  POST_CREATION_KEY,
 } from './constant_keys'
 import authQueryApi from '@/assets/api/auth/authQueryApi'
 import profileQueryApi from '@/assets/api/user/profileQueryApi'
@@ -16,17 +18,22 @@ import { MyProfileDataType, PostLastType } from '@/assets/api/myProfile/MyProfil
 import { homeReducer } from '../slices/homeSlice'
 import { HomeType } from '../slices/Home.Types'
 import homeQueryApi from '@/assets/api/Home/homeQueryApi'
+import { postCreationReducer } from '../slices/postCreationSlice'
+import postQueryApi from '@/assets/api/post/postQueryApi'
 
 const reducers = {
   [AUTH_API_KEY]: authQueryApi.reducer,
   [PROFILE_API_KEY]: profileQueryApi.reducer,
   [HOME_API_KEY]: homeQueryApi.reducer,
   [USER_KEY]: userReducer,
+  
   [POST_USER_API_KEY]: PostUserQueryApi.reducer,
   [POST_USER_KEY]: PostUserReducer,
 
   [HOME_KEY]: homeReducer,
 
+  [POST_CREATION_KEY]: postCreationReducer,
+  [POST_API_KEY]: postQueryApi.reducer,
   // ...
 }
 export const getReducers = () => ({ ...reducers })
@@ -40,5 +47,8 @@ export type RootState = {
   }
   [HOME_KEY]: {
     homeData: HomeType
+  }
+  [POST_CREATION_KEY]: {
+    postData: any
   }
 }

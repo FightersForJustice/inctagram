@@ -21,7 +21,6 @@ import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
 
 import MyCarousel from '../../../@ui/ui-kit/Carousel/index'
 
-
 export const getStaticProps = async () => {
   return {
     props: {},
@@ -165,7 +164,6 @@ const Login = () => {
             </CheckBox>
           </div>
         </div>
-
         <MyCarousel
           items={[
             'https://klike.net/uploads/posts/2023-02/1675839044_3-490.jpg',
@@ -175,7 +173,6 @@ const Login = () => {
             'https://sun6-23.userapi.com/s/v1/if1/QmHxtJ87yWEQLVXFK-N_MLP2ohNN_nZHRbEuoV_81hTvY0ZdmuAG7FaXjokjGUcPhe2vxJTi.jpg?size=491x504&quality=96&crop=32,58,491,504&ava=1',
           ]}
         />
-
       </div>
     </PageWrapper>
   )

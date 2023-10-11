@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios'
 import { userRouts } from '@/app/routes/userRouts'
-import { UserProfile, UpdateUserProfile } from './userTypes'
+import { UserProfile } from './userTypes'
 import { NextApiRequest } from 'next'
-import { createAxiosServerInstance, instance } from '../instance'
+import { createAxiosServerInstance } from '../instance'
 
 const getProfileFromServer = async (req: NextApiRequest, id: number) => {
   const axiosInstance = createAxiosServerInstance(req)

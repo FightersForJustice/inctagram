@@ -8,3 +8,5 @@ export const POST_USER_KEY = 'postUser'
 export const HOME_API_KEY = 'homeApi'
 export const HOME_KEY = 'home'
 
+export const POST_CREATION_KEY = 'postCreation'
+export const POST_API_KEY = 'postApi'

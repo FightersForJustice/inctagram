@@ -35,27 +35,28 @@ const Uploading = () => {
 
   const handleLocationSubmit = (e: any) => {
     e.preventDefault()
-    console.log(locations)
     if (locations.length === 2) return
-
     setLocation((prev) => [e.target[0].value, ...prev])
   }
 
   const handlerPublish = (image: Array<{ photo: string }>) => {
     if (!image) return
-    for (let i = 0; i < photos.length; i++) {
-      var file = dataURLtoFile(image[i].photo, 'a.png')
+    const uploadImage = (count: number, index: number = 0) => {
+      if (count === index) return
+      var file = dataURLtoFile(image[count - index - 1].photo, 'a.png')
       const formData = new FormData()
       formData.append('file', file)
       imageAdd(formData)
         .unwrap()
         .then((data) => {
           setImageIdList((prev) => [...prev, { uploadId: data.images[0].uploadId }])
+          uploadImage(count, index + 1)
         })
         .catch((error: ServerErrorResponse) => {
           console.error(error)
         })
     }
+    uploadImage(photos.length)
   }
 
   const photosLinks = photos.map((photoObj: any) => {

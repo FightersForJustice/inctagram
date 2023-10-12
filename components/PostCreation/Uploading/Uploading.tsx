@@ -13,6 +13,7 @@ import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
 import { Loading } from '@/components/common/Loaders/Loading'
 import { Modal } from '@/components/common/Modal/Modal'
+import { useTranslation } from 'react-i18next'
 
 const Uploading = () => {
   const { photos, description } = usePostCreationDataSelector()
@@ -26,6 +27,7 @@ const Uploading = () => {
   const [createPost] = usePostCreateMutation()
   const textareaMaxSymbols = 500
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (imageIdList.length !== photos.length) return
@@ -75,7 +77,7 @@ const Uploading = () => {
   return (
     <div className={style.uploadingContainer}>
       {isModalPrinted ? (
-        <Modal title={'Success!'} content={"Your post has been successfully created!"} onClose={() => setIsModalPrinted(false)} />
+        <Modal title={'Success!'} content={'Your post has been successfully created!'} onClose={() => setIsModalPrinted(false)} />
       ) : (
         ''
       )}
@@ -98,7 +100,7 @@ const Uploading = () => {
         </div>
         <div className={style.textareaContainer}>
           <TextArea
-            label="Add publication descriptions"
+            label={t('postCreation.addDescription')}
             maxLength={textareaMaxSymbols}
             onChange={(e) => handleTextareaChange(e)}
             value={description}
@@ -109,11 +111,11 @@ const Uploading = () => {
         </div>
         <div className={style.buttonContainer}>
           <button className={style.publishButton} onClick={() => handlerPublish(photos)}>
-            publish
+            {t('postCreation.publishButton')}
           </button>
         </div>
         <form onSubmit={(e) => handleLocationSubmit(e)} className={style.locationInput}>
-          <MainInput label="Add location" />
+          <MainInput label={t('postCreation.addLocation')} />
           <button type="submit">
             <Image width={24} height={24} src="/../sidebar-icons/pin-outline.svg" alt="" />
           </button>

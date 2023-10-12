@@ -180,6 +180,10 @@
     "addPhotoTitle": "Add Photo",
     "croppingTitle": "Cropping",
     "filtersTitle": "Filters",
-    "publicationTitle": "Publication"
+    "publicationTitle": "Publication",
+    "nextButton": "Next",
+    "publishButton": "Publish",
+    "addDescription": "Add publication descriptions",
+    "addLocation": "Add location"
   }
 }

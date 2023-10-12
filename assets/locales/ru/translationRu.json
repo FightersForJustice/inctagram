@@ -180,6 +180,10 @@
     "addPhotoTitle": "Добавить фотографию",
     "croppingTitle": "Обрезать",
     "filtersTitle": "Фильтры",
-    "publicationTitle": "Публикация"
+    "publicationTitle": "Публикация",
+    "nextButton": "Далее",
+    "publishButton": "Опубликовать",
+    "addDescription": "Добавить описание к публикации",
+    "addLocation": "Добавить местоположение"
   }
 }

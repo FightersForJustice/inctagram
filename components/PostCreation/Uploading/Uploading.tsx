@@ -11,6 +11,8 @@ import { setDescription } from '@/core/slices/postCreationSlice'
 import { useImageAddMutation, usePostCreateMutation } from '@/assets/api/post/postQueryApi'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { Modal } from '@/components/common/Modal/Modal'
 
 const Uploading = () => {
   const { photos, description } = usePostCreationDataSelector()
@@ -18,6 +20,8 @@ const Uploading = () => {
   const [symbolCounter, setSymbolCounter] = useState(0)
   const [imageIdList, setImageIdList] = useState<object[]>([])
   const [locations, setLocation] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isModalPrinted, setIsModalPrinted] = useState(false)
   const [imageAdd] = useImageAddMutation()
   const [createPost] = usePostCreateMutation()
   const textareaMaxSymbols = 500
@@ -25,7 +29,10 @@ const Uploading = () => {
 
   useEffect(() => {
     if (imageIdList.length !== photos.length) return
+
+    setIsLoading(false)
     createPost({ description: description, childrenMetadata: imageIdList })
+    setIsModalPrinted(true)
   }, [imageIdList])
 
   const handleTextareaChange = (e: any) => {
@@ -54,8 +61,10 @@ const Uploading = () => {
         })
         .catch((error: ServerErrorResponse) => {
           console.error(error)
+          setIsLoading(false)
         })
     }
+    setIsLoading(true)
     uploadImage(photos.length)
   }
 
@@ -65,6 +74,16 @@ const Uploading = () => {
 
   return (
     <div className={style.uploadingContainer}>
+      {isModalPrinted ? (
+        <Modal title={'Success!'} content={"Your post has been successfully created!"} onClose={() => setIsModalPrinted(false)} />
+      ) : (
+        ''
+      )}
+      {isLoading && (
+        <div>
+          <Loading />
+        </div>
+      )}
       <MyCarousel items={photosLinks} />
       <div className={style.postDetails}>
         <div className={style.user}>

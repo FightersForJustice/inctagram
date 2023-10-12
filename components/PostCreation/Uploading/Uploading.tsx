@@ -3,7 +3,7 @@ import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsS
 import style from './Uploading.module.scss'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
@@ -16,11 +16,17 @@ const Uploading = () => {
   const { photos, description } = usePostCreationDataSelector()
   const { userName, avatars } = useProfileSettingsSSRSelector()
   const [symbolCounter, setSymbolCounter] = useState(0)
+  const [imageIdList, setImageIdList] = useState<object[]>([])
   const [locations, setLocation] = useState<string[]>([])
   const [imageAdd] = useImageAddMutation()
   const [createPost] = usePostCreateMutation()
   const textareaMaxSymbols = 500
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (imageIdList.length !== photos.length) return
+    createPost({ description: description, childrenMetadata: imageIdList })
+  }, [imageIdList])
 
   const handleTextareaChange = (e: any) => {
     setSymbolCounter(e.target.value.length)
@@ -35,9 +41,8 @@ const Uploading = () => {
     setLocation((prev) => [e.target[0].value, ...prev])
   }
 
-  const handlerPublish = (image: Array<{photo: string}>) => {
+  const handlerPublish = (image: Array<{ photo: string }>) => {
     if (!image) return
-    let imageIdList: object[] = []
     for (let i = 0; i < photos.length; i++) {
       var file = dataURLtoFile(image[i].photo, 'a.png')
       const formData = new FormData()
@@ -45,9 +50,7 @@ const Uploading = () => {
       imageAdd(formData)
         .unwrap()
         .then((data) => {
-          imageIdList.push({ uploadId: data.images[0].uploadId })
-          console.log('success')
-          if (i === photos.length - 1) createPost({ description: description, childrenMetadata: imageIdList })
+          setImageIdList((prev) => [...prev, { uploadId: data.images[0].uploadId }])
         })
         .catch((error: ServerErrorResponse) => {
           console.error(error)

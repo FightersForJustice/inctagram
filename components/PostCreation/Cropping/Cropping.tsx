@@ -37,17 +37,17 @@ const Cropping = () => {
           ))}
         </div>
         <div className={style.addPhotoButtonContainer}>
-          <label htmlFor="upload-button" className={style.uploadButton}>
-            <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={24} height={24} />
-          </label>
-
           <input
             type="file"
             accept="image/*"
             onChange={(e) => handlerImageUpload(e, setImage)}
             id="upload-button"
             style={{ display: 'none' }}
+            disabled={photos.length === 10}
           />
+          <label htmlFor="upload-button" className={style.uploadButton}>
+            <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={24} height={24} />
+          </label>
         </div>
       </div>
     </div>

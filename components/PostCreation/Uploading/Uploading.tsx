@@ -3,7 +3,7 @@ import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsS
 import style from './Uploading.module.scss'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { TextArea } from '@/@ui/ui-kit/Textareas/Textarea'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MainInput } from '@/@ui/ui-kit/Inputs/Inputs'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
@@ -11,16 +11,31 @@ import { setDescription } from '@/core/slices/postCreationSlice'
 import { useImageAddMutation, usePostCreateMutation } from '@/assets/api/post/postQueryApi'
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
+import { Loading } from '@/components/common/Loaders/Loading'
+import { Modal } from '@/components/common/Modal/Modal'
+import { useTranslation } from 'react-i18next'
 
 const Uploading = () => {
   const { photos, description } = usePostCreationDataSelector()
   const { userName, avatars } = useProfileSettingsSSRSelector()
   const [symbolCounter, setSymbolCounter] = useState(0)
+  const [imageIdList, setImageIdList] = useState<object[]>([])
   const [locations, setLocation] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isModalPrinted, setIsModalPrinted] = useState(false)
   const [imageAdd] = useImageAddMutation()
   const [createPost] = usePostCreateMutation()
   const textareaMaxSymbols = 500
   const dispatch = useDispatch()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    if (imageIdList.length !== photos.length) return
+
+    setIsLoading(false)
+    createPost({ description: description, childrenMetadata: imageIdList })
+    setIsModalPrinted(true)
+  }, [imageIdList])
 
   const handleTextareaChange = (e: any) => {
     setSymbolCounter(e.target.value.length)
@@ -29,30 +44,30 @@ const Uploading = () => {
 
   const handleLocationSubmit = (e: any) => {
     e.preventDefault()
-    console.log(locations)
     if (locations.length === 2) return
-
     setLocation((prev) => [e.target[0].value, ...prev])
   }
 
-  const handlerPublish = (image: Array<{photo: string}>) => {
+  const handlerPublish = (image: Array<{ photo: string }>) => {
     if (!image) return
-    let imageIdList: object[] = []
-    for (let i = 0; i < photos.length; i++) {
-      var file = dataURLtoFile(image[i].photo, 'a.png')
+    const uploadImage = (count: number, index: number = 0) => {
+      if (count === index) return
+      var file = dataURLtoFile(image[count - index - 1].photo, 'a.png')
       const formData = new FormData()
       formData.append('file', file)
       imageAdd(formData)
         .unwrap()
         .then((data) => {
-          imageIdList.push({ uploadId: data.images[0].uploadId })
-          console.log('success')
-          if (i === photos.length - 1) createPost({ description: description, childrenMetadata: imageIdList })
+          setImageIdList((prev) => [...prev, { uploadId: data.images[0].uploadId }])
+          uploadImage(count, index + 1)
         })
         .catch((error: ServerErrorResponse) => {
           console.error(error)
+          setIsLoading(false)
         })
     }
+    setIsLoading(true)
+    uploadImage(photos.length)
   }
 
   const photosLinks = photos.map((photoObj: any) => {
@@ -61,6 +76,16 @@ const Uploading = () => {
 
   return (
     <div className={style.uploadingContainer}>
+      {isModalPrinted ? (
+        <Modal title={'Success!'} content={'Your post has been successfully created!'} onClose={() => setIsModalPrinted(false)} />
+      ) : (
+        ''
+      )}
+      {isLoading && (
+        <div>
+          <Loading />
+        </div>
+      )}
       <MyCarousel items={photosLinks} />
       <div className={style.postDetails}>
         <div className={style.user}>
@@ -75,7 +100,7 @@ const Uploading = () => {
         </div>
         <div className={style.textareaContainer}>
           <TextArea
-            label="Add publication descriptions"
+            label={t('postCreation.addDescription')}
             maxLength={textareaMaxSymbols}
             onChange={(e) => handleTextareaChange(e)}
             value={description}
@@ -86,11 +111,11 @@ const Uploading = () => {
         </div>
         <div className={style.buttonContainer}>
           <button className={style.publishButton} onClick={() => handlerPublish(photos)}>
-            publish
+            {t('postCreation.publishButton')}
           </button>
         </div>
         <form onSubmit={(e) => handleLocationSubmit(e)} className={style.locationInput}>
-          <MainInput label="Add location" />
+          <MainInput label={t('postCreation.addLocation')} />
           <button type="submit">
             <Image width={24} height={24} src="/../sidebar-icons/pin-outline.svg" alt="" />
           </button>

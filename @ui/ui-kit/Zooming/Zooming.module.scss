@@ -1,0 +1,34 @@
+.container {
+}
+.customAvatarEditor {
+  width: 503px !important;
+  height: 490px !important;
+}
+.icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 2px;
+  opacity: 0.8;
+  background: var(--dark-500, #171717);
+}
+.editorContainer {
+  position: relative;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 18px;
+  left: 72px;
+}
+
+.sliderContainer {
+  position: absolute;
+  bottom: 50px;
+  left: 72px;
+}
+
+.cropButtonContainer {
+  /* Стили для контейнера кнопки обрезки (если нужно) */
+}
+
+/* Добавьте дополнительные стили по необходимости */

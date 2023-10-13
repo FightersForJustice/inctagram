@@ -7,13 +7,15 @@ import { setPhoto } from '@/core/slices/postCreationSlice'
 import { useDispatch } from 'react-redux'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { handlerImageUpload } from '../handlerImageUpload'
+import PostZooming from '@/@ui/ui-kit/Zooming/Zooming'
 
 const Cropping = () => {
   const dispatch = useDispatch()
   const { photos } = usePostCreationDataSelector()
   const [isAddPhotosClosed, setIsAddPhotosClosed] = useState(true)
   const [image, setImage] = useState('')
-
+  const [zoomedImages, setZoomedImages] = useState<string[] | never[]>([])
+  const [zoomedPhoto, setZoomedPhoto] = useState<string[] | null>(null)
   useEffect(() => {
     if (!image) return
     dispatch(setPhoto({ photo: image }))
@@ -25,12 +27,18 @@ const Cropping = () => {
 
   return (
     <div>
-      <MyCarousel items={photosLinks} />
+      {/* <MyCarousel items={photosLinks} />
       <button className={style.button} onClick={() => setIsAddPhotosClosed((prev) => !prev)}>
         <Image src="../icons/image-outline.svg" alt="" width={32} height={32} />
-      </button>
+      </button> */}
 
-      <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
+      <PostZooming
+        initialImageSrc={photosLinks}
+        onSave={function (editedImageSrc: string): void {
+          throw new Error('Function not implemented.')
+        }}
+      ></PostZooming>
+      {/* <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
         <div className={style.photosContainer}>
           {photosLinks.map((photo: string) => (
             <Image src={photo} alt="" width={86} height={86} className={style.uploadedPhoto} />
@@ -49,7 +57,7 @@ const Cropping = () => {
             style={{ display: 'none' }}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

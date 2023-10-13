@@ -4,9 +4,10 @@ import style from './Zooming.module.scss'
 import Maximize from '@/public/icons/maximize.svg'
 import MaximizeOutline from '@/public/icons/maximizeOutline.svg'
 import ExpandOutline from '@/public/icons/expandOutline.svg'
+import MyCarousel from '../Carousel'
 
 interface PostZoomingProps {
-  initialImageSrc: string | File
+  initialImageSrc: string[]
   onSave: (editedImageSrc: string) => void
 }
 
@@ -15,6 +16,7 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
   const [isZoomSliderOpen, setIsZoomSliderOpen] = useState(false)
   const editorRef = useRef<AvatarEditor | null>(null)
   const [editorSize, setEditorSize] = useState({ width: 250, height: 250 })
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const handleZoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newZoom = parseFloat(e.target.value)
@@ -25,7 +27,7 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
     const editor = editorRef.current
     if (editor) {
       const image = new Image()
-      image.src = initialImageSrc.toString()
+      image.src = initialImageSrc[currentImageIndex]
 
       image.onload = () => {
         const imageWidth = image.width
@@ -33,12 +35,11 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
         setEditorSize({ width: maxEditorSize, height: maxEditorSize })
       }
     }
-  }, [initialImageSrc])
+  }, [initialImageSrc, currentImageIndex])
 
   const toggleZoomSlider = () => {
     setIsZoomSliderOpen((prev) => !prev)
   }
-
   const handleCropImage = () => {
     const editor = editorRef.current
     if (editor) {
@@ -51,6 +52,7 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
 
   return (
     <div className={style.editorContainer}>
+      {/* <MyCarousel items={initialImageSrc} /> Используйте MyCarousel для переключения между изображениями */}
       <div className={style.buttonContainer}>
         <button className={style.toggleButton}>
           <div className={style.icon}>
@@ -61,16 +63,14 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
           <div className={style.icon}>{isZoomSliderOpen ? <Maximize /> : <MaximizeOutline />}</div>
         </button>
       </div>
-
       {isZoomSliderOpen && (
         <div className={style.sliderContainer}>
           <input type="range" min="1" max="3" step="0.01" value={zoom} onChange={handleZoomChange} />
         </div>
       )}
-
       <AvatarEditor
         ref={editorRef}
-        image={initialImageSrc}
+        image={initialImageSrc[currentImageIndex]}
         width={editorSize.width}
         height={editorSize.height}
         border={0}
@@ -78,10 +78,6 @@ const PostZooming: React.FC<PostZoomingProps> = ({ initialImageSrc, onSave }) =>
         scale={zoom}
         className={style.customAvatarEditor}
       />
-
-      {/* <div>
-        <button onClick={handleCropImage}>Crop Image</button>
-      </div> */}
     </div>
   )
 }

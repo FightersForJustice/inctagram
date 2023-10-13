@@ -86,6 +86,9 @@
   height: 564px;
   .post {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .infoPost {
     display: flex;
@@ -100,11 +103,126 @@
       }
     }
     .name {
+      color: #fff;
+      font-weight: 600;
+      line-height: 24px;
       padding: 8px 0px 0px 13px;
     }
     .moreHorizontal {
       filter: brightness(0) invert(1);
       padding: 18px 24px 0px 0px;
+    }
+  }
+}
+
+.comment {
+  display: flex;
+  .avatar {
+    padding: 23px 0px 0px 22px;
+    img {
+      border-radius: 50%;
+    }
+  }
+  .text {
+    padding: 17px 65px 0px 11px;
+    .name {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+      padding-right: 10px;
+    }
+    .textComment {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    .time {
+      padding-top: 5px;
+      color: #8d9094;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .answer {
+      font-weight: 600;
+      padding-left: 15px;
+    }
+  }
+}
+.footer {
+  border-top: 1px solid #4c4c4c;
+  padding-top: 11px;
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 23px;
+    .left {
+      img {
+        margin-right: 24px;
+      }
+    }
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .likes {
+    display: flex;
+    align-items: center;
+    .avatars {
+      position: relative;
+      margin: 14px 19px 29px;
+      img {
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+      }
+      :first-child {
+        left: 0;
+        z-index: 3;
+      }
+
+      :nth-child(2) {
+        left: 14px;
+        z-index: 2;
+      }
+
+      :nth-child(3) {
+        left: 30px;
+        z-index: 1;
+      }
+    }
+    .like {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0px 0px -10px 50px;
+      display: block;
+    }
+  }
+  .time {
+    color: #8d9094;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0px 0px 9px 23px;
+  }
+  .addComment {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #4c4c4c;
+    input {
+      border: 0;
+      color: #8d9094;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      background-color: #333;
+      padding: 5px 23px;
+      outline: none;
+    }
+    button {
+      margin: 11px;
     }
   }
 }

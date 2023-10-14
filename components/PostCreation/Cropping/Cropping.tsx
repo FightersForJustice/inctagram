@@ -26,14 +26,21 @@ const Cropping = () => {
   return (
     <div>
       <MyCarousel items={photosLinks} />
-      <button className={style.button} onClick={() => setIsAddPhotosClosed((prev) => !prev)}>
-        <Image src="../icons/image-outline.svg" alt="" width={32} height={32} />
+      <button
+        className={classNames(style.button, { [style.buttonFocused]: !isAddPhotosClosed })}
+        onClick={() => setIsAddPhotosClosed((prev) => !prev)}
+      >
+        {isAddPhotosClosed ? (
+          <Image src="../icons/image-outline.svg" alt="" width={24} height={24} />
+        ) : (
+          <Image src="../icons/image.svg" alt="" width={24} height={24} />
+        )}
       </button>
 
       <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
         <div className={style.photosContainer}>
           {photosLinks.map((photo: string) => (
-            <Image src={photo} alt="" width={86} height={86} className={style.uploadedPhoto} />
+            <Image src={photo} alt="" width={80} height={80} className={style.uploadedPhoto} />
           ))}
         </div>
         <div className={style.addPhotoButtonContainer}>
@@ -46,7 +53,7 @@ const Cropping = () => {
             disabled={photos.length === 10}
           />
           <label htmlFor="upload-button" className={style.uploadButton}>
-            <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={24} height={24} />
+            <Image src="../sidebar-icons/plus-circle-outline.svg" alt="" width={36} height={36} />
           </label>
         </div>
       </div>

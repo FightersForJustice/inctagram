@@ -186,17 +186,7 @@ const Login = () => {
                 setMyPostActive(true)
               }}
             ></Button>
-            <MyPost active={MyPostActive} setMyPostActive={setMyPostActive} close={true}>
-              <div className={style.text}>We have sent a link to confirm your email to epam@epam.com</div>
-              <div className={style.buttonModal}>
-                <Button
-                  text="Ok"
-                  onClick={() => {
-                    setMyPostActive(false)
-                  }}
-                ></Button>
-              </div>
-            </MyPost>
+            <MyPost active={MyPostActive} setMyPostActive={setMyPostActive}></MyPost>
           </div>
         </div>
       </div>

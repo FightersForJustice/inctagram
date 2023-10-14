@@ -7,7 +7,14 @@
   .header {
     display: flex;
     .avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 204px;
+      height: 204px;
+      background-color: #171717;
       border-radius: 50%;
+      min-width: 204px;
       margin: 25px 0px 0px 15px;
     }
     .info {

@@ -6,18 +6,19 @@ import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { userRouts } from '@/app/routes/userRouts'
-import { usePostsUserMutation } from '@/assets/api/myProfile/PostUserQueryApi'
+import { useMyPostQuery, usePostsUserMutation } from '@/assets/api/myProfile/PostUserQueryApi'
 import { setPostUser, setPostsUserLast } from '@/core/slices/postUserSlice'
 import { useDispatch } from 'react-redux'
 import { usePostUserSelector } from '@/core/selectors/postUser'
 import { useScrollEffect } from '@/hooks/useScrollEffect'
 import { useEffect, useState } from 'react'
+import MyPost from '../MyPost/MyPost'
 
 const MyProfile = ({ userProfile }: ProfileType) => {
   const router = useRouter()
-
+  const [MyPostActive, setMyPostActive] = useState(false)
+  const [myPost, setMyPost] = useState(0)
   const [fetching, setFetching] = useState(false)
-
   const dispatch = useDispatch()
 
   const handleProfileSettings = () => {
@@ -43,13 +44,24 @@ const MyProfile = ({ userProfile }: ProfileType) => {
         setFetching(false)
       })
   }
-  const avatars = userProfile.avatars[0] === undefined ? '/img/no.jpg' : userProfile.avatars[0].url
+  const avatars =
+    userProfile.avatars[0] === undefined ? (
+      <div className={s.avatar}>
+        <Image className={s.icon} width={48} height={48} src="/../icons/image-outline.svg" alt="img" />
+      </div>
+    ) : (
+      <Image className={s.avatar} width={204} height={204} src={userProfile.avatars[0].url} alt="Avatar" />
+    )
+
   useScrollEffect(handleScroll, fetching, setFetching)
 
   return (
     <div className={s.main}>
+      {myPost !== 0 && (
+        <MyPost active={MyPostActive} setMyPostActive={setMyPostActive} myPost={myPost} setMyPost={setMyPost}></MyPost>
+      )}
       <div className={s.header}>
-        <Image className={s.avatar} width={204} height={204} src={avatars} alt="Avatar" />
+        {avatars}
         <div className={s.info}>
           <div className={s.blockTop}>
             <div className={s.name}>{userProfile.userName}</div>
@@ -78,7 +90,16 @@ const MyProfile = ({ userProfile }: ProfileType) => {
       </div>
       <div className={s.post}>
         {postUserData.items.map((img, index) => (
-          <Image width={234} height={228} src={img.images[1].url} alt="Post" />
+          <Image
+            width={234}
+            height={228}
+            src={img.images[1].url}
+            alt="Post"
+            onClick={() => {
+              setMyPostActive(true)
+              setMyPost(img.id)
+            }}
+          />
         ))}
       </div>
     </div>

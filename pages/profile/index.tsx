@@ -9,7 +9,7 @@ import { MyProfileType } from '@/assets/api/myProfile/MyProfile.Types'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setPostUser } from '@/core/slices/postUserSlice'
-
+import MyProfileContainer from '@/components/MyProfile/MyProfileContainer'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
@@ -33,7 +33,7 @@ const MyProfilePage = ({ userProfile, postsUser }: MyProfileType) => {
 
   return (
     <PageWrapper>
-      <MyProfile userProfile={userProfile} />
+      <MyProfileContainer userProfile={userProfile} />
     </PageWrapper>
   )
 }

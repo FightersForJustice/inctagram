@@ -4,6 +4,7 @@ import { getAccessTokenFromCookie } from '@/utils/cookies'
 import { POST_USER_API_KEY } from '@/core/reducers/constant_keys'
 import { postRouts } from '@/app/routes/post'
 import { MyProfileDataType } from './MyProfile.Types'
+import { MyPost } from '@/components/MyPost/MyPost.types'
 
 const PostUserQueryApi = createApi({
   reducerPath: POST_USER_API_KEY,
@@ -25,9 +26,15 @@ const PostUserQueryApi = createApi({
         method: 'GET',
       }),
     }),
+    myPost: builder.query<MyPost, number>({
+      query: (post) => ({
+        url: postRouts.postsP + post,
+        method: 'GET',
+      }),
+    }),
   }),
 })
 
-export const { usePostsUserMutation } = PostUserQueryApi
+export const { usePostsUserMutation, useMyPostQuery } = PostUserQueryApi
 
 export default PostUserQueryApi

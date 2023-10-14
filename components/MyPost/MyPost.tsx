@@ -4,17 +4,20 @@ import MyCarousel from '@/@ui/ui-kit/Carousel'
 import Image from 'next/image'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
+import { useMyPostQuery } from '@/assets/api/myProfile/PostUserQueryApi'
 
 type ModalType = {
   active: boolean
   setMyPostActive: (isActive: boolean) => void
-  children: React.ReactNode
-  close?: boolean
-  isPaddingDisabled?: boolean
+  myPost: number
+  setMyPost: any
 }
 
-const MyPost: React.FC<ModalType> = ({ active, setMyPostActive }) => {
+const MyPost: React.FC<ModalType> = ({ active, setMyPostActive, myPost, setMyPost }) => {
   const open = active ? classNames(s.modal, s.effect, s.show) : classNames(s.modal, s.effect)
+
+  const { data, error } = useMyPostQuery(myPost)
+
   return (
     <>
       <div className={open}>
@@ -22,6 +25,7 @@ const MyPost: React.FC<ModalType> = ({ active, setMyPostActive }) => {
           className={s.buttonClose}
           onClick={() => {
             setMyPostActive(false)
+            setMyPost(0)
           }}
         >
           <img src="/icons/close.svg" alt="" />
@@ -38,13 +42,7 @@ const MyPost: React.FC<ModalType> = ({ active, setMyPostActive }) => {
           <div className={s.MyCarousel}>
             <MyCarousel
               naturalHeight={562}
-              items={[
-                'https://klike.net/uploads/posts/2023-02/1675839044_3-490.jpg',
-                'https://iphone-wallpaper.pics/wallpaper/d/k/dkxoz3_4df2b5a856d89bb6b9352eafd1333a92_raw.jpg',
-                'https://sun1-83.userapi.com/s/v1/if1/B5cjNd8qZYMHUE3PJ4O8dW1gJI0K8iGbeaolZMHUt9X7FwrdslA7tp9rxBOYbIZWvARw-CQr.jpg?size=400x400&quality=96&crop=619,144,1147,1147&ava=1',
-                'https://avatars.mds.yandex.net/i?id=c189e5932825e3763a40a4603ad5df6188b44526-9202550-images-thumbs&n=13',
-                'https://sun6-23.userapi.com/s/v1/if1/QmHxtJ87yWEQLVXFK-N_MLP2ohNN_nZHRbEuoV_81hTvY0ZdmuAG7FaXjokjGUcPhe2vxJTi.jpg?size=491x504&quality=96&crop=32,58,491,504&ava=1',
-              ]}
+              items={data !== undefined ? data.images.filter((img) => img.height === 1440).map((img, index) => img.url) : []}
             />
           </div>
           <div className={s.post}>

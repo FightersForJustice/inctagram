@@ -2,7 +2,6 @@
 
 .carouselProvider {
   width: 491px;
-  height: 504px;
   position: relative;
   background-color: colors.$light-700;
   .slideInner {
@@ -59,11 +58,15 @@
     }
   }
   .buttonBack {
-    top: 197px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     left: 12px;
   }
   .buttonNext {
-    top: 197px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     right: 12px;
   }
 }

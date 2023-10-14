@@ -6,17 +6,23 @@ import classNames from 'classnames'
 
 type PropsType = {
   items: string[]
+  naturalHeight?: number
 }
 
-const MyCarousel: React.FC<PropsType> = ({ items }) => {
+const MyCarousel: React.FC<PropsType> = ({ items, naturalHeight = 504 }) => {
   const listItems = items.map((item: string, index) => (
     <Slide index={0} innerClassName={s.slideInner} key={index}>
       <img src={item} alt="" />
     </Slide>
   ))
-
+  const styleCarouselProvider = { height: naturalHeight }
   return (
-    <CarouselProvider className={s.carouselProvider} naturalSlideWidth={491} naturalSlideHeight={504} totalSlides={items.length}>
+    <CarouselProvider
+      className={classNames(s.carouselProvider, styleCarouselProvider)}
+      naturalSlideWidth={491}
+      naturalSlideHeight={naturalHeight}
+      totalSlides={items.length}
+    >
       <Slider>{listItems}</Slider>
       <DotGroup className={s.dot} />
       <ButtonBack className={classNames(s.buttonBack, s.button)}>

@@ -37,6 +37,7 @@ const MyPost: React.FC<ModalType> = ({ active, setMyPostActive }) => {
         <div className={s.content}>
           <div className={s.MyCarousel}>
             <MyCarousel
+              naturalHeight={562}
               items={[
                 'https://klike.net/uploads/posts/2023-02/1675839044_3-490.jpg',
                 'https://iphone-wallpaper.pics/wallpaper/d/k/dkxoz3_4df2b5a856d89bb6b9352eafd1333a92_raw.jpg',

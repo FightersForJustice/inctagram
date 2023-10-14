@@ -18,7 +18,9 @@ import { Tab } from '@/@ui/ui-kit/Tabs/Tab'
 import * as Tabs from '@radix-ui/react-tabs'
 import { userRouts } from '@/app/routes/userRouts'
 import { CheckBox } from '@/@ui/ui-kit/CheckBox/CheckBox'
+
 import MyCarousel from '../../../@ui/ui-kit/Carousel/index'
+
 import MyPost from '@/components/MyPost/MyPost'
 
 export const getStaticProps = async () => {
@@ -165,6 +167,7 @@ const Login = () => {
             </CheckBox>
           </div>
         </div>
+
         <MyCarousel
           items={[
             'https://klike.net/uploads/posts/2023-02/1675839044_3-490.jpg',

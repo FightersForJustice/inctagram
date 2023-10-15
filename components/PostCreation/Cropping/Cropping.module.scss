@@ -1,20 +1,10 @@
 .button {
-  width: 36px;
-  height: 36px;
   position: absolute;
-  right: 11px;
-  bottom: 11px;
-  border-radius: 2px;
+  right: 6px;
+  bottom: 6px;
   background-color: rgba(30, 30, 30, 0.8);
+  padding: 4px 4px 2px 4px;
   z-index: 100;
-  img {
-    margin-top: 3px;
-    transition: 0.2s;
-  }
-  &Focused img,
-  &:hover img {
-    filter: invert(46%) sepia(49%) saturate(906%) hue-rotate(186deg) brightness(105%) contrast(107%);
-  }
 }
 
 .uploadButton {
@@ -27,30 +17,30 @@
   cursor: pointer;
   transition: 0.2s;
   &:hover {
-    filter: invert(46%) sepia(49%) saturate(906%) hue-rotate(186deg) brightness(105%) contrast(107%);
+    filter: invert(0.6);
   }
 }
 
 .addPhotosContainer {
   position: absolute;
   transition: 0.2s;
-  right: 11px;
-  bottom: 49px;
-  padding: 13px 60px 5px 12px;
+  right: 56px;
+  bottom: 32px;
+  padding: 5px;
+  padding-right: 48px;
   z-index: 100;
   background-color: rgba(30, 30, 30, 0.8);
   max-width: 300px;
   .photosContainer {
     display: flex;
     overflow-x: scroll;
-    gap: 11px;
   }
   .uploadedPhoto {
     image-rendering: pixelated;
     object-fit: cover;
-    min-width: 80px;
-    min-height: 82px;
-    margin-bottom: 4px;
+    min-width: 86px;
+    margin-right: 5px;
+    margin-bottom: 2px;
     image-resolution: 3dpi;
   }
   &Hidden {

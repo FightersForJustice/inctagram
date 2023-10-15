@@ -177,18 +177,6 @@ const Login = () => {
             'https://sun6-23.userapi.com/s/v1/if1/QmHxtJ87yWEQLVXFK-N_MLP2ohNN_nZHRbEuoV_81hTvY0ZdmuAG7FaXjokjGUcPhe2vxJTi.jpg?size=491x504&quality=96&crop=32,58,491,504&ava=1',
           ]}
         />
-        <div className={style.kitBlock}>
-          <h2 className={style.componentHeader}>MyPost</h2>
-          <div className={style.modal}>
-            <Button
-              text="Open My post"
-              onClick={() => {
-                setMyPostActive(true)
-              }}
-            ></Button>
-            <MyPost active={MyPostActive} setMyPostActive={setMyPostActive}></MyPost>
-          </div>
-        </div>
       </div>
     </PageWrapper>
   )

@@ -1,0 +1,42 @@
+.menu {
+  position: absolute;
+  right: 23px;
+  top: 43px;
+  width: 137px;
+  height: 85px;
+  border-radius: 2px;
+  border: 1px solid #4c4c4c;
+  background-color: #171717;
+  color: white;
+  .item {
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(53%) sepia(80%) saturate(4916%) hue-rotate(205deg) brightness(100%)
+        contrast(93%);
+    }
+  }
+  .icon {
+    filter: brightness(0) invert(1);
+    margin: 12px 11px -3px 11px;
+  }
+  span {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+.deleteModal {
+  width: 330px;
+  .content {
+    padding-top: 10px;
+  }
+  .item {
+    padding-top: 27px;
+    text-align: end;
+    button {
+      width: 96px;
+      margin: 0px 2px 18px 22px;
+    }
+  }
+}

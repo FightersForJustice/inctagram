@@ -24,8 +24,12 @@ const PostUserSlice = createSlice({
         postLast: action.payload.postLast,
       }
     },
+    deletePostUser: (state, action: PayloadAction<number>) => {
+      const idToDelete = action.payload
+      state.PostUserData.items = state.PostUserData.items.filter((item) => item.id !== idToDelete)
+    },
   },
 })
 
 export const PostUserReducer = PostUserSlice.reducer
-export const { setPostUser, setPostsUserLast } = PostUserSlice.actions
+export const { setPostUser, setPostsUserLast, deletePostUser } = PostUserSlice.actions

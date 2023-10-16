@@ -27,6 +27,9 @@ const postCreationSlice = createSlice({
     clearPhotos: (state) => {
       state.postData.photos = []
     },
+    deletePhoto: (state, action: PayloadAction<number>) => {
+      state.postData.photos.splice(action.payload, 1)
+    },
     setDescription: (state, action: PayloadAction<string>) => {
       state.postData.description = action.payload
     },
@@ -34,4 +37,4 @@ const postCreationSlice = createSlice({
 })
 
 export const postCreationReducer = postCreationSlice.reducer
-export const { setPhoto, clearPhotos, setDescription } = postCreationSlice.actions
+export const { setPhoto, deletePhoto, clearPhotos, setDescription } = postCreationSlice.actions

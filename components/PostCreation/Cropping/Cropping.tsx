@@ -3,7 +3,7 @@ import style from './Cropping.module.scss'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { setPhoto } from '@/core/slices/postCreationSlice'
+import { setPhoto, deletePhoto } from '@/core/slices/postCreationSlice'
 import { useDispatch } from 'react-redux'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { handlerImageUpload } from '../handlerImageUpload'
@@ -35,12 +35,12 @@ const Cropping = () => {
 
       <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
         <div className={style.photosContainer}>
-          {photosLinks.map((photo: string) => (
+          {photosLinks.map((photo: string, num: number) => (
             <div className={style.uploadedPhoto}>
-            <Image src={photo} alt="" width={80} height={80} />
-            <button className={style.deletePhotoButton}>
-              <Image src="../sidebar-icons/close.svg" alt="" width={12} height={12}></Image>
-            </button>
+              <Image src={photo} alt="" width={80} height={80} />
+              <button onClick={() => dispatch(deletePhoto(num))} className={style.deletePhotoButton}>
+                <Image src="../sidebar-icons/close.svg" alt="" width={12} height={12}></Image>
+              </button>
             </div>
           ))}
         </div>

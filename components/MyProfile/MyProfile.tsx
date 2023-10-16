@@ -31,6 +31,10 @@ const MyProfile = ({ userProfile }: ProfileType) => {
 
   const postLast: number = Math.min(...postUserData.items.map((item) => item.id))
 
+  useEffect(() => {
+    dispatch(setPostsUserLast({ postLast }))
+  }, [postLast])
+
   const handleScroll = () => {
     postsUserMutation(postLast)
       .unwrap()

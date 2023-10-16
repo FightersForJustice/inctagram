@@ -1,11 +1,12 @@
 import Image from 'next/image'
-import s from './style.module.scss'
+import s from '../style.module.scss'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { deletePostUser } from '@/core/slices/postUserSlice'
 import { useDispatch } from 'react-redux'
+import { useDeletePostMutation } from '@/assets/api/myProfile/PostUserQueryApi'
 
 type DeleteType = {
   setDeleteModal: Dispatch<SetStateAction<boolean>>
@@ -17,10 +18,21 @@ type DeleteType = {
 
 const Delete: React.FC<DeleteType> = ({ setDeleteModal, deleteModal, myPost, setMyPostActive, setMyPost }) => {
   const dispatch = useDispatch()
+  const [deletePostMutation] = useDeletePostMutation()
   const postDelete = () => {
-    dispatch(deletePostUser(myPost))
-    setMyPostActive(false)
-    setMyPost(0)
+    deletePostMutation(myPost)
+      .unwrap()
+      .then((data) => {
+        dispatch(deletePostUser(myPost))
+        setMyPostActive(false)
+        setMyPost(0)
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch(deletePostUser(myPost))
+        setMyPostActive(false)
+        setMyPost(0)
+      })
   }
   return (
     <>

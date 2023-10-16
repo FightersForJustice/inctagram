@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import s from './style.module.scss'
+import s from '../style.module.scss'
 import { Dispatch, SetStateAction, useState } from 'react'
 import Delete from './Delete'
 

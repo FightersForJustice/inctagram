@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { setPostUser } from '@/core/slices/postUserSlice'
 import MyProfileContainer from '@/components/MyProfile/MyProfileContainer'
 import { setUserProfileSSR } from '@/core/slices/userSlice'
+import { usePostUserSelector } from '@/core/selectors/postUser'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const isAuth = await axiosAPI.auth.meServer(req as NextApiRequest)
@@ -25,10 +26,13 @@ export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) =
 
 const MyProfilePage = ({ userProfile, postsUser }: MyProfileType) => {
   const dispatch = useDispatch()
-  console.log(userProfile)
+  const postUserData = usePostUserSelector()
+
   useEffect(() => {
     dispatch(setUserProfileSSR(userProfile))
-    dispatch(setPostUser(postsUser))
+    if (postUserData.postLast === 0) {
+      dispatch(setPostUser(postsUser))
+    }
   }, [postsUser])
 
   return (

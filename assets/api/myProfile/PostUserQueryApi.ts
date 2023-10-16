@@ -32,9 +32,15 @@ const PostUserQueryApi = createApi({
         method: 'GET',
       }),
     }),
+    deletePost: builder.mutation({
+      query: (post) => ({
+        url: postRouts.posts + post,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
-export const { usePostsUserMutation, useMyPostQuery } = PostUserQueryApi
+export const { usePostsUserMutation, useMyPostQuery, useDeletePostMutation } = PostUserQueryApi
 
 export default PostUserQueryApi

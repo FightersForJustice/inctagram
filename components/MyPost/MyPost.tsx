@@ -6,9 +6,10 @@ import { Button } from '@/@ui/ui-kit/Button/Button'
 import { BUTTON_COLORS } from '@/@ui/ui-kit/Button/constants'
 import { useMyPostQuery } from '@/assets/api/myProfile/PostUserQueryApi'
 import { useProfileSettingsSSRSelector } from '@/core/selectors/profileSettingsSSR '
-import OperationMenu from './OperationMenu/OperationMenu'
+import OperationMenu from './OperationMenu/delete/OperationMenu'
 import { Dispatch, SetStateAction, useState } from 'react'
 import Modal from '@/@ui/ui-kit/Modal/Modal'
+import PostEdit from './OperationMenu/edit/Edit'
 
 type ModalType = {
   active: boolean
@@ -130,6 +131,7 @@ const MyPost: React.FC<ModalType> = ({ active, setMyPostActive, myPost, setMyPos
         </div>
       </div>
       <div className={s.overlay}></div>
+      <PostEdit />
     </>
   )
 }

@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  margin: -24px;
+  .user {
+    padding: 24px;
+    .text {
+      color: #8d9094;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .user {
+      .name {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+    .descriptions {
+      textarea {
+        width: 100px inherit;
+      }
+    }
+  }
+}

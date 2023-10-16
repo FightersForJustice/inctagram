@@ -10,6 +10,7 @@ export const homeSSRSelector = createSelector(selectHomeSSR, (homeData) => ({
   totalCount: homeData.totalCount,
   pageSize: homeData.pageSize,
   items: homeData.items,
+  id: homeData.id,
 }))
 
 export const useHomeSSRSelector = () => useSelector(homeSSRSelector)

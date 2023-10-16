@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setHomePostSSR } from '@/core/slices/homeSlice'
 import Home from '@/components/Home/Home'
+import { useHomeSSRSelector } from '@/core/selectors/homeSSR'
 
 export const getServerSideProps: GetServerSideProps = withAuth(async ({ req }) => {
   const postsAll = await axiosAPI.posts.getPostsSSR(req as NextApiRequest)
@@ -29,9 +30,12 @@ const HomePage = (props: HomeResponseType) => {
   const { totalCount, pageSize, items } = props.postsAll
 
   const dispatch = useDispatch()
+  const homeData = useHomeSSRSelector()
 
   useEffect(() => {
-    dispatch(setHomePostSSR({ items }))
+    if (homeData.id === 0) {
+      dispatch(setHomePostSSR({ items }))
+    }
   }, [dispatch, { totalCount, pageSize, items }])
 
   return (

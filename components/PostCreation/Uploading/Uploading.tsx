@@ -12,7 +12,7 @@ import { useImageAddMutation, usePostCreateMutation } from '@/assets/api/post/po
 import { ServerErrorResponse } from '@/assets/api/auth/authTypes'
 import { dataURLtoFile } from '@/utils/Image/dataURLtoFile'
 import { Loading } from '@/components/common/Loaders/Loading'
-import { Modal } from '@/components/common/Modal/Modal'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 
 const Uploading = () => {
@@ -22,20 +22,26 @@ const Uploading = () => {
   const [imageIdList, setImageIdList] = useState<object[]>([])
   const [locations, setLocation] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
-  const [isModalPrinted, setIsModalPrinted] = useState(false)
   const [imageAdd] = useImageAddMutation()
-  const [createPost] = usePostCreateMutation()
+  const [createPost, { isSuccess, isError }] = usePostCreateMutation()
   const textareaMaxSymbols = 500
   const dispatch = useDispatch()
   const { t } = useTranslation()
+  const router = useRouter()
 
   useEffect(() => {
     if (imageIdList.length !== photos.length) return
-
-    setIsLoading(false)
     createPost({ description: description, childrenMetadata: imageIdList })
-    setIsModalPrinted(true)
   }, [imageIdList])
+
+  useEffect(() => {
+    if (isSuccess) router.push('/home')
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (isError) setImageIdList([])
+    setIsLoading(false)
+  }, [isError])
 
   const handleTextareaChange = (e: any) => {
     setSymbolCounter(e.target.value.length)
@@ -63,6 +69,7 @@ const Uploading = () => {
         })
         .catch((error: ServerErrorResponse) => {
           console.error(error)
+          setImageIdList([])
           setIsLoading(false)
         })
     }
@@ -76,11 +83,6 @@ const Uploading = () => {
 
   return (
     <div className={style.uploadingContainer}>
-      {isModalPrinted ? (
-        <Modal title={'Success!'} content={'Your post has been successfully created!'} onClose={() => setIsModalPrinted(false)} />
-      ) : (
-        ''
-      )}
       {isLoading && (
         <div>
           <Loading />

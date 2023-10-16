@@ -17,7 +17,7 @@ const PostCreation = () => {
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [moduleNum, setModuleNum] = useState(0)
   const moduleNames = ['addPhotoTitle', 'croppingTitle', 'filtersTitle', 'publicationTitle']
-  const modules = [<AddPhoto setModuleNum={setModuleNum} />, <Cropping />, <Filters />, <Uploading />]
+  const modules = [<AddPhoto setModuleNum={setModuleNum} />, <Cropping setModuleNum={setModuleNum} />, <Filters />, <Uploading />]
 
   useEffect(() => {
     if (moduleNum !== 0) return

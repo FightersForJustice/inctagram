@@ -1,13 +1,18 @@
 import { usePostCreationDataSelector } from '@/core/selectors/postCreationSelector'
 import style from './Cropping.module.scss'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { setPhoto, deletePhoto } from '@/core/slices/postCreationSlice'
 import { useDispatch } from 'react-redux'
 import MyCarousel from '@/@ui/ui-kit/Carousel'
 import { handlerImageUpload } from '../handlerImageUpload'
-const Cropping = () => {
+
+type CroppingType = {
+  setModuleNum: Dispatch<SetStateAction<number>>
+}
+
+const Cropping: FC<CroppingType> = ({ setModuleNum }) => {
   const dispatch = useDispatch()
   const { photos } = usePostCreationDataSelector()
   const [isAddPhotosClosed, setIsAddPhotosClosed] = useState(true)
@@ -16,6 +21,11 @@ const Cropping = () => {
     if (!image) return
     dispatch(setPhoto({ photo: image }))
   }, [image])
+
+  useEffect(() => {
+    if (photos.length === 0) setModuleNum(0)
+  }, [photos])
+
   const photosLinks = photos.map((photoObj: any) => {
     return photoObj.photo
   })

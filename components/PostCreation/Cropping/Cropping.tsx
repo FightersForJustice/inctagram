@@ -36,7 +36,12 @@ const Cropping = () => {
       <div className={classNames(style.addPhotosContainer, { [style.addPhotosContainerHidden]: isAddPhotosClosed })}>
         <div className={style.photosContainer}>
           {photosLinks.map((photo: string) => (
-            <Image src={photo} alt="" width={80} height={80} className={style.uploadedPhoto} />
+            <div className={style.uploadedPhoto}>
+            <Image src={photo} alt="" width={80} height={80} />
+            <button className={style.deletePhotoButton}>
+              <Image src="../sidebar-icons/close.svg" alt="" width={12} height={12}></Image>
+            </button>
+            </div>
           ))}
         </div>
         <div className={style.addPhotoButtonContainer}>

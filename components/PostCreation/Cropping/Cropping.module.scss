@@ -1,0 +1,85 @@
+.button {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  right: 11px;
+  bottom: 11px;
+  border-radius: 2px;
+  background-color: rgba(23, 23, 23, 0.8);
+  z-index: 100;
+  img {
+    margin-top: 3px;
+    transition: 0.2s;
+  }
+  &Focused img,
+  &:hover img {
+    filter: invert(46%) sepia(49%) saturate(906%) hue-rotate(186deg) brightness(105%) contrast(107%);
+  }
+}
+
+.uploadButton {
+  position: absolute;
+  right: 12px;
+  float: right;
+  top: 12px;
+  z-index: 100;
+  filter: invert(1);
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    filter: invert(46%) sepia(49%) saturate(906%) hue-rotate(186deg) brightness(105%) contrast(107%);
+  }
+}
+
+.addPhotosContainer {
+  position: absolute;
+  transition: 0.2s;
+  right: 11px;
+  bottom: 49px;
+  padding: 12px 60px 5px 12px;
+  z-index: 100;
+  background-color: rgba(23, 23, 23, 0.8);
+  max-width: 300px;
+  .photosContainer {
+    display: flex;
+    overflow-x: scroll;
+    gap: 12px;
+  }
+  .uploadedPhoto {
+    position: relative;
+    & > img {
+      image-rendering: pixelated;
+      object-fit: cover;
+      min-width: 80px;
+      min-height: 82px;
+      margin-bottom: 1px;
+      image-resolution: 3dpi;
+    }
+    .deletePhotoButton {
+      position: absolute;
+      background-color: rgba(23, 23, 23, 0.8);
+      right: 2px;
+      top: 2px;
+      width:12px;
+      height:12px;
+      cursor: pointer;
+      img {
+        margin-bottom: 1px;
+        filter: invert(1);
+      }
+    }
+  }
+  &Hidden {
+    opacity: 0;
+  }
+  ::-webkit-scrollbar {
+    height: 2px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 4px;
+  }
+  input:disabled + label {
+    display: none;
+  }
+}

@@ -1,0 +1,86 @@
+.uploadingContainer {
+  display: flex;
+  width: 972px;
+  .postDetails {
+    width: 481px;
+    padding: 0 24px;
+    .textareaContainer {
+      margin-top: 24px;
+      textarea {
+        width: 433px;
+        height: 120px;
+      }
+      .symbolCounter {
+        position: absolute;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        right: 32px;
+        color: #8d9094;
+      }
+    }
+
+    .buttonContainer {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      .publishButton {
+        cursor: pointer;
+        color: #397df6;
+        background-color: inherit;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      margin-top: 27px;
+      .userAvatar {
+        border-radius: 50%;
+        border: 1px solid #171717;
+      }
+      .userName {
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+      }
+    }
+    .locationInput {
+      margin-top: 60px;
+      position: relative;
+
+      input {
+        padding-right: 40px;
+        &:has(+ button:hover) {
+          border-color: #8d9094;
+        }
+      }
+
+      button {
+        background-color: inherit;
+        filter: invert(0.9);
+        position: absolute;
+        right: 8px;
+        top: 27px;
+        cursor: pointer;
+        &:hover {
+          filter: invert(0.6);
+        }
+      }
+    }
+    .locationContainer {
+      margin-top: 6px;
+      .location {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        min-height: 60px;
+      }
+    }
+  }
+}

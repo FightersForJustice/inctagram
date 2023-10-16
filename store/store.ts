@@ -4,11 +4,12 @@ import authQueryApi from '../assets/api/auth/authQueryApi'
 import { handleGlobalError } from '@/hooks/handleGlobalError'
 import profileApi from '@/assets/api/user/profileQueryApi'
 import { getReducers } from '@/core/reducers'
+import postQueryApi from '@/assets/api/post/postQueryApi'
 
 export const store = configureStore({
   reducer: getReducers(),
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(handleGlobalError, authQueryApi.middleware, profileApi.middleware),
+    getDefaultMiddleware().concat(handleGlobalError, authQueryApi.middleware, profileApi.middleware, postQueryApi.middleware),
 })
 
 setupListeners(store.dispatch)
